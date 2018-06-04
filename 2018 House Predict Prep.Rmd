@@ -1,0 +1,166 @@
+---
+title: "2018 House Predict Prep"
+author: "Scott Onestak"
+date: "June 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries}
+library(rgdal)
+library(ggplot2)
+library(ggmap)
+library(dplyr)
+library(maptools)
+library(raster)
+```
+
+```{r alaska}
+state = "AK"
+
+thefile = gsub("'", '"',paste("C:/Users/onest/Desktop/districts-gh-pages/districts-gh-pages/cds/2016/",state,"-0","/shape.geojson",sep=''))
+test = geojsonio::geojson_read(thefile,what="sp")
+assign(paste("AK",1,sep=""),test)
+US_union = test
+
+AK = fortify(test)
+
+AK_map = ggplot(AK,aes(x=long,y=lat,group=group)) +
+  geom_polygon(color = 'black',fill='white',size=1,aes(group=group)) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+print(AK_map)
+#writeOGR(AK1,"Alaska",layer = "Alaska", driver="GeoJSON")
+```
+
+
+```{r alabama shapefile}
+state = "AL"
+
+for(i in seq(from=1,to=7,by=1)){
+  thefile = gsub("'", '"',paste("C:/Users/onest/Desktop/districts-gh-pages/districts-gh-pages/cds/2016/",state,"-",i,"/shape.geojson",sep=''))
+  test = geojsonio::geojson_read(thefile,what="sp")
+  assign(paste("AL",i,sep=""),test)
+  US_union=raster::union(US_union,test)
+  if(i==1){
+    AL_union=test
+  } else {
+    AL_union=raster::union(AL_union,test)
+  }
+}
+
+
+al = fortify(al_union)
+
+al_map = ggplot(al,aes(x=long,y=lat,group=group)) +
+  geom_polygon(color = 'black',fill='white',size=1,aes(group=group)) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+print(al_map)
+#writeOGR(al_union,"Alabama",layer = "Alabama", driver="GeoJSON")
+```
+
+```{r arkansas shapefile}
+state = "AR"
+
+for(i in seq(from=1,to=4,by=1)){
+  thefile = gsub("'", '"',paste("C:/Users/onest/Desktop/districts-gh-pages/districts-gh-pages/cds/2016/",state,"-",i,"/shape.geojson",sep=''))
+  test = geojsonio::geojson_read(thefile,what="sp")
+  assign(paste("AR",i,sep=""),test)
+  US_union=raster::union(US_union,test)
+  if(AR==1){
+    AR_union=test
+  } else {
+    AR_union = raster::union(AR_union,test)
+  }
+}
+
+AR = fortify(AR_union)
+
+AR_map = ggplot(AR,aes(x=long,y=lat,group=group)) +
+  geom_polygon(color = 'black',fill='white',size=1,aes(group=group)) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+print(AR_map)
+#writeOGR(AR_union,"Arkansas",layer = "Arkansas", driver="GeoJSON")
+```
+
+```{r arizona shapefile}
+state = "AZ"
+
+for(i in seq(from=1,to=9,by=1)){
+  thefile = gsub("'", '"',paste("C:/Users/onest/Desktop/districts-gh-pages/districts-gh-pages/cds/2016/",state,"-",i,"/shape.geojson",sep=''))
+  test = geojsonio::geojson_read(thefile,what="sp")
+  assign(paste("AZ",i,sep=""),test)
+  US_union=raster::union(US_union,test)
+  if(i==1){
+    AZ_union = test
+  } else {
+    AZ_union = raster::union(AZ_union,test)
+  }
+  
+}
+
+AZ = fortify(AZ_union)
+
+AZ_map = ggplot(AZ,aes(x=long,y=lat,group=group)) +
+  geom_polygon(color = 'black',fill='white',size=1,aes(group=group)) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+print(AZ_map)
+#writeOGR(AZ_union,"Arizona",layer = "Arizona", driver="GeoJSON")
+```
+
+```{r ca shapefile}
+state = "CA"
+
+for(i in seq(from=1,to=53,by=1)){
+  thefile = gsub("'", '"',paste("C:/Users/onest/Desktop/districts-gh-pages/districts-gh-pages/cds/2016/",state,"-",i,"/shape.geojson",sep=''))
+  test = geojsonio::geojson_read(thefile,what="sp")
+  assign(paste("CA",i,sep=""),test)
+  US_union=raster::union(US_union,test)
+  if(i==1){
+    CA_union = test
+  } else {
+    CA_union = raster::union(CA_union,test)
+  }
+  
+}
+
+CA = fortify(CA_union)
+
+CA_map = ggplot(CA,aes(x=long,y=lat,group=group)) +
+  geom_polygon(color = 'black',fill='white',size=1,aes(group=group)) +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+print(CA_map)
+#writeOGR(CA_union,"California",layer = "California", driver="GeoJSON")
+```
