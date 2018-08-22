@@ -1,0 +1,228 @@
+State,District,Pollster,Sample,Type,Date,GOP,Dem
+GA,12,Landmark Communications,500,LV,11/2/2014,47.3,45.7
+GA,12,Landmark Communications,500,LV,10/30/2014,48.1,44.4
+IL,12,We Ask America,909,LV,10/1/2014,45,40
+HI,1,Ward Research (Honolulu Star-Advertiser),354,LV,10/18/2014,47,47
+HI,2,Marketing Resource Group (MRG),604,LV,10/19/2014,45,45
+HI,3,Marketing Resource Group (MRG),551,LV,9/14/2018,46,42
+NY,1,Siena College,670,LV,10/29/2014,50,45
+NY,1,Siena College,592,LV,9/11/2014,41,51
+AZ,2,RRH Elections,554,LV,10/23/2014,46,48
+IL,10,We Ask America,919,LV,9/30/2014,44,46
+IA,1,Loras College,282,LV,10/24/2014,44,42
+IA,1,Loras College,300,LV,9/5/2014,33,35
+ME,2,Maine People's Resource Center,397,LV,11/2/2014,42.9,42
+ME,2,Pan Atlantic SMS Group,186,LV,10/21/2014,37.7,38.9
+ME,2,Portland Press Herald,291,LV,10/21/2014,41,40
+ME,2,Critical Insights,295,LV,9/30/2014,41,36
+ME,2,Pan Atlantic SMS Group,201,LV,9/24/2014,32.7,36.2
+ME,2,Portland Press Herald,220,LV,9/25/2014,40,30
+ME,2,Portland Press Herald,222,LV,6/18/2014,39,44
+ME,1,Maine People's Resource Center,419,LV,11/2/2014,30.4,55.7
+ME,1,Pan Atlantic SMS Group,214,LV,10/21/2014,18.3,62
+ME,1,Pan Atlantic SMS Group,199,LV,9/24/2014,8.7,51.4
+NH,1,University of New Hampshire,405,LV,11/2/2014,47,47
+NH,1,University of New Hampshire,261,LV,10/26/2014,40,44
+NH,1,University of New Hampshire,258,LV,10/5/2014,39,42
+NH,1,University of New Hampshire,297,LV,8/14/2014,45,41
+NH,1,University of New Hampshire,263,LV,7/14/2014,47,43
+NH,1,University of New Hampshire,199,LV,4/14/2014,35,44
+NH,1,University of New Hampshire,245,LV,1/14/2014,45,39
+NH,1,University of New Hampshire,258,LV,8/13/2014,32,48
+NH,2,University of New Hampshire,352,LV,11/2/2014,38,49
+NH,2,University of New Hampshire,294,LV,10/26/2014,30,53
+NH,2,University of New Hampshire,275,LV,10/5/2014,41,37
+NH,2,University of New Hampshire,312,LV,8/14/2014,36,39
+NH,2,University of New Hampshire,246,LV,7/14/2014,36,50
+NH,2,University of New Hampshire,184,LV,4/14/2014,33,34
+NH,2,University of New Hampshire,218,LV,1/14/2014,30,36
+NH,1,New England College,778,LV,11/1/2014,52.2,42.9
+NH,2,New England College,748,LV,11/1/2014,41.7,52.8
+NH,1,New England College,556,LV,10/24/2014,49,42.9
+NH,2,New England College,576,LV,10/24/2014,42,49.2
+NH,1,New England College,461,LV,10/16/2014,47.4,45.7
+NH,2,New England College,460,LV,10/16/2014,43.2,48.7
+NH,1,New England College,536,LV,10/9/2014,46.3,43.5
+NH,2,New England College,545,LV,10/9/2014,42.5,46.1
+NH,1,New England College,626,LV,10/3/2014,44.2,46.7
+NH,2,New England College,660,LV,10/3/2014,38.1,50.1
+NH,1,New England College,629,LV,9/26/2014,50.8,40.5
+NH,2,New England College,702,LV,9/26/2014,39,50.1
+NH,1,New England College,715,LV,9/20/2014,45.2,45.2
+NH,2,New England College,779,LV,9/20/2014,38.1,48.9
+NY,11,Siena College,713,LV,10/28/2014,53,34
+NY,11,Siena College,585,LV,9/14/2014,44,40
+AR,2,Hendrix College,605,LV,10/16/2014,42,46
+AR,2,Hendrix College,483,LV,7/25/2014,44,43
+IL,11,We Ask America,918,LV,9/30/2014,44,47
+IA,3,Loras College,280,LV,10/24/2014,46,44
+IA,3,Loras College,300,LV,9/5/2014,34,40
+FL,26,Saint Leo University,400,LV,10/6/2014,46,42
+MN,8,SurveyUSA,555,LV,10/12/2014,47,39
+AR,4,Hendrix College,607,LV,10/16/2014,44,42
+AR,4,Hendrix College,439,LV,7/25/2014,48,34
+CA,52,SurveyUSA,551,LV,10/30/2014,45,44
+CA,52,SurveyUSA,608,LV,10/20/2014,46,45
+CA,52,SurveyUSA,542,LV,10/6/2014,48,45
+CA,52,SurveyUSA,559,LV,9/15/2014,46,47
+CA,52,SurveyUSA,554,LV,6/12/2014,51,44
+IL,13,We Ask America,932,LV,10/1/2014,51,38
+NY,21,Siena College,670,LV,10/22/2014,50,32
+NY,21,Harper Polling,674,LV,9/29/2014,45,37
+NY,21,Siena College,591,LV,9/9/2014,46,33
+CA,21,SurveyUSA,554,LV,10/20/2014,47,42
+CA,21,SurveyUSA,439,LV,9/8/2014,56,37
+NJ,3,Richard Stockton College,617,LV,10/28/2014,46,41
+NJ,3,Monmouth University,423,LV,10/13/2014,51,41
+NJ,3,Richard Stockton College,606,LV,9/14/2014,42,42
+MT,1,Montana State University Billings,410,LV,10/11/2014,40,33
+NY,19,Siena College,727,LV,10/24/2014,58,35
+NY,19,Siena College,609,LV,9/9/2014,57,33
+NJ,5,Monmouth University,427,LV,10/29/2014,53,42
+NJ,5,Monmouth University,432,LV,10/14/2014,48,43
+AK,1,Public Policy Polling,1052,LV,11/2/2014,47,41
+AK,1,Ivan Moore Research,544,LV,10/26/2014,44,43
+AK,1,Public Policy Polling,880,LV,9/21/2014,48,33
+IA,4,Loras College,280,LV,10/24/2014,51,39
+IA,4,Loras College,300,LV,9/2/2014,47,36
+MI,11,Mitchell Research & Communications,472,LV,10/15/2014,47,35
+MA,6,Emerson College,400,LV,10/29/2014,42,40
+MA,6,Emerson College,400,LV,10/14/2014,43,40
+MA,6,Emerson College,429,LV,9/29/2014,41,39
+MA,6,MassINC Polling Group,400,LV,9/24/2014,39,47
+MA,6,Emerson College,500,LV,9/4/2014,36,44
+NY,18,Siena College,682,LV,10/27/2014,44,49
+NY,18,Siena College,590,LV,9/17/2014,42,50
+IA,2,Loras College,279,LV,10/24/2014,38,51
+IA,2,Loras College,300,LV,9/5/2014,32,49
+MI,7,SurveyUSA,545,LV,10/6/2014,41,50
+IL,17,We Ask America,953,LV,9/29/2014,41,50
+MA,9,Emerson College,410,LV,10/29/2014,41,46
+MA,9,Emerson College,302,LV,10/19/2014,44,47
+MA,9,Emerson College,343,LV,10/7/2014,44,39
+NY,24,Siena College,704,LV,10/24/2014,52,42
+NY,24,Siena College,598,LV,9/18/2014,42,50
+NY,4,Siena College,628,LV,10/20/2014,42,52
+NY,4,Siena College,596,LV,9/15/2014,37,55
+MN,2,SurveyUSA,600,LV,10/16/2016,41,46
+NY,3,Siena College,613,LV,10/4/2016,34,50
+NH,1,University of New Hampshire,311,LV,10/30/2016,32,37
+NH,1,University of Massachusetts Amherst,380,LV,10/21/2016,37,41
+FL,13,University of North Florida,590,LV,10/11/2016,36,54
+IA,1,Loras College,415,LV,11/3/2016,47,41
+IA,1,Loras College,368,LV,9/22/2016,45,38
+UT,4,Dan Jones & Associates,405,LV,8/8/2016,51,38
+UT,4,SurveyUSA,574,LV,6/8/2016,45,51
+MN,8,SurveyUSA,595,LV,10/19/2016,45,41
+ME,2,University of New Hampshire,341,LV,10/25/2016,44,46
+ME,2,SurveyUSA,387,LV,9/10/2016,50,45
+NY,19,SurveyUSA,598,LV,10/30/2016,42,45
+IA,3,Loras College,417,LV,11/3/2016,44,39
+IA,3,Loras College,327,LV,9/22/2016,46,36
+MN,3,SurveyUSA,579,LV,10/16/2016,49,38
+NY,1,Siena College,661,LV,10/4/2016,53,38
+MT,1,Montana State University Billings,590,LV,10/10/2016,50,31
+IL,8,We Ask America,1010,LV,10/28/2012,45,55
+IL,8,Chicago Tribune,600,LV,10/24/2012,40,50
+IL,8,We Ask America,1158,LV,10/9/2012,48,45
+IL,8,Public Policy Polling,508,LV,9/20/2012,38,52
+MD,6,Baltimore Sun,610,LV,10/25/2012,41,42
+IL,11,We Ask America,1303,LV,10/28/2012,50,50
+IL,11,We Ask America,1253,LV,10/10/2012,46,44
+NY,24,Siena College,670,LV,11/2/2012,44,44
+NY,24,Siena College,625,LV,9/10/2012,43,43
+WA,1,SurveyUSA,610,LV,10/21/2012,44,47
+WA,1,SurveyUSA,593,LV,9/15/2012,46,42
+WA,1,SurveyUSA,661,RV,5/30/2012,49,32
+FL,22,Public Policy Polling,500,LV,10/16/2012,44,47
+FL,22,Sunshine State News,750,LV,10/16/2012,47,47
+ME,2,Maine People's Resource Center,436,LV,11/3/2012,45.6,49.6
+ME,1,Maine People's Resource Center,469,LV,11/3/2012,34.2,61.5
+ME,2,Critical Insights,306,LV,10/31/2012,36,55
+ME,2,Pan Atlantic SMS Group,202,LV,9/28/2012,32,52
+ME,2,Maine People's Resource Center,410,LV,9/17/2012,37.4,55.9
+ME,1,Maine People's Resource Center,444,LV,9/17/2012,32,60.1
+ME,2,Critical Insights,309,LV,9/16/2012,39,54
+ME,2,Maine People's Resource Center,471,LV,4/2/2012,37,53
+NY,25,Siena College,624,LV,10/30/2012,42,52
+NY,25,Siena College,800,LV,10/11/2012,44,49
+NY,25,Siena College,634,LV,9/26/2012,42,52
+NH,2,University of New Hampshire,423,LV,11/4/2012,43,53
+NH,2,New England College,511,LV,10/31/2012,41,47
+NH,2,University of New Hampshire,211,LV,10/6/2012,35,38
+NH,2,University of New Hampshire,325,LV,9/30/2012,41,42
+NH,2,University of New Hampshire,284,LV,8/12/2012,42,37
+NH,2,Public Policy Polling,642,LV,5/13/2012,42,42
+NH,2,University of New Hampshire,251,LV,4/20/2012,39,40
+NH,2,Public Policy Polling,363,LV,7/5/2012,43,42
+RI,1,Fleming & Associates,300,LV,10/27/2012,42,43
+RI,1,Brown University,236,LV,10/5/2012,40,46
+RI,1,Fleming & Associates,250,LV,9/29/2012,38,44
+RI,1,Fleming & Associates,250,RV,2/23/2012,49,34
+RI,1,Fleming & Associates,300,RV,5/15/2012,46,33
+IL,12,We Ask America,1313,LV,10/28/2012,46,51
+IL,12,We Ask America,1247,LV,10/10/2012,44,42
+MN,8,SurveyUSA,585,LV,11/3/2012,45,47
+MN,8,Star Tribune,1000,LV,10/16/2012,43,50
+NV,4,SurveyUSA,648,LV,10/28/2012,47,42
+NV,4,SurveyUSA,646,LV,9/19/2012,45,42
+NY,27,Siena College,636,LV,11/1/2012,48,47
+NY,27,Siena College,633,LV,10/4/2012,47,47
+NY,27,Siena College,628,LV,8/14/2012,47,45
+FL,18,Sunshine State News,752,LV,10/17/2012,49,48
+FL,18,Public Policy Polling,500,LV,10/16/2012,51,42
+IL,13,We Ask America,1360,LV,10/28/2012,50,45
+IL,13,We Ask America,1253,LV,10/9/2012,44,42
+MI,1,Public Policy Polling,866,LV,9/19/2012,42,44
+NY,1,Siena College,624,LV,9/10/2012,39,52
+CA,52,SurveyUSA,628,LV,10/30/2012,46,46
+CA,52,U-T San Diego,374,LV,10/17/2012,47,38
+IL,10,We Ask America,1257,LV,10/28/2012,54,46
+IL,10,We Ask America,1172,LV,10/9/2012,47,45
+IL,17,We Ask America,1325,LV,10/28/2012,52,48
+IL,17,We Ask America,1183,LV,10/9/2012,46,46
+MI,11,Baydoun Consulting,392,LV,10/23/2012,47,39
+NH,1,University of New Hampshire,366,LV,11/4/2012,46,49
+NH,1,New England College,511,LV,10/31/2012,48,41
+NH,1,University of New Hampshire,364,LV,10/21/2012,41,38
+NH,1,University of New Hampshire,200,LV,10/6/2012,45,35
+NH,1,University of New Hampshire,273,LV,9/30/2012,38,47
+NH,1,University of New Hampshire,258,LV,8/12/2012,43,45
+NH,1,Public Policy Polling,502,LV,5/13/2012,43,47
+NH,1,University of New Hampshire,230,LV,4/20/2012,39,44
+NH,1,Public Policy Polling,299,LV,7/5/2012,48,41
+NY,21,Siena College,629,LV,10/30/2012,43,44
+NY,21,Siena College,638,LV,9/6/2012,36,49
+UT,4,Mason-Dixon Polling & Research Inc.,625,LV,10/31/2012,52,40
+UT,4,Deseret News/KSL,414,RV,9/29/2012,49,43
+UT,4,Deseret News/KSL,379,RV,6/21/2012,38,53
+UT,4,Mason-Dixon Polling & Research Inc.,625,RV,4/11/2012,42,45
+UT,4,Deseret News/KSL,341,RV,12/21/2012,36,53
+MA,6,Boston Globe,371,LV,9/27/2012,37,31
+NJ,3,Richard Stockton College,614,LV,10/2/2012,49,39
+NY,19,Siena College,649,LV,10/28/2012,48,43
+NJ,19,Siena College,635,LV,9/18/2012,52,36
+MN,6,Star Tribune,1000,LV,10/16/2012,51,45
+MN,6,SurveyUSA,598,LV,10/11/2012,50,41
+NV,3,SurveyUSA,502,LV,10/23/2012,50,40
+NE,2,Omaha World-Herald,352,LV,10/25/2012,47,43
+NE,2,Omaha World-Herald,400,RV,9/20/2012,51,38
+NY,18,Siena College,615,LV,10/17/2012,49,42
+NY,18,Siena College,628,LV,9/16/2012,46,33
+MT,1,Public Policy Polling,836,LV,11/3/2012,48,44
+MT,1,Mason-Dixon Polling & Research Inc.,625,LV,10/31/2012,51,40
+MT,1,Public Policy Polling,737,LV,10/10/2012,43,34
+MT,1,Montana State University Billings,477,LV,9/30/2012,36,23
+MT,1,Mason-Dixon Polling & Research Inc.,625,LV,9/19/2012,46,38
+MT,1,Public Policy Polling,656,LV,9/11/2012,40,37
+MT,1,Public Policy Polling,934,RV,4/29/2012,33,27
+MT,1,Public Policy Polling,819,RV,6/19/2012,35,27
+ND,1,Mason-Dixon Polling & Research Inc.,625,LV,10/28/2012,50,40
+ND,1,Forum/Essman,500,LV,10/15/2012,52,32
+ND,1,Mason-Dixon Polling & Research Inc.,625,LV,10/5/2012,49,37
+ND,1,Mason-Dixon Polling & Research Inc.,625,LV,6/6/2012,49,35
+OK,2,SoonerPoll.com,300,LV,10/31/2012,45,33
+VA,2,Christopher Newport University,766,LV,10/8/2012,44,32
+MI,3,Glengariff Group Inc.,400,LV,10/18/2012,34,35
+NY,11,Siena College,627,LV,10/28/2012,52,34
+NY,11,Siena College,621,LV,9/23/2012,48,38
