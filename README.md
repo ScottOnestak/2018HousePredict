@@ -9,3 +9,5 @@ https://www.census.gov/programs-surveys/acs/data/summary-file.2016.html
 https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t
 
 http://gardow.com/davebradlee/redistricting/davesredistricting2.5.aspx
+
+http://www.pacourts.us/assets/files/setting-6015/file-6879.pdf?cb=ebe678
