@@ -1,0 +1,103 @@
+---
+title: "House Clustering and Dataset Prep"
+author: "Scott Onestak"
+date: "August 30, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(dplyr)
+library(tidyr)
+```
+
+```{r data}
+Dist2018 = read.csv("election data files/PresResults2018CDs.csv",header=TRUE)
+Dist2000 = read.csv("election data files/PresResults2000CDs.csv",header=TRUE)
+
+Demographics = read.csv("election data files/BasicDemographics.csv",header=TRUE)
+PA = read.csv("election data files/PA_demographics.csv",header=TRUE)
+```
+
+```{r Pres Dist Work}
+Dist2018$AvgGOPPres = (Dist2018$GOP16 + Dist2018$GOP12) / 2
+Dist2000$AvgGOPPres = (Dist2000$GOP08 + Dist2000$GOP04) / 2
+
+plot(density(Dist2018$AvgGOPPres), xlim=c(0,100),ylim=c(0,.03),main="GOP Average Vote Share",xlab="RED=2010s, BLUE=2000s",col="red")
+par(new=T)
+plot(density(Dist2000$AvgGOPPres), xlim=c(0,100), ylim=c(0,.03),main="GOP Average Vote Share",xlab="",col="blue")
+
+Districts = rbind(Dist2018[,c(1,2,3,12)],Dist2000[,c(1,2,3,12)])
+```
+
+```{r House Results Agg}
+options("scipen"=100, "digits"=2)
+
+HouseResults$district[HouseResults$district == 0] = 1
+
+HouseCDs = HouseResults %>%
+  filter(year >= 2004, party %in% c("republican","democrat"),special==FALSE) %>%
+  mutate(percent = (candidatevotes/totalvotes)*100) %>%
+  select(year,state_po,district,party,percent) %>%
+  rename(.,state = state_po) %>%
+  arrange(state,district,year,party) %>%
+  group_by(year,state,district,party) %>%
+  filter(percent==max(percent)) %>%
+  spread(party,percent)
+
+HouseCDs$democrat[is.na(HouseCDs$democrat)== TRUE] = 0
+HouseCDs$republican[is.na(HouseCDs$republican)== TRUE] = 0
+HouseCDs$GOPCDAdv = HouseCDs$republican - HouseCDs$democrat
+HouseCDs$GOPCDAdv[abs(HouseCDs$GOPCDAdv) >= 90] = NA
+
+HouseSpread = HouseCDs %>% 
+  select(-democrat,-republican) %>%
+  spread(year,GOPCDAdv)
+
+```
+
+```{r PA}
+PA_agg = PA %>% select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
+  mutate(VotingAge=sum(Pop18to24,Pop25to35,Pop35to45,Pop45to55,Pop55to65,Pop65to75,Pop75Over,na.rm=T),
+         Under35 = sum(Pop18to24,Pop25to35,na.rm=T),
+         Over65 = sum(Pop65to75,Pop75Over,na.rm=T),
+         BachGrad = sum(Bachelors,GradProf,na.rm=T),
+         Poverty = sum(Poverty100to149,Poverty150UP,na.rm=T),
+         MedianEarnings_HSBach_Diff = sum(MedianEarnings_Bach,-MedianEarnings_HS,na.rm=T)) %>%
+  group_by(Congressional.District) %>%
+  summarize_all(VotingAge = sum(VotingAge,na.rm=T),
+                Under35 = sum(Under35,na.rm=T),
+                Over65 = sum(Over65,na.rm=T),
+                MedianAge = mean(MedianAge,na.rm=T),
+                Male = sum(Male,na.rm=T),
+                RaceBase = sum(RaceBase,na.rm=T),
+                Hispanic = sum(Hispanic,na.rm=T),
+                Black = sum(White,na.rm=T),
+                WhiteNoHispanic = sum(WhiteNoHispanic,na.rm=T),
+                ForeignBorn = sum(ForeignBorn,na.rm=T),
+                MaritalBase = sum(MaritalBase,na.rm=T),
+                NeverMarried = sum(NeverMarried,na.rm=T),
+                Married = sum(Married,na.rm=T),
+                EducationBase = sum(EducationBase,na.rm=T),
+                LessThanHS = sum(LessThanHS,na.rm=T),
+                HSGrad = sum(HSGrad,na.rm=T),
+                SomeCollORAssoc = sum(SomeCollORAssoc,na.rm=T),
+                Bachelors = sum(Bachelors,na.rm=T),
+                GradProf = sum(GradProf,na.rm=T),
+                BachGrad = sum(BachGrad,na.rm=T),
+                MedianIncome = mean(MedianIncome,na.rm=T),
+                PovertyBase = sum(PovertyBase,na.rm=T),
+                Poverty = sum(Poverty,na.rm=T),
+                MedianEarnings_LessHS = mean(MedianEarnings_LessHS,na.rm=T),
+                MedianEarnings_HS = mean(MedianEarnings_HS,na.rm=T),
+                MedianEarnings_SomeCollAssoc = mean(MedianEarnings_SomeCollAssoc,na.rm=T),
+                MedianEarnings_Bach = mean(MedianEarnings_Bach,na.rm=T),
+                MedianEarnings_GradProf = mean(MedianEarnings_GradProf,na.rm=T),
+                MedianEarnings_HSBach_Diff = mean(MedianEarnings_HSBach_Diff,na.rm=T))
+
+```
+
+
