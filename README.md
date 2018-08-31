@@ -1,5 +1,7 @@
 # 2018HousePredict
 
+*In Progress.  Coming September.*
+
 FEC Data:
 
 https://www.fec.gov/campaign-finance-data/all-candidates-file-description/
