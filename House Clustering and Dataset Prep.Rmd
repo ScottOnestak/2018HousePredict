@@ -17,9 +17,17 @@ library(tidyr)
 ```{r data}
 Dist2018 = read.csv("election data files/PresResults2018CDs.csv",header=TRUE)
 Dist2000 = read.csv("election data files/PresResults2000CDs.csv",header=TRUE)
-
+HouseResults = read.delim("election data files/1976-2016-house.tab",sep="\t",header=TRUE)
 Demographics = read.csv("election data files/BasicDemographics.csv",header=TRUE)
 PA = read.csv("election data files/PA_demographics.csv",header=TRUE)
+
+PA$MedianEarnings_Bach = as.numeric(as.character(PA$MedianEarnings_Bach))
+PA$MedianEarnings_GradProf = as.numeric(as.character(PA$MedianEarnings_GradProf))
+PA$MedianEarnings_HS = as.numeric(as.character(PA$MedianEarnings_HS))
+PA$MedianEarnings_LessHS = as.numeric(as.character(PA$MedianEarnings_LessHS))
+PA$MedianEarnings_SomeCollAssoc = as.numeric(as.character(PA$MedianEarnings_SomeCollAssoc))
+PA$MedianIncome = as.numeric(as.character(PA$MedianIncome))
+PA$MedianAge = as.numeric(as.character(PA$MedianAge))
 ```
 
 ```{r Pres Dist Work}
@@ -60,15 +68,17 @@ HouseSpread = HouseCDs %>%
 ```
 
 ```{r PA}
+
+
 PA_agg = PA %>% select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
-  mutate(VotingAge=sum(Pop18to24,Pop25to35,Pop35to45,Pop45to55,Pop55to65,Pop65to75,Pop75Over,na.rm=T),
-         Under35 = sum(Pop18to24,Pop25to35,na.rm=T),
-         Over65 = sum(Pop65to75,Pop75Over,na.rm=T),
-         BachGrad = sum(Bachelors,GradProf,na.rm=T),
-         Poverty = sum(Poverty100to149,Poverty150UP,na.rm=T),
-         MedianEarnings_HSBach_Diff = sum(MedianEarnings_Bach,-MedianEarnings_HS,na.rm=T)) %>%
+  mutate(VotingAge=rowSums(PA[,c("Pop18to24","Pop25to35","Pop35to45","Pop45to55","Pop55to65","Pop65to75","Pop75Over")],na.rm=T),
+         Under35 = rowSums(PA[,c("Pop18to24","Pop25to35")],na.rm=T),
+         Over65 = rowSums(PA[,c("Pop65to75","Pop75Over")],na.rm=T),
+         BachGrad = rowSums(PA[,c("Bachelors","GradProf")],na.rm=T),
+         Poverty = rowSums(PA[,c("Poverty100to149","Poverty150UP")],na.rm=T),
+         MedianEarnings_HSBach_Diff = MedianEarnings_Bach - MedianEarnings_HS) %>%
   group_by(Congressional.District) %>%
-  summarize_all(VotingAge = sum(VotingAge,na.rm=T),
+  summarize(VotingAge = sum(VotingAge,na.rm=T),
                 Under35 = sum(Under35,na.rm=T),
                 Over65 = sum(Over65,na.rm=T),
                 MedianAge = mean(MedianAge,na.rm=T),
