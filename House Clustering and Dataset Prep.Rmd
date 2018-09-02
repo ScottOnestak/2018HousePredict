@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(clusterSim)
 ```
 
 ```{r data}
@@ -50,7 +51,7 @@ HouseResults$district[HouseResults$district == 0] = 1
 HouseCDs = HouseResults %>%
   filter(year >= 2004, party %in% c("republican","democrat"),special==FALSE) %>%
   mutate(percent = (candidatevotes/totalvotes)*100) %>%
-  select(year,state_po,district,party,percent) %>%
+  dplyr::select(year,state_po,district,party,percent) %>%
   rename(.,state = state_po) %>%
   arrange(state,district,year,party) %>%
   group_by(year,state,district,party) %>%
@@ -61,16 +62,11 @@ HouseCDs$democrat[is.na(HouseCDs$democrat)== TRUE] = 0
 HouseCDs$republican[is.na(HouseCDs$republican)== TRUE] = 0
 HouseCDs$GOPCDAdv = HouseCDs$republican - HouseCDs$democrat
 HouseCDs$GOPCDAdv[abs(HouseCDs$GOPCDAdv) >= 90] = NA
-
-HouseSpread = HouseCDs %>% 
-  select(-democrat,-republican) %>%
-  spread(year,GOPCDAdv)
-
 ```
 
 ```{r PA}
 
-PA_agg = PA %>% select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
+PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
   mutate(VotingAge=rowSums(PA[,c("Pop18to24","Pop25to35","Pop35to45","Pop45to55","Pop55to65","Pop65to75","Pop75Over")],na.rm=T),
          Under35 = rowSums(PA[,c("Pop18to24","Pop25to35")],na.rm=T),
          Over65 = rowSums(PA[,c("Pop65to75","Pop75Over")],na.rm=T),
@@ -111,7 +107,7 @@ PA_agg = PA %>% select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
 colnames(PA_agg)[1] = "Congressional.District.Number"
 PA_agg$State = "PA"
 PA_agg$CD_Name = ifelse(PA_agg$Congressional.District.Number < 10,paste(PA_agg$State,"0",PA_agg$Congressional.District.Number,sep=''), paste(PA_agg$State,PA_agg$Congressional.District.Number,sep=''))
-PA_agg <- PA_agg %>% select(State,Congressional.District.Number,CD_Name, everything())
+PA_agg <- PA_agg %>% dplyr::select(State,Congressional.District.Number,CD_Name, everything())
 ```
 
 ```{r total us}
@@ -122,13 +118,17 @@ CDs = Demographics %>%
          BachGrad = rowSums(Demographics[,c("Bachelors","GradProf")],na.rm=T),
          Poverty = rowSums(Demographics[,c("Poverty100to149","Poverty150UP")],na.rm=T),
          MedianEarnings_HSBach_Diff = MedianEarnings_Bach - MedianEarnings_HS) %>%
-  select(State,Congressional.District.Number,CD_Name,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,RaceBase,Hispanic,Black,
+  dplyr::select(State,Congressional.District.Number,CD_Name,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,RaceBase,Hispanic,Black,
                 WhiteNoHispanic,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,SomeCollORAssoc,Bachelors,
                 GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_LessHS,MedianEarnings_HS,MedianEarnings_SomeCollAssoc,
                 MedianEarnings_Bach,MedianEarnings_GradProf,MedianEarnings_HSBach_Diff)
 CDs = rbind(CDs,PA_agg)
 
+Districts = Districts[,c(3,4)]
+Districts$Name = as.character(Districts$Name)
+
 CDs = CDs %>%
+  left_join(.,Districts,by=c("CD_Name" = "Name")) %>%
   mutate(Under35 = Under35 / VotingAge * 100,
          Over65 = Over65 / VotingAge * 100,
          Male = Male / TotalPop * 100,
@@ -145,7 +145,7 @@ CDs = CDs %>%
          BachGrad = BachGrad / EducationBase * 100,
          Poverty = ((PovertyBase - Poverty) / PovertyBase * 100),
          ForeignBorn = ForeignBorn / TotalPop * 100) %>%
-  select(-VotingAge,-TotalPop,-RaceBase,-MaritalBase,-EducationBase,-PovertyBase)
+  dplyr::select(-VotingAge,-TotalPop,-RaceBase,-MaritalBase,-EducationBase,-PovertyBase)
 ```
 
 
@@ -174,6 +174,52 @@ plot(density(CDs$MedianEarnings_SomeCollAssoc),main="Median Earnings - Some Coll
 plot(density(CDs$MedianEarnings_Bach),main="Median Earnings - Bachelors",col="blue")
 plot(density(CDs$MedianEarnings_GradProf),main="Median Earnings - Grad/PhD",col="blue")
 plot(density(CDs$MedianEarnings_HSBach_Diff),main="Median Earnings Differential (Bachelors - HS Edu)",col="blue")
+plot(density(CDs$AvgGOPPres),main="Average GOP %",col="blue")
 ```
+
+```{r normalize}
+norm = cbind(CDs[,c(1:3)],scale(CDs[,c(4:28)]))
+
+plot(norm[,c(4:15,28)],pch=20)
+plot(norm[,c(16:28)],pch=20)
+```
+
+```{r pca}
+pcs = princomp(norm[,c(4:28)])
+plot(pcs)
+plot(pcs, type='l')
+summary(pcs)
+
+pcs2 = prcomp(norm[c(4:28)])
+comp <- data.frame(pcs2$x[,1:6])
+plot(comp, pch=36)
+```
+
+```{r k-means cluster}
+set.seed(162)
+km = matrix(nrow=10,ncol=2)
+for(i in seq(1:10)){
+  kmeans = kmeans(comp,centers = i,iter.max = 1000,nstart=25)
+  km[i,1] = i
+  km[i,2] = kmeans$tot.withinss
+}
+km = as.data.frame(km)
+colnames(km) = c("Clusters","TotWithinSS")
+plot(km$Clusters,km$TotWithinSS,type = "b")
+
+#choose 6
+kmeans = kmeans(comp,centers = 6,iter.max = 1000,nstart=25)
+norm$cluster = kmeans$cluster
+```
+
+```{r plots and plots and plots of clusters}
+palette(c("black","cyan","chartreuse4","red","magenta","grey"))
+plot(norm[,c(4:9,28)],col=norm$cluster,pch=16)
+plot(norm[,c(10:13,28)],col=norm$cluster,pch=16)
+plot(norm[,c(14:19,28)],col=norm$cluster,pch=16)
+```
+
+
+
 
 
