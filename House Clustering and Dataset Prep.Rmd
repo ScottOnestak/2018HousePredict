@@ -13,7 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
-library(clusterSim)
 ```
 
 ```{r data}
@@ -30,6 +29,9 @@ PA$MedianEarnings_LessHS = as.numeric(as.character(PA$MedianEarnings_LessHS))
 PA$MedianEarnings_SomeCollAssoc = as.numeric(as.character(PA$MedianEarnings_SomeCollAssoc))
 PA$MedianIncome = as.numeric(as.character(PA$MedianIncome))
 PA$MedianAge = as.numeric(as.character(PA$MedianAge))
+PA$UrbanBase = as.numeric(as.character(PA$UrbanBase))
+PA$Urban = as.numeric(as.character(PA$Urban))
+PA$LFPR = as.numeric(as.character(PA$LFPR))
 ```
 
 ```{r Pres Dist Work}
@@ -72,7 +74,9 @@ PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
          Over65 = rowSums(PA[,c("Pop65to75","Pop75Over")],na.rm=T),
          BachGrad = rowSums(PA[,c("Bachelors","GradProf")],na.rm=T),
          Poverty = rowSums(PA[,c("Poverty100to149","Poverty150UP")],na.rm=T),
-         MedianEarnings_HSBach_Diff = MedianEarnings_Bach - MedianEarnings_HS) %>%
+         MedianEarnings_BachW = MedianEarnings_Bach * Bachelors,
+         MedianEarnings_HSW = MedianEarnings_HS * HSGrad,
+         LFPRw = LFPR * VeteranBase) %>%
   group_by(Congressional.District) %>%
   summarize(TotalPop = sum(TotalPop,na.rm=T),
                 VotingAge = sum(VotingAge,na.rm=T),
@@ -82,6 +86,7 @@ PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
                 Male = sum(Male,na.rm=T),
                 RaceBase = sum(RaceBase,na.rm=T),
                 WhiteNoHispanic = sum(WhiteNoHispanic,na.rm=T),
+                Black = sum(Black,na.rm=T),
                 ForeignBorn = sum(ForeignBorn,na.rm=T),
                 MaritalBase = sum(MaritalBase,na.rm=T),
                 NeverMarried = sum(NeverMarried,na.rm=T),
@@ -96,12 +101,23 @@ PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
                 MedianIncome = mean(MedianIncome,na.rm=T),
                 PovertyBase = sum(PovertyBase,na.rm=T),
                 Poverty = sum(Poverty,na.rm=T),
-                MedianEarnings_LessHS = mean(MedianEarnings_LessHS,na.rm=T),
-                MedianEarnings_HS = mean(MedianEarnings_HS,na.rm=T),
-                MedianEarnings_SomeCollAssoc = mean(MedianEarnings_SomeCollAssoc,na.rm=T),
-                MedianEarnings_Bach = mean(MedianEarnings_Bach,na.rm=T),
-                MedianEarnings_GradProf = mean(MedianEarnings_GradProf,na.rm=T),
-                MedianEarnings_HSBach_Diff = mean(MedianEarnings_HSBach_Diff,na.rm=T))
+                MedianEarnings_HSW = sum(MedianEarnings_HSW,na.rm=T),
+                MedianEarnings_BachW = sum(MedianEarnings_BachW,na.rm=T),
+                UrbanBase = sum(UrbanBase,na.rm=T),
+                Urban = sum(Urban,na.rm=T),
+                VeteranBase = sum(VeteranBase,na.rm=T),
+                Veterans = sum(Veterans,na.rm=T),
+                LFPRw = sum(LFPRw,na.rm=T)) %>%
+  mutate(MedianEarnings_HS = MedianEarnings_HSW / HSGrad,
+         MedianEarnings_Bach = MedianEarnings_BachW / Bachelors,
+         MedianEarnings_HSBach_Diff = MedianEarnings_Bach - MedianEarnings_HS,
+         Urbanicity = Urban / UrbanBase * 100,
+         LFPR = LFPRw / VeteranBase) %>%
+  dplyr::select(Congressional.District,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,RaceBase,WhiteNoHispanic,
+                Black,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,SomeCollORAssoc,Bachelors,
+                GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_HS,
+                MedianEarnings_Bach,MedianEarnings_HSBach_Diff,Urbanicity,Veterans,VeteranBase,RaceBase,MaritalBase,EducationBase,
+                PovertyBase,LFPR)
 colnames(PA_agg)[1] = "Congressional.District.Number"
 PA_agg$State = "PA"
 PA_agg$CD_Name = ifelse(PA_agg$Congressional.District.Number < 10,paste(PA_agg$State,"0",PA_agg$Congressional.District.Number,sep=''), paste(PA_agg$State,PA_agg$Congressional.District.Number,sep=''))
@@ -116,10 +132,11 @@ CDs = Demographics %>%
          BachGrad = rowSums(Demographics[,c("Bachelors","GradProf")],na.rm=T),
          Poverty = rowSums(Demographics[,c("Poverty100to149","Poverty150UP")],na.rm=T),
          MedianEarnings_HSBach_Diff = MedianEarnings_Bach - MedianEarnings_HS) %>%
-  dplyr::select(State,Congressional.District.Number,CD_Name,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,RaceBase,
-                WhiteNoHispanic,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,SomeCollORAssoc,Bachelors,
-                GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_LessHS,MedianEarnings_HS,MedianEarnings_SomeCollAssoc,
-                MedianEarnings_Bach,MedianEarnings_GradProf,MedianEarnings_HSBach_Diff)
+  dplyr::select(State,Congressional.District.Number,CD_Name,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,
+                RaceBase,WhiteNoHispanic,Black,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,
+                SomeCollORAssoc,Bachelors,GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_HS,
+                MedianEarnings_Bach,MedianEarnings_HSBach_Diff,Urbanicity,Veterans,VeteranBase,RaceBase,MaritalBase,EducationBase,
+                PovertyBase,LFPR)
 CDs = rbind(CDs,PA_agg)
 
 Districts = Districts[,c(3,4)]
@@ -131,6 +148,7 @@ CDs = CDs %>%
          Over65 = Over65 / VotingAge * 100,
          Male = Male / TotalPop * 100,
          WhiteNoHispanic = WhiteNoHispanic / RaceBase * 100,
+         Black = Black / RaceBase * 100,
          NeverMarried = NeverMarried / MaritalBase * 100,
          Married = Married / MaritalBase * 100,
          LessThanHS = LessThanHS / EducationBase * 100,
@@ -140,8 +158,9 @@ CDs = CDs %>%
          GradProf = GradProf / EducationBase * 100,
          BachGrad = BachGrad / EducationBase * 100,
          Poverty = ((PovertyBase - Poverty) / PovertyBase * 100),
-         ForeignBorn = ForeignBorn / TotalPop * 100) %>%
-  dplyr::select(-VotingAge,-TotalPop,-RaceBase,-MaritalBase,-EducationBase,-PovertyBase)
+         ForeignBorn = ForeignBorn / TotalPop * 100,
+         Veteran = Veterans / VeteranBase * 100) %>%
+  dplyr::select(-VotingAge,-TotalPop,-RaceBase,-MaritalBase,-EducationBase,-PovertyBase,-Veterans,-VeteranBase)
 ```
 
 
@@ -151,6 +170,7 @@ plot(density(CDs$Over65),main="% Over 65",col="blue")
 plot(density(CDs$MedianAge),main="Median Age",col="blue")
 plot(density(CDs$Male),main="% Male",col="blue")
 plot(density(CDs$WhiteNoHispanic),main="% White - No Hispanic",col="blue")
+plot(density(CDs$Black),main="% Black",col="blue")
 plot(density(CDs$ForeignBorn),main="% Foreign Born",col="blue")
 plot(density(CDs$NeverMarried),main="% Single - Never Married",col="blue")
 plot(density(CDs$Married),main="% Married",col="blue")
@@ -162,36 +182,36 @@ plot(density(CDs$GradProf),main="% Graduate and Doctorate Degrees",col="blue")
 plot(density(CDs$BachGrad),main="% Bachelors and Up",col="blue")
 plot(density(CDs$MedianIncome),main="Median Income",col="blue")
 plot(density(CDs$Poverty),main="% Below Poverty Line",col="blue")
-plot(density(CDs$MedianEarnings_LessHS),main="Median Earnings - Less than HS Edu",col="blue")
 plot(density(CDs$MedianEarnings_HS),main="Median Earnings - HS Edu",col="blue")
-plot(density(CDs$MedianEarnings_SomeCollAssoc),main="Median Earnings - Some College/Associates",col="blue")
 plot(density(CDs$MedianEarnings_Bach),main="Median Earnings - Bachelors",col="blue")
-plot(density(CDs$MedianEarnings_GradProf),main="Median Earnings - Grad/PhD",col="blue")
 plot(density(CDs$MedianEarnings_HSBach_Diff),main="Median Earnings Differential (Bachelors - HS Edu)",col="blue")
 plot(density(CDs$AvgGOPPres),main="Average GOP %",col="blue")
+plot(density(CDs$Urbanicity),main="Urbanicity",col="blue")
+plot(density(CDs$LFPR),main="LFPR",col="blue")
+plot(density(CDs$Veteran),main="Veteran",col="blue")
 ```
 
 ```{r normalize}
-CDs_sub = CDs[,-c(4,5,10,12,14,15,16,20,22,24)]
-norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:16)]))
+CDs_sub = CDs[,-c(4,5,9,11,13,15,16,17)]
+norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:19)]))
 
-plot(norm[,c(4:10,16)],pch=20)
-plot(norm[,c(11:16)],pch=20)
+plot(norm[,c(4:11,18)],pch=20)
+plot(norm[,c(12:19)],pch=20)
 ```
 
 ```{r pca}
-pcs = princomp(norm[,c(4:16)])
+pcs = princomp(norm[,c(4:19)])
 plot(pcs)
 plot(pcs, type='l')
 summary(pcs)
 
-pcs2 = prcomp(norm[c(4:16)])
-comp <- data.frame(pcs2$x[,1:5])
-plot(comp, pch=36)
+pcs2 = prcomp(norm[c(4:19)])
+comp <- data.frame(pcs2$x[,1:7])
+plot(comp, pch=16)
 ```
 
 ```{r k-means cluster}
-set.seed(162)
+set.seed(123)
 km = matrix(nrow=10,ncol=2)
 for(i in seq(1:10)){
   kmeans = kmeans(comp,centers = i,iter.max = 1000,nstart=25)
@@ -209,12 +229,12 @@ norm$cluster = kmeans$cluster
 
 ```{r plots and plots and plots of clusters}
 palette(c("black","cyan","chartreuse4","red","magenta","grey"))
-plot(norm[,c(4:9,16)],col=norm$cluster,pch=16)
-plot(norm[,c(10:15,16)],col=norm$cluster,pch=16)
+plot(norm[,c(4:11,18)],col=norm$cluster,pch=16)
+plot(norm[,c(12:19)],col=norm$cluster,pch=16)
 ```
 
 ```{r export cluster data}
-clusters = norm[,c(3,29)]
+clusters = norm[,c(3,20)]
 write.csv(clusters,file="clusters.csv",row.names = F)
 ```
 
