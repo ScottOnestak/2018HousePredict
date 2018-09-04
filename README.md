@@ -33,3 +33,7 @@ https://web.archive.org/web/20151016181827/http://www.swingstateproject.com/diar
 Congressional Results - MIT:
 
 https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IG0UN2
+
+Religion by Congressional Districts:
+
+http://acme.highpoint.edu/~msetzler/Congressional_District_Religiosity_Dataset/Congressional_District_Religiosity_Dataset%20.htm
