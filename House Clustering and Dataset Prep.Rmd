@@ -21,6 +21,7 @@ Dist2000 = read.csv("election data files/PresResults2000CDs.csv",header=TRUE)
 HouseResults = read.delim("election data files/1976-2016-house.tab",sep="\t",header=TRUE)
 Demographics = read.csv("election data files/BasicDemographics.csv",header=TRUE)
 PA = read.csv("election data files/PA_demographics.csv",header=TRUE)
+PA_religion = read.csv("election data files/PA_religion.csv",header=T)
 
 PA$MedianEarnings_Bach = as.numeric(as.character(PA$MedianEarnings_Bach))
 PA$MedianEarnings_GradProf = as.numeric(as.character(PA$MedianEarnings_GradProf))
@@ -121,7 +122,8 @@ PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
 colnames(PA_agg)[1] = "Congressional.District.Number"
 PA_agg$State = "PA"
 PA_agg$CD_Name = ifelse(PA_agg$Congressional.District.Number < 10,paste(PA_agg$State,"0",PA_agg$Congressional.District.Number,sep=''), paste(PA_agg$State,PA_agg$Congressional.District.Number,sep=''))
-PA_agg <- PA_agg %>% dplyr::select(State,Congressional.District.Number,CD_Name, everything())
+PA_agg = PA_agg %>% dplyr::select(State,Congressional.District.Number,CD_Name, everything())
+PA_agg = left_join(PA_agg,PA_religion,by="CD_Name")
 ```
 
 ```{r total us}
@@ -136,7 +138,7 @@ CDs = Demographics %>%
                 RaceBase,WhiteNoHispanic,Black,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,
                 SomeCollORAssoc,Bachelors,GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_HS,
                 MedianEarnings_Bach,MedianEarnings_HSBach_Diff,Urbanicity,Veterans,VeteranBase,RaceBase,MaritalBase,EducationBase,
-                PovertyBase,LFPR)
+                PovertyBase,LFPR,Religiosity,Evangelical,RomanCatholic)
 CDs = rbind(CDs,PA_agg)
 
 Districts = Districts[,c(3,4)]
@@ -189,24 +191,28 @@ plot(density(CDs$AvgGOPPres),main="Average GOP %",col="blue")
 plot(density(CDs$Urbanicity),main="Urbanicity",col="blue")
 plot(density(CDs$LFPR),main="LFPR",col="blue")
 plot(density(CDs$Veteran),main="Veteran",col="blue")
+plot(density(CDs$Religiosity),main="Religiosity (% Belonging to Congregation)",col="blue")
+plot(density(CDs$Evangelical),main="Evangelical %",col="blue")
+plot(density(CDs$RomanCatholic),main="Roman Catholic %",col="blue")
 ```
 
 ```{r normalize}
 CDs_sub = CDs[,-c(4,5,9,11,13,15,16,17)]
-norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:19)]))
+norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:22)]))
 
-plot(norm[,c(4:11,18)],pch=20)
-plot(norm[,c(12:19)],pch=20)
+plot(norm[,c(4:8,21)],pch=20)
+plot(norm[,c(9:15,21)],pch=20)
+plot(norm[,c(16:22)],pch=20)
 ```
 
 ```{r pca}
-pcs = princomp(norm[,c(4:19)])
+pcs = princomp(norm[,c(4:22)])
 plot(pcs)
 plot(pcs, type='l')
 summary(pcs)
 
-pcs2 = prcomp(norm[c(4:19)])
-comp <- data.frame(pcs2$x[,1:7])
+pcs2 = prcomp(norm[c(4:22)])
+comp <- data.frame(pcs2$x[,1:8])
 plot(comp, pch=16)
 ```
 
@@ -223,18 +229,19 @@ colnames(km) = c("Clusters","TotWithinSS")
 plot(km$Clusters,km$TotWithinSS,type = "b")
 
 #choose 6
-kmeans = kmeans(comp,centers = 6,iter.max = 1000,nstart=25)
+kmeans = kmeans(comp,centers = 7,iter.max = 1000,nstart=25)
 norm$cluster = kmeans$cluster
 ```
 
 ```{r plots and plots and plots of clusters}
-palette(c("black","cyan","chartreuse4","red","magenta","grey"))
-plot(norm[,c(4:11,18)],col=norm$cluster,pch=16)
-plot(norm[,c(12:19)],col=norm$cluster,pch=16)
+palette(c("black","cyan","chartreuse4","red","magenta","grey","gold"))
+plot(norm[,c(4:8,21)],col=norm$cluster,pch=16)
+plot(norm[,c(9:15,21)],col=norm$cluster,pch=16)
+plot(norm[,c(16:22)],col=norm$cluster,pch=16)
 ```
 
 ```{r export cluster data}
-clusters = norm[,c(3,20)]
+clusters = norm[,c(3,23)]
 write.csv(clusters,file="clusters.csv",row.names = F)
 ```
 
