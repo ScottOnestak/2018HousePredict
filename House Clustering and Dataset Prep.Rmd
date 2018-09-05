@@ -367,3 +367,10 @@ ggplot(CDs, aes(x=cluster, y=Veteran,col=cluster)) +
   scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
   ggtitle("Veteran %") + theme(plot.title = element_text(hjust = 0.5))
 ```
+
+
+```{r write demographics}
+write.csv(CDs,file="CDs.csv",row.names = F)
+```
+
+
