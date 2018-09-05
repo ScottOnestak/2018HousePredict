@@ -88,6 +88,7 @@ PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
                 RaceBase = sum(RaceBase,na.rm=T),
                 WhiteNoHispanic = sum(WhiteNoHispanic,na.rm=T),
                 Black = sum(Black,na.rm=T),
+                Hispanic = sum(Hispanic,na.rm=T),
                 ForeignBorn = sum(ForeignBorn,na.rm=T),
                 MaritalBase = sum(MaritalBase,na.rm=T),
                 NeverMarried = sum(NeverMarried,na.rm=T),
@@ -115,7 +116,7 @@ PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
          Urbanicity = Urban / UrbanBase * 100,
          LFPR = LFPRw / VeteranBase) %>%
   dplyr::select(Congressional.District,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,RaceBase,WhiteNoHispanic,
-                Black,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,SomeCollORAssoc,Bachelors,
+                Black,Hispanic,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,SomeCollORAssoc,Bachelors,
                 GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_HS,
                 MedianEarnings_Bach,MedianEarnings_HSBach_Diff,Urbanicity,Veterans,VeteranBase,RaceBase,MaritalBase,EducationBase,
                 PovertyBase,LFPR)
@@ -135,7 +136,7 @@ CDs = Demographics %>%
          Poverty = rowSums(Demographics[,c("Poverty100to149","Poverty150UP")],na.rm=T),
          MedianEarnings_HSBach_Diff = MedianEarnings_Bach - MedianEarnings_HS) %>%
   dplyr::select(State,Congressional.District.Number,CD_Name,TotalPop,VotingAge,Under35,Over65,MedianAge,Male,
-                RaceBase,WhiteNoHispanic,Black,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,
+                RaceBase,WhiteNoHispanic,Black,Hispanic,ForeignBorn,MaritalBase,NeverMarried,Married,EducationBase,LessThanHS,HSGrad,
                 SomeCollORAssoc,Bachelors,GradProf,BachGrad,MedianIncome,PovertyBase,Poverty,MedianEarnings_HS,
                 MedianEarnings_Bach,MedianEarnings_HSBach_Diff,Urbanicity,Veterans,VeteranBase,RaceBase,MaritalBase,EducationBase,
                 PovertyBase,LFPR,Religiosity,Evangelical,RomanCatholic)
@@ -151,6 +152,7 @@ CDs = CDs %>%
          Male = Male / TotalPop * 100,
          WhiteNoHispanic = WhiteNoHispanic / RaceBase * 100,
          Black = Black / RaceBase * 100,
+         Hispanic = Hispanic / RaceBase * 100,
          NeverMarried = NeverMarried / MaritalBase * 100,
          Married = Married / MaritalBase * 100,
          LessThanHS = LessThanHS / EducationBase * 100,
@@ -173,6 +175,7 @@ plot(density(CDs$MedianAge),main="Median Age",col="blue")
 plot(density(CDs$Male),main="% Male",col="blue")
 plot(density(CDs$WhiteNoHispanic),main="% White - No Hispanic",col="blue")
 plot(density(CDs$Black),main="% Black",col="blue")
+plot(density(CDs$Hispanic),main = "% Hispanic",col="blue")
 plot(density(CDs$ForeignBorn),main="% Foreign Born",col="blue")
 plot(density(CDs$NeverMarried),main="% Single - Never Married",col="blue")
 plot(density(CDs$Married),main="% Married",col="blue")
@@ -197,27 +200,27 @@ plot(density(CDs$RomanCatholic),main="Roman Catholic %",col="blue")
 ```
 
 ```{r normalize}
-CDs_sub = CDs[,-c(4,5,9,11,13,15,16,17)]
-norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:22)]))
+CDs_sub = CDs[,-c(4,5,10,12,14,16,17,18)]
+norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:23)]))
 
-plot(norm[,c(4:8,21)],pch=20)
-plot(norm[,c(9:15,21)],pch=20)
-plot(norm[,c(16:22)],pch=20)
+plot(norm[,c(4:9,22)],pch=20)
+plot(norm[,c(10:16,22)],pch=20)
+plot(norm[,c(17:23)],pch=20)
 ```
 
 ```{r pca}
-pcs = princomp(norm[,c(4:22)])
+pcs = princomp(norm[,c(4:23)])
 plot(pcs)
 plot(pcs, type='l')
 summary(pcs)
 
-pcs2 = prcomp(norm[c(4:22)])
-comp <- data.frame(pcs2$x[,1:8])
+pcs2 = prcomp(norm[c(4:23)])
+comp <- data.frame(pcs2$x[,1:7])
 plot(comp, pch=16)
 ```
 
 ```{r k-means cluster}
-set.seed(123)
+set.seed(412)
 km = matrix(nrow=10,ncol=2)
 for(i in seq(1:10)){
   kmeans = kmeans(comp,centers = i,iter.max = 1000,nstart=25)
@@ -228,22 +231,139 @@ km = as.data.frame(km)
 colnames(km) = c("Clusters","TotWithinSS")
 plot(km$Clusters,km$TotWithinSS,type = "b")
 
-#choose 6
+#choose 7
 kmeans = kmeans(comp,centers = 7,iter.max = 1000,nstart=25)
 norm$cluster = kmeans$cluster
 ```
 
 ```{r plots and plots and plots of clusters}
-palette(c("black","cyan","chartreuse4","red","magenta","grey","gold"))
-plot(norm[,c(4:8,21)],col=norm$cluster,pch=16)
-plot(norm[,c(9:15,21)],col=norm$cluster,pch=16)
-plot(norm[,c(16:22)],col=norm$cluster,pch=16)
+palette(c("blue","green","skyblue","purple","orange","red","gold"))
+plot(norm[,c(4:10,22)],col=norm$cluster,pch=16)
+plot(norm[,c(11:16,22)],col=norm$cluster,pch=16)
+plot(norm[,c(17:23)],col=norm$cluster,pch=16)
 ```
 
 ```{r export cluster data}
-clusters = norm[,c(3,23)]
+clusters = norm[,c(3,24)]
 write.csv(clusters,file="clusters.csv",row.names = F)
 ```
 
+```{r cluster analysis - density plots}
+CDs$cluster = kmeans$cluster
+CDs$cluster = as.factor(CDs$cluster)
 
+ggplot(CDs, aes(x=cluster, y=MedianAge,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3")) +
+  ggtitle("Median Age") + theme(plot.title = element_text(hjust = 0.5))
 
+ggplot(CDs, aes(x=cluster, y=Male,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Male") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=WhiteNoHispanic,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("White - No Hispanic %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Black,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Black %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Hispanic,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Hispanic %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=ForeignBorn,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Foreign Born %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Married,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Married %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=HSGrad,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("High School Grad %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Bachelors,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Bachelors %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=GradProf,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Graduate/PhD %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=BachGrad,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Bachelors + Grad/PhD %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=MedianIncome,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Median Income") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Poverty,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("% Living Below Poverty Line") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=MedianEarnings_HS,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Median Earnings - HS Graduate") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=MedianEarnings_Bach,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Median Earnings - Bachelors") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=MedianEarnings_HSBach_Diff,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Median Earnings Differential (Bachelors - HS)") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Urbanicity,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Urbanicity") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=LFPR,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Labor Force Participartion Rate") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Religiosity,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Religiosity (% Belonging to a Congregation)") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Evangelical,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Evangelical %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=RomanCatholic,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Roman Catholic %") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=AvgGOPPres,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Average GOP Presidential Vote") + theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(CDs, aes(x=cluster, y=Veteran,col=cluster)) + 
+  geom_boxplot() + 
+  scale_color_manual(values=c("deepskyblue","darkorange","firebrick2","blue4","darkorchid3","goldenrod1","green3"))+
+  ggtitle("Veteran %") + theme(plot.title = element_text(hjust = 0.5))
+```
