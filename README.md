@@ -39,3 +39,8 @@ https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IG0UN2
 Religion by Congressional Districts:
 
 http://acme.highpoint.edu/~msetzler/Congressional_District_Religiosity_Dataset/Congressional_District_Religiosity_Dataset%20.htm
+
+PVI calculation:
+
+https://www.dailykos.com/stories/2013/12/10/1261624/-Partisan-Voting-Index-Calculator
+
