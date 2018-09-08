@@ -30,6 +30,8 @@ https://docs.google.com/spreadsheets/d/1xn6nCNM97oFDZ4M-HQgoUT3X4paOiSDsRMSuxbaO
 
 https://web.archive.org/web/20151016181827/http://www.swingstateproject.com/diary/4161/
 
+http://wheresthepartydoc.blogspot.com/2012/12/2012-cook-pvi-calculations.html
+
 Congressional Results - MIT:
 
 https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IG0UN2
