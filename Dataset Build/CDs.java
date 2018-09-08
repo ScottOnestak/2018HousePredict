@@ -39,4 +39,11 @@ public class CDs {
 		this.Veteran = Veteran;
 		this.Cluster = Cluster;		
 	}
+	
+	public String toString(){
+		return name + "," + State + "," + CDNum + "," + CD_Name + "," + year + "," + MedianAge + "," + Male + "," + White + "," +
+					Black  + "," + Hispanic + "," + ForeignBorn + "," + Married + "," + HSGrad + "," + BachGrad + "," + MedianIncome
+					 + "," + Poverty + "," + MedianEarningsHS + "," + MedianEarningsBach + "," + MedEarnDiff + "," + Urbanicity
+					 + "," + LFPR + "," + Religiosity + "," + Evangelical + "," + Catholic + "," + Veteran + "," + Cluster + "\n";
+	}
 }
