@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -17,11 +18,19 @@ public class BuildDataset {
 	public static void main(String[] args) throws IOException {
 		
 		String theCDs = "C:/Users/onest/Desktop/2018 House Model/CDs.csv";
+		//CDs values
 		String theline,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad,
 				MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity,
 				Evangelical,Catholic,Veteran,Cluster;
+		//fec results variables
+		String fec_file,state,cd,fecid,incumbency = null,can_name = null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null;
+		String cdlookup = null;
+		double result = 0;
+		int incum = 0;
+		boolean insert = false;
+		
 		String holder[];
-		int theLength,firstyear;
+		int firstyear;
 		
 		//create try...catch for bufferedreader
 		try{
@@ -64,7 +73,7 @@ public class BuildDataset {
 				//old CDs (2006-2010) or redistricted ones
 				if(CD_Name.length() > 4){
 					if(CD_Name.charAt(CD_Name.length()-1) =='o'){
-						for(int i = 2006; i <= 2010; i=i+2){
+						for(int i = 2008; i <= 2010; i=i+2){
 							String name = CD_Name + "_" + i;
 							CDs.put(name, new CDs(name,State,CDNum,CD_Name,i,MedianAge,Male,White,Black,
 									Hispanic,ForeignBorn,Married,HSGrad,BachGrad,MedianIncome,Poverty,
@@ -118,12 +127,177 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
+		for(int i = 2014; i <= 2014; i = i+2) {
+			//set fec file name to read in
+			fec_file = "C:/Users/onest/Desktop/2018 House Model/election data files/house_results_" + i + ".csv";
+			
+			//read in election results for 2008
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(fec_file));
+				
+				//skip the first line
+				theline = br.readLine();
+				theline = br.readLine();
+				
+				//while not null... insert data
+				while(theline != null){
+					//set blank to start
+					state = "";
+					cd = "";
+					fecid = "";
+					incumbency = "";
+					can_name = "";
+					party = "";
+					gen_prct = "";
+					gen_runoff = "";
+					gen_comb = "";
+					result = 0;
+					insert = false;
+					
+					holder = theline.split(",");
+					if(holder.length >= 3) {
+						if(i <= 2010) {
+							state = holder[2].trim().replace("\"", "");
+						} else {
+							state = holder[1].trim().replace("\"", "");
+						}
+					}
+					
+					if(holder.length >= 4) {
+						cd = holder[3].trim().replace("\"", "");
+					}
+					
+					if(holder.length >= 5) {
+						fecid = holder[4].trim().replace("\"", "");
+					}
+					
+					if(holder.length >= 6) {
+						incumbency = holder[5].trim().replace("\"", "");
+					}
+					
+					
+					if(holder.length >= 9) {
+						can_name = holder[8].trim().replace("\"", "");	
+					}
+					
+					
+					if(holder.length >= 11) {
+						party = holder[10].trim().replace("\"", "");
+					}
+					
+					
+					if(holder.length >= 17) {
+						gen_prct = holder[16].trim().replace("\"", "");
+					}
+					
+					
+					if(holder.length >= 19) {
+						if(i != 2010) {
+							gen_runoff = holder[18].trim().replace("\"", "");
+						} else {
+							gen_comb = holder[18].trim().replace("\"", "");
+						}
+						
+					}
+					
+					if(holder.length >= 21) {
+						gen_comb = holder[20].trim().replace("\"", "");
+					}
+					
+					//only take Republican or Democrat results...avoids double counting for LA,CT,NY,SC
+					if((party.equals("R") | party.equals("REP") | party.equals("D") | party.equals("DEM")) & !fecid.equals("n/a") &
+							!(cd.equals("H") | cd.equals("S") | cd.length() > 2 | cd.equals(""))) {
+						//set incumbency
+						if(!incumbency.equals("")) {
+							incum = 1;
+						} else {
+							incum = 0;
+						}
+						
+						//get resulting percents
+						if(gen_runoff.length()>1) {
+							result = Double.parseDouble(gen_runoff.substring(0, gen_runoff.length()-1));
+							insert = true;
+						} else if(gen_comb.length()>1) {
+							result = Double.parseDouble(gen_comb.substring(0, gen_comb.length()-1));
+							insert = true;
+						} else {
+							//if not blank
+							if(gen_prct.length()>1) {
+								//if unopposed... 100%
+								if(gen_prct.equals("n/a")) {
+									result = 100;
+								} else {
+									result = Double.parseDouble(gen_prct.substring(0, gen_prct.length()-1));
+								}
+								insert = true;
+							}
+						}
+						
+						//if candidate was in the general and should be inserted
+						if(insert == true) {
+							//construct lookup
+							if(cd.equals("0")) {
+								cd = "1";
+							}
+							if(cd.length() < 2) {
+								cd = "0" + cd;
+							}
+							
+							if(i <= 2010) {
+								cdlookup = state + cd + "o_" + i;
+							} else if(state.equals("PA") | state.equals("NC") | state.equals("FL")) {
+								if(state.equals("PA")) {
+									if(i < 2018) {
+										cdlookup = state + cd + "r_" + i;
+									} else {
+										cdlookup = state + cd + "_" + i;
+									}
+								} else if (state.equals("NC") | state.equals("FL")) {
+									if(i < 2016) {
+										cdlookup = state + cd + "r_" + i;
+									} else {
+										cdlookup = state + cd + "_" + i;
+									}
+								}
+							} else {
+								cdlookup = state + cd + "_" + i;
+							}
+							
+							//insert the values
+							if(CDs.containsKey(cdlookup)) {
+								CDs.get(cdlookup).insertResults(fecid, incum, can_name, party, result);
+								System.out.println(Arrays.toString(holder));
+								System.out.println(fecid + "," + incum + "," + can_name + "," + party + "," + result);
+							}
+						}
+						
+					}
+					
+					theline = br.readLine();
+				}	
+				
+				br.close();
+			} catch(FileNotFoundException e){
+				System.out.println("File not found: " + args[0]);
+			} catch(IOException e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		
+		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
 		
+		int i = 0;
 		for(Map.Entry<String,CDs> entry: CDs.entrySet()){
 			bw.write(entry.getValue().toString());
+			//System.out.println(i + ": " + entry.getValue().toString());
+			i++;
 		}
-
+		
+		bw.close();
+		System.out.println(i);
 	}
 
 }
