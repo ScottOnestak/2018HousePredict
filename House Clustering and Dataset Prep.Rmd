@@ -43,7 +43,7 @@ plot(density(Dist2018$AvgGOPPres), xlim=c(0,100),ylim=c(0,.03),main="GOP Average
 par(new=T)
 plot(density(Dist2000$AvgGOPPres), xlim=c(0,100), ylim=c(0,.03),main="GOP Average Vote Share",xlab="",col="blue")
 
-Districts = rbind(Dist2018[,c(1,2,3,12)],Dist2000[,c(1,2,3,12)])
+Districts = rbind(Dist2018[,c(1,2,3,20)],Dist2000[,c(1,2,3,23)])
 ```
 
 ```{r House Results Agg}
