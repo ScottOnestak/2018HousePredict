@@ -127,7 +127,7 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
-		for(int i = 2008; i <= 2008; i = i+2) {
+		for(int i = 2008; i <= 2016; i = i+2) {
 			//set fec file name to read in
 			fec_file = "C:/Users/onest/Desktop/2018 House Model/election data files/house_results_" + i + ".csv";
 			
@@ -244,6 +244,7 @@ public class BuildDataset {
 								if(gen_prct.equals("n/a") | gen_count.equals("Unopposed")) {
 									result = 100;
 								} else {
+									//System.out.println(state + " " + can_name+ " " + gen_prct);
 									result = Double.parseDouble(gen_prct.substring(0, gen_prct.length()-1));
 								}
 								insert = true;
