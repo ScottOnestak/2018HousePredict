@@ -72,7 +72,7 @@
 72,AS,American Samoa,0,H8AS00052,,Rosie Fuala'au Tago,Lancaster,Lancaster; Rosie Fuala'au Tago,,IND,,,,,268,2.62%,,,,,
 73,AS,American Samoa,0,H4AS00093,,Meleagi,Suitonu-Chapman,Suitonu-Chapman; Meleagi,,D,,,,,229,2.24%,,,,,
 74,AS,American Samoa,0,H2AS00030,,Tuika,Tuika,Tuika; Tuika,,IND,,,,,201,1.96%,,,,,
-75,AS,American Samoa,0,H2AS00055,,"Tu?'au Kereti, Jr.",M?ta'utia,M?ta'utia; Tu?'au Kereti; Jr.,,D,,,,,160,1.56%,,,,,
+75,AS,American Samoa,0,H2AS00055,,Tu?'au Kereti Jr.,M?ta'utia,M?ta'utia; Tu?'au Kereti; Jr.,,D,,,,,160,1.56%,,,,,
 76,AS,American Samoa,0,H4AS00077,,Mark,Ude,Ude; Mark,,IND,,,,,143,1.40%,,,,,
 77,AS,American Samoa,,n/a,,,,,District Votes:,,,,,,10246,,,,,,
 78,AS,American Samoa,H,n/a,,,,,Total State Votes:,,,,,,10246,,,,,,
@@ -194,7 +194,7 @@
 194,CA,California,5,H4CA11099,,Douglas S.,Van Raam,Van Raam; Douglas S.,,NOP,9279,8.41%,,,,,,,,,
 195,CA,California,5,n/a,,,,,District Votes:,,110280,,,,171148,,,,,,
 196,CA,California,6,H6CA05195,(I),Doris,Matsui,Matsui; Doris,,D,62640,73.60%,,,97008,72.69%,,,,,W
-197,CA,California,6,H2CA06291,,"Joseph, Sr.",McCray,McCray; Joseph; Sr.,,R,22465,26.40%,,,36448,27.31%,,,,,
+197,CA,California,6,H2CA06291,,Joseph Sr.,McCray,McCray; Joseph; Sr.,,R,22465,26.40%,,,36448,27.31%,,,,,
 198,CA,California,6,n/a,,,,,District Votes:,,85105,,,,133456,,,,,,
 199,CA,California,7,H0CA03078,(I),Ami,Bera,Bera; Ami,,D,51878,46.72%,,,92521,50.40%,,,,,W
 200,CA,California,7,H8CA03105,,Doug,Ose,Ose; Doug,,R,29307,26.39%,,,91066,49.60%,,,,,
@@ -290,7 +290,7 @@
 290,CA,California,24,H4CA24159,,Dale,Francisco,Francisco; Dale,,R,15575,11.69%,,,,,,,,,
 291,CA,California,24,H4CA24175,,Bradley,Allen,Allen; Bradley,,R,9269,6.96%,,,,,,,,,
 292,CA,California,24,H8CA23087,,Sandra,Marshall,Marshall; Sandra,,D,4646,3.49%,,,,,,,,,
-293,CA,California,24,H4CA24134,,"Paul H., Jr.",Coyne,Coyne; Paul H.; Jr.,,D,2144,1.61%,,,,,,,,,
+293,CA,California,24,H4CA24134,,Paul H. Jr.,Coyne,Coyne; Paul H.; Jr.,,D,2144,1.61%,,,,,,,,,
 294,CA,California,24,H4CA24183,,Steve,Isakson,Isakson; Steve,,NOP,1249,0.94%,,,,,,,,,
 295,CA,California,24,H4CA24167,,Alexis,Stuart,Stuart; Alexis,,R,678,0.51%,,,,,,,,,
 296,CA,California,24,n/a,,,,,District Votes:,,133263,,,,198794,,,,,,
@@ -352,7 +352,7 @@
 352,CA,California,33,H4CA33226,,Michael Ian,Sachs,Sachs; Michael Ian,,GRE,732,0.67%,,,,,,,,,
 353,CA,California,33,H4CA33192,,Michael,Shapiro,Shapiro; Michael,,D,650,0.60%,,,,,,,,,
 354,CA,California,33,H4CA33176,,Tom,Fox,Fox; Tom,,NOP,509,0.47%,,,,,,,,,
-355,CA,California,33,H2CA33121,,"Zein E., Jr.",Obagi,Obagi; Zein E.; Jr.,,D,477,0.44%,,,,,,,,,
+355,CA,California,33,H2CA33121,,Zein E. Jr.,Obagi,Obagi; Zein E.; Jr.,,D,477,0.44%,,,,,,,,,
 356,CA,California,33,H2CA36421,,Vince,Flaherty,Flaherty; Vince,,D,345,0.32%,,,,,,,,,
 357,CA,California,33,H4CA33093,,James,Graf,Graf; James,,D,327,0.30%,,,,,,,,,
 358,CA,California,33,H4CA33242,,Brent C.,Roske,Roske; Brent C.,,NOP,188,0.17%,,,,,,,,,
@@ -398,7 +398,7 @@
 398,CA,California,42,H4CA42110,,Floyd,Harvey,Harvey; Floyd,,W(R),8,0.01%,,,,,,,,,
 399,CA,California,42,n/a,,,,,District Votes:,,55570,,,,113390,,,,,,
 400,CA,California,43,H4CA23011,(I),Maxine,Waters,Waters; Maxine,,D,33746,67.23%,,,69681,70.96%,,,,,W
-401,CA,California,43,H4CA43084,,"John, Jr.",Wood,Wood; John; Jr.,,R,16440,32.75%,,,28521,29.04%,,,,,
+401,CA,California,43,H4CA43084,,John Jr.,Wood,Wood; John; Jr.,,R,16440,32.75%,,,28521,29.04%,,,,,
 402,CA,California,43,H4CA43092,,Brandon M.,Cook,Cook; Brandon M.,,W(AIP),12,0.02%,,,,,,,,,
 403,CA,California,43,n/a,,,,,District Votes:,,50198,,,,98202,,,,,,
 404,CA,California,44,H8CA36097,(I),Janice,Hahn,Hahn; Janice,,D,25641,99.98%,,,59670,86.65%,,,,,W
@@ -441,7 +441,7 @@
 441,CA,California,52,H2CA52089,(I),Scott,Peters,Peters; Scott,,D,53926,42.29%,,,98826,51.59%,,,,,W
 442,CA,California,52,H4CA52051,,Carl,DeMaio,DeMaio; Carl,,R,44954,35.26%,,,92746,48.41%,,,,,
 443,CA,California,52,H4CA52069,,Kirk,Jorgensen,Jorgensen; Kirk,,R,23588,18.50%,,,,,,,,,
-444,CA,California,52,H4CA52077,,"Fred J., Jr.",Simon,Simon; Fred J.; Jr.,,R,5040,3.95%,,,,,,,,,
+444,CA,California,52,H4CA52077,,Fred J. Jr.,Simon,Simon; Fred J.; Jr.,,R,5040,3.95%,,,,,,,,,
 445,CA,California,52,n/a,,,,,District Votes:,,127508,,,,191572,,,,,,
 446,CA,California,53,H0CA49055,(I),Susan A.,Davis,Davis; Susan A.,,D,50041,56.26%,,,87104,58.84%,,,,,W
 447,CA,California,53,H4CA53059,,Larry A.,Wilske,Wilske; Larry A.,,R,18384,20.67%,,,60940,41.16%,,,,,
@@ -549,7 +549,7 @@
 549,CT,Connecticut,5,n/a,,,,,District Votes:,,,,,,213301,,,,,,
 550,CT,Connecticut,H,n/a,,,,,Total State Votes:,,,,,,1067857,,,,,,
 551,,,,n/a,,,,,,,,,,,,,,,,,
-552,DE,Delaware,0,H0DE01017,(I),"John C., Jr.",Carney,Carney; John C.; Jr.,,D,Unopposed,,,,137251,59.26%,,,,,W
+552,DE,Delaware,0,H0DE01017,(I),John C. Jr.,Carney,Carney; John C.; Jr.,,D,Unopposed,,,,137251,59.26%,,,,,W
 553,DE,Delaware,0,H0DE01025,,Rose,Izzo,Izzo; Rose,,R,Unopposed,,,,85146,36.76%,,,,,
 554,DE,Delaware,0,H2DE00155,,Bernard,August,August; Bernard,,GRE,,,,,4801,2.07%,,,,,
 555,DE,Delaware,0,H2DE00148,,Scott,Gesty,Gesty; Scott,,LIB,*,,,,4419,1.91%,,,,,
@@ -619,7 +619,7 @@
 619,FL,Florida,7,n/a,,,,,District Votes:,,44471,,,,227164,,,,,,
 620,FL,Florida,8,H8FL15107 ,(I),Bill,Posey,Posey; Bill,,R,Unopposed,,,,180728,65.84%,,,,,W
 621,FL,Florida,8,H4FL08085 ,,Gabriel,Rothblatt,Rothblatt; Gabriel,,D,Unopposed,,,,93724,34.14%,,,,,
-622,FL,Florida,8,H4FL08093,,"Christopher L., Jr",Duncan,Duncan; Christopher L.; Jr,,W,,,,,61,0.02%,,,,,
+622,FL,Florida,8,H4FL08093,,Christopher L. Jr,Duncan,Duncan; Christopher L.; Jr,,W,,,,,61,0.02%,,,,,
 623,FL,Florida,8,n/a,,,,,District Votes:,,,,,,274513,,,,,,
 624,FL,Florida,9,H6FL08213,(I),Alan,Grayson,Grayson; Alan,,D,18641,74.32%,,,93850,53.97%,,,,,W
 625,FL,Florida,9,H0FL24171,,Nick,Ruiz,Ruiz; Nick,,D,6441,25.68%,,,,,,,,,
@@ -747,7 +747,7 @@
 747,GA,Georgia,3,n/a,,,,,Party Votes:,R,53400,,,,,,,,,,
 748,GA,Georgia,3,n/a,,,,,District Votes:,,53400,,,,156277,,,,,,
 749,GA,Georgia,,n/a,,,,,,,,,,,,,,,,,
-750,GA,Georgia,4,H6GA04129,(I),"Henry C. ""Hank,"" Jr.",Johnson,"Johnson; Henry C. ""Hank;"" Jr.",,D,26514,54.75%,,,161211,99.93%,,,,,W
+750,GA,Georgia,4,H6GA04129,(I),"Henry C. ""Hank"" Jr.",Johnson,"Johnson; Henry C. ""Hank;"" Jr.",,D,26514,54.75%,,,161211,99.93%,,,,,W
 751,GA,Georgia,4,H4GA04116,,"Thomas E. ""Tom""",Brown,"Brown; Thomas E. ""Tom""",,D,21909,45.25%,,,,,,,,,
 752,GA,Georgia,4,n/a,,,,,Party Votes:,D,48423,,,,,,,,,,
 753,GA,Georgia,4,H4GA04058,,Raymond L.,Davis,Davis; Raymond L.,,W,,,,,109,0.07%,,,,,
@@ -818,7 +818,7 @@
 818,GA,Georgia,13,n/a,,,,,District Votes:,,35853,,,,159445,,,,,,
 819,GA,Georgia,,n/a,,,,,,,,,,,,,,,,,
 820,GA,Georgia,14,H0GA09030,(I),"John Thomas ""Tom""",Graves,"Graves; John Thomas ""Tom""",,R,32343,74.07%,,,118782,100.00%,,,,,W
-821,GA,Georgia,14,H4GA14016,,"Kenneth L., Sr.",Herron,Herron; Kenneth L.; Sr.,,R,11324,25.93%,,,,,,,,,
+821,GA,Georgia,14,H4GA14016,,Kenneth L. Sr.,Herron,Herron; Kenneth L.; Sr.,,R,11324,25.93%,,,,,,,,,
 822,GA,Georgia,14,n/a,,,,,Party Votes:,R,43667,,,,,,,,,,
 823,GA,Georgia,14,n/a,,,,,District Votes:,,43667,,,,118782,,,,,,
 824,GA,Georgia,,n/a,,,,,,,,,,,,,,,,,
@@ -938,7 +938,7 @@
 938,IL,Illinois,9,H8IL09067,(I),Janice D.,Schakowsky,Schakowsky; Janice D.,,D,31576,100.00%,,,141000,66.06%,,,,,W
 939,IL,Illinois,9,n/a,,,,,Party Votes:,D,31576,,,,,,,,,,
 940,IL,Illinois,9,H0IL09080,,Susanne,Atanus,Atanus; Susanne,,R,15575,52.40%,,,72384,33.91%,,,,,
-941,IL,Illinois,9,H4IL09074 ,,"David Earl, III",Williams,Williams; David Earl; III,,R,14148,47.60%,,,,,,,,,
+941,IL,Illinois,9,H4IL09074 ,,David Earl III,Williams,Williams; David Earl; III,,R,14148,47.60%,,,,,,,,,
 942,IL,Illinois,9,n/a,,,,,Party Votes:,R,29723,,,,,,,,,,
 943,IL,Illinois,9,H6IL10127,,Phil,Collins,Collins; Phil,,W,,,,,66,0.03%,,,,,
 944,IL,Illinois,9,n/a,,,,,District Votes:,,61299,,,,213450,,,,,,
@@ -986,7 +986,7 @@
 986,IL,Illinois,15,n/a,,,,,Party Votes:,D,17108,,,,,,,,,,
 987,IL,Illinois,15,n/a,,,,,District Votes:,,83561,,,,221926,,,,,,
 988,IL,Illinois,16,H0IL11052 ,(I),Adam ,Kinzinger,Kinzinger; Adam ,,R,56593,78.44%,,,153388,70.62%,,,,,W
-989,IL,Illinois,16,H4IL16020 ,,"David J., Jr.",Hale,Hale; David J.; Jr.,,R,15558,21.56%,,,,,,,,,
+989,IL,Illinois,16,H4IL16020 ,,David J. Jr.,Hale,Hale; David J.; Jr.,,R,15558,21.56%,,,,,,,,,
 990,IL,Illinois,16,n/a,,,,,Party Votes:,R,72151,,,,,,,,,,
 991,IL,Illinois,16,H4IL00032 ,,Randall Wayne ,Olsen,Olsen; Randall Wayne ,,D,12077,100.00%,,,63810,29.38%,,,,,
 992,IL,Illinois,16,n/a,,,,,Party Votes:,D,12077,,,,,,,,,,
@@ -1026,7 +1026,7 @@
 1026,IN,Indiana,,n/a,,,,,,,,,,,,,,,,,
 1027,IN,Indiana,3,H0IN03198 ,(I),Marlin A.,Stutzman,Stutzman; Marlin A.,,R,48837,81.67%,,,102889,69.15%,,,,,W
 1028,IN,Indiana,3,H4IN03117,,Mark William,Baringer,Baringer; Mark William,,R,5868,9.81%,,,,,,,,,
-1029,IN,Indiana,3,H4IN03109,,"James (Jim) E., III",Mahoney,Mahoney; James (Jim) E.; III,,R,5094,8.52%,,,,,,,,,
+1029,IN,Indiana,3,H4IN03109,,James (Jim) E. III,Mahoney,Mahoney; James (Jim) E.; III,,R,5094,8.52%,,,,,,,,,
 1030,IN,Indiana,3,n/a,,,,,Party Votes:,R,59799,,,,,,,,,,
 1031,IN,Indiana,3,H2IN03152 ,,Justin ,Kuhnle,Kuhnle; Justin ,,D,2893,34.88%,,,39771,26.73%,,,,,
 1032,IN,Indiana,3,H6IN03187,,Tommy A.,Schrader,Schrader; Tommy A.,,D,2805,33.82%,,,,,,,,,
@@ -1094,7 +1094,7 @@
 1094,IN,Indiana,9,H4IN09114 ,,Mark G.,Jones,Jones; Mark G.,,R,3293,8.60%,,,,,,,,,
 1095,IN,Indiana,9,n/a,,,,,Party Votes:,R,38302,,,,,,,,,,
 1096,IN,Indiana,9,H4IN09072,,Bill,Bailey,Bailey; Bill,,D,10394,45.39%,,,55016,33.88%,,,,,
-1097,IN,Indiana,9,H0IN09104,,"James R., Jr.",McClure,McClure; James R.; Jr.,,D,5737,25.05%,,,,,,,,,
+1097,IN,Indiana,9,H0IN09104,,James R. Jr.,McClure,McClure; James R.; Jr.,,D,5737,25.05%,,,,,,,,,
 1098,IN,Indiana,9,H4IN09080 ,,J. S. ,Miller,Miller; J. S. ,,D,3561,15.55%,,,,,,,,,
 1099,IN,Indiana,9,H4IN09098,,William Joseph (Billy),Thomas,Thomas; William Joseph (Billy),,D,3206,14.00%,,,,,,,,,
 1100,IN,Indiana,9,n/a,,,,,Party Votes:,D,22898,,,,,,,,,,
@@ -1157,21 +1157,21 @@
 1157,IA,Iowa,H,n/a,,,,,Total State Votes:,,211537,,,,1120334,,,,,,
 1158,IA,Iowa,,n/a,,,,,,,,,,,,,,,,,
 1159,,,,n/a,,,,,,,,,,,,,,,,,
-1160,KS,Kansas,1,H6KS01146,(I),Tim,Huelskamp,Huelskamp; Tim,,R ,42847,54.96%,,,138764,67.97%,,,,,W
-1161,KS,Kansas,1,H4KS01059,,Alan,LaPolice,LaPolice; Alan,,R ,35108,45.04%,,,,,,,,,
+1160,KS,Kansas,1,H6KS01146,(I),Tim,Huelskamp,Huelskamp; Tim,,R,42847,54.96%,,,138764,67.97%,,,,,W
+1161,KS,Kansas,1,H4KS01059,,Alan,LaPolice,LaPolice; Alan,,R,35108,45.04%,,,,,,,,,
 1162,KS,Kansas,1,n/a,,,,,Party Votes:,R,77955,,,,,,,,,,
 1163,KS,Kansas,1,H4KS01075,,James E.,Sherow,Sherow; James E.,,D,8209,65.66%,,,65397,32.03%,,,,,
 1164,KS,Kansas,1,H4KS01042,,Bryan R.,Whitney,Whitney; Bryan R.,,D,4293,34.34%,,,,,,,,,
 1165,KS,Kansas,1,n/a,,,,,Party Votes:,D,12502,,,,,,,,,,
 1166,KS,Kansas,1,n/a,,,,,District Votes:,,90457,,,,204161,,,,,,
-1167,KS,Kansas,2,H8KS02090,(I),Lynn,Jenkins,Jenkins; Lynn,,R ,41850,69.14%,,,128742,57.04%,,,,,W
-1168,KS,Kansas,2,H4KS02131,,Joshua Joel,Tucker,Tucker; Joshua Joel,,R ,18680,30.86%,,,,,,,,,
+1167,KS,Kansas,2,H8KS02090,(I),Lynn,Jenkins,Jenkins; Lynn,,R,41850,69.14%,,,128742,57.04%,,,,,W
+1168,KS,Kansas,2,H4KS02131,,Joshua Joel,Tucker,Tucker; Joshua Joel,,R,18680,30.86%,,,,,,,,,
 1169,KS,Kansas,2,n/a,,,,,Party Votes:,R,60530,,,,,,,,,,
 1170,KS,Kansas,2,H4KS02115,,Margie,Wakefield,Wakefield; Margie,,D,18337,100.00%,,,87153,38.62%,,,,,
 1171,KS,Kansas,2,n/a,,,,,Party Votes:,D,18337,,,,,,,,,,
 1172,KS,Kansas,2,H4KS02123,,Christopher ,Clemmons,Clemmons; Christopher,,LIB,*,,,,9791,4.34%,,,,,
 1173,KS,Kansas,2,n/a,,,,,District Votes:,,78867,,,,225686,,,,,,
-1174,KS,Kansas,3,H0KS03137,(I),Kevin,Yoder,Yoder; Kevin,,R ,47319,100.00%,,,134493,60.02%,,,,,W
+1174,KS,Kansas,3,H0KS03137,(I),Kevin,Yoder,Yoder; Kevin,,R,47319,100.00%,,,134493,60.02%,,,,,W
 1175,KS,Kansas,3,n/a,,,,,Party Votes:,R,47319,,,,,,,,,,
 1176,KS,Kansas,3,H4KS03188,,Kelly,Kultala,Kultala; Kelly,,D,14189,68.50%,,,89584,39.98%,,,,,
 1177,KS,Kansas,3,H4KS03170,,Reginald (Reggie),Marselus,Marselus; Reginald (Reggie),,D,6524,31.50%,,,,,,,,,
@@ -1225,7 +1225,7 @@
 1225,LA,Louisiana,2,H4LA02103 ,,David,Brooks,Brooks; David,,NPA,n/a,,,,16327,7.37%,,,,,
 1226,LA,Louisiana,2,H4LA02087,,Samuel,Davenport,Davenport; Samuel,,LIB,n/a,,,,15237,6.88%,,,,,
 1227,LA,Louisiana,2,n/a,,,,,District Votes:,,,,,,221570,,,,,,
-1228,LA,Louisiana,3,H4LA07029,(I),"Charles W., Jr.",Boustany,Boustany; Charles W.; Jr.,,R,n/a,,,,185867,78.67%,,,,,W
+1228,LA,Louisiana,3,H4LA07029,(I),Charles W. Jr.,Boustany,Boustany; Charles W.; Jr.,,R,n/a,,,,185867,78.67%,,,,,W
 1229,LA,Louisiana,3,H4LA03119,,Russell,Richard,Richard; Russell,,NPA,n/a,,,,28342,12.00%,,,,,
 1230,LA,Louisiana,3,H2LA03063,,Bryan,Barrilleaux,Barrilleaux; Bryan,,R,n/a,,,,22059,9.34%,,,,,
 1231,LA,Louisiana,3,n/a,,,,,District Votes:,,,,,,236268,,,,,,
@@ -1244,14 +1244,14 @@
 1244,LA,Louisiana,5,n/a,,,,,District Votes:,,,,,,239551,,209622,,,,
 1245,LA,Louisiana,6,H4LA06153,,Garret,Graves,Graves; Garret,,R,n/a,,,,70715,27.36%,139209,62.43%,,,W (Runoff)
 1246,LA,Louisiana,6,H4LA06161,,Edwin,Edwards,Edwards; Edwin,,D,n/a,,,,77866,30.12%,83781,37.57%,,,
-1247,LA,Louisiana,6,H4LA06088,,"Paul, II",Dietzel,Dietzel; Paul; II,,R,n/a,,,,35024,13.55%,,,,,
+1247,LA,Louisiana,6,H4LA06088,,Paul II,Dietzel,Dietzel; Paul; II,,R,n/a,,,,35024,13.55%,,,,,
 1248,LA,Louisiana,6,H4LA06112,,"""Dan""",Claitor,"Claitor; ""Dan""",,R,n/a,,,,26524,10.26%,,,,,
 1249,LA,Louisiana,6,H4LA06179,,Lenar,Whitney,Whitney; Lenar,,R,n/a,,,,19151,7.41%,,,,,
 1250,LA,Louisiana,6,H4LA06062,,Richard,Lieberman,Lieberman; Richard,,D,n/a,,,,7309,2.83%,,,,,
 1251,LA,Louisiana,6,H4LA06146,,Craig,McCulloch,McCulloch; Craig,,R,n/a,,,,5815,2.25%,,,,,
 1252,LA,Louisiana,6,H6LA07081,,"Robert Lamar ""Bob""",Bell,"Bell; Robert Lamar ""Bob""",,R,n/a,,,,5182,2.00%,,,,,
 1253,LA,Louisiana,6,H4LA05171,,Peter,Williams,Williams; Peter,,D,n/a,,,,4037,1.56%,,,,,
-1254,LA,Louisiana,6,H4LA06047,,"Rufus Holt, Jr.",Craig,Craig; Rufus Holt; Jr.,,LIB,n/a,,,,3561,1.38%,,,,,
+1254,LA,Louisiana,6,H4LA06047,,Rufus Holt Jr.,Craig,Craig; Rufus Holt; Jr.,,LIB,n/a,,,,3561,1.38%,,,,,
 1255,LA,Louisiana,6,H4LA06138,,"Norman ""Norm""",Clark,"Clark; Norman ""Norm""",,R,n/a,,,,1848,0.71%,,,,,
 1256,LA,Louisiana,6,H4LA06120,,"""Trey""",Thomas,"Thomas; ""Trey""",,R,n/a,,,,1447,0.56%,,,,,
 1257,LA,Louisiana,6,n/a,,,,,District Votes:,,,,,,258479,,222990,,,,
@@ -1279,7 +1279,7 @@
 1279,ME,Maine,,n/a,,,,,,,,,,,,,,,,,
 1280,,,,n/a,,,,,,,,,,,,,,,,,
 1281,MD,Maryland,1,H8MD01094,(I),Andy,Harris,Harris; Andy,,R,45477,77.88%,,,176342,70.42%,,,,,W
-1282,MD,Maryland,1,H4MD01127,,"Jonathan, Jr. ",Goff,Goff; Jonathan; Jr. ,,R,12913,22.12%,,,,,,,,,
+1282,MD,Maryland,1,H4MD01127,,Jonathan Jr. ,Goff,Goff; Jonathan; Jr. ,,R,12913,22.12%,,,,,,,,,
 1283,MD,Maryland,1,n/a,,,,,Party Votes:,R,58390,,,,,,,,,,
 1284,MD,Maryland,1,H4MD01101,,Bill,Tilghman,Tilghman; Bill,,D,19937,57.12%,,,73843,29.49%,,,,,
 1285,MD,Maryland,1,H2MD01154,,John J.,LaFerla,LaFerla; John J.,,D,14965,42.88%,,,,,,,,,
@@ -1327,7 +1327,7 @@
 1327,MD,Maryland,6,H2MD06195,(I),John K.,Delaney,Delaney; John K.,,D,33289,100.00%,,,94704,49.70%,,,,,W
 1328,MD,Maryland,6,n/a,,,,,Party Votes:,D,33289,,,,,,,,,,
 1329,MD,Maryland,6,H4MD06191,,Dan ,Bongino,Bongino; Dan ,,R,23933,83.53%,,,91930,48.25%,,,,,
-1330,MD,Maryland,6,H4MD06209,,"Harold W., Jr",Painter,Painter; Harold W.; Jr,,R,4718,16.47%,,,,,,,,,
+1330,MD,Maryland,6,H4MD06209,,Harold W. Jr,Painter,Painter; Harold W.; Jr,,R,4718,16.47%,,,,,,,,,
 1331,MD,Maryland,6,n/a,,,,,Party Votes:,R,28651,,,,,,,,,,
 1332,MD,Maryland,6,H2MD05510 ,,George,Gluck,Gluck; George,,GRE,*,,,,3762,1.97%,,,,,
 1333,MD,Maryland,6,n/a,,,Scattered,Scattered ,,W,,,,,140,0.07%,,,,,
@@ -1335,7 +1335,7 @@
 1335,MD,Maryland,,n/a,,,,,,,,,,,,,,,,,
 1336,MD,Maryland,7,H6MD07160,(I),Elijah,Cummings,Cummings; Elijah,,D,69790,90.59%,,,144639,69.94%,,,,,W
 1337,MD,Maryland,7,H4MD07082,,Bryant,Alexander,Alexander; Bryant,,D,4786,6.21%,,,,,,,,,
-1338,MD,Maryland,7,H0MD07098,,"Fred Donald, Jr. ",Dickson,Dickson; Fred Donald; Jr. ,,D,2460,3.19%,,,,,,,,,
+1338,MD,Maryland,7,H0MD07098,,Fred Donald Jr. ,Dickson,Dickson; Fred Donald; Jr. ,,D,2460,3.19%,,,,,,,,,
 1339,MD,Maryland,7,n/a,,,,,Party Votes:,D,77036,,,,,,,,,,
 1340,MD,Maryland,7,H4MD07074,,Carrogan R. ,Vaughn,Vaughn; Carrogan R. ,,R,6293,54.78%,,,55860,27.01%,,,,,
 1341,MD,Maryland,7,H8MD07042,,Ray,Bly,Bly; Ray,,R,5195,45.22%,,,,,,,,,
@@ -1376,7 +1376,7 @@
 1376,MA,Massachusetts,3,n/a,,,,All Others,,W,,,,,204,0.09%,,,,,
 1377,MA,Massachusetts,3,n/a,,,,,District Votes:,,52370,,,,220946,,,,,,
 1378,MA,Massachusetts,,n/a,,,,,,,,,,,,,,,,,
-1379,MA,Massachusetts,4,H2MA04073,(I),"Joseph P., III",Kennedy,Kennedy; Joseph P.; III,,D,44606,99.21%,,,184158,97.91%,,,,,W
+1379,MA,Massachusetts,4,H2MA04073,(I),Joseph P. III,Kennedy,Kennedy; Joseph P.; III,,D,44606,99.21%,,,184158,97.91%,,,,,W
 1380,MA,Massachusetts,4,n/a,,,All Others,All Others,,W(D),357,0.79%,,,,,,,,,
 1381,MA,Massachusetts,4,n/a,,,,,Party Votes:,D,44963,,,,,,,,,,
 1382,MA,Massachusetts,4,n/a,,,,All Others,,W,,,,,3940,2.09%,,,,,
@@ -1422,7 +1422,7 @@
 1422,MA,Massachusetts,9,H4MA09078,,John C.,Chapman,Chapman; John C.,,R,9567,32.35%,,,114971,44.99%,,,,,
 1423,MA,Massachusetts,9,H4MA09052,,Mark C.,Alliegro,Alliegro; Mark C.,,R,9049,30.60%,,,,,,,,,
 1424,MA,Massachusetts,9,H4MA09086,,Daniel L.,Shores,Shores; Daniel L.,,R,6973,23.58%,,,,,,,,,
-1425,MA,Massachusetts,9,H4MA09060,,"Vincent A., Jr.",Cogliano,Cogliano; Vincent A.; Jr.,,R,3917,13.24%,,,,,,,,,
+1425,MA,Massachusetts,9,H4MA09060,,Vincent A. Jr.,Cogliano,Cogliano; Vincent A.; Jr.,,R,3917,13.24%,,,,,,,,,
 1426,MA,Massachusetts,9,n/a,,,All Others,All Others,,W(R),69,0.23%,,,,,,,,,
 1427,MA,Massachusetts,9,n/a,,,,,Party Votes:,R,29575,,,,,,,,,,
 1428,MA,Massachusetts,9,n/a,,,,All Others,,W,,,,,157,0.06%,,,,,
@@ -1444,7 +1444,7 @@
 1444,MI,Michigan,2,n/a,,,,,Party Votes:,R,54416,,,,,,,,,,
 1445,MI,Michigan,2,H4MI02104 ,,Dean,Vanderstelt,Vanderstelt; Dean,,D,19957,100.00%,,,70851,33.25%,,,,,
 1446,MI,Michigan,2,n/a,,,,,Party Votes:,D,19957,,,,,,,,,,
-1447,MI,Michigan,2,H4MI02112 ,,"Ronald, II",Welch,Welch; Ronald; II,,LIB,*,,,,3877,1.82%,,,,,
+1447,MI,Michigan,2,H4MI02112 ,,Ronald II,Welch,Welch; Ronald; II,,LIB,*,,,,3877,1.82%,,,,,
 1448,MI,Michigan,2,H0MI02086,,Ronald E.,Graeser,Graeser; Ronald E.,,UST,*,,,,2776,1.30%,,,,,
 1449,MI,Michigan,2,n/a,,,,,District Votes:,,74373,,,,213072,,,,,,
 1450,MI,Michigan,,n/a,,,,,,,,,,,,,,,,,
@@ -1501,7 +1501,7 @@
 1501,MI,Michigan,8,H4MI08143,,Ken,Darga,Darga; Ken,,D,3103,9.82%,,,,,,,,,
 1502,MI,Michigan,8,H4MI08150,,Jeffrey ,Hank,Hank; Jeffrey ,,D,3054,9.66%,,,,,,,,,
 1503,MI,Michigan,8,n/a,,,,,Party Votes:,D,31613,,,,,,,,,,
-1504,MI,Michigan,8,H4MI08168,,"James, II",Weeks,Weeks; James; II,,LIB,*,,,,4557,1.87%,,,,,
+1504,MI,Michigan,8,H4MI08168,,James II,Weeks,Weeks; James; II,,LIB,*,,,,4557,1.87%,,,,,
 1505,MI,Michigan,8,H4MI08176 ,,Jim,Casha,Casha; Jim,,GRE,*,,,,1880,0.77%,,,,,
 1506,MI,Michigan,8,H4MI08101,,Jeremy,Burgess,Burgess; Jeremy,,NLP,*,,,,1680,0.69%,,,,,
 1507,MI,Michigan,8,n/a,,,,,District Votes:,,90393,,,,243125,,,,,,
@@ -1543,7 +1543,7 @@
 1543,MI,Michigan,12,H0MI08109,,Bhagwan,Dashairya,Dashairya; Bhagwan,,LIB,*,,,,2559,1.24%,,,,,
 1544,MI,Michigan,12,n/a,,,,,District Votes:,,76949,,,,206660,,,,,,
 1545,MI,Michigan,,n/a,,,,,,,,,,,,,,,,,
-1546,MI,Michigan,13,H6MI01028,(I),"John, Jr.",Conyers,Conyers; John; Jr.,,D,42005,73.88%,,,132710,79.49%,,,,,W
+1546,MI,Michigan,13,H6MI01028,(I),John Jr.,Conyers,Conyers; John; Jr.,,D,42005,73.88%,,,132710,79.49%,,,,,W
 1547,MI,Michigan,13,H4MI13192 ,,Horace,Sheffield,Sheffield; Horace,,D,14850,26.12%,,,,,,,,,
 1548,MI,Michigan,13,n/a,,,,,Party Votes:,D,56855,,,,,,,,,,
 1549,MI,Michigan,13,H4MI13200,,Jeff ,Gorman,Gorman; Jeff ,,R,6696,100.00%,,,27234,16.31%,,,,,
@@ -1714,7 +1714,7 @@
 1714,MO,Missouri,4,H0MO04151,,Gregory A.,Cowan,Cowan; Gregory A.,,W,,,,,15,0.01%,,,,,
 1715,MO,Missouri,4,n/a,,,,,District Votes:,,115436,,,,176286,,,,,,
 1716,MO,Missouri,,n/a,,,,,,,,,,,,,,,,,
-1717,MO,Missouri,5,H4MO05234 ,(I),"Emanuel, II",Cleaver,Cleaver; Emanuel; II,,D,44296,82.04%,,,79256,51.59%,,,,,W
+1717,MO,Missouri,5,H4MO05234 ,(I),Emanuel II,Cleaver,Cleaver; Emanuel; II,,D,44296,82.04%,,,79256,51.59%,,,,,W
 1718,MO,Missouri,5,H4MO05317,,Mark S.,Memoly,Memoly; Mark S.,,D,2988,5.53%,,,,,,,,,
 1719,MO,Missouri,5,H0MO05083,,Charles,Lindsey,Lindsey; Charles,,D,2687,4.98%,,,,,,,,,
 1720,MO,Missouri,5,H4MO00011 ,,Eric,Holmes,Holmes; Eric,,D,2584,4.79%,,,,,,,,,
@@ -1865,7 +1865,7 @@
 1865,NV,Nevada,4,H4NV04041 ,,"Carlo ""Mazunga""",Poliak,"Poliak; Carlo ""Mazunga""",,R,523,2.14%,,,,,,,,,
 1866,NV,Nevada,4,n/a,,,,,Party Votes:,R,24391,,,,,,,,,,
 1867,NV,Nevada,4,H2NV04011 ,(I),Steven A.,Horsford,Horsford; Steven A.,,D,16269,84.30%,,,59844,45.76%,,,,,
-1868,NV,Nevada,4,H4NV03142,,"Mark J., Jr.",Budetich,Budetich; Mark J.; Jr.,,D,1532,7.94%,,,,,,,,,
+1868,NV,Nevada,4,H4NV03142,,Mark J. Jr.,Budetich,Budetich; Mark J.; Jr.,,D,1532,7.94%,,,,,,,,,
 1869,NV,Nevada,4,H2NV02387,,Sid,Zeller,Zeller; Sid,,D,1498,7.76%,,,,,,,,,
 1870,NV,Nevada,4,n/a,,,,,Party Votes:,D,19299,,,,,,,,,,
 1871,NV,Nevada,4,H4NV04058 ,,Steve ,Brown,Brown; Steve ,,LIB,,,,,4119,3.15%,,,,,
@@ -1912,24 +1912,24 @@
 1912,NH,New Hampshire,H,n/a,,,,,Total State Votes:,,154022,,,,480920,,,,,,
 1913,NH,New Hampshire,,n/a,,,,,,,,,,,,,,,,,
 1914,,,,n/a,,,,,,,,,,,,,,,,,
-1915,NJ,New Jersey,01 - FULL TERM,H4NJ01084 ,,Donald W. ,Norcross,Norcross; Donald W. ,,D,18504,72.06%,,,93315,57.43%,,,,,W
-1916,NJ,New Jersey,01 - FULL TERM,H4NJ01100 ,,"Frank C., Jr.",Broomell,Broomell; Frank C.; Jr.,,D,3871,15.08%,,,,,,,,,
-1917,NJ,New Jersey,01 - FULL TERM,H4NJ01134,,Frank W.,Minor,Minor; Frank W.,,D,3303,12.86%,,,,,,,,,
-1918,NJ,New Jersey,01 - FULL TERM,n/a,,,,,Party Votes:,D,25678,,,,,,,,,,
-1919,NJ,New Jersey,01 - FULL TERM,H4NJ01092,,Garry W.,Cobb,Cobb; Garry W.,,R,6405,68.34%,,,64073,39.43%,,,,,
-1920,NJ,New Jersey,01 - FULL TERM,H4NJ01118,,Claire H. ,Gustafson,Gustafson; Claire H. ,,R,1337,14.27%,,,,,,,,,
-1921,NJ,New Jersey,01 - FULL TERM,H4NJ01126,,Gerard ,McManus,McManus; Gerard ,,R,863,9.21%,,,,,,,,,
-1922,NJ,New Jersey,01 - FULL TERM,H0NJ01165,,Lee,Lucas,Lucas; Lee,,R,767,8.18%,,,,,,,,,
-1923,NJ,New Jersey,01 - FULL TERM,n/a,,,,,Party Votes:,R,9372,,,,,,,,,,
-1924,NJ,New Jersey,01 - FULL TERM,H4NJ01142 ,,Scot John,Tomaszewski,Tomaszewski; Scot John,,WDB,,,,,1784,1.10%,,,,,
-1925,NJ,New Jersey,01 - FULL TERM,H8NJ07041,,Robert,Shapiro,Shapiro; Robert,,SBP,,,,,1134,0.70%,,,,,
-1926,NJ,New Jersey,01 - FULL TERM,H8NJ01192,,Margaret M.,Chapman,Chapman; Margaret M.,,CN,,,,,1103,0.68%,,,,,
-1927,NJ,New Jersey,01 - FULL TERM,H4NJ01159,,Mike,Berman,Berman; Mike,,OP,,,,,634,0.39%,,,,,
-1928,NJ,New Jersey,01 - FULL TERM,H4NJ01167,,Donald E.,Letton,Letton; Donald E.,,DRP,,,,,449,0.28%,,,,,
-1929,NJ,New Jersey,01 - FULL TERM,n/a,,,,,District Votes:,,35050,,,,162492,,,,,,
+1915,NJ,New Jersey,1,H4NJ01084 ,,Donald W. ,Norcross,Norcross; Donald W. ,,D,18504,72.06%,,,93315,57.43%,,,,,W
+1916,NJ,New Jersey,1,H4NJ01100 ,,Frank C. Jr.,Broomell,Broomell; Frank C.; Jr.,,D,3871,15.08%,,,,,,,,,
+1917,NJ,New Jersey,1,H4NJ01134,,Frank W.,Minor,Minor; Frank W.,,D,3303,12.86%,,,,,,,,,
+1918,NJ,New Jersey,1,n/a,,,,,Party Votes:,D,25678,,,,,,,,,,
+1919,NJ,New Jersey,1,H4NJ01092,,Garry W.,Cobb,Cobb; Garry W.,,R,6405,68.34%,,,64073,39.43%,,,,,
+1920,NJ,New Jersey,1,H4NJ01118,,Claire H. ,Gustafson,Gustafson; Claire H. ,,R,1337,14.27%,,,,,,,,,
+1921,NJ,New Jersey,1,H4NJ01126,,Gerard ,McManus,McManus; Gerard ,,R,863,9.21%,,,,,,,,,
+1922,NJ,New Jersey,1,H0NJ01165,,Lee,Lucas,Lucas; Lee,,R,767,8.18%,,,,,,,,,
+1923,NJ,New Jersey,1,n/a,,,,,Party Votes:,R,9372,,,,,,,,,,
+1924,NJ,New Jersey,1,H4NJ01142 ,,Scot John,Tomaszewski,Tomaszewski; Scot John,,WDB,,,,,1784,1.10%,,,,,
+1925,NJ,New Jersey,1,H8NJ07041,,Robert,Shapiro,Shapiro; Robert,,SBP,,,,,1134,0.70%,,,,,
+1926,NJ,New Jersey,1,H8NJ01192,,Margaret M.,Chapman,Chapman; Margaret M.,,CN,,,,,1103,0.68%,,,,,
+1927,NJ,New Jersey,1,H4NJ01159,,Mike,Berman,Berman; Mike,,OP,,,,,634,0.39%,,,,,
+1928,NJ,New Jersey,1,H4NJ01167,,Donald E.,Letton,Letton; Donald E.,,DRP,,,,,449,0.28%,,,,,
+1929,NJ,New Jersey,1,n/a,,,,,District Votes:,,35050,,,,162492,,,,,,
 1930,NJ,New Jersey,,n/a,,,,,,,,,,,,,,,,,
 1931,NJ,New Jersey,01 - UNEXPIRED TERM,H4NJ01084 ,,Donald W.,Norcross,Norcross; Donald W.,,D,17921,71.44%,,,92786,57.53%,,,,,W
-1932,NJ,New Jersey,01 - UNEXPIRED TERM,H4NJ01100 ,,"Frank C., Jr.",Broomell,Broomell; Frank C.; Jr.,,D,3919,15.62%,,,,,,,,,
+1932,NJ,New Jersey,01 - UNEXPIRED TERM,H4NJ01100 ,,Frank C. Jr.,Broomell,Broomell; Frank C.; Jr.,,D,3919,15.62%,,,,,,,,,
 1933,NJ,New Jersey,01 - UNEXPIRED TERM,H4NJ01134,,Frank W.,Minor,Minor; Frank W.,,D,3247,12.94%,,,,,,,,,
 1934,NJ,New Jersey,01 - UNEXPIRED TERM,n/a,,,,,Party Votes:,D,25087,,,,,,,,,,
 1935,NJ,New Jersey,01 - UNEXPIRED TERM,H4NJ01092,,Garry W.,Cobb,Cobb; Garry W.,,W(R)/R,359,100.00%,,,63727,39.51%,,,,,
@@ -1942,7 +1942,7 @@
 1942,NJ,New Jersey,2,H2NJ02037,(I),Frank A. ,LoBiondo,LoBiondo; Frank A. ,,R,14294,82.48%,,,108875,61.46%,,,,,W
 1943,NJ,New Jersey,2,H2NJ02128 ,,Mike,Assad,Assad; Mike,,R,3037,17.52%,,,,,,,,,
 1944,NJ,New Jersey,2,n/a,,,,,Party Votes:,R,17331,,,,,,,,,,
-1945,NJ,New Jersey,2,H4NJ02140 ,,"William J., Jr.",Hughes,Hughes; William J.; Jr.,,D,11455,81.77%,,,66026,37.27%,,,,,
+1945,NJ,New Jersey,2,H4NJ02140 ,,William J. Jr.,Hughes,Hughes; William J.; Jr.,,D,11455,81.77%,,,66026,37.27%,,,,,
 1946,NJ,New Jersey,2,H4NJ02157 ,,David H. ,Cole,Cole; David H. ,,D,2554,18.23%,,,,,,,,,
 1947,NJ,New Jersey,2,n/a,,,,,Party Votes:,D,14009,,,,,,,,,,
 1948,NJ,New Jersey,2,H4NJ02173,,Alexander H.,Spano,Spano; Alexander H.,,DRP,,,,,663,0.37%,,,,,
@@ -1976,7 +1976,7 @@
 1976,NJ,New Jersey,5,H0NJ05158,,Mark D.,Quick,Quick; Mark D.,,FA,,,,,2435,1.29%,,,,,
 1977,NJ,New Jersey,5,n/a,,,,,District Votes:,,26532,,,,188921,,,,,,
 1978,NJ,New Jersey,,n/a,,,,,,,,,,,,,,,,,
-1979,NJ,New Jersey,6,H8NJ03073,(I),"Frank , Jr.",Pallone,Pallone; Frank ; Jr.,,D,11358,100.00%,,,72190,59.93%,,,,,W
+1979,NJ,New Jersey,6,H8NJ03073,(I),Frank  Jr.,Pallone,Pallone; Frank ; Jr.,,D,11358,100.00%,,,72190,59.93%,,,,,W
 1980,NJ,New Jersey,6,n/a,,,,,Party Votes:,D,11358,,,,,,,,,,
 1981,NJ,New Jersey,6,H4NJ06109 ,,Anthony E.,Wilkinson,Wilkinson; Anthony E.,,R,4816,100.00%,,,46891,38.93%,,,,,
 1982,NJ,New Jersey,6,n/a,,,,,Party Votes:,R,4816,,,,,,,,,,
@@ -2000,17 +2000,17 @@
 2000,NJ,New Jersey,8,H4NJ08097,,Robert,Thorne,Thorne; Robert,,TN,,,,,653,0.82%,,,,,
 2001,NJ,New Jersey,8,n/a,,,,,District Votes:,,27614,,,,79518,,,,,,
 2002,NJ,New Jersey,,n/a,,,,,,,,,,,,,,,,,
-2003,NJ,New Jersey,9,H6NJ08118,(I),"Bill, Jr.",Pascrell,Pascrell; Bill; Jr.,,D,12907,100.00%,,,82498,68.49%,,,,,W
+2003,NJ,New Jersey,9,H6NJ08118,(I),Bill Jr.,Pascrell,Pascrell; Bill; Jr.,,D,12907,100.00%,,,82498,68.49%,,,,,W
 2004,NJ,New Jersey,9,n/a,,,,,Party Votes:,D,12907,,,,,,,,,,
 2005,NJ,New Jersey,9,H4NJ09111,,Dierdre G.,Paul,Paul; Dierdre G.,,R,4474,100.00%,,,36246,30.09%,,,,,
 2006,NJ,New Jersey,9,n/a,,,,,Party Votes:,R,4474,,,,,,,,,,
 2007,NJ,New Jersey,9,H4NJ09129,,Nestor,Montilla,Montilla; Nestor,,SI,,,,,1715,1.42%,,,,,
 2008,NJ,New Jersey,9,n/a,,,,,District Votes:,,17381,,,,120459,,,,,,
 2009,NJ,New Jersey,,n/a,,,,,,,,,,,,,,,,,
-2010,NJ,New Jersey,10,H2NJ10154 ,(I),"Donald M., Jr.",Payne,Payne; Donald M.; Jr.,,D,24490,91.25%,,,95734,85.38%,,,,,W
+2010,NJ,New Jersey,10,H2NJ10154 ,(I),Donald M. Jr.,Payne,Payne; Donald M.; Jr.,,D,24490,91.25%,,,95734,85.38%,,,,,W
 2011,NJ,New Jersey,10,H0NJ10174,,Robert Louis,Toussaint,Toussaint; Robert Louis,,D,1291,4.81%,,,,,,,,,
 2012,NJ,New Jersey,10,H4NJ10085 ,,Aaron,Fraser,Fraser; Aaron,,D,697,2.60%,,,,,,,,,
-2013,NJ,New Jersey,10,H4NJ10093 ,,"Curtis Alphonzo, III",Vaughn,Vaughn; Curtis Alphonzo; III,,D,360,1.34%,,,,,,,,,
+2013,NJ,New Jersey,10,H4NJ10093 ,,Curtis Alphonzo III,Vaughn,Vaughn; Curtis Alphonzo; III,,D,360,1.34%,,,,,,,,,
 2014,NJ,New Jersey,10,n/a,,,,,Party Votes:,D,26838,,,,,,,,,,
 2015,NJ,New Jersey,10,H4NJ10101 ,,Yolanda ,Dentley,Dentley; Yolanda ,,R,1490,100.00%,,,14154,12.62%,,,,,
 2016,NJ,New Jersey,10,n/a,,,,,Party Votes:,R,1490,,,,,,,,,,
@@ -2081,7 +2081,7 @@
 2081,NY,New York,1,n/a,,,Scattered,Scattered,,W,,,,,108,0.06%,,,,,
 2082,NY,New York,1,n/a,,,,,District Votes:,,16765,,,,172865,,,,,,
 2083,NY,New York,,n/a,,,,,,,,,,,,,,,,,
-2084,NY,New York,2,H2NY03089,(I),Peter T.,King,King; Peter T.,,R/TRP,Unopposed,,,,76659,55.02%,,,95177,68.31%,W
+2084,NY,New York,2,H2NY03089,(I),Peter T.,King,King; Peter T.,,R,Unopposed,,,,76659,55.02%,,,95177,68.31%,W
 2085,NY,New York,2,H2NY03089,(I),Peter T.,King,King; Peter T.,,CRV,Unopposed,,,,13789,9.90%,,,95177,68.31%,W
 2086,NY,New York,2,H2NY03089,(I),Peter T.,King,King; Peter T.,,IDP,Unopposed,,,,4729,3.39%,,,95177,68.31%,W
 2087,NY,New York,2,H8NY04050,,Patricia,Maher,Maher; Patricia,,D ,Unopposed,,,,41814,30.01%,,,,,
@@ -2103,7 +2103,7 @@
 2103,NY,New York,4,H4NY04075,,Kathleen M.,Rice,Rice; Kathleen M.,,D,7770,57.30%,,,83772,49.25%,,,89793,52.79%,W
 2104,NY,New York,4,H4NY04067,,Kevan M.,Abrahams,Abrahams; Kevan M.,,D,5791,42.70%,,,,,,,,,
 2105,NY,New York,4,n/a,,,,,Party Votes:,D,13561,,,,,,,,,,
-2106,NY,New York,4,H4NY04091,,Bruce A.,Blakeman,Blakeman; Bruce A.,,R/TRP,9083,65.96%,,,67811,39.87%,,,80127,47.11%,
+2106,NY,New York,4,H4NY04091,,Bruce A.,Blakeman,Blakeman; Bruce A.,,R,9083,65.96%,,,67811,39.87%,,,80127,47.11%,
 2107,NY,New York,4,H0NY04057,,Frank J.,Scaturro,Scaturro; Frank J.,,R,4687,34.04%,,,,,,,,,
 2108,NY,New York,4,n/a,,,,,Party Votes:,R,13770,,,,,,,,,,
 2109,NY,New York,4,H4NY04091,,Bruce A.,Blakeman,Blakeman; Bruce A.,,IDP,Unopposed,,,,2437,1.43%,,,80127,47.11%,
@@ -2156,8 +2156,8 @@
 2156,NY,New York,11,H0NY13074,(I),Michael G.,Grimm,Grimm; Michael G.,,R,Unopposed,,,,48291,44.98%,,,58886,54.85%,W
 2157,NY,New York,11,H0NY13074,(I),Michael G.,Grimm,Grimm; Michael G.,,CRV,Unopposed,,,,8251,7.69%,,,58886,54.85%,W
 2158,NY,New York,11,H0NY13074,(I),Michael G.,Grimm,Grimm; Michael G.,,IDP,Unopposed,,,,2344,2.18%,,,58886,54.85%,W
-2159,NY,New York,11,H8NY13069,,"Domenic M., Jr.",Recchia,Recchia; Domenic M.; Jr.,,D,Unopposed,,,,41429,38.59%,,,45244,42.14%,
-2160,NY,New York,11,H8NY13069,,"Domenic M., Jr.",Recchia,Recchia; Domenic M.; Jr.,,WF,Unopposed,,,,3815,3.55%,,,45244,42.14%,
+2159,NY,New York,11,H8NY13069,,Domenic M. Jr.,Recchia,Recchia; Domenic M.; Jr.,,D,Unopposed,,,,41429,38.59%,,,45244,42.14%,
+2160,NY,New York,11,H8NY13069,,Domenic M. Jr.,Recchia,Recchia; Domenic M.; Jr.,,WF,Unopposed,,,,3815,3.55%,,,45244,42.14%,
 2161,NY,New York,11,H2NY13062,,Henry J.,Bardel,Bardel; Henry J.,,GRE,Unopposed,,,,2687,2.50%,,,,,
 2162,NY,New York,11,n/a,,,Scattered,Scattered,,W,,,,,546,0.51%,,,,,
 2163,NY,New York,11,n/a,,,,,District Votes:,,,,,,107363,,,,,,
@@ -2172,7 +2172,7 @@
 2172,NY,New York,,n/a,,,,,,,,,,,,,,,,,
 2173,NY,New York,13,H6NY19029,(I),Charles B.,Rangel,Rangel; Charles B.,,D,23865,47.69%,,,63437,80.96%,,,68396,87.29%,W
 2174,NY,New York,13,H2NY13096,,Adriano ,Espaillat,Espaillat; Adriano ,,D,21607,43.18%,,,,,,,,,
-2175,NY,New York,13,H4NY13050,,"Michael A., Jr.",Walrond,Walrond; Michael A.; Jr.,,D,3971,7.94%,,,,,,,,,
+2175,NY,New York,13,H4NY13050,,Michael A. Jr.,Walrond,Walrond; Michael A.; Jr.,,D,3971,7.94%,,,,,,,,,
 2176,NY,New York,13,H4NY13084,,Yolanda,Garcia,Garcia; Yolanda,,D,599,1.20%,,,,,,,,,
 2177,NY,New York,13,n/a,,,,,Party Votes:,D,50042,,,,,,,,,,
 2178,NY,New York,13,H6NY19029,(I),Charles B.,Rangel,Rangel; Charles B. #,,WF,#,,,,4959,6.33%,,,68396,87.29%,W
@@ -2254,9 +2254,9 @@
 2254,NY,New York,22,n/a,,,Scattered,Scattered,,W,,,,,2081,1.58%,,,,,
 2255,NY,New York,22,n/a,,,,,District Votes:,,30119,,,,131932,,,,,,
 2256,NY,New York,,n/a,,,,,,,,,,,,,,,,,
-2257,NY,New York,23,H0NY29054,(I),"Thomas W., II",Reed,Reed; Thomas W.; II,,R,Unopposed,,,,94375,51.44%,,,113130,61.66%,W
-2258,NY,New York,23,H0NY29054,(I),"Thomas W., II",Reed,Reed; Thomas W.; II,,CRV,Unopposed,,,,13917,7.58%,,,113130,61.66%,W
-2259,NY,New York,23,H0NY29054,(I),"Thomas W., II",Reed,Reed; Thomas W.; II,,IDP,Unopposed,,,,4838,2.64%,,,113130,61.66%,W
+2257,NY,New York,23,H0NY29054,(I),Thomas W. II,Reed,Reed; Thomas W.; II,,R,Unopposed,,,,94375,51.44%,,,113130,61.66%,W
+2258,NY,New York,23,H0NY29054,(I),Thomas W. II,Reed,Reed; Thomas W.; II,,CRV,Unopposed,,,,13917,7.58%,,,113130,61.66%,W
+2259,NY,New York,23,H0NY29054,(I),Thomas W. II,Reed,Reed; Thomas W.; II,,IDP,Unopposed,,,,4838,2.64%,,,113130,61.66%,W
 2260,NY,New York,23,H4NY23067,,Martha,Robertson,Robertson; Martha,,D,Unopposed,,,,60233,32.83%,,,70242,38.28%,
 2261,NY,New York,23,H4NY23067,,Martha,Robertson,Robertson; Martha,,WF,Unopposed,,,,10009,5.46%,,,70242,38.28%,
 2262,NY,New York,23,n/a,,,Scattered,Scattered,,W,,,,,109,0.06%,,,,,
@@ -2272,8 +2272,8 @@
 2272,NY,New York,,n/a,,,,,,,,,,,,,,,,,
 2273,NY,New York,25,H6NY03031,(I),Louise M.,Slaughter,Slaughter; Louise M.,,D,Unopposed,,,,87264,45.22%,,,96803,50.16%,W
 2274,NY,New York,25,H6NY03031,(I),Louise M.,Slaughter,Slaughter; Louise M.,,WF,Unopposed,,,,9539,4.94%,,,96803,50.16%,W
-2275,NY,New York,25,H4NY29098,,Mark W.,Assini,Assini; Mark W.,,R,Unopposed,,,,75990,39.38%,,,95932,50.16%,
-2276,NY,New York,25,H4NY29098,,Mark W.,Assini,Assini; Mark W.,,CRV,Unopposed,,,,19942,10.33%,,,95932,50.16%,
+2275,NY,New York,25,H4NY29098,,Mark W.,Assini,Assini; Mark W.,,R,Unopposed,,,,75990,39.38%,,,95932,49.71%,
+2276,NY,New York,25,H4NY29098,,Mark W.,Assini,Assini; Mark W.,,CRV,Unopposed,,,,19942,10.33%,,,95932,49.71%,
 2277,NY,New York,25,n/a,,,Scattered,Scattered,,W,,,,,236,0.12%,,,,,
 2278,NY,New York,25,n/a,,,,,District Votes:,,,,,,192971,,,,,,
 2279,NY,New York,,n/a,,,,,,,,,,,,,,,,,
@@ -2333,7 +2333,7 @@
 2333,NC,North Carolina,5,n/a,,,,,District Votes:,,89981,,4191,,228252,,,,,,
 2334,NC,North Carolina,,n/a,,,,,,,,,,,,,,,,,
 2335,NC,North Carolina,6,H4NC06052,,Mark,Walker,Walker; Mark,,R,11123,25.20%,18965,59.85%,147312,58.67%,,,,,W
-2336,NC,North Carolina,6,H4NC06102,,"Phil, Jr.",Berger,Berger; Phil; Jr.,,R,15127,34.27%,12722,40.15%,,,,,,,
+2336,NC,North Carolina,6,H4NC06102,,Phil Jr.,Berger,Berger; Phil; Jr.,,R,15127,34.27%,12722,40.15%,,,,,,,
 2337,NC,North Carolina,6,H4NC06110,,Bruce,VonCannon,VonCannon; Bruce,,R,5055,11.45%,,,,,,,,,
 2338,NC,North Carolina,6,H4NC06128,,Zach,Matheny,Matheny; Zach,,R,5043,11.43%,,,,,,,,,
 2339,NC,North Carolina,6,H0NC06175,,Jeff,Phillips,Phillips; Jeff,,R,3494,7.92%,,,,,,,,,
@@ -2351,8 +2351,8 @@
 2351,NC,North Carolina,7,H4NC07076,,Woody,White,White; Woody,,R,17389,40.07%,,,,,,,,,
 2352,NC,North Carolina,7,H4NC07084,,Chris,Andrade,Andrade; Chris,,R,3000,6.91%,,,,,,,,,
 2353,NC,North Carolina,7,n/a,,,,,Party Votes:,R,43399,,,,,,,,,,
-2354,NC,North Carolina,7,H4NC07068,,"Jonathan, Jr.",Barfield,Barfield; Jonathan; Jr.,,D,21966,58.25%,,,84054,37.11%,,,,,
-2355,NC,North Carolina,7,H4NC07092,,"Walter A., Jr.",Martin,Martin; Walter A.; Jr.,,D,15741,41.75%,,,,,,,,,
+2354,NC,North Carolina,7,H4NC07068,,Jonathan Jr.,Barfield,Barfield; Jonathan; Jr.,,D,21966,58.25%,,,84054,37.11%,,,,,
+2355,NC,North Carolina,7,H4NC07092,,Walter A. Jr.,Martin,Martin; Walter A.; Jr.,,D,15741,41.75%,,,,,,,,,
 2356,NC,North Carolina,7,n/a,,,,,Party Votes:,D,37707,,,,,,,,,,
 2357,NC,North Carolina,7,H4NC07100,,J. Wesley,Casteen,Casteen; J. Wesley,,LIB,Unopposed,,,,7850,3.47%,,,,,
 2358,NC,North Carolina,7,n/a,,,Scattered,Scattered,,W,,,,,163,0.07%,,,,,
@@ -2382,18 +2382,18 @@
 2382,NC,North Carolina,11,n/a,,,,,Party Votes:,D,31091,,,,,,,,,,
 2383,NC,North Carolina,11,n/a,,,,,District Votes:,,31091,,,,230024,,,,,,
 2384,NC,North Carolina,,n/a,,,,,,,,,,,,,,,,,
-2385,NC,North Carolina,12 - FULL TERM,H4NC12100,,Alma,Adams,Adams; Alma,,D,15235,44.00%,,,130096,75.35%,,,,,W
-2386,NC,North Carolina,12 - FULL TERM,H4NC12084,,Malcolm,Graham,Graham; Malcolm,,D,8180,23.63%,,,,,,,,,
-2387,NC,North Carolina,12 - FULL TERM,H4NC12076,,George,Battle,Battle; George,,D,4342,12.54%,,,,,,,,,
-2388,NC,North Carolina,12 - FULL TERM,H4NC12050,,Marcus,Brandon,Brandon; Marcus,,D,2856,8.25%,,,,,,,,,
-2389,NC,North Carolina,12 - FULL TERM,H4NC12126,,James (Smuggie),Mitchell,Mitchell; James (Smuggie),,D,1775,5.13%,,,,,,,,,
-2390,NC,North Carolina,12 - FULL TERM,H4NC12092,,Curtis C.,Osborne,Osborne; Curtis C.,,D,1733,5.01%,,,,,,,,,
-2391,NC,North Carolina,12 - FULL TERM,H4NC12159,,Rajive,Patel,Patel; Rajive,,D,502,1.45%,,,,,,,,,
-2392,NC,North Carolina,12 - FULL TERM,n/a,,,,,Party Votes:,D,34623,,,,,,,,,,
-2393,NC,North Carolina,12 - FULL TERM,H4NC12134,,Vince,Coakley,Coakley; Vince,,R,8652,78.01%,,,42568,24.65%,,,,,
-2394,NC,North Carolina,12 - FULL TERM,H4NC12142,,Leon,Threatt,Threatt; Leon,,R,2439,21.99%,,,,,,,,,
-2395,NC,North Carolina,12 - FULL TERM,n/a,,,,,Party Votes:,R,11091,,,,,,,,,,
-2396,NC,North Carolina,12 - FULL TERM,n/a,,,,,Total District Votes (Full Term):,,45714,,,,172664,,,,,,
+2385,NC,North Carolina,12,H4NC12100,,Alma,Adams,Adams; Alma,,D,15235,44.00%,,,130096,75.35%,,,,,W
+2386,NC,North Carolina,12,H4NC12084,,Malcolm,Graham,Graham; Malcolm,,D,8180,23.63%,,,,,,,,,
+2387,NC,North Carolina,12,H4NC12076,,George,Battle,Battle; George,,D,4342,12.54%,,,,,,,,,
+2388,NC,North Carolina,12,H4NC12050,,Marcus,Brandon,Brandon; Marcus,,D,2856,8.25%,,,,,,,,,
+2389,NC,North Carolina,12,H4NC12126,,James (Smuggie),Mitchell,Mitchell; James (Smuggie),,D,1775,5.13%,,,,,,,,,
+2390,NC,North Carolina,12,H4NC12092,,Curtis C.,Osborne,Osborne; Curtis C.,,D,1733,5.01%,,,,,,,,,
+2391,NC,North Carolina,12,H4NC12159,,Rajive,Patel,Patel; Rajive,,D,502,1.45%,,,,,,,,,
+2392,NC,North Carolina,12,n/a,,,,,Party Votes:,D,34623,,,,,,,,,,
+2393,NC,North Carolina,12,H4NC12134,,Vince,Coakley,Coakley; Vince,,R,8652,78.01%,,,42568,24.65%,,,,,
+2394,NC,North Carolina,12,H4NC12142,,Leon,Threatt,Threatt; Leon,,R,2439,21.99%,,,,,,,,,
+2395,NC,North Carolina,12,n/a,,,,,Party Votes:,R,11091,,,,,,,,,,
+2396,NC,North Carolina,12,n/a,,,,,Total District Votes (Full Term):,,45714,,,,172664,,,,,,
 2397,NC,North Carolina,,n/a,,,,,,,,,,,,,,,,,
 2398,NC,North Carolina,12 - UNEXPIRED TERM,H4NC12100,,Alma,Adams,Adams; Alma,,D,14967,44.22%,,,127668,75.43%,,,,,W
 2399,NC,North Carolina,12 - UNEXPIRED TERM,H4NC12084,,Malcolm,Graham,Graham; Malcolm,,D,7495,22.14%,,,,,,,,,
@@ -2491,14 +2491,14 @@
 2491,OH,Ohio,8,H4OH08070 ,,Tom,Poetter,Poetter; Tom,,D,8911,54.64%,,,51534,27.36%,,,,,
 2492,OH,Ohio,8,H4OH08088 ,,Matthew J.,Guyette,Guyette; Matthew J.,,D,7399,45.36%,,,,,,,,,
 2493,OH,Ohio,8,n/a,,,,,Party Votes:,D,16310,,,,,,,,,,
-2494,OH,Ohio,8,H0OH08128,,"James J., Jr.",Condit,Condit; James J.; Jr.,,CON,60,100.00%,,,10257,5.45%,,,,,
+2494,OH,Ohio,8,H0OH08128,,James J. Jr.,Condit,Condit; James J.; Jr.,,CON,60,100.00%,,,10257,5.45%,,,,,
 2495,OH,Ohio,8,n/a,,,,,Party Votes:,CON,60,,,,,,,,,,
 2496,OH,Ohio,8,n/a,,,,,District Votes:,,82473,,,,188330,,,,,,
 2497,OH,Ohio,,n/a,,,,,,,,,,,,,,,,,
 2498,OH,Ohio,9,H2OH09031,(I),Marcy,Kaptur,Kaptur; Marcy,,D,32464,100.00%,,,108870,67.74%,,,,,W
 2499,OH,Ohio,9,n/a,,,,,Party Votes:,D,32464,,,,,,,,,,
 2500,OH,Ohio,9,H4OH09102 ,,Richard,May,May; Richard,,R,9587,72.23%,,,51704,32.17%,,,,,
-2501,OH,Ohio,9,H4OH09094,,"Robert C., Jr.",Horrocks,Horrocks; Robert C.; Jr.,,R,3686,27.77%,,,,,,,,,
+2501,OH,Ohio,9,H4OH09094,,Robert C. Jr.,Horrocks,Horrocks; Robert C.; Jr.,,R,3686,27.77%,,,,,,,,,
 2502,OH,Ohio,9,n/a,,,,,Party Votes:,R,13273,,,,,,,,,,
 2503,OH,Ohio,9,H4OH09086,,Cory,Hoffman,Hoffman; Cory,,W,,,,,112,0.07%,,,,,
 2504,OH,Ohio,9,H4OH09128,,George A.,Skalsky,Skalsky; George A.,,W,,,,,29,0.02%,,,,,
@@ -2612,7 +2612,7 @@
 2612,OR,Oregon,1,H2OR01133 ,(I),Suzanne ,Bonamici,Bonamici; Suzanne ,,D,50903,98.83%,,,160038,57.31%,,,,,W
 2613,OR,Oregon,1,n/a,,,Scattered,Scattered,,W(D),601,1.17%,,,,,,,,,
 2614,OR,Oregon,1,n/a,,,,,Party Votes:,D,51504,,,,,,,,,,
-2615,OR,Oregon,1,H4OR01113,,Jason,Yates,Yates; Jason,,R/CON*,16466,42.29%,,,96245,34.47%,,,,,
+2615,OR,Oregon,1,H4OR01113,,Jason,Yates,Yates; Jason,,R,16466,42.29%,,,96245,34.47%,,,,,
 2616,OR,Oregon,1,H2OR01190,,Delinda Delgado,Morgan,Morgan; Delinda Delgado,,R,15521,39.86%,,,,,,,,,
 2617,OR,Oregon,1,H4OR02186,,Bob,Niemeyer,Niemeyer; Bob,,R,6637,17.05%,,,,,,,,,
 2618,OR,Oregon,1,n/a,,,Scattered,Scattered,,W(R),312,0.80%,,,,,,,,,
@@ -2641,7 +2641,7 @@
 2641,OR,Oregon,3,H6OR03064 ,(I),Earl ,Blumenauer,Blumenauer; Earl ,,D,69753,98.63%,,,211748,72.33%,,,,,W
 2642,OR,Oregon,3,n/a,,,Scattered,Scattered,,W(D),969,1.37%,,,,,,,,,
 2643,OR,Oregon,3,n/a,,,,,Party Votes:,D,70722,,,,,,,,,,
-2644,OR,Oregon,3,H4OR03101,,James,Buchal,Buchal; James,,R/CON*/IP*,15083,97.81%,,,57424,19.61%,,,,,
+2644,OR,Oregon,3,H4OR03101,,James,Buchal,Buchal; James,,R,15083,97.81%,,,57424,19.61%,,,,,
 2645,OR,Oregon,3,n/a,,,Scattered,Scattered,,W(R),338,2.19%,,,,,,,,,
 2646,OR,Oregon,3,n/a,,,,,Party Votes:,R,15421,,,,,,,,,,
 2647,OR,Oregon,3,H8OR03052,,Michael,Meo,Meo; Michael,,PG,*,,,,12106,4.14%,,,,,
@@ -2655,7 +2655,7 @@
 2655,OR,Oregon,4,H6OR04047,(I),Peter A.,DeFazio,DeFazio; Peter A.,,D,57970,98.28%,,,181624,58.55%,,,,,W
 2656,OR,Oregon,4,n/a,,,Scattered,Scattered,,W(D),1016,1.72%,,,,,,,,,
 2657,OR,Oregon,4,n/a,,,,,Party Votes:,D,58986,,,,,,,,,,
-2658,OR,Oregon,4,H0OR04081,,Art,Robinson,Robinson; Art,,R/CON*,45391,97.31%,,,116534,37.57%,,,,,
+2658,OR,Oregon,4,H0OR04081,,Art,Robinson,Robinson; Art,,R,45391,97.31%,,,116534,37.57%,,,,,
 2659,OR,Oregon,4,n/a,,,Scattered,Scattered,,W(R),1255,2.69%,,,,,,,,,
 2660,OR,Oregon,4,n/a,,,,,Party Votes:,R,46646,,,,,,,,,,
 2661,OR,Oregon,4,n/a,,,,,,,,,,,,,,,,,
@@ -2873,7 +2873,7 @@
 2873,SC,South Carolina,2,H8SC02098,,Phil ,Black,Black; Phil ,,D,6699,54.19%,,,68719,35.28%,,,,,
 2874,SC,South Carolina,2,H4SC02055,,Ed ,Greenleaf,Greenleaf; Ed ,,D,5663,45.81%,,,,,,,,,
 2875,SC,South Carolina,2,n/a,,,,,Party Votes:,D,12362,,,,,,,,,,
-2876,SC,South Carolina,2,H4SC02063,,"Harold, III",Geddings,Geddings; Harold; III,,LBR,*,,,,4158,2.13%,,,,,
+2876,SC,South Carolina,2,H4SC02063,,Harold III,Geddings,Geddings; Harold; III,,LBR,*,,,,4158,2.13%,,,,,
 2877,SC,South Carolina,2,n/a,,,Scattered,Scattered,,W,,,,,282,0.14%,,,,,
 2878,SC,South Carolina,2,n/a,,,,,District Votes:,,65891,,,,194808,,,,,,
 2879,SC,South Carolina,,n/a,,,,,,,,,,,,,,,,,
@@ -2929,7 +2929,7 @@
 2929,TN,Tennessee,1,n/a,,Scott,Kudialis,Kudialis; Scott,,W,,,,,14,0.01%,,,,,
 2930,TN,Tennessee,1,n/a,,,,,District Votes:,,87457,,,,139470,,,,,,
 2931,TN,Tennessee,,n/a,,,,,,,,,,,,,,,,,
-2932,TN,Tennessee,2,H8TN02069,(I),"John J., Jr.",Duncan,Duncan; John J.; Jr.,,R,50532,60.46%,,,120883,72.49%,,,,,W
+2932,TN,Tennessee,2,H8TN02069,(I),John J. Jr.,Duncan,Duncan; John J.; Jr.,,R,50532,60.46%,,,120883,72.49%,,,,,W
 2933,TN,Tennessee,2,H4TN02068,,Jason,Zachary,Zachary; Jason,,R,33054,39.54%,,,,,,,,,
 2934,TN,Tennessee,2,n/a,,,,,Party Votes:,R,83586,,,,,,,,,,
 2935,TN,Tennessee,2,H8TN02028,,Bob,Scott,Scott; Bob,,D,12715,100.00%,,,37612,22.56%,,,,,
@@ -2953,7 +2953,7 @@
 2953,TN,Tennessee,4,H4TN04163,,Steve,Lane,Lane; Steve,,R,1483,1.91%,,,,,,,,,
 2954,TN,Tennessee,4,H4TN04197,,David R.,Tate,Tate; David R.,,R,938,1.21%,,,,,,,,,
 2955,TN,Tennessee,4,H4TN04205,,Michael S.,Warden,Warden; Michael S.,,R,659,0.85%,,,,,,,,,
-2956,TN,Tennessee,4,H4TN04155,,"Oluyomi ""Fapas,"" Sr.",Faparusi,"Faparusi; Oluyomi ""Fapas;"" Sr.",,R,284,0.37%,,,,,,,,,
+2956,TN,Tennessee,4,H4TN04155,,"Oluyomi ""Fapas"" Sr.",Faparusi,"Faparusi; Oluyomi ""Fapas;"" Sr.",,R,284,0.37%,,,,,,,,,
 2957,TN,Tennessee,4,n/a,,,,,Party Votes:,R,77504,,,,,,,,,,
 2958,TN,Tennessee,4,H4TN04171,,Lenda ,Sherrell,Sherrell; Lenda ,,D,22859,100.00%,,,51357,35.32%,,,,,
 2959,TN,Tennessee,4,n/a,,,,,Party Votes:,D,22859,,,,,,,,,,
@@ -3241,7 +3241,7 @@
 3241,TX,Texas,30,H2TX00015,(I),Eddie Bernice,Johnson,Johnson; Eddie Bernice,,D,23756,69.93%,,,93041,87.95%,,,,,W
 3242,TX,Texas,30,H2TX30079,,Barbara Mallory,Caraway,Caraway; Barbara Mallory,,D,10216,30.07%,,,,,,,,,
 3243,TX,Texas,30,n/a,,,,,Party Votes:,D,33972,,,,,,,,,,
-3244,TX,Texas,30,H4TX30034,,"Max W., III",Koch,Koch; Max W.; III,,LIB,*,,,,7154,6.76%,,,,,
+3244,TX,Texas,30,H4TX30034,,Max W. III,Koch,Koch; Max W.; III,,LIB,*,,,,7154,6.76%,,,,,
 3245,TX,Texas,30,H4TX30059,,Eric LeMonte,Williams,Williams; Eric LeMonte,,IND,,,,,5598,5.29%,,,,,
 3246,TX,Texas,30,n/a,,,,,District Votes:,,33972,,,,105793,,,,,,
 3247,TX,Texas,,n/a,,,,,,,,,,,,,,,,,
@@ -3299,7 +3299,7 @@
 3299,TX,Texas,36,n/a,,,,,Party Votes:,D,6507,,,,,,,,,,
 3300,TX,Texas,36,H4TX36080,,Rodney,Veach,Veach; Rodney,,LIB,*,,,,1951,1.46%,,,,,
 3301,TX,Texas,36,H4TX36072,,Robb,Rourke,Rourke; Robb,,LIB,,,,,,,,,,,
-3302,TX,Texas,36,H4TX08055,,"Hal J., Jr.",Ridley,Ridley; Hal J.; Jr.,,GRE,*,,,,685,0.51%,,,,,
+3302,TX,Texas,36,H4TX08055,,Hal J. Jr.,Ridley,Ridley; Hal J.; Jr.,,GRE,*,,,,685,0.51%,,,,,
 3303,TX,Texas,36,n/a,,,,,District Votes:,,58040,,33370,,133842,,,,,,
 3304,TX,Texas,36,n/a,,,,,,,,,,,,,,,,,
 3305,TX,Texas,H,n/a,,,,,Total State Votes:,,1588822,,90169,,4453499,,,,,,
@@ -3369,7 +3369,7 @@
 3369,,,,n/a,,,,,,,,,,,,,,,,,
 3370,VI,Virgin Islands,0,H2VI00082,,Stacey,Plaskett,Plaskett; Stacey,,D,4866,49.88%,,,21224,90.65%,,,,,W
 3371,VI,Virgin Islands,0,H4VI00146,,Shawn-Michael,Malone,Malone; Shawn-Michael,,D,4134,42.37%,,,,,,,,,
-3372,VI,Virgin Islands,0,H4VI00138,,"Emmett, II",Hansen,Hansen; Emmett; II,,D,750,7.69%,,,,,,,,,
+3372,VI,Virgin Islands,0,H4VI00138,,Emmett II,Hansen,Hansen; Emmett; II,,D,750,7.69%,,,,,,,,,
 3373,VI,Virgin Islands,0,n/a,,Stephen,Colbert,Colbert; Stephen,,W(D),1,0.01%,,,,,,,,,
 3374,VI,Virgin Islands,0,H0VI00037,,Vince,Danet,Danet; Vince,,W(D),1,0.01%,,,,,,,,,
 3375,VI,Virgin Islands,0,n/a,,Kermit the,Frog,Frog; Kermit the,,W(D),1,0.01%,,,,,,,,,
@@ -3420,20 +3420,20 @@
 3420,VA,Virginia,6,n/a,,,Scattered,Scattered,,W,,,,,2202,1.23%,,,,,
 3421,VA,Virginia,6,n/a,,,,,District Votes:,,,,,,179708,,,,,,
 3422,VA,Virginia,,n/a,,,,,,,,,,,,,,,,,
-3423,VA,Virginia,07 - FULL TERM,H4VA07143 ,,Dave A.,Brat,Brat; Dave A.,,R,36105,55.53%,,,148026,60.83%,,,,,W
-3424,VA,Virginia,07 - FULL TERM,H0VA07042,(I),Eric I. ,Cantor,Cantor; Eric I. ,,R,28912,44.47%,,,,,,,,,
-3425,VA,Virginia,07 - FULL TERM,n/a,,,,,Party Votes:,R,65017,,,,,,,,,,
-3426,VA,Virginia,07 - FULL TERM,H4VA07150,,"John K. ""Jack""",Trammell,"Trammell; John K. ""Jack""",,D,,,,,89914,36.95%,,,,,
-3427,VA,Virginia,07 - FULL TERM,H4VA07168,,"James A., Jr.",Carr,Carr; James A.; Jr.,,LIB,,,,,5086,2.09%,,,,,
-3428,VA,Virginia,07 - FULL TERM,n/a,,,Scattered,Scattered,,W,,,,,325,0.13%,,,,,
-3429,VA,Virginia,07 - FULL TERM,n/a,,,,,District Votes:,,65017,,,,243351,,,,,,
+3423,VA,Virginia,7,H4VA07143 ,,Dave A.,Brat,Brat; Dave A.,,R,36105,55.53%,,,148026,60.83%,,,,,W
+3424,VA,Virginia,7,H0VA07042,(I),Eric I. ,Cantor,Cantor; Eric I. ,,R,28912,44.47%,,,,,,,,,
+3425,VA,Virginia,7,n/a,,,,,Party Votes:,R,65017,,,,,,,,,,
+3426,VA,Virginia,7,H4VA07150,,"John K. ""Jack""",Trammell,"Trammell; John K. ""Jack""",,D,,,,,89914,36.95%,,,,,
+3427,VA,Virginia,7,H4VA07168,,James A. Jr.,Carr,Carr; James A.; Jr.,,LIB,,,,,5086,2.09%,,,,,
+3428,VA,Virginia,7,n/a,,,Scattered,Scattered,,W,,,,,325,0.13%,,,,,
+3429,VA,Virginia,7,n/a,,,,,District Votes:,,65017,,,,243351,,,,,,
 3430,VA,Virginia,,n/a,,,,,,,,,,,,,,,,,
 3431,VA,Virginia,07 - UNEXPIRED TERM,H4VA07143 ,,Dave A.,Brat,Brat; Dave A.,,R,#,,,,148841,61.68%,,,,,
 3432,VA,Virginia,07 - UNEXPIRED TERM,H4VA07150,,"John K. ""Jack""",Trammell,"Trammell; John K. ""Jack""",,D,#,,,,91236,37.81%,,,,,
 3433,VA,Virginia,07 - UNEXPIRED TERM,n/a,,,Scattered,Scattered,,W,,,,,1236,0.51%,,,,,
 3434,VA,Virginia,07 - UNEXPIRED TERM,n/a,,,,,District Votes:,,,,,,241313,,,,,,
 3435,VA,Virginia,,n/a,,,,,,,,,,,,,,,,,
-3436,VA,Virginia,8,H4VA08224 ,,"Donald S., Jr.",Beyer,Beyer; Donald S.; Jr.,,D,17783,45.75%,,,128102,63.08%,,,,,W
+3436,VA,Virginia,8,H4VA08224 ,,Donald S. Jr.,Beyer,Beyer; Donald S.; Jr.,,D,17783,45.75%,,,128102,63.08%,,,,,W
 3437,VA,Virginia,8,H4VA08216 ,,Patrick A.,Hope,Hope; Patrick A.,,D,7095,18.26%,,,,,,,,,
 3438,VA,Virginia,8,H4VA08208,,Adam P.,Ebbin,Ebbin; Adam P.,,D,5262,13.54%,,,,,,,,,
 3439,VA,Virginia,8,H4VA08240,,"William D. ""Bill""",Euille,"Euille; William D. ""Bill""",,D,3264,8.40%,,,,,,,,,
@@ -3450,12 +3450,12 @@
 3450,VA,Virginia,8,n/a,,,,,Party Votes:,R,224*,,,,,,,,,,
 3451,VA,Virginia,8,H4VA08331,,Gwendolyn J. ,Beck,Beck; Gwendolyn J. ,,IND,,,,,5420,2.67%,,,,,
 3452,VA,Virginia,8,H4VA08265,,Jeffrey S.,Carson,Carson; Jeffrey S.,,LIB,,,,,4409,2.17%,,,,,
-3453,VA,Virginia,8,H4VA08349,,"Gerard C. ""Gerry,"" III",Blais,"Blais; Gerard C. ""Gerry;"" III",,IGR,,,,,963,0.47%,,,,,
+3453,VA,Virginia,8,H4VA08349,,"Gerard C. ""Gerry"" III",Blais,"Blais; Gerard C. ""Gerry;"" III",,IGR,,,,,963,0.47%,,,,,
 3454,VA,Virginia,8,n/a,,,Scattered,Scattered,,W,,,,,372,0.18%,,,,,
 3455,VA,Virginia,8,n/a,,,,,District Votes:,,39090,,,,203076,,,,,,
 3456,VA,Virginia,,n/a,,,,,,,,,,,,,,,,,
 3457,VA,Virginia,9,H0VA09055 ,(I),H. Morgan ,Griffith,Griffith; H. Morgan ,,R,Unopposed,,,,117465,72.15%,,,,,W
-3458,VA,Virginia,9,H0VA09113,,"William R., Jr.",Carr,Carr; William R.; Jr.,,IND,,,,,39412,24.21%,,,,,
+3458,VA,Virginia,9,H0VA09113,,William R. Jr.,Carr,Carr; William R.; Jr.,,IND,,,,,39412,24.21%,,,,,
 3459,VA,Virginia,9,n/a,,,Scattered,Scattered,,W,,,,,5938,3.65%,,,,,
 3460,VA,Virginia,9,n/a,,,,,District Votes:,,,,,,162815,,,,,,
 3461,VA,Virginia,,n/a,,,,,,,,,,,,,,,,,
@@ -3558,7 +3558,7 @@
 3558,,,,n/a,,,,,,,,,,,,,,,,,
 3559,WV,West Virginia,1,H0WV01072,(I),David B. ,McKinley,McKinley; David B. ,,R,27589,100.00%,,,92491,63.90%,,,,,W
 3560,WV,West Virginia,1,n/a,,,,,Party Votes:,R,27589,,,,,,,,,,
-3561,WV,West Virginia,1,H2WV01037,,"Glen B., III",Gainer,Gainer; Glen B.; III,,D,34764,100.00%,,,52109,36.00%,,,,,
+3561,WV,West Virginia,1,H2WV01037,,Glen B. III,Gainer,Gainer; Glen B.; III,,D,34764,100.00%,,,52109,36.00%,,,,,
 3562,WV,West Virginia,1,n/a,,,,,Party Votes:,D,34764,,,,,,,,,,
 3563,WV,West Virginia,1,H4WV01041,,Chuck,Wood,Wood; Chuck,,W,,,,,137,0.09%,,,,,
 3564,WV,West Virginia,1,n/a,,,,,District Votes:,,62353,,,,144737,,,,,,
@@ -3567,7 +3567,7 @@
 3567,WV,West Virginia,2,H4WV02122,,Ken ,Reed,Reed; Ken ,,R,7848,22.30%,,,,,,,,,
 3568,WV,West Virginia,2,H4WV02098,,Charlotte ,Lane,Lane; Charlotte ,,R,6358,18.06%,,,,,,,,,
 3569,WV,West Virginia,2,H4WV02155 ,,Steve ,Harrison,Harrison; Steve ,,R,3885,11.04%,,,,,,,,,
-3570,WV,West Virginia,2,H4WV02114 ,,"Ron, Jr.",Walters,Walters; Ron; Jr.,,R,2125,6.04%,,,,,,,,,
+3570,WV,West Virginia,2,H4WV02114 ,,Ron Jr.,Walters,Walters; Ron; Jr.,,R,2125,6.04%,,,,,,,,,
 3571,WV,West Virginia,2,H2WV02167 ,,Jim,Moss,Moss; Jim,,R,1684,4.78%,,,,,,,,,
 3572,WV,West Virginia,2,H4WV02148 ,,Robert Lawrence ,Fluharty,Fluharty; Robert Lawrence ,,R/W,621,1.76%,,,9,0.01%,,,,,
 3573,WV,West Virginia,2,n/a,,,,,Party Votes:,R,35199,,,,,,,,,,
@@ -3581,8 +3581,8 @@
 3581,WV,West Virginia,,n/a,,,,,,,,,,,,,,,,,
 3582,WV,West Virginia,3,H4WV03070,,Evan,Jenkins,Jenkins; Evan,,R,14374,100.00%,,,77713,55.35%,,,,,W
 3583,WV,West Virginia,3,n/a,,,,,Party Votes:,R,14374,,,,,,,,,,
-3584,WV,West Virginia,3,H6WV04057,(I),"Nick J., II",Rahall,Rahall; Nick J.; II,,D,37176,66.45%,,,62688,44.65%,,,,,
-3585,WV,West Virginia,3,H4WV03088,,"Richard, II",Ojeda,Ojeda; Richard; II,,D,18767,33.55%,,,,,,,,,
+3584,WV,West Virginia,3,H6WV04057,(I),Nick J. II,Rahall,Rahall; Nick J.; II,,D,37176,66.45%,,,62688,44.65%,,,,,
+3585,WV,West Virginia,3,H4WV03088,,Richard II,Ojeda,Ojeda; Richard; II,,D,18767,33.55%,,,,,,,,,
 3586,WV,West Virginia,3,n/a,,,,,Party Votes:,D,55943,,,,,,,,,,
 3587,WV,West Virginia,3,n/a,,,,,District Votes:,,70317,,,,140401,,,,,,
 3588,WV,West Virginia,,n/a,,,,,,,,,,,,,,,,,
@@ -3641,7 +3641,7 @@
 3641,WI,Wisconsin,4,n/a,,,Scattered,Scattered,,W,,,,,355,0.14%,,,,,
 3642,WI,Wisconsin,4,n/a,,,,,District Votes:,,78181,,,,254892,,,,,,
 3643,WI,Wisconsin,,n/a,,,,,,,,,,,,,,,,,
-3644,WI,Wisconsin,5,H8WI09050 ,(I),"F. James., Jr.",Sensenbrenner,Sensenbrenner; F. James.; Jr.,,R,43266,99.81%,,,231160,69.45%,,,,,W
+3644,WI,Wisconsin,5,H8WI09050 ,(I),F. James. Jr.,Sensenbrenner,Sensenbrenner; F. James.; Jr.,,R,43266,99.81%,,,231160,69.45%,,,,,W
 3645,WI,Wisconsin,5,n/a,,,Scattered,Scattered,,W(R),82,0.19%,,,,,,,,,
 3646,WI,Wisconsin,5,n/a,,,,,Party Votes:,R,43348,,,,,,,,,,
 3647,WI,Wisconsin,5,H4WI05099,,Chris,Rockwood,Rockwood; Chris,,D,21715,99.35%,,,101190,30.40%,,,,,

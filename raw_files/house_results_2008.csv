@@ -49,7 +49,7 @@
 49,Alabama,AL,S,S8AL00167,,Earl Mack,Gavin,Gavin; Earl Mack,,R,16718,7.73%,,,,,,,,,
 50,Alabama,AL,S,n/a,,,,,Party Votes:,R,216408,,,,,,,,,,
 51,Alabama,AL,S,S8AL00282,,Vivian Davis,Figures,Figures; Vivian Davis,,D,112074,63.72%,,,752391,36.52%,,,,,
-52,Alabama,AL,S,S0AL00149,,"Johnny, III",Swanson,Swanson; Johnny; III,,D,38757,22.03%,,,,,,,,,
+52,Alabama,AL,S,S0AL00149,,Johnny III,Swanson,Swanson; Johnny; III,,D,38757,22.03%,,,,,,,,,
 53,Alabama,AL,S,S8AL00290,,"Mark ""No NCAA""",Townsend,"Townsend; Mark ""No NCAA""",,D,25058,14.25%,,,,,,,,,
 54,Alabama,AL,S,n/a,,,,,Party Votes:,D,175889,,,,,,,,,,
 55,Alabama,AL,S,n/a,,,Scattered,Scattered,,W,,,,,2417,0.12%,,,,,
@@ -413,7 +413,7 @@
 413,California,CA,33,H8CA33250,,Felicia,Ford,Ford; Felicia,,D,3738,7.33%,,,,,,,,,
 414,California,CA,33,H0CA32085,,Mervin,Evans,Evans; Mervin,,D,2315,4.54%,,,,,,,,,
 415,California,CA,33,n/a,,,,,Party Votes:,D,50987,,,,,,,,,,
-416,California,CA,33,H8CA33243,,"David C., II",Crowley,Crowley; David C.; II,,R,4680,100.00%,,,26536,12.43%,,,,,
+416,California,CA,33,H8CA33243,,David C. II,Crowley,Crowley; David C.; II,,R,4680,100.00%,,,26536,12.43%,,,,,
 417,California,CA,33,n/a,,,,,Party Votes:,R,4680,,,,,,,,,,
 418,California,CA,33,n/a,,,,,District Votes:,,55667,,,,213460,,,,,,
 419,California,CA,34,H2CA33048,(I),Lucille,Roybal-Allard,Roybal-Allard; Lucille,,D,12622,99.98%,,,98503,77.09%,,,,,
@@ -658,7 +658,7 @@
 658,Connecticut,CT,5,H8CT05120,,David J.,Cappiello,Cappiello; David J.,,R,Winner,,,,117914,38.96%,,,,,"* A candidate is endorsed by the party at the party convention.  A primary election is only held if a qualified challenger to the party endorsed candidate receives 15% of the delegate votes on roll call at the convention and files for a primary, or, if after the convention, a challenger files a requisite number of petitions to qualify for primary ballot access.  Otherwise, the party endorsed candidate is the nominee.  The Republican conventions for U.S. House were held on May 10, 2008, and the Democratic conventions were held on May 12, 2008.  Convention nominees are noted with an asterisk."
 659,Connecticut,CT,5,H8CT05146,,Anthony Joseph,Nania,Nania; Anthony Joseph,,R,Loser,,,,,,,,,,"* A candidate is endorsed by the party at the party convention.  A primary election is only held if a qualified challenger to the party endorsed candidate receives 15% of the delegate votes on roll call at the convention and files for a primary, or, if after the convention, a challenger files a requisite number of petitions to qualify for primary ballot access.  Otherwise, the party endorsed candidate is the nominee.  The Republican conventions for U.S. House were held on May 10, 2008, and the Democratic conventions were held on May 12, 2008.  Convention nominees are noted with an asterisk."
 660,Connecticut,CT,5,H8CT05153,,Thomas L.,Winn,Winn; Thomas L.,,I,,,,,3082,1.02%,,,,,
-661,Connecticut,CT,5,H8CT05138,,"Harold H., II",Burbank,Burbank; Harold H.; II,,GRE,,,,,2324,0.77%,,,,,
+661,Connecticut,CT,5,H8CT05138,,Harold H. II,Burbank,Burbank; Harold H.; II,,GRE,,,,,2324,0.77%,,,,,
 662,Connecticut,CT,5,n/a,,Walter,Gengarelly,Gengarelly; Walter,,W,,,,,10,0.00%,,,,,
 663,Connecticut,CT,5,n/a,,,,,District Votes:,,,,,,302657,,,,,,"* A candidate is endorsed by the party at the party convention.  A primary election is only held if a qualified challenger to the party endorsed candidate receives 15% of the delegate votes on roll call at the convention and files for a primary, or, if after the convention, a challenger files a requisite number of petitions to qualify for primary ballot access.  Otherwise, the party endorsed candidate is the nominee.  The Republican conventions for U.S. House were held on May 10, 2008, and the Democratic conventions were held on May 12, 2008.  Convention nominees are noted with an asterisk."
 664,Connecticut,CT,H,n/a,,,,,Total House Votes:,,14100,,,,1527399,,,,,,
@@ -670,7 +670,7 @@
 670,Delaware,DE,0,H8DE00087,,Mark Anthony,Parks,Parks; Mark Anthony,,LBT,n/a,,,,3586,0.93%,,,,,
 671,Delaware,DE,0,n/a,,,,,District Votes:,,64997,,,,385457,,,,,,
 672,Delaware,DE,H,n/a,,,,,Total House Votes:,,64997,,,,385457,,,,,,
-673,Delaware,DE,S,S8DE00012,(I),"Joseph R., Jr.",Biden,Biden; Joseph R.; Jr.,,D,Unopposed,,,,257539,64.69%,,,,,
+673,Delaware,DE,S,S8DE00012,(I),Joseph R. Jr.,Biden,Biden; Joseph R.; Jr.,,D,Unopposed,,,,257539,64.69%,,,,,
 674,Delaware,DE,S,S6DE00131,,Christine,O'Donnell,O'Donnell; Christine,,R,Unopposed,,,,140595,35.31%,,,,,
 675,Delaware,DE,S,n/a,,,,,Total Senate Votes:,,,,,,398134,,,,,,
 676,District of Columbi,DC,0,H0DC00058,(I),Eleanor Holmes,Norton,Norton; Eleanor Holmes,,D,38999,98.28%,,,228376,92.28%,,,,,
@@ -741,7 +741,7 @@
 741,Florida,FL,10,H6FL10086,,Don,Callahan,Callahan; Don,,W,,,,,9,0.00%,,,,,
 742,Florida,FL,10,n/a,,,,,District Votes:,,22289,,,,301220,,,,,,
 743,Florida,FL,11,H6FL11126,(I),Kathy,Castor,Castor; Kathy,,D,Unopposed,,,,184106,71.66%,,,,,
-744,Florida,FL,11,H6FL11175,,"Eddie, Jr.",Adams,Adams; Eddie; Jr.,,R,Unopposed,,,,72825,28.34%,,,,,
+744,Florida,FL,11,H6FL11175,,Eddie Jr.,Adams,Adams; Eddie; Jr.,,R,Unopposed,,,,72825,28.34%,,,,,
 745,Florida,FL,11,n/a,,,,,District Votes:,,,,,,256931,,,,,,
 746,Florida,FL,12,H0FL12051,(I),Adam H.,Putnam,Putnam; Adam H.,,R,Unopposed,,,,185698,57.46%,,,,,
 747,Florida,FL,12,H8FL12054,,Doug,Tudor,Tudor; Doug,,D,Unopposed,,,,137465,42.54%,,,,,
@@ -798,7 +798,7 @@
 798,Florida,FL,23,H2FL23021,(I),Alcee L.,Hastings,Hastings; Alcee L.,,D,31182,88.04%,,,172835,82.18%,,,,,
 799,Florida,FL,23,H8FL23028,,Ray Torres,Sanchez,Sanchez; Ray Torres,,D,4235,11.96%,,,,,,,,,
 800,Florida,FL,23,n/a,,,,,Party Votes:,D,35417,,,,,,,,,,
-801,Florida,FL,23,H4FL23050,,"Marion D., Jr.",Thorpe,Thorpe; Marion D.; Jr.,,R,Unopposed,,,,37431,17.80%,,,,,
+801,Florida,FL,23,H4FL23050,,Marion D. Jr.,Thorpe,Thorpe; Marion D.; Jr.,,R,Unopposed,,,,37431,17.80%,,,,,
 802,Florida,FL,23,H8FL23036,,April,Cook,Cook; April,,W,n/a,,,,40,0.02%,,,,,
 803,Florida,FL,23,n/a,,,,,District Votes:,,35417,,,,210306,,,,,,
 804,Florida,FL,24,H8FL24026,,Suzanne M.,Kosmas,Kosmas; Suzanne M.,,D,18672,72.35%,,,211284,57.20%,,,,,
@@ -829,7 +829,7 @@
 829,Georgia,GA,3,n/a,,,,,Party Votes:,D,18984,,,,,,,,,,
 830,Georgia,GA,3,H8GA03036,,Loretta,VanPelt,VanPelt; Loretta,,W,,,,,3,0.00%,,,,,
 831,Georgia,GA,3,n/a,,,,,District Votes:,,74112,,,,342580,,,,,,
-832,Georgia,GA,4,H6GA04129,(I),"Henry C. ""Hank,"" Jr.",Johnson,"Johnson; Henry C. ""Hank;"" Jr.",,D,47439,100.00%,,,224494,99.91%,,,,,
+832,Georgia,GA,4,H6GA04129,(I),"Henry C. ""Hank"" Jr.",Johnson,"Johnson; Henry C. ""Hank;"" Jr.",,D,47439,100.00%,,,224494,99.91%,,,,,
 833,Georgia,GA,4,n/a,,,,,Party Votes:,D,47439,,,,,,,,,,
 834,Georgia,GA,4,H6GA04145,,Loren Christopher,Collins,Collins; Loren Christopher,,W,,,,,159,0.07%,,,,,
 835,Georgia,GA,4,H8GA04083,,Faye,Coffield,Coffield; Faye,,W,,,,,35,0.02%,,,,,
@@ -899,7 +899,7 @@
 899,Georgia,GA,S,n/a,,,,,Party Votes:,D,493226,,319054,,,,,,,,
 900,Georgia,GA,S,S4GA11103,,Allen,Buckley,Buckley; Allen,,LBT,n/a,n/a,,,127923,3.41%,,,,,
 901,Georgia,GA,S,S2GA00142,,Eleanor,Garcia,Garcia; Eleanor,,W,n/a,,,,43,0.00%,,,,,
-902,Georgia,GA,S,S8GA00172,,"William, Jr.",Salomone,Salomone; William; Jr.,,W,n/a,,,,29,0.00%,,,,,
+902,Georgia,GA,S,S8GA00172,,William Jr.,Salomone,Salomone; William; Jr.,,W,n/a,,,,29,0.00%,,,,,
 903,Georgia,GA,S,n/a,,,,,Total Senate Votes:,,886128,,319054,,3752485,,2137956,,,,
 904,Guam,GU,0,H2GU00033,(I),Madeleine Z.,Bordallo,Bordallo; Madeleine Z.,,D,8716,74.85%,,,28247,96.97%,,,,,
 905,Guam,GU,0,H8GU00022,,Jonathan Blas,Diaz,Diaz; Jonathan Blas,,D,2904,24.94%,,,,,,,,,
@@ -952,7 +952,7 @@
 952,Idaho,ID,S,S8ID00134,,Fred M.,Adams,Adams; Fred M.,,R,4987,4.04%,,,,,,,,,
 953,Idaho,ID,S,S8ID00175,,Bill,Hunter,Hunter; Bill,,R,4280,3.46%,,,,,,,,,
 954,Idaho,ID,S,S8ID00159,,Brian E.,Hefner,Hefner; Brian E.,,R,2915,2.36%,,,,,,,,,
-955,Idaho,ID,S,S8ID00183,,"Hal James, Jr.",Styles,Styles; Hal James; Jr.,,R,2082,1.68%,,,,,,,,,
+955,Idaho,ID,S,S8ID00183,,Hal James Jr.,Styles,Styles; Hal James; Jr.,,R,2082,1.68%,,,,,,,,,
 956,Idaho,ID,S,n/a,,,,,Party Votes:,R,123574,,,,,,,,,,
 957,Idaho,ID,S,S8ID00076,,Larry,LaRocco,LaRocco; Larry,,D,29023,72.35%,,,219903,34.11%,,,,,
 958,Idaho,ID,S,S8ID00167,,David J.,Archuleta,Archuleta; David J.,,D,11074,27.60%,,,,,,,,,
@@ -963,12 +963,12 @@
 963,Idaho,ID,S,S8ID00191,,,Pro-Life,Pro-Life ,,I,n/a,,,,8662,1.34%,,,,,
 964,Idaho,ID,S,n/a,,,,,Total Senate Votes:,,163691,,,,644780,,,,,,
 965,Illinois,IL,1,H2IL01042,(I),Bobby L.,Rush,Rush; Bobby L.,,D,134343,87.45%,,,233036,85.87%,,,,,
-966,Illinois,IL,1,H8IL01080,,"William, III",Walls,Walls; William; III,,D,19272,12.55%,,,,,,,,,
+966,Illinois,IL,1,H8IL01080,,William III,Walls,Walls; William; III,,D,19272,12.55%,,,,,,,,,
 967,Illinois,IL,1,n/a,,,,,Party Votes:,D,153615,,,,,,,,,,
 968,Illinois,IL,1,H8IL01098,,Antoine,Members,Members; Antoine,,R,7987,100.00%,,,38361,14.13%,,,,,
 969,Illinois,IL,1,n/a,,,,,Party Votes:,R,7987,,,,,,,,,,
 970,Illinois,IL,1,n/a,,,,,District Votes:,,161602,,,,271397,,,,,,
-971,Illinois,IL,2,H6IL02124,(I),"Jesse L., Jr.",Jackson,Jackson; Jesse L.; Jr.,,D,149760,100.00%,,,251052,89.41%,,,,,
+971,Illinois,IL,2,H6IL02124,(I),Jesse L. Jr.,Jackson,Jackson; Jesse L.; Jr.,,D,149760,100.00%,,,251052,89.41%,,,,,
 972,Illinois,IL,2,n/a,,,,,Party Votes:,D,149760,,,,,,,,,,
 973,Illinois,IL,2,H2IL02107,,Anthony W.,Williams,Williams; Anthony W.,,R,??,??,,,29721,10.59%,,,,,
 974,Illinois,IL,2,n/a,,Nathan,Peoples,Peoples; Nathan,,W,,,,,3,0.00%,,,,,
@@ -1041,7 +1041,7 @@
 1041,Illinois,IL,11,n/a,,,,,District Votes:,,127282,,,,317895,,,,,,
 1042,Illinois,IL,12,H8IL21021,(I),Jerry F.,Costello,Costello; Jerry F.,,D,91636,100.00%,,,212891,71.40%,,,,,
 1043,Illinois,IL,12,n/a,,,,,Party Votes:,D,91636,,,,,,,,,,
-1044,Illinois,IL,12,H8IL12061,,"Timmy Jay, Jr.",Richardson,Richardson; Timmy Jay; Jr.,,R,31780,100.00%,,,74382,24.95%,,,,,
+1044,Illinois,IL,12,H8IL12061,,Timmy Jay Jr.,Richardson,Richardson; Timmy Jay; Jr.,,R,31780,100.00%,,,74382,24.95%,,,,,
 1045,Illinois,IL,12,n/a,,,,,Party Votes:,R,31780,,,,,,,,,,
 1046,Illinois,IL,12,H8IL12079,,Rodger W.,Jennings,Jennings; Rodger W.,,GRE,234,100.00%,,,10907,3.66%,,,,,
 1047,Illinois,IL,12,n/a,,,,,Party Votes:,GRE,234,,,,,,,,,,
@@ -1157,10 +1157,10 @@
 1157,Indiana,IN,6,H6IN06024,,George T.,Holland,Holland; George T.,,LBT,n/a,,,,7539,2.67%,,,,,"*  The Libertarian Party nominated by convention on April 26, 2008.  Convention nominees are noted with an asterisk."
 1158,Indiana,IN,6,n/a,,,,,District Votes:,,140490,,,,282412,,,,,,
 1159,Indiana,IN,7,H8IN07184,(I),Andre D.,Carson,Carson; Andre D.,,D,66659,46.52%,,,172650,65.08%,,,,,
-1160,Indiana,IN,7,H8IN07200,,"Woodrow A. (Woody), Jr.",Myers,Myers; Woodrow A. (Woody); Jr.,,D,33683,23.50%,,,,,,,,,
+1160,Indiana,IN,7,H8IN07200,,Woodrow A. (Woody) Jr.,Myers,Myers; Woodrow A. (Woody); Jr.,,D,33683,23.50%,,,,,,,,,
 1161,Indiana,IN,7,H8IN07176,,David,Orentlicher,Orentlicher; David,,D,29231,20.40%,,,,,,,,,
 1162,Indiana,IN,7,H8IN07226,,Carolene,Mays,Mays; Carolene,,D,11011,7.68%,,,,,,,,,
-1163,Indiana,IN,7,H6IN07345,,"Joseph C. ""Hippie Joe,"" III",Stockett,"Stockett; Joseph C. ""Hippie Joe;"" III",,D,1125,0.79%,,,,,,,,,
+1163,Indiana,IN,7,H6IN07345,,"Joseph C. ""Hippie Joe"" III",Stockett,"Stockett; Joseph C. ""Hippie Joe;"" III",,D,1125,0.79%,,,,,,,,,
 1164,Indiana,IN,7,H8IN07242,,Frances Nelson,Williams,Williams; Frances Nelson,,D,708,0.49%,,,,,,,,,
 1165,Indiana,IN,7,H8IN07234,,Larry Lamont,Ledford,Ledford; Larry Lamont,,D,648,0.45%,,,,,,,,,
 1166,Indiana,IN,7,H6IN07337,,Pierre Quincy,Pullins,Pullins; Pierre Quincy,,D,240,0.17%,,,,,,,,,
@@ -1248,42 +1248,42 @@
 1248,Iowa,IA,S,n/a,,,,,Party Votes:,R,70672,,,,,,,,,,
 1249,Iowa,IA,S,n/a,,,Scattered,Scattered,,W,,,,,1247,0.08%,,,,,
 1250,Iowa,IA,S,n/a,,,,,Total Senate Votes:,,162531,,,,1502918,,,,,,
-1251,Kansas,KS,1,H6KS01096,(I),Jerry ,Moran,Moran; Jerry ,,R ,67978,100.00%,,,214549,81.88%,,,,,
-1252,Kansas,KS,1,n/a,,,,,Party Votes:,R ,67978,,,,,,,,,,
-1253,Kansas,KS,1,H8KS01027,,James ,Bordonaro,Bordonaro; James ,,D ,13580,100.00%,,,34771,13.27%,,,,,
-1254,Kansas,KS,1,n/a,,,,,Party Votes:,D ,13580,,,,,,,,,,
+1251,Kansas,KS,1,H6KS01096,(I),Jerry ,Moran,Moran; Jerry ,,R,67978,100.00%,,,214549,81.88%,,,,,
+1252,Kansas,KS,1,n/a,,,,,Party Votes:,R,67978,,,,,,,,,,
+1253,Kansas,KS,1,H8KS01027,,James ,Bordonaro,Bordonaro; James ,,D,13580,100.00%,,,34771,13.27%,,,,,
+1254,Kansas,KS,1,n/a,,,,,Party Votes:,D,13580,,,,,,,,,,
 1255,Kansas,KS,1,H8KS01035,,Kathleen M.,Burton,Burton; Kathleen M.,,REF,n/a,G,,,7145,2.73%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1256,Kansas,KS,1,H0KS01081,,Jack ,Warner,Warner; Jack ,,LBT,n/a,G,,,5562,2.12%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1257,Kansas,KS,1,n/a,,,,,District Votes:,,81558,,,,262027,,,,,,
-1258,Kansas,KS,2,H8KS02090,,Lynn ,Jenkins,Jenkins; Lynn ,,R ,34278,50.98%,,,155532,50.61%,,,,,
-1259,Kansas,KS,2,H6KS02227,,Jim ,Ryun,Ryun; Jim ,,R ,32966,49.02%,,,,,,,,,
-1260,Kansas,KS,2,n/a,,,,,Party Votes:,R ,67244,,,,,,,,,,
-1261,Kansas,KS,2,H4KS02107,(I),Nancy E.,Boyda,Boyda; Nancy E.,,D ,32395,100.00%,,,142013,46.21%,,,,,
-1262,Kansas,KS,2,n/a,,,,,Party Votes:,D ,32395,,,,,,,,,,
+1258,Kansas,KS,2,H8KS02090,,Lynn ,Jenkins,Jenkins; Lynn ,,R,34278,50.98%,,,155532,50.61%,,,,,
+1259,Kansas,KS,2,H6KS02227,,Jim ,Ryun,Ryun; Jim ,,R,32966,49.02%,,,,,,,,,
+1260,Kansas,KS,2,n/a,,,,,Party Votes:,R,67244,,,,,,,,,,
+1261,Kansas,KS,2,H4KS02107,(I),Nancy E.,Boyda,Boyda; Nancy E.,,D,32395,100.00%,,,142013,46.21%,,,,,
+1262,Kansas,KS,2,n/a,,,,,Party Votes:,D,32395,,,,,,,,,,
 1263,Kansas,KS,2,H8KS02116,,Leslie S.,Martin,Martin; Leslie S.,,REF,n/a,G,,,5080,1.65%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1264,Kansas,KS,2,H8KS02108,,Robert ,Garrard,Garrard; Robert ,,LBT,n/a,G,,,4683,1.52%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1265,Kansas,KS,2,n/a,,,,,District Votes:,,99639,,,,307308,,,,,,
-1266,Kansas,KS,3,H8KS03049,(I),Dennis ,Moore,Moore; Dennis ,,D ,27431,100.00%,,,202541,56.44%,,,,,
-1267,Kansas,KS,3,n/a,,,,,Party Votes:,D ,27431,,,,,,,,,,
-1268,Kansas,KS,3,H8KS03064,,Nick ,Jordan,Jordan; Nick ,,R ,39091,76.01%,,,142307,39.66%,,,,,
-1269,Kansas,KS,3,H6KS03209,,Paul V.,Showen,Showen; Paul V.,,R ,12338,23.99%,,,,,,,,,
-1270,Kansas,KS,3,n/a,,,,,Party Votes:,R ,51429,,,,,,,,,,
+1266,Kansas,KS,3,H8KS03049,(I),Dennis ,Moore,Moore; Dennis ,,D,27431,100.00%,,,202541,56.44%,,,,,
+1267,Kansas,KS,3,n/a,,,,,Party Votes:,D,27431,,,,,,,,,,
+1268,Kansas,KS,3,H8KS03064,,Nick ,Jordan,Jordan; Nick ,,R,39091,76.01%,,,142307,39.66%,,,,,
+1269,Kansas,KS,3,H6KS03209,,Paul V.,Showen,Showen; Paul V.,,R,12338,23.99%,,,,,,,,,
+1270,Kansas,KS,3,n/a,,,,,Party Votes:,R,51429,,,,,,,,,,
 1271,Kansas,KS,3,H8KS03072,,Joe ,Bellis,Bellis; Joe ,,LBT,n/a,G,,,10073,2.81%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1272,Kansas,KS,3,H6KS02235,,Roger D.,Tucker,Tucker; Roger D.,,REF,n/a,G,,,3937,1.10%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1273,Kansas,KS,3,n/a,,,,,District Votes:,,78860,,,,358858,,,,,,
-1274,Kansas,KS,4,H4KS04087,(I),Todd ,Tiahrt,Tiahrt; Todd ,,R ,39494,100.00%,,,177617,63.41%,,,,,
-1275,Kansas,KS,4,n/a,,,,,Party Votes:,R ,39494,,,,,,,,,,
-1276,Kansas,KS,4,H8KS04062,,"Donald, Jr. ",Betts,Betts; Donald; Jr. ,,D ,15448,100.00%,,,90706,32.38%,,,,,
-1277,Kansas,KS,4,n/a,,,,,Party Votes:,D ,15448,,,,,,,,,,
+1274,Kansas,KS,4,H4KS04087,(I),Todd ,Tiahrt,Tiahrt; Todd ,,R,39494,100.00%,,,177617,63.41%,,,,,
+1275,Kansas,KS,4,n/a,,,,,Party Votes:,R,39494,,,,,,,,,,
+1276,Kansas,KS,4,H8KS04062,,Donald Jr. ,Betts,Betts; Donald; Jr. ,,D,15448,100.00%,,,90706,32.38%,,,,,
+1277,Kansas,KS,4,n/a,,,,,Party Votes:,D,15448,,,,,,,,,,
 1278,Kansas,KS,4,H8KS04070,,Susan G.,Ducey,Ducey; Susan G.,,REF,n/a,G,,,6441,2.30%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1279,Kansas,KS,4,H2KS01061,,Steven A.,Rosile,Rosile; Steven A.,,LBT,n/a,G,,,5345,1.91%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1280,Kansas,KS,4,n/a,,,,,District Votes:,,54942,,,,280109,,,,,,
 1281,Kansas,KS,H,n/a,,,,,Total House Votes:,,314999,,,,1208302,,,,,,
-1282,Kansas,KS,S,S6KS00080,(I),Pat ,Roberts,Roberts; Pat ,,R ,214911,100.00%,,,727121,60.06%,,,,,
-1283,Kansas,KS,S,n/a,,,,,Party Votes:,R ,214911,,,,,,,,,,
-1284,Kansas,KS,S,S8KS00235,,Jim ,Slattery,Slattery; Jim ,,D ,68106,68.93%,,,441399,36.46%,,,,,
-1285,Kansas,KS,S,S4KS00085,,Lee ,Jones,Jones; Lee ,,D ,30699,31.07%,,,,,,,,,
-1286,Kansas,KS,S,n/a,,,,,Party Votes:,D ,98805,,,,,,,,,,
+1282,Kansas,KS,S,S6KS00080,(I),Pat ,Roberts,Roberts; Pat ,,R,214911,100.00%,,,727121,60.06%,,,,,
+1283,Kansas,KS,S,n/a,,,,,Party Votes:,R,214911,,,,,,,,,,
+1284,Kansas,KS,S,S8KS00235,,Jim ,Slattery,Slattery; Jim ,,D,68106,68.93%,,,441399,36.46%,,,,,
+1285,Kansas,KS,S,S4KS00085,,Lee ,Jones,Jones; Lee ,,D,30699,31.07%,,,,,,,,,
+1286,Kansas,KS,S,n/a,,,,,Party Votes:,D,98805,,,,,,,,,,
 1287,Kansas,KS,S,S8KS00243,,Randall L.,Hodgkinson,Hodgkinson; Randall L.,,LBT,n/a,,,,25727,2.12%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1288,Kansas,KS,S,S8KS00250,,Joseph L.,Martin,Martin; Joseph L.,,REF,n/a,,,,16443,1.36%,,,,,"* The Libertarian Party nominated by convention on April 26, 2008, and the Reform Party nominated by convention on May 31, 2008.  Convention nominees are noted with an asterisk."
 1289,Kansas,KS,S,n/a,,,,,Total Senate Votes:,,313716,,,,1210690,,,,,,
@@ -1300,7 +1300,7 @@
 1300,Kentucky,KY,3,H6KY03090,,Anne M.,Northup,Northup; Anne M.,,R,32570,76.88%,,,139527,40.63%,,,,,
 1301,Kentucky,KY,3,H4KY03202,,Corley C.,Everett,Everett; Corley C.,,R,Withdrew,,,,,,,,,,
 1302,Kentucky,KY,3,H8KY03153,,Chris,Thieneman,Thieneman; Chris,,R,9080,21.43%,,,,,,,,,
-1303,Kentucky,KY,3,H8KY03161,,"Bob, Jr.",DeVore,DeVore; Bob; Jr.,,R,713,1.68%,,,,,,,,,
+1303,Kentucky,KY,3,H8KY03161,,Bob Jr.,DeVore,DeVore; Bob; Jr.,,R,713,1.68%,,,,,,,,,
 1304,Kentucky,KY,3,n/a,,,,,Party Votes:,R,42363,,,,,,,,,,
 1305,Kentucky,KY,3,n/a,,,,,District Votes:,,42363,,,,343370,,,,,,
 1306,Kentucky,KY,4,H2KY04071,(I),Geoff,Davis,Davis; Geoff,,R,30189,85.17%,,,190210,63.03%,,,,,
@@ -1371,8 +1371,8 @@
 1371,Louisiana,LA,6,H8LA06022,,"""Don""",Cazayoux,"Cazayoux; ""Don""",,D,Unopposed,,,,125886,40.29%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
 1372,Louisiana,LA,6,H8LA06030,,Michael,Jackson,Jackson; Michael,,NPA,n/a,,,,36198,11.59%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
 1373,Louisiana,LA,6,n/a,,,,,District Votes:,,,,,,312416,,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
-1374,Louisiana,LA,7,H4LA07029,(I),"Charles W., Jr.",Boustany,Boustany; Charles W.; Jr.,,R,Unopposed,,,,177173,61.88%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
-1375,Louisiana,LA,7,H8LA07046,,"Donald ""Don,"" Jr.",Cravins,"Cravins; Donald ""Don;"" Jr.",,D,Unopposed,,,,98280,34.33%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
+1374,Louisiana,LA,7,H4LA07029,(I),Charles W. Jr.,Boustany,Boustany; Charles W.; Jr.,,R,Unopposed,,,,177173,61.88%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
+1375,Louisiana,LA,7,H8LA07046,,"Donald ""Don"" Jr.",Cravins,"Cravins; Donald ""Don;"" Jr.",,D,Unopposed,,,,98280,34.33%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
 1376,Louisiana,LA,7,H8LA07038,,Peter,Vidrine,Vidrine; Peter,,OTH,n/a,,,,10846,3.79%,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
 1377,Louisiana,LA,7,n/a,,,,,District Votes:,,,,,,286299,,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
 1378,Louisiana,LA,H,n/a,,,,,Total House Votes:,,270375,,391214,,1046176,,,,,,"*  Because of Hurricane Gustav, the primary elections originally scheduled for September 6, 2008, were moved to October 4, 2008, with primary runoff elections held on November 4, 2008 (if necessary).  December 6, 2008, was the general election date for those districts that had a November 4, 2008, primary runoff election.  "
@@ -1407,7 +1407,7 @@
 1407,Maine,ME,S,n/a,,,,,Party Votes:,D,81727,,,,,,,,,,
 1408,Maine,ME,S,n/a,,,Others,Others,,W,,,,,620,0.09%,,,,,
 1409,Maine,ME,S,n/a,,,,,Total Senate Votes:,,138050,,,,724430,,,,,,
-1410,Maryland,MD,1,H8MD01086,,"Frank M., Jr.",Kratovil,Kratovil; Frank M.; Jr.,,D,28566,40.17%,,,177065,49.12%,,,,,
+1410,Maryland,MD,1,H8MD01086,,Frank M. Jr.,Kratovil,Kratovil; Frank M.; Jr.,,D,28566,40.17%,,,177065,49.12%,,,,,
 1411,Maryland,MD,1,H6MD01205,,Christopher Robert,Robinson,Robinson; Christopher Robert,,D,21892,30.78%,,,,,,,,,
 1412,Maryland,MD,1,H8MD01136,,Steve,Harper,Harper; Steve,,D,11904,16.74%,,,,,,,,,
 1413,Maryland,MD,1,H8MD01144,,Joseph,Werner,Werner; Joseph,,D,8753,12.31%,,,,,,,,,
@@ -1453,10 +1453,10 @@
 1453,Maryland,MD,4,H8MD04189,,Thibeaux,Lincecum,Lincecum; Thibeaux,,LBT,n/a,G,,,3384,1.12%,,,,,"*  The Libertarian Party nominated by convention on March 1, 2008, and the Green Party nominated by convention on April 1, 2008.  Convention nominees are noted with an asterisk."
 1454,Maryland,MD,4,n/a,,,Scattered,Scattered,,W,,,,,453,0.15%,,,,,
 1455,Maryland,MD,4,H8MD04205,,Steve,Schulin,Schulin; Steve,,W,n/a,G,,,75,0.02%,,,,,
-1456,Maryland,MD,4,H8MD04197,,"Darryn O'Shea, Sr.",Jackson,Jackson; Darryn O'Shea; Sr.,,W,n/a,G,,,28,0.01%,,,,,
+1456,Maryland,MD,4,H8MD04197,,Darryn O'Shea Sr.,Jackson,Jackson; Darryn O'Shea; Sr.,,W,n/a,G,,,28,0.01%,,,,,
 1457,Maryland,MD,4,n/a,,,,,District Votes:,,145116,,,,301431,,,,,,
 1458,Maryland,MD,5,H2MD05155,(I),Steny H.,Hoyer,Hoyer; Steny H.,,D,90513,82.60%,,,253854,73.65%,,,,,
-1459,Maryland,MD,5,H8MD05079,,"James Patrick, Sr.",Cusick,Cusick; James Patrick; Sr.,,D,19067,17.40%,,,,,,,,,
+1459,Maryland,MD,5,H8MD05079,,James Patrick Sr.,Cusick,Cusick; James Patrick; Sr.,,D,19067,17.40%,,,,,,,,,
 1460,Maryland,MD,5,n/a,,,,,Party Votes:,D,109580,,,,,,,,,,
 1461,Maryland,MD,5,H8MD05087,,Collins,Bailey,Bailey; Collins,,R,12382,44.02%,,,82631,23.97%,,,,,
 1462,Maryland,MD,5,H8MD05103,,Mike,Hethmon,Hethmon; Mike,,R,8126,28.89%,,,,,,,,,
@@ -1477,7 +1477,7 @@
 1477,Maryland,MD,6,H8MD06093,,Larry John,Smith,Smith; Larry John,,D,4162,7.08%,,,,,,,,,
 1478,Maryland,MD,6,H8MD06085,,Rick,Lank,Lank; Rick,,D,1222,2.08%,,,,,,,,,
 1479,Maryland,MD,6,n/a,,,,,Party Votes:,D,58780,,,,,,,,,,
-1480,Maryland,MD,6,H8MD06127,,"Gary W., Sr.",Hoover,Hoover; Gary W.; Sr.,,LBT,n/a,G,,,11060,3.35%,,,,,"*  The Libertarian Party nominated by convention on March 1, 2008, and the Green Party nominated by convention on April 1, 2008.  Convention nominees are noted with an asterisk."
+1480,Maryland,MD,6,H8MD06127,,Gary W. Sr.,Hoover,Hoover; Gary W.; Sr.,,LBT,n/a,G,,,11060,3.35%,,,,,"*  The Libertarian Party nominated by convention on March 1, 2008, and the Green Party nominated by convention on April 1, 2008.  Convention nominees are noted with an asterisk."
 1481,Maryland,MD,6,n/a,,,Scattered,Scattered,,W,,,,,342,0.10%,,,,,
 1482,Maryland,MD,6,n/a,,,,,District Votes:,,125286,,,,330535,,,,,,
 1483,Maryland,MD,7,H6MD07160,(I),Elijah,Cummings,Cummings; Elijah,,D,98027,93.05%,,,227379,79.50%,,,,,
@@ -1558,7 +1558,7 @@
 1558,Massachusetts,MA,5,n/a,,,Scattered,Scattered,,W(GR),6,100.00%,,,,,,,,,
 1559,Massachusetts,MA,5,n/a,,,,,Party Votes:,GR,6,,,,,,,,,,
 1560,Massachusetts,MA,5,n/a,,,Scattered,Scattered,,W(R),618,84.43%,,,,,,,,,
-1561,Massachusetts,MA,5,n/a,,"Theodore J., Jr.",Gaiero,Gaiero; Theodore J.; Jr.,,W(R),114,15.57%,,,,,,,,,
+1561,Massachusetts,MA,5,n/a,,Theodore J. Jr.,Gaiero,Gaiero; Theodore J.; Jr.,,W(R),114,15.57%,,,,,,,,,
 1562,Massachusetts,MA,5,n/a,,,,,Party Votes:,R,732,,,,,,,,,,
 1563,Massachusetts,MA,5,n/a,,,Scattered,Scattered,,W(WF),9,100.00%,,,,,,,,,
 1564,Massachusetts,MA,5,n/a,,,,,Party Votes:,WF,9,,,,,,,,,,
@@ -1738,7 +1738,7 @@
 1738,Michigan,MI,13,H8MI13201,,George L.,Corsetti,Corsetti; George L.,,GRE,Winner,,,,9579,4.24%,,,,,"* The U.S. Taxpayers Party nominated by convention on May 3, 2008, the Libertarian Party nominated by convention on June 7, 2008, and the Green Party nominated by convention on July 27, 2008.  Convention nominees are noted with an asterisk."
 1739,Michigan,MI,13,H8MI13219,,Gregory,Creswell,Creswell; Gregory,,LBT,Winner,,,,5764,2.55%,,,,,"* The U.S. Taxpayers Party nominated by convention on May 3, 2008, the Libertarian Party nominated by convention on June 7, 2008, and the Green Party nominated by convention on July 27, 2008.  Convention nominees are noted with an asterisk."
 1740,Michigan,MI,13,n/a,,,,,District Votes:,,60879,,,,225922,,,,,,
-1741,Michigan,MI,14,H6MI01028,(I),"John, Jr.",Conyers,Conyers; John; Jr.,,D,51511,100.00%,,,227841,92.40%,,,,,
+1741,Michigan,MI,14,H6MI01028,(I),John Jr.,Conyers,Conyers; John; Jr.,,D,51511,100.00%,,,227841,92.40%,,,,,
 1742,Michigan,MI,14,n/a,,,,,Party Votes:,D,51511,,,,,,,,,,
 1743,Michigan,MI,14,H8MI14092,,Richard J.,Secula,Secula; Richard J.,,LBT,Winner,,,,10732,4.35%,,,,,"* The U.S. Taxpayers Party nominated by convention on May 3, 2008, the Libertarian Party nominated by convention on June 7, 2008, and the Green Party nominated by convention on July 27, 2008.  Convention nominees are noted with an asterisk."
 1744,Michigan,MI,14,H8MI14084,,Clyde K.,Shabazz,Shabazz; Clyde K.,,GRE,Winner,,,,8015,3.25%,,,,,"* The U.S. Taxpayers Party nominated by convention on May 3, 2008, the Libertarian Party nominated by convention on June 7, 2008, and the Green Party nominated by convention on July 27, 2008.  Convention nominees are noted with an asterisk."
@@ -1754,7 +1754,7 @@
 1754,Michigan,MI,H,n/a,,,,,Total House Votes:,,1075931,,,,4810690,,,,,,
 1755,Michigan,MI,S,S8MI00158,(I),Carl,Levin,Levin; Carl,,D,561676,100.00%,,,3038386,62.66%,,,,,
 1756,Michigan,MI,S,n/a,,,,,Party Votes:,D,561676,,,,,,,,,,
-1757,Michigan,MI,S,S8MI00299,,"Jack, Jr.",Hoogendyk,Hoogendyk; Jack; Jr.,,R,495467,100.00%,,,1641070,33.85%,,,,,
+1757,Michigan,MI,S,S8MI00299,,Jack Jr.,Hoogendyk,Hoogendyk; Jack; Jr.,,R,495467,100.00%,,,1641070,33.85%,,,,,
 1758,Michigan,MI,S,n/a,,,,,Party Votes:,R,495467,,,,,,,,,,
 1759,Michigan,MI,S,S8MI00315,,Scotty,Boman,Boman; Scotty,,LBT,Winner,,,,76347,1.57%,,,,,"* The U.S. Taxpayers Party nominated by convention on May 3, 2008, the Libertarian Party nominated by convention on June 7, 2008, and the Green Party nominated by convention on July 27, 2008.  Convention nominees are noted with an asterisk."
 1760,Michigan,MI,S,S8MI00331,,Harley G.,Mikkelson,Mikkelson; Harley G.,,GRE,Winner,,,,43440,0.90%,,,,,"* The U.S. Taxpayers Party nominated by convention on May 3, 2008, the Libertarian Party nominated by convention on June 7, 2008, and the Green Party nominated by convention on July 27, 2008.  Convention nominees are noted with an asterisk."
@@ -1785,7 +1785,7 @@
 1785,Minnesota,MN,3,H8MN03119,,Steev,Ramsdell,Ramsdell; Steev,,IDP,252,27.21%,,,,,,,,,
 1786,Minnesota,MN,3,n/a,,,,,Party Votes:,IDP,926,,,,,,,,,,
 1787,Minnesota,MN,3,n/a,,,Scattered,Scattered,,W,,,,,406,0.11%,,,,,
-1788,Minnesota,MN,3,n/a,,"Harley, Jr.",Swarm,Swarm; Harley; Jr.,,W,,,,,9,0.00%,,,,,
+1788,Minnesota,MN,3,n/a,,Harley Jr.,Swarm,Swarm; Harley; Jr.,,W,,,,,9,0.00%,,,,,
 1789,Minnesota,MN,3,n/a,,,,,District Votes:,,35943,,,,369104,,,,,,
 1790,Minnesota,MN,4,H0MN04049,(I),Betty,McCollum,McCollum; Betty,,DFL,Unopposed,,,,216267,68.44%,,,,,
 1791,Minnesota,MN,4,H8MN04075,,Ed,Matthews,Matthews; Ed,,R,Unopposed,,,,98936,31.31%,,,,,
@@ -1854,11 +1854,11 @@
 1854,Mississippi,MS,1,H6MS01115,,"James K. ""Ken""",Hurt,"Hurt; James K. ""Ken""",,D,4095,4.14%,,,,,,,,,
 1855,Mississippi,MS,1,n/a,,,,,Party Votes:,D,98825,,36755,,,,,,,,
 1856,Mississippi,MS,1,H8MS01053,,Greg,Davis,Davis; Greg,,R,16161,36.79%,16733,50.82%,149818,43.88%,,,,,
-1857,Mississippi,MS,1,H8MS01079,,"Glenn L., Jr.",McCullough,McCullough; Glenn L.; Jr.,,R,17082,38.88%,16196,49.18%,,,,,,,
+1857,Mississippi,MS,1,H8MS01079,,Glenn L. Jr.,McCullough,McCullough; Glenn L.; Jr.,,R,17082,38.88%,16196,49.18%,,,,,,,
 1858,Mississippi,MS,1,H8MS01111,,Randy,Russell,Russell; Randy,,R,10688,24.33%,,,,,,,,,
 1859,Mississippi,MS,1,n/a,,,,,Party Votes:,R,43931,,32929,,,,,,,,
 1860,Mississippi,MS,1,H8MS01129,,Wally,Pang,Pang; Wally,,I,n/a,,,,3736,1.09%,,,,,
-1861,Mississippi,MS,1,H8MS01137,,"John M., Jr.",Wages,Wages; John M.; Jr.,,GRE,,,,,1876,0.55%,,,,,
+1861,Mississippi,MS,1,H8MS01137,,John M. Jr.,Wages,Wages; John M.; Jr.,,GRE,,,,,1876,0.55%,,,,,
 1862,Mississippi,MS,1,n/a,,,,,District Votes:,,142756,,69684,,341389,,,,,,
 1863,Mississippi,MS,2,H4MS02068,(I),Bennie G.,Thompson,Thompson; Bennie G.,,D,110743,86.16%,,,201606,69.05%,,,,,
 1864,Mississippi,MS,2,H8MS02044,,"Dorothy ""Dot""",Benford,"Benford; Dorothy ""Dot""",,D,17791,13.84%,,,,,,,,,
@@ -1879,7 +1879,7 @@
 1879,Mississippi,MS,3,n/a,,,,,District Votes:,,148266,,51529,,340869,,,,,,
 1880,Mississippi,MS,4,H8MS05047,(I),Gene,Taylor,Taylor; Gene,,D,79807,100.00%,,,216542,74.54%,,,,,
 1881,Mississippi,MS,4,n/a,,,,,Party Votes:,D,79807,,,,,,,,,,
-1882,Mississippi,MS,4,H8MS04420,,"John, III",McCay,McCay; John; III,,R,Unopposed,,,,73977,25.46%,,,,,
+1882,Mississippi,MS,4,H8MS04420,,John III,McCay,McCay; John; III,,R,Unopposed,,,,73977,25.46%,,,,,
 1883,Mississippi,MS,4,n/a,,,,,District Votes:,,79807,,,,290519,,,,,,
 1884,Mississippi,MS,H,n/a,,,,,Total House Votes:,,499363,,121213,,1264747,,,,,,
 1885,Mississippi,MS,S - FULL TERM,S8MS00055,(I),Thad,Cochran,Cochran; Thad,,R,Unopposed,,,,766111,61.44%,,,,,
@@ -1922,11 +1922,11 @@
 1922,Missouri,MO,4,H6MO04141,(I),Ike,Skelton,Skelton; Ike,,D,37111,100.00%,,,200009,65.91%,,,,,
 1923,Missouri,MO,4,n/a,,,,,Party Votes:,D,37111,,,,,,,,,,
 1924,Missouri,MO,4,H4MO04088,,Jeff,Parnell,Parnell; Jeff,,R,31979,66.80%,,,103446,34.09%,,,,,
-1925,Missouri,MO,4,H8MO04055,,"Stanley, Jr.",Plough,Plough; Stanley; Jr.,,R,10324,21.57%,,,,,,,,,
+1925,Missouri,MO,4,H8MO04055,,Stanley Jr.,Plough,Plough; Stanley; Jr.,,R,10324,21.57%,,,,,,,,,
 1926,Missouri,MO,4,H8MO04063,,Joseph,Terrazas,Terrazas; Joseph,,R,5568,11.63%,,,,,,,,,
 1927,Missouri,MO,4,n/a,,,,,Party Votes:,R,47871,,,,,,,,,,
 1928,Missouri,MO,4,n/a,,,,,District Votes:,,84982,,,,303455,,,,,,
-1929,Missouri,MO,5,H4MO05234,(I),"Emanuel, II",Cleaver,Cleaver; Emanuel; II,,D,38260,100.00%,,,197249,64.37%,,,,,
+1929,Missouri,MO,5,H4MO05234,(I),Emanuel II,Cleaver,Cleaver; Emanuel; II,,D,38260,100.00%,,,197249,64.37%,,,,,
 1930,Missouri,MO,5,n/a,,,,,Party Votes:,D,38260,,,,,,,,,,
 1931,Missouri,MO,5,H6MO05189,,Jacob,Turk,Turk; Jacob,,R,9294,54.24%,,,109166,35.63%,,,,,
 1932,Missouri,MO,5,H8MO05094,,Chris,Knowlton,Knowlton; Chris,,R,3552,20.73%,,,,,,,,,
@@ -2056,7 +2056,7 @@
 2056,Nebraska,NE,S,n/a,,,,,Party Votes:,N(GRE),31,,,,,,,,,,
 2057,Nebraska,NE,S,n/a,,,,,Total Senate Votes:,,239702,,,,792511,,,,,,
 2058,Nevada,NV,1,H8NV01071,(I),Shelley,Berkley,Berkley; Shelley,,D,19444,89.74%,,,154860,67.65%,,,,,
-2059,Nevada,NV,1,H8NV01204,,"Mark John, Jr.",Budetich,Budetich; Mark John; Jr.,,D,2222,10.26%,,,,,,,,,
+2059,Nevada,NV,1,H8NV01204,,Mark John Jr.,Budetich,Budetich; Mark John; Jr.,,D,2222,10.26%,,,,,,,,,
 2060,Nevada,NV,1,n/a,,,,,Party Votes:,D,21666,,,,,,,,,,
 2061,Nevada,NV,1,H6NV01158,,Kenneth,Wegner,Wegner; Kenneth,,R,4359,34.65%,,,64837,28.32%,,,,,
 2062,Nevada,NV,1,H4NV01112,,Russ,Mickelson,Mickelson; Russ,,R,2490,19.79%,,,,,,,,,
@@ -2067,7 +2067,7 @@
 2067,Nevada,NV,1,H8NV01220,,"Edward ""Mr. Clean""",Hamilton,"Hamilton; Edward ""Mr. Clean""",,R,761,6.05%,,,,,,,,,
 2068,Nevada,NV,1,n/a,,,,,Party Votes:,R,12580,,,,,,,,,,
 2069,Nevada,NV,1,H8NV01253,,Caren,Alexander,Alexander; Caren,,IAP,*,,,,4697,2.05%,,,,,
-2070,Nevada,NV,1,H4NV01138,,"Raymond James, Jr.",Duensing,Duensing; Raymond James; Jr.,,LBT,*,,,,4528,1.98%,,,,,
+2070,Nevada,NV,1,H4NV01138,,Raymond James Jr.,Duensing,Duensing; Raymond James; Jr.,,LBT,*,,,,4528,1.98%,,,,,
 2071,Nevada,NV,1,n/a,,,,,District Votes:,,34246,,,,228922,,,,,,
 2072,Nevada,NV,2,H6NV02164,(I),Dean,Heller,Heller; Dean,,R,43112,86.02%,,,170771,51.82%,,,,,
 2073,Nevada,NV,2,H8NV02053,,James W.,Smack,Smack; James W.,,R,7009,13.98%,,,,,,,,,
@@ -2122,7 +2122,7 @@
 2122,New Hampshire,NH,2,n/a,,,Scattered,Scattered,,W(R),111,0.35%,,,,,,,,,
 2123,New Hampshire,NH,2,H4NH02175,(I),Paul W.,Hodes,Hodes; Paul W.,,W(R),61,0.19%,,,,,,,,,
 2124,New Hampshire,NH,2,n/a,,,,,Party Votes:,R,31772,,,,,,,,,,
-2125,New Hampshire,NH,2,H8NH02234,,"Chester L., II",Lapointe,Lapointe; Chester L.; II,,LBT,n/a,,,,7121,2.13%,,,,,
+2125,New Hampshire,NH,2,H8NH02234,,Chester L. II,Lapointe,Lapointe; Chester L.; II,,LBT,n/a,,,,7121,2.13%,,,,,
 2126,New Hampshire,NH,2,n/a,,,Scattered,Scattered,,W,,,,,229,0.07%,,,,,
 2127,New Hampshire,NH,2,n/a,,,,,District Votes:,,54740,,,,333904,,,,,,
 2128,New Hampshire,NH,H,n/a,,,,,Total House Votes:,,112319,,,,674975,,,,,,
@@ -2151,8 +2151,8 @@
 2151,New Jersey,NJ,1,n/a,,,,,Party Votes:,R,7139,,,,,,,,,,
 2152,New Jersey,NJ,1,H8NJ01218,,Matthew,Thieke,Thieke; Matthew,,GRE,n/a,,,,1927,0.68%,,,,,
 2153,New Jersey,NJ,1,H8NJ01192,,Margaret M.,Chapman,Chapman; Margaret M.,,BBA,n/a,,,,1258,0.44%,,,,,
-2154,New Jersey,NJ,1,H8NJ01200,,"Everitt M., III",Williams,Williams; Everitt M.; III,,THI,n/a,,,,1010,0.35%,,,,,
-2155,New Jersey,NJ,1,H8NJ01184,,"Alvin, Jr.",Lindsay,Lindsay; Alvin; Jr.,,LFC,n/a,,,,508,0.18%,,,,,
+2154,New Jersey,NJ,1,H8NJ01200,,Everitt M. III,Williams,Williams; Everitt M.; III,,THI,n/a,,,,1010,0.35%,,,,,
+2155,New Jersey,NJ,1,H8NJ01184,,Alvin Jr.,Lindsay,Lindsay; Alvin; Jr.,,LFC,n/a,,,,508,0.18%,,,,,
 2156,New Jersey,NJ,1,n/a,,,,,District Votes:,,45811,,,,285157,,,,,,
 2157,New Jersey,NJ,2,H2NJ02037,(I),Frank A. ,Lo Biondo,Lo Biondo; Frank A. ,,R,16026,88.78%,,,167701,59.06%,,,,,
 2158,New Jersey,NJ,2,H8NJ02109,,Donna M. ,Ward,Ward; Donna M. ,,R,2025,11.22%,,,,,,,,,
@@ -2185,7 +2185,7 @@
 2185,New Jersey,NJ,5,n/a,,,,,Party Votes:,D,15365,,,,,,,,,,
 2186,New Jersey,NJ,5,H8NJ05102,,Ed,Fanning,Fanning; Ed,,GRE,n/a,,,,5321,1.72%,,,,,
 2187,New Jersey,NJ,5,n/a,,,,,District Votes:,,35279,,,,309007,,,,,,
-2188,New Jersey,NJ,6,H8NJ03073,(I),"Frank, Jr.",Pallone,Pallone; Frank; Jr.,,D,18609,100.00%,,,164077,66.95%,,,,,
+2188,New Jersey,NJ,6,H8NJ03073,(I),Frank Jr.,Pallone,Pallone; Frank; Jr.,,D,18609,100.00%,,,164077,66.95%,,,,,
 2189,New Jersey,NJ,6,n/a,,,,,Party Votes:,D,18609,,,,,,,,,,
 2190,New Jersey,NJ,6,H8NJ06142,,Robert E.,McLeod,McLeod; Robert E.,,R,3698,55.14%,,,77469,31.61%,,,,,
 2191,New Jersey,NJ,6,H2NJ06111,,Peter ,Cerrato,Cerrato; Peter ,,R,1946,29.02%,,,,,,,,,
@@ -2207,7 +2207,7 @@
 2207,New Jersey,NJ,7,H8NJ07165,,Dean ,Greco,Greco; Dean ,,ADB,n/a,,,,3259,1.10%,,,,,
 2208,New Jersey,NJ,7,H6NJ07136,,Thomas D.,Abrams,Abrams; Thomas D.,,PNW,n/a,,,,2671,0.90%,,,,,
 2209,New Jersey,NJ,7,n/a,,,,,District Votes:,,41353,,,,295628,,,,,,
-2210,New Jersey,NJ,8,H6NJ08118,(I),"Bill, Jr.",Pascrell,Pascrell; Bill; Jr.,,D,19948,100.00%,,,159279,71.11%,,,,,
+2210,New Jersey,NJ,8,H6NJ08118,(I),Bill Jr.,Pascrell,Pascrell; Bill; Jr.,,D,19948,100.00%,,,159279,71.11%,,,,,
 2211,New Jersey,NJ,8,n/a,,,,,Party Votes:,D,19948,,,,,,,,,,
 2212,New Jersey,NJ,8,H8NJ08056,,Roland ,Straten,Straten; Roland ,,R,5859,100.00%,,,63107,28.17%,,,,,
 2213,New Jersey,NJ,8,n/a,,,,,Party Votes:,R,5859,,,,,,,,,,
@@ -2217,7 +2217,7 @@
 2217,New Jersey,NJ,9,n/a,,,,,Party Votes:,D,25418,,,,,,,,,,
 2218,New Jersey,NJ,9,H6NJ09215,,Vincent ,Micco,Micco; Vincent ,,R,5797,100.00%,,,69503,31.04%,,,,,
 2219,New Jersey,NJ,9,n/a,,,,,Party Votes:,R,5797,,,,,,,,,,
-2220,New Jersey,NJ,9,H8NJ09112,,Michael,"Perrone, Jr.",Perrone; Jr.; Michael,,IPR,n/a,,,,3200,1.43%,,,,,
+2220,New Jersey,NJ,9,H8NJ09112,,Michael,Perrone Jr.,Perrone; Jr.; Michael,,IPR,n/a,,,,3200,1.43%,,,,,
 2221,New Jersey,NJ,9,n/a,,,,,District Votes:,,31215,,,,223885,,,,,,
 2222,New Jersey,NJ,10,H0NJ10026,(I),Donald M. ,Payne,Payne; Donald M. ,,D,30764,100.00%,,,169945,98.92%,,,,,
 2223,New Jersey,NJ,10,n/a,,,,,Party Votes:,D,30764,,,,,,,,,,
@@ -2281,7 +2281,7 @@
 2281,New Mexico,NM,2,n/a,,,,,District Votes:,,75297,,,,231552,,,,,,
 2282,New Mexico,NM,3,H8NM03196,,Ben R. ,Lujan,Lujan; Ben R. ,,D,26775,41.53%,,,161292,56.74%,,,,,
 2283,New Mexico,NM,3,H8NM03162,,Don,Wiviott,Wiviott; Don,,D,16497,25.59%,,,,,,,,,
-2284,New Mexico,NM,3,H8NM03204,,"Benny J., Jr.",Shendo,Shendo; Benny J.; Jr.,,D,10148,15.74%,,,,,,,,,
+2284,New Mexico,NM,3,H8NM03204,,Benny J. Jr.,Shendo,Shendo; Benny J.; Jr.,,D,10148,15.74%,,,,,,,,,
 2285,New Mexico,NM,3,H8NM03170,,Harry B. ,Montoya,Montoya; Harry B. ,,D,7234,11.22%,,,,,,,,,
 2286,New Mexico,NM,3,H8NM01240,,Jon ,Adams,Adams; Jon ,,D,1979,3.07%,,,,,,,,,
 2287,New Mexico,NM,3,H8NM03188,,Rudy ,Martin,Martin; Rudy ,,D,1845,2.86%,,,,,,,,,
@@ -2340,8 +2340,8 @@
 2340,New York,NY,6,n/a,,,,,District Votes:,,,,,,141206,,,,,,
 2341,New York,NY,7,H8NY07046,(I),Joseph,Crowley,Crowley; Joseph,,D,Unopposed,,,,113988,81.45%,,,118459,84.65%,
 2342,New York,NY,7,H8NY07046,(I),Joseph,Crowley,Crowley; Joseph,,WF,Unopposed,,,,4471,3.19%,,,118459,84.65%,
-2343,New York,NY,7,H8NY07079,,"William E., Jr.",Britt,Britt; William E.; Jr.,,R,Unopposed,,,,19373,13.84%,,,21477,15.35%,
-2344,New York,NY,7,H8NY07079,,"William E., Jr.",Britt,Britt; William E.; Jr.,,CRV,Unopposed,,,,2104,1.50%,,,21477,15.35%,
+2343,New York,NY,7,H8NY07079,,William E. Jr.,Britt,Britt; William E.; Jr.,,R,Unopposed,,,,19373,13.84%,,,21477,15.35%,
+2344,New York,NY,7,H8NY07079,,William E. Jr.,Britt,Britt; William E.; Jr.,,CRV,Unopposed,,,,2104,1.50%,,,21477,15.35%,
 2345,New York,NY,7,,,,Scattered,Scattered,,W,,,,,5,0.00%,,,,,
 2346,New York,NY,7,n/a,,,,,District Votes:,,,,,,139941,,,,,,
 2347,New York,NY,8,H2NY17071,(I),Jerrold L.,Nadler,Nadler; Jerrold L.,,D,Unopposed,,,,152153,76.13%,,,160775,80.44%,
@@ -2436,13 +2436,13 @@
 2436,New York,NY,20,n/a,,,,,District Votes:,,,,,,311717,,,,,,
 2437,New York,NY,21,H8NY21203,,Paul D.,Tonko,Tonko; Paul D.,,WF,Unopposed,,,,159849,57.94%,,,171286,62.09%,
 2438,New York,NY,21,H8NY21203,,Paul D.,Tonko,Tonko; Paul D.,,D,15932,39.50%,,,11437,4.15%,,,171286,62.09%,
-2439,New York,NY,21,H8NY21146,,Tracey,Brooks,Brooks; Tracey,,D,12166,30.16%,,,n/a,,,,,,
-2440,New York,NY,21,H8NY21138,,Phillip G.,Steck,Steck; Phillip G.,,D,7498,18.59%,,,n/a,,,,,,
-2441,New York,NY,21,H8NY21179,,Darius,Shahinfar,Shahinfar; Darius,,D,4002,9.92%,,,n/a,,,,,,
-2442,New York,NY,21,H8NY21229,,Joseph P.,Sullivan,Sullivan; Joseph P.,,D,738,1.83%,,,n/a,,,,,,
+2439,New York,NY,21,H8NY21146,,Tracey,Brooks,Brooks; Tracey,,D,12166,30.16%,,,,,,,,,
+2440,New York,NY,21,H8NY21138,,Phillip G.,Steck,Steck; Phillip G.,,D,7498,18.59%,,,,,,,,,
+2441,New York,NY,21,H8NY21179,,Darius,Shahinfar,Shahinfar; Darius,,D,4002,9.92%,,,,,,,,,
+2442,New York,NY,21,H8NY21229,,Joseph P.,Sullivan,Sullivan; Joseph P.,,D,738,1.83%,,,,,,,,,
 2443,New York,NY,21,n/a,,,,,Party Votes:,D,40336,,,,,,,,,,
 2444,New York,NY,21,H8NY21187,,James R.,Buhrmaster,Buhrmaster; James R.,,R,8589,70.44%,,,85267,30.91%,,,96599,35.02%,
-2445,New York,NY,21,H8NY21187,,Steven,Vasquez,Vasquez; Steven,,R,3605,29.56%,,,n/a,,,,,,
+2445,New York,NY,21,H8NY21187,,Steven,Vasquez,Vasquez; Steven,,R,3605,29.56%,,,,,,,,,
 2446,New York,NY,21,n/a,,,,,Party Votes:,R,12194,,,,,,,,,,
 2447,New York,NY,21,H8NY21187,,James R.,Buhrmaster,Buhrmaster; James R.,,CRV,Unopposed,,,,11332,4.11%,,,96599,35.02%,
 2448,New York,NY,21,H8NY21138,,Phillip G.,Steck,Steck; Phillip G.,,IDP,Unopposed,,,,7965,2.89%,,,,,
@@ -2481,8 +2481,8 @@
 2481,New York,NY,26,H8NY26095,,Christopher J.,Lee,Lee; Christopher J. #,,IDP,#,,,,9896,3.66%,,,148607,54.97%,# Anthony Fumerelle withdrew after the primary election and Christopher Lee was selected by the Independence Party to fill the vacancy on the general election ballot.
 2482,New York,NY,26,H8NY26111,,Anthony L.,Fumerelle,Fumerelle; Anthony L. #,,IDP,Unopposed,,,,,,,,,,# Anthony Fumerelle withdrew after the primary election and Christopher Lee was selected by the Independence Party to fill the vacancy on the general election ballot.
 2483,New York,NY,26,H8NY26079,,Alice,Kryzan,Kryzan; Alice,,D,9792,40.98%,,,109615,40.55%,,,,,
-2484,New York,NY,26,H8NY26061,,Jonathan P.,Powers,Powers; Jonathan P.,,D,8500,35.57%,,,??,,,,,,
-2485,New York,NY,26,H4NY26045,,Jack,Davis,Davis; Jack,,D,5602,23.45%,,,n/a,,,,,,
+2484,New York,NY,26,H8NY26061,,Jonathan P.,Powers,Powers; Jonathan P.,,D,8500,35.57%,,,,,,,,,
+2485,New York,NY,26,H4NY26045,,Jack,Davis,Davis; Jack,,D,5602,23.45%,,,,,,,,,
 2486,New York,NY,26,n/a,,,,,Party Votes:,D,23894,,,,,,,,,,
 2487,New York,NY,26,H8NY26061,,Jonathan P.,Powers,Powers; Jonathan P.,,WF,Unopposed,,,,12104,4.48%,,,,,
 2488,New York,NY,26,,,,Scattered,Scattered,,W,,,,,9,0.00%,,,,,
@@ -2502,9 +2502,9 @@
 2502,New York,NY,28,n/a,,,,,District Votes:,,,,,,221378,,,,,,
 2503,New York,NY,29,H6NY29168,,Eric J. J.,Massa,Massa; Eric J. J.,,D,Unopposed,,,,131526,47.70%,,,140529,50.96%,
 2504,New York,NY,29,H6NY29168,,Eric J. J.,Massa,Massa; Eric J. J.,,WF,Unopposed,,,,9003,3.26%,,,140529,50.96%,
-2505,New York,NY,29,H4NY29080,(I),"John Randy, Jr.",Kuhl,Kuhl; John Randy; Jr.,,R,Unopposed,,,,116137,42.12%,,,135199,49.03%,
-2506,New York,NY,29,H4NY29080,(I),"John Randy, Jr.",Kuhl,Kuhl; John Randy; Jr.,,IDP,Unopposed,,,,8185,2.97%,,,135199,49.03%,
-2507,New York,NY,29,H4NY29080,(I),"John Randy, Jr.",Kuhl,Kuhl; John Randy; Jr.,,CRV,Unopposed,,,,10877,3.94%,,,135199,49.03%,
+2505,New York,NY,29,H4NY29080,(I),John Randy Jr.,Kuhl,Kuhl; John Randy; Jr.,,R,Unopposed,,,,116137,42.12%,,,135199,49.03%,
+2506,New York,NY,29,H4NY29080,(I),John Randy Jr.,Kuhl,Kuhl; John Randy; Jr.,,IDP,Unopposed,,,,8185,2.97%,,,135199,49.03%,
+2507,New York,NY,29,H4NY29080,(I),John Randy Jr.,Kuhl,Kuhl; John Randy; Jr.,,CRV,Unopposed,,,,10877,3.94%,,,135199,49.03%,
 2508,New York,NY,29,,,,Scattered,Scattered,,W,,,,,27,0.01%,,,,,
 2509,New York,NY,29,n/a,,,,,District Votes:,,,,,,275755,,,,,,
 2510,New York,NY,H,n/a,,,,,Total House Votes:,,144579,,,,6390516,,,,,,
@@ -2567,7 +2567,7 @@
 2567,North Carolina,NC,11,H8NC11087,,Keith,Smith,Smith; Keith,,LBT,n/a,,,,7517,2.21%,,,,,
 2568,North Carolina,NC,11,n/a,,,,,District Votes:,,40855,,,,340716,,,,,,
 2569,North Carolina,NC,12,H2NC12021,(I),Mel,Watt,Watt; Mel,,D,Unopposed,,,,215908,71.56%,,,,,
-2570,North Carolina,NC,12,H8NC12093,,"Ty, Jr.",Cobb,Cobb; Ty; Jr.,,R,Unopposed,,,,85814,28.44%,,,,,
+2570,North Carolina,NC,12,H8NC12093,,Ty Jr.,Cobb,Cobb; Ty; Jr.,,R,Unopposed,,,,85814,28.44%,,,,,
 2571,North Carolina,NC,12,n/a,,,,,District Votes:,,,,,,301722,,,,,,
 2572,North Carolina,NC,13,H2NC13029,(I),Brad,Miller,Miller; Brad,,D,113254,88.48%,,,221379,65.93%,,,,,
 2573,North Carolina,NC,13,H8NC13034,,Derald,Hafner,Hafner; Derald,,D,14744,11.52%,,,,,,,,,
@@ -2625,7 +2625,7 @@
 2625,Northern Mariana Islands,MP,0,H8MP00058,,David Mendiola ,Cing,Cing; David Mendiola ,,D,n/a,,,,307,3.02%,,,,,
 2626,Northern Mariana Islands,MP,0,H8MP00066,,Felipe Quitugua,Atalig,Atalig; Felipe Quitugua,,I,n/a,,,,249,2.45%,,,,,
 2627,Northern Mariana Islands,MP,0,H8MP00090,,Chong Man,Won,Won; Chong Man,,I,n/a,,,,230,2.26%,,,,,
-2628,Northern Mariana Islands,MP,0,H8MP00082,,"John Henry, Jr. ",Davis,Davis; John Henry; Jr. ,,I,n/a,,,,164,1.61%,,,,,
+2628,Northern Mariana Islands,MP,0,H8MP00082,,John Henry Jr. ,Davis,Davis; John Henry; Jr. ,,I,n/a,,,,164,1.61%,,,,,
 2629,Northern Mariana Islands,MP,0,n/a,,,,,District Votes:,,n/a,,,,10161,,,,,,
 2630,Northern Mariana Islands,MP,H,n/a,,,,,Total House Votes:,,n/a,,,,10161,,,,,,
 2631,Ohio,OH,1,H8OH01068,,Steve,Driehaus,Driehaus; Steve,,D,60454,100.00%,,,155455,52.47%,,,,,
@@ -2645,7 +2645,7 @@
 2645,Ohio,OH,2,H8OH02074,,William R.,Smith,Smith; William R.,,D,12455,12.49%,,,,,,,,,
 2646,Ohio,OH,2,n/a,,,,,Party Votes:,D,99744,,,,,,,,,,
 2647,Ohio,OH,2,H8OH02090,,David H.,Krikorian,Krikorian; David H.,,I,n/a,,,,58710,17.70%,,,,,
-2648,Ohio,OH,2,H2OH02077   ,,"James, Jr.",Condit,Condit; James; Jr.,,W,,,,,30,0.01%,,,,,   
+2648,Ohio,OH,2,H2OH02077   ,,James Jr.,Condit,Condit; James; Jr.,,W,,,,,30,0.01%,,,,,   
 2649,Ohio,OH,2,n/a,,,,,District Votes:,,172754,,,,331624,,,,,,
 2650,Ohio,OH,3,H2OH03067,(I),Michael R.,Turner,Turner; Michael R.,,R,61915,100.00%,,,200204,63.32%,,,,,
 2651,Ohio,OH,3,n/a,,,,,Party Votes:,R,61915,,,,,,,,,,
@@ -2735,7 +2735,7 @@
 2735,Ohio,OH,14,H4OH19036,(I),Steven C.,LaTourette,LaTourette; Steven C.,,R,53036,100.00%,,,188488,58.32%,,,,,
 2736,Ohio,OH,14,n/a,,,,,Party Votes:,R,53036,,,,,,,,,,
 2737,Ohio,OH,14,H8OH14087,,Bill,O'Neill,O'Neill; Bill,,D,62263,62.29%,,,125214,38.74%,,,,,
-2738,Ohio,OH,14,H8OH14095,,"John H., Jr.",Greene,Greene; John H.; Jr.,,D,21352,21.36%,,,,,,,,,
+2738,Ohio,OH,14,H8OH14095,,John H. Jr.,Greene,Greene; John H.; Jr.,,D,21352,21.36%,,,,,,,,,
 2739,Ohio,OH,14,H6OH14172,,Dale Virgil,Blanchard,Blanchard; Dale Virgil,,D,16339,16.35%,,,,,,,,,
 2740,Ohio,OH,14,n/a,,,,,Party Votes:,D,99954,,,,,,,,,,
 2741,Ohio,OH,14,H8OH14103,,David,Macko,Macko; David,,LBT,,,,,9511,2.94%,,,,,
@@ -2816,8 +2816,8 @@
 2816,Oregon,OR,1,H8OR01189,,Scott,Semrau,Semrau; Scott,,CON,n/a,,,,14172,4.27%,,,,,"*  The Libertarian party nominated  by convention on June 1, 2008 for U.S. House District 5, and on August 17, 2008 for U.S. Senate and all other U.S. House Districts.  The Constitution party nominated by convention on May 17, 2008 for U.S. House Districts 2 and 4, and on June 7, 2008 for U.S. Senate and U.S. House Districts 1, 3 and 5.  The Pacific Green Party nominated by convention on June 8, 2008.  Convention nominees are noted with an asterisk."
 2817,Oregon,OR,1,H8OR01197,,H. Joe,Tabor,Tabor; H. Joe,,LBT,n/a,,,,10992,3.31%,,,,,"*  The Libertarian party nominated  by convention on June 1, 2008 for U.S. House District 5, and on August 17, 2008 for U.S. Senate and all other U.S. House Districts.  The Constitution party nominated by convention on May 17, 2008 for U.S. House Districts 2 and 4, and on June 7, 2008 for U.S. Senate and U.S. House Districts 1, 3 and 5.  The Pacific Green Party nominated by convention on June 8, 2008.  Convention nominees are noted with an asterisk."
 2818,Oregon,OR,1,H8OR01205,,Chris,Henry,Henry; Chris,,PG,n/a,,,,7128,2.15%,,,,,"*  The Libertarian party nominated  by convention on June 1, 2008 for U.S. House District 5, and on August 17, 2008 for U.S. Senate and all other U.S. House Districts.  The Constitution party nominated by convention on May 17, 2008 for U.S. House Districts 2 and 4, and on June 7, 2008 for U.S. Senate and U.S. House Districts 1, 3 and 5.  The Pacific Green Party nominated by convention on June 8, 2008.  Convention nominees are noted with an asterisk."
-2819,Oregon,OR,1,H8OR01171,,Joel,Haugen,Haugen; Joel  #,,R/IP#,29658,68.95%,,,58279,17.54%,,,,,# Joel Haugen was listed as a Republican candidate in the primary election and as an Independent Party candidate in the general election.
-2820,Oregon,OR,1,H8OR01148,,"Claude William, IV",Chappell,Chappell; Claude William; IV,,R,12525,29.12%,,,,,,,,,
+2819,Oregon,OR,1,H8OR01171,,Joel,Haugen,Haugen; Joel  #,,R,29658,68.95%,,,58279,17.54%,,,,,# Joel Haugen was listed as a Republican candidate in the primary election and as an Independent Party candidate in the general election.
+2820,Oregon,OR,1,H8OR01148,,Claude William IV,Chappell,Chappell; Claude William; IV,,R,12525,29.12%,,,,,,,,,
 2821,Oregon,OR,1,n/a,,,Scattered,Scattered,,W(R),829,1.93%,,,,,,,,,
 2822,Oregon,OR,1,n/a,,,,,Party Votes:,R,43012,,,,,,,,,,
 2823,Oregon,OR,1,n/a,,,Scattered,Scattered,,W,,,,,4110,1.24%,,,,,
@@ -2873,7 +2873,7 @@
 2873,Oregon,OR,5,n/a,,,Scattered,Scattered,,W,,,,,1326,0.40%,,,,,
 2874,Oregon,OR,5,n/a,,,,,District Votes:,,174188,,,,334674,,,,,,
 2875,Oregon,OR,H,n/a,,,,,Total House Votes:,,762716,,,,1682509,,,,,,
-2876,Oregon,OR,S,S8OR00207,,Jeff,Merkley,Merkley; Jeff,,D/IP,246482,44.82%,,,864392,48.90%,,,,,"#  Jeff Merkley was nominated by both the Democratic and Independent Parties, but was listed on the general election ballot as a Democrat."
+2876,Oregon,OR,S,S8OR00207,,Jeff,Merkley,Merkley; Jeff,,D,246482,44.82%,,,864392,48.90%,,,,,"#  Jeff Merkley was nominated by both the Democratic and Independent Parties, but was listed on the general election ballot as a Democrat."
 2877,Oregon,OR,S,S8OR00199,,Steve,Novick,Novick; Steve,,D,230889,41.98%,,,,,,,,,
 2878,Oregon,OR,S,S8OR00223,,Candy,Neville,Neville; Candy,,D,38367,6.98%,,,,,,,,,
 2879,Oregon,OR,S,S8OR00256,,Roger S.,Obrist,Obrist; Roger S.,,D,12647,2.30%,,,,,,,,,
@@ -2924,7 +2924,7 @@
 2924,Pennsylvania,PA,5,n/a,,,,,Party Votes:,R,72941,,,,,,,,,,
 2925,Pennsylvania,PA,5,H8PA05147,,Mark B.,McCracken,McCracken; Mark B.,,D,30358,40.91%,,,112509,41.04%,,,,,
 2926,Pennsylvania,PA,5,H8PA05097,,Bill,Cahir,Cahir; Bill,,D,25920,34.93%,,,,,,,,,
-2927,Pennsylvania,PA,5,H8PA05121,,"Richard P., Jr.",Vilello,Vilello; Richard P.; Jr.,,D,17921,24.15%,,,,,,,,,
+2927,Pennsylvania,PA,5,H8PA05121,,Richard P. Jr.,Vilello,Vilello; Richard P.; Jr.,,D,17921,24.15%,,,,,,,,,
 2928,Pennsylvania,PA,5,n/a,,,,,Party Votes:,D,74199,,,,,,,,,,
 2929,Pennsylvania,PA,5,H8PA05196,,James,Fryman,Fryman; James,,LBT,n/a,,,,6155,2.24%,,,,,
 2930,Pennsylvania,PA,5,n/a,,,,,District Votes:,,147140,,,,274177,,,,,,
@@ -2962,7 +2962,7 @@
 2962,Pennsylvania,PA,11,n/a,,,,,District Votes:,,120830,,,,283530,,,,,,
 2963,Pennsylvania,PA,12,H6PA12030,(I),John P.,Murtha,Murtha; John P.,,D,112082,100.00%,,,155268,57.85%,,,,,
 2964,Pennsylvania,PA,12,n/a,,,,,Party Votes:,D,112082,,,,,,,,,,
-2965,Pennsylvania,PA,12,H8PA12044,,William,Russell,Russell; William,,W(R)/R,3165,100.00%,,,113120,42.15%,,,,,
+2965,Pennsylvania,PA,12,H8PA12044,,William,Russell,Russell; William,,R,3165,100.00%,,,113120,42.15%,,,,,
 2966,Pennsylvania,PA,12,n/a,,,,,Party Votes:,R,3165,,,,,,,,,,
 2967,Pennsylvania,PA,12,n/a,,,,,District Votes:,,115247,,,,268388,,,,,,
 2968,Pennsylvania,PA,13,H4PA13124,(I),Allyson,Schwartz,Schwartz; Allyson,,D,98696,100.00%,,,196868,62.79%,,,,,
@@ -3001,7 +3001,7 @@
 3001,Pennsylvania,PA,18,n/a,,,,,District Votes:,,155984,,,,333010,,,,,,
 3002,Pennsylvania,PA,19,H0PA19053,(I),Todd,Platts,Platts; Todd,,R,57198,100.00%,,,218862,66.65%,,,,,
 3003,Pennsylvania,PA,19,n/a,,,,,Party Votes:,R,57198,,,,,,,,,,
-3004,Pennsylvania,PA,19,H6PA19126,,"Philip J., Jr.",Avillo,Avillo; Philip J.; Jr.,,D,69068,100.00%,,,109533,33.35%,,,,,
+3004,Pennsylvania,PA,19,H6PA19126,,Philip J. Jr.,Avillo,Avillo; Philip J.; Jr.,,D,69068,100.00%,,,109533,33.35%,,,,,
 3005,Pennsylvania,PA,19,n/a,,,,,Party Votes:,D,69068,,,,,,,,,,
 3006,Pennsylvania,PA,19,n/a,,,,,District Votes:,,126266,,,,328395,,,,,,
 3007,Pennsylvania,PA,H,n/a,,,Scattered,Scattered,,W,,,,,3380,0.06%,,,,,
@@ -3061,7 +3061,7 @@
 3061,Rhode Island,RI,S,S6RI00239,,Steve,Laffey,Laffey; Steve,,W,,,,,5,0.00%,,,,,
 3062,Rhode Island,RI,S,,,,Scattered,Scattered,,W,,,,,761,0.17%,,,,,
 3063,Rhode Island,RI,S,n/a,,,,,Total Senate Votes:,,56463,,,,438812,,,,,,
-3064,South Carolina,SC,1,H0SC01071,(I),"Henry E., Jr.",Brown,Brown; Henry E.; Jr.,,R,42588,70.05%,,,177540,51.93%,,,,,
+3064,South Carolina,SC,1,H0SC01071,(I),Henry E. Jr.,Brown,Brown; Henry E.; Jr.,,R,42588,70.05%,,,177540,51.93%,,,,,
 3065,South Carolina,SC,1,H8SC01082,,Katherine,Jenerette,Jenerette; Katherine,,R,11488,18.90%,,,,,,,,,
 3066,South Carolina,SC,1,H8SC01074,,Paul V.,Norris,Norris; Paul V.,,R,6718,11.05%,,,,,,,,,
 3067,South Carolina,SC,1,n/a,,,,,Party Votes:,R,60794,,,,,,,,,,
@@ -3132,7 +3132,7 @@
 3132,Tennessee,TN,1,H6TN01479,,James W.,Reeves,Reeves; James W.,,I,n/a,,,,2544,1.09%,,,,,
 3133,Tennessee,TN,1,H8TN01061,,Thomas (T.K.),Owens,Owens; Thomas (T.K.),,I,n/a,,,,1981,0.85%,,,,,
 3134,Tennessee,TN,1,n/a,,,,,District Votes:,,57925,,,,234381,,,,,,
-3135,Tennessee,TN,2,H8TN02069,(I),John J.,"Duncan, Jr.",Duncan; Jr.; John J.,,R,50722,100.00%,,,227120,78.11%,,,,,
+3135,Tennessee,TN,2,H8TN02069,(I),John J.,Duncan Jr.,Duncan; Jr.; John J.,,R,50722,100.00%,,,227120,78.11%,,,,,
 3136,Tennessee,TN,2,n/a,,,,,Party Votes:,R,50722,,,,,,,,,,
 3137,Tennessee,TN,2,H8TN02028,,Bob,Scott,Scott; Bob,,D,10006,59.66%,,,63639,21.89%,,,,,
 3138,Tennessee,TN,2,H8TN02093,,David Ryan,Hancock,Hancock; David Ryan,,D,6765,40.34%,,,,,,,,,
@@ -3186,7 +3186,7 @@
 3186,Tennessee,TN,8,n/a,,,,,District Votes:,,24867,,,,180519,,,,,,
 3187,Tennessee,TN,9,H6TN09068,(I),Steve,Cohen,Cohen; Steve,,D,50306,79.36%,,,198798,87.85%,,,,,
 3188,Tennessee,TN,9,H6TN09209,,Nikki,Tinker,Tinker; Nikki,,D,11817,18.64%,,,,,,,,,
-3189,Tennessee,TN,9,H8TN09098,,Joe,"Town, Jr.",Town; Jr.; Joe,,D,914,1.44%,,,,,,,,,
+3189,Tennessee,TN,9,H8TN09098,,Joe,Town Jr.,Town; Jr.; Joe,,D,914,1.44%,,,,,,,,,
 3190,Tennessee,TN,9,H8TN09080,,James,Gregory,Gregory; James,,D,180,0.28%,,,,,,,,,
 3191,Tennessee,TN,9,H8TN09023,,Isaac,Richmond,Richmond; Isaac,,D,172,0.27%,,,,,,,,,
 3192,Tennessee,TN,9,n/a,,,,,Party Votes:,D,63389,,,,,,,,,,
@@ -3248,7 +3248,7 @@
 3248,Texas,TX,6,H8TX06142,,Ludwig,Otto,Otto; Ludwig,,D,33021,50.82%,,,99919,35.61%,,,,,
 3249,Texas,TX,6,H8TX06134,,Steve,Bush,Bush; Steve,,D,31959,49.18%,,,,,,,,,
 3250,Texas,TX,6,n/a,,,,,Party Votes:,D,64980,,,,,,,,,,
-3251,Texas,TX,6,H8TX06159,,"Max W., III",Koch,Koch; Max W.; III,,LBT,C,,,,6655,2.37%,,,,,"* The Libertarian Party nominated by convention on March 15, 2008, for Congressional Districts 7, 16, 18, 20, 29, 30 and 32, and by convention on March 22, 2008, for all other Congressional Districts.  Convention nominees are noted with an asterisk."
+3251,Texas,TX,6,H8TX06159,,Max W. III,Koch,Koch; Max W.; III,,LBT,C,,,,6655,2.37%,,,,,"* The Libertarian Party nominated by convention on March 15, 2008, for Congressional Districts 7, 16, 18, 20, 29, 30 and 32, and by convention on March 22, 2008, for all other Congressional Districts.  Convention nominees are noted with an asterisk."
 3252,Texas,TX,6,n/a,,,,,District Votes:,,107034,,,,280582,,,,,,
 3253,Texas,TX,7,H0TX07055,(I),John,Culberson,Culberson; John,,R,44477,100.00%,,,162635,55.90%,,,,,
 3254,Texas,TX,7,n/a,,,,,Party Votes:,R,44477,,,,,,,,,,
@@ -3452,7 +3452,7 @@
 3452,Utah,UT,3,H6UT03141,,Jim,Noorlander,Noorlander; Jim,,CON,*,,,,17408,6.11%,,,,,"*  Conventions are held by the political parties prior to the primary.  A candidate who receives more than 60% of the vote is the nominee.  If no candidate achieves that majority, a primary election is held between the two candidates receiving the highest number of votes.  The Constitution and Libertarian party conventions were held on April 19, 2008, and the Democratic and Republican party conventions were held on May 10, 2008.  Convention nominees are noted with an asterisk."
 3453,Utah,UT,3,n/a,,,,,District Votes:,,47873,,,,285069,,,,,,"*  Conventions are held by the political parties prior to the primary.  A candidate who receives more than 60% of the vote is the nominee.  If no candidate achieves that majority, a primary election is held between the two candidates receiving the highest number of votes.  The Constitution and Libertarian party conventions were held on April 19, 2008, and the Democratic and Republican party conventions were held on May 10, 2008.  Convention nominees are noted with an asterisk."
 3454,Utah,UT,H,n/a,,,,,Total House Votes:,,47873,,,,936839,,,,,,"*  Conventions are held by the political parties prior to the primary.  A candidate who receives more than 60% of the vote is the nominee.  If no candidate achieves that majority, a primary election is held between the two candidates receiving the highest number of votes.  The Constitution and Libertarian party conventions were held on April 19, 2008, and the Democratic and Republican party conventions were held on May 10, 2008.  Convention nominees are noted with an asterisk."
-3455,Vermont,VT,0,H6VT00160,(I),Peter,Welch,Welch; Peter,,D/R,19566,87.74%,,,248203,83.25%,,,,,Democrat in Primary; Democrat and Republican in General 
+3455,Vermont,VT,0,H6VT00160,(I),Peter,Welch,Welch; Peter,,D,19566,87.74%,,,248203,83.25%,,,,,Democrat in Primary; Democrat and Republican in General 
 3456,Vermont,VT,0,H8VT00117,,Craig Barclay,Hill,Hill; Craig Barclay,,D,2635,11.82%,,,,,,,,,
 3457,Vermont,VT,0,n/a,,,Scattered,Scattered,,W(D),98,0.44%,,,,,,,,,
 3458,Vermont,VT,0,n/a,,,,,Party Votes:,D,22299,,,,,,,,,,
@@ -3479,12 +3479,12 @@
 3479,Virgin Islands,VI,0,n/a,,,,,District Votes:,,10853,,,,28222,,,,,,
 3480,Virgin Islands,VI,H,n/a,,,,,Total House Votes:,,10853,,,,28222,,,,,,
 3481,Virginia,VA,1,H8VA01147,(I),"Robert J. ""Rob""",Wittman,"Wittman; Robert J. ""Rob""",,R,Unopposed,,,,203839,56.58%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
-3482,Virginia,VA,1,H8VA01246,,"Bill S., Jr.",Day,Day; Bill S.; Jr. #,,D,#,,,,150432,41.75%,,,,,"  # Keith Hummel withdrew on July 30, 2008, after the May nominating convention.  Bill Day was nominated on August 4, 2008, by the 1st Congressional District Democratic Committee."
+3482,Virginia,VA,1,H8VA01246,,Bill S. Jr.,Day,Day; Bill S.; Jr. #,,D,#,,,,150432,41.75%,,,,,"  # Keith Hummel withdrew on July 30, 2008, after the May nominating convention.  Bill Day was nominated on August 4, 2008, by the 1st Congressional District Democratic Committee."
 3483,Virginia,VA,1,H8VA01212,,Keith B.,Hummel,Hummel; Keith B. #,,D,Winner*,,,,,,,,,,"  # Keith Hummel withdrew on July 30, 2008, after the May nominating convention.  Bill Day was nominated on August 4, 2008, by the 1st Congressional District Democratic Committee."
 3484,Virginia,VA,1,H8VA01238,,Nathan D.,Larson,Larson; Nathan D.,,LBT,n/a,,,,5265,1.46%,,,,,
 3485,Virginia,VA,1,n/a,,,Scattered,Scattered,,W,,,,,756,0.21%,,,,,
 3486,Virginia,VA,1,n/a,,,,,District Votes:,,,,,,360292,,,,,,
-3487,Virginia,VA,2,H8VA02046,,"Glenn C., III",Nye,Nye; Glenn C.; III,,D,Unopposed,,,,141857,52.40%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
+3487,Virginia,VA,2,H8VA02046,,Glenn C. III,Nye,Nye; Glenn C.; III,,D,Unopposed,,,,141857,52.40%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3488,Virginia,VA,2,H4VA02037,(I),Thelma D.,Drake,Drake; Thelma D.,,R,Unopposed,,,,128486,47.46%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3489,Virginia,VA,2,n/a,,,Scattered,Scattered,,W,,,,,368,0.14%,,,,,
 3490,Virginia,VA,2,n/a,,,,,District Votes:,,,,,,270711,,,,,,
@@ -3496,7 +3496,7 @@
 3496,Virginia,VA,4,n/a,,,Scattered,Scattered,,W,,,,,405,0.12%,,,,,
 3497,Virginia,VA,4,n/a,,,,,District Votes:,,,,,,334521,,,,,,
 3498,Virginia,VA,5,H8VA05106,,Tom S. P.,Perriello,Perriello; Tom S. P.,,D,Winner,,,,158810,50.09%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
-3499,Virginia,VA,5,H6VA05068,(I),"Virgil H., Jr.",Goode,Goode; Virgil H.; Jr.,,R,Unopposed,,,,158083,49.86%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
+3499,Virginia,VA,5,H6VA05068,(I),Virgil H. Jr.,Goode,Goode; Virgil H.; Jr.,,R,Unopposed,,,,158083,49.86%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3500,Virginia,VA,5,n/a,,,Scattered,Scattered,,W,,,,,183,0.06%,,,,,
 3501,Virginia,VA,5,n/a,,,,,District Votes:,,,,,,317076,,,,,,
 3502,Virginia,VA,6,H2VA06115,(I),"R. W. ""Bob""",Goodlatte,"Goodlatte; R. W. ""Bob""",,R,Unopposed,,,,192350,61.57%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
@@ -3508,7 +3508,7 @@
 3508,Virginia,VA,7,H8VA07045,,Anita,Hartke,Hartke; Anita,,D,Unopposed,,,,138123,37.10%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3509,Virginia,VA,7,n/a,,,Scattered,Scattered,,W,,,,,683,0.18%,,,,,
 3510,Virginia,VA,7,n/a,,,,,District Votes:,,,,,,372337,,,,,,
-3511,Virginia,VA,8,H0VA08040,(I),"James P. ""Jim,"" Jr.",Moran,"Moran; James P. ""Jim;"" Jr.",,D,11792,86.99%,,,222986,67.94%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
+3511,Virginia,VA,8,H0VA08040,(I),"James P. ""Jim"" Jr.",Moran,"Moran; James P. ""Jim;"" Jr.",,D,11792,86.99%,,,222986,67.94%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3512,Virginia,VA,8,H8VA08126,,Matthew T.,Famiglietti,Famiglietti; Matthew T.,,D,1764,13.01%,,,,,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3513,Virginia,VA,8,n/a,,,,,Party Votes:,D,13556,,,,,,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
 3514,Virginia,VA,8,H6VA08211,,Mark W.,Ellmore,Ellmore; Mark W.,,R,3286,56.05%,,,97425,29.68%,,,,,"* The political parties may choose to nominate by convention rather than by primary election.  Democratic Party conventions were held on May 17, 2008, for U.S. House Districts 1, 4, 5, and 9, and on May 24, 2008, for U.S. House District 6.  Republican Party conventions were held on May 31, 2008 for U.S. Senate and on May 17, 2008 for U.S. House District 3.  Convention nominees are noted with an asterisk.  "
@@ -3549,8 +3549,8 @@
 3549,Virginia,VA,S,n/a,,,,,Total Senate Votes:,,,,,,3643294,,,,,,
 3550,Washington,WA,1,H2WA04090,(I),Jay,Inslee,Inslee; Jay,,D,104342,66.44%,,,233780,67.76%,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
 3551,Washington,WA,1,n/a,,,,,Party Votes:,D,104342,,,,,,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
-3552,Washington,WA,1,H6WA01162,,Larry,Ishmael,Ishmael; Larry,,GOP,52700,33.56%,,,111240,32.24%,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
-3553,Washington,WA,1,n/a,,,,,Party Votes:,GOP,52700,,,,,,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
+3552,Washington,WA,1,H6WA01162,,Larry,Ishmael,Ishmael; Larry,,R,52700,33.56%,,,111240,32.24%,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
+3553,Washington,WA,1,n/a,,,,,Party Votes:,R,52700,,,,,,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
 3554,Washington,WA,1,n/a,,,,,District Votes:,,157042,,,,345020,,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
 3555,Washington,WA,2,H0WA02080,(I),Rick,Larsen,Larsen; Rick,,D,98304,54.33%,,,217416,62.39%,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
 3556,Washington,WA,2,H0WA02148,,Glen S.,Johnson,Johnson; Glen S.,,D,5590,3.09%,,,,,,,,,"Top 2 Primary System -- Primary ""Party Votes"" are for Informational Purposes Only."
@@ -3630,7 +3630,7 @@
 3630,West Virginia,WV,2,n/a,,,,,Party Votes:,D,105357,,,,,,,,,,
 3631,West Virginia,WV,2,n/a,,Aaron,Mills,Mills; Aaron,,W,,,,,16,0.01%,,,,,
 3632,West Virginia,WV,2,n/a,,,,,District Votes:,,147833,,,,258169,,,,,,
-3633,West Virginia,WV,3,H6WV04057,(I),"Nick Joe, II",Rahall,Rahall; Nick Joe; II,,D,100801,100.00%,,,133522,66.92%,,,,,
+3633,West Virginia,WV,3,H6WV04057,(I),Nick Joe II,Rahall,Rahall; Nick Joe; II,,D,100801,100.00%,,,133522,66.92%,,,,,
 3634,West Virginia,WV,3,n/a,,,,,Party Votes:,D,100801,,,,,,,,,,
 3635,West Virginia,WV,3,H4WV03062,,Marty,Gearheart,Gearheart; Marty,,R,15916,100.00%,,,66005,33.08%,,,,,
 3636,West Virginia,WV,3,n/a,,,,,Party Votes:,R,15916,,,,,,,,,,
@@ -3638,7 +3638,7 @@
 3638,West Virginia,WV,H,n/a,,,,,Total House Votes:,,360224,,,,645560,,,,,,
 3639,West Virginia,WV,S,S4WV00027,(I),Jay,Rockefeller,Rockefeller; Jay,,D,271327,77.06%,,,447560,63.73%,,,,,
 3640,West Virginia,WV,S,S8WV00101,,Sheirl L.,Fletcher,Fletcher; Sheirl L.,,D,51068,14.50%,,,,,,,,,
-3641,West Virginia,WV,S,S6WV00105,,"Billy, Jr.",Hendricks,Hendricks; Billy; Jr.,,D,29699,8.43%,,,,,,,,,
+3641,West Virginia,WV,S,S6WV00105,,Billy Jr.,Hendricks,Hendricks; Billy; Jr.,,D,29699,8.43%,,,,,,,,,
 3642,West Virginia,WV,S,n/a,,,,,Party Votes:,D,352094,,,,,,,,,,
 3643,West Virginia,WV,S,S8WV00093,,Jay,Wolfe,Wolfe; Jay,,R,81189,100.00%,,,254629,36.26%,,,,,
 3644,West Virginia,WV,S,n/a,,,,,Party Votes:,R,81189,,,,,,,,,,
@@ -3680,7 +3680,7 @@
 3680,Wisconsin,WI,3,n/a,,,Scattered,Scattered,,W(R),63,0.35%,,,,,,,,,
 3681,Wisconsin,WI,3,n/a,,,,,Party Votes:,R,17904,,,,,,,,,,
 3682,Wisconsin,WI,3,H8WI03087,,Kevin,Barrett,Barrett; Kevin,,LBT,345,59.90%,,,8236,2.31%,,,,,
-3683,Wisconsin,WI,3,H8WI03095,,"Ben, III",Olson,Olson; Ben; III,,LBT,225,39.06%,,,,,,,,,
+3683,Wisconsin,WI,3,H8WI03095,,Ben III,Olson,Olson; Ben; III,,LBT,225,39.06%,,,,,,,,,
 3684,Wisconsin,WI,3,n/a,,,Scattered,Scattered,,W(LBT),6,1.04%,,,,,,,,,
 3685,Wisconsin,WI,3,n/a,,,,,Party Votes:,LBT,576,,,,,,,,,,
 3686,Wisconsin,WI,3,n/a,,,Scattered,Scattered,,W(WG),6,100.00%,,,,,,,,,
@@ -3693,7 +3693,7 @@
 3693,Wisconsin,WI,4,H8WI04036,,Michael D.,LaForest,LaForest; Michael D.,,I,n/a,,,,29282,11.52%,,,,,
 3694,Wisconsin,WI,4,n/a,,,Scattered,Scattered,,W,,,,,2169,0.85%,,,,,
 3695,Wisconsin,WI,4,n/a,,,,,District Votes:,,19036,,,,254179,,,,,,
-3696,Wisconsin,WI,5,H8WI09050,(I),"F. James, Jr.",Sensenbrenner,Sensenbrenner; F. James; Jr.,,R,47144,78.27%,,,275271,79.58%,,,,,
+3696,Wisconsin,WI,5,H8WI09050,(I),F. James Jr.,Sensenbrenner,Sensenbrenner; F. James; Jr.,,R,47144,78.27%,,,275271,79.58%,,,,,
 3697,Wisconsin,WI,5,H8WI05108,,Jim,Burkee,Burkee; Jim,,R,13078,21.71%,,,,,,,,,
 3698,Wisconsin,WI,5,n/a,,,Scattered,Scattered,,W(R),14,0.02%,,,,,,,,,
 3699,Wisconsin,WI,5,n/a,,,,,Party Votes:,R,60236,,,,,,,,,,
