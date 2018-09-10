@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -14,6 +15,7 @@ public class BuildDataset {
 	
 	public static Map<String,CDs> CDs = new TreeMap<String,CDs>();
 	public static Map<String,Cluster> clusters = new HashMap<String,Cluster>();
+	public static LinkedList<String> fecids = new LinkedList<String>();
 
 	public static void main(String[] args) throws IOException {
 		
@@ -285,6 +287,9 @@ public class BuildDataset {
 							//insert the values
 							if(CDs.containsKey(cdlookup)) {
 								CDs.get(cdlookup).insertResults(fecid, incum, can_name, party, result,type);
+								if(!fecids.contains(fecid)) {
+									fecids.add(fecid);
+								}
 								//System.out.println(Arrays.toString(holder));
 								
 							}
