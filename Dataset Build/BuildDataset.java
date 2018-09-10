@@ -23,10 +23,10 @@ public class BuildDataset {
 				MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity,
 				Evangelical,Catholic,Veteran,Cluster;
 		//fec results variables
-		String fec_file,state,cd,fecid,incumbency = null,can_name = null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null;
+		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null;
 		String cdlookup = null;
 		double result = 0;
-		int incum = 0;
+		int incum = 0,type = 0;
 		boolean insert = false;
 		
 		String holder[];
@@ -127,7 +127,7 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
-		for(int i = 2014; i <= 2014; i = i+2) {
+		for(int i = 2008; i <= 2008; i = i+2) {
 			//set fec file name to read in
 			fec_file = "C:/Users/onest/Desktop/2018 House Model/election data files/house_results_" + i + ".csv";
 			
@@ -146,21 +146,29 @@ public class BuildDataset {
 					cd = "";
 					fecid = "";
 					incumbency = "";
+					can_name1 = "";
+					can_name2 = "";
 					can_name = "";
 					party = "";
 					gen_prct = "";
+					gen_count = "";
 					gen_runoff = "";
 					gen_comb = "";
 					result = 0;
 					insert = false;
+					type = 0;
 					
 					holder = theline.split(",");
 					if(holder.length >= 3) {
 						if(i <= 2010) {
-							state = holder[2].trim().replace("\"", "");
+							state = holder[2].trim().replace("\"", "").replace(" ", "");
 						} else {
-							state = holder[1].trim().replace("\"", "");
+							state = holder[1].trim().replace("\"", "").replace(" ", "");
 						}
+					}
+					
+					if(Integer.parseInt(holder[0])<200) {
+						System.out.println(i + ", " + Arrays.toString(holder));
 					}
 					
 					if(holder.length >= 4) {
@@ -176,15 +184,20 @@ public class BuildDataset {
 					}
 					
 					
-					if(holder.length >= 9) {
-						can_name = holder[8].trim().replace("\"", "");	
+					if(holder.length >= 8) {
+						can_name1 = holder[6].trim().replace("\"", "");	
+						can_name2 = holder[7].trim().replace("\"", "");
+						can_name = can_name1 + " " + can_name2;
 					}
 					
 					
 					if(holder.length >= 11) {
-						party = holder[10].trim().replace("\"", "");
+						party = holder[10].trim().replace("\"", "").replace(" ", "");
 					}
 					
+					if(holder.length >= 16) {
+						gen_count = holder[15].trim().replace("\"", "").replaceAll(" ", "");
+					}
 					
 					if(holder.length >= 17) {
 						gen_prct = holder[16].trim().replace("\"", "");
@@ -205,8 +218,9 @@ public class BuildDataset {
 					}
 					
 					//only take Republican or Democrat results...avoids double counting for LA,CT,NY,SC
-					if((party.equals("R") | party.equals("REP") | party.equals("D") | party.equals("DEM")) & !fecid.equals("n/a") &
-							!(cd.equals("H") | cd.equals("S") | cd.length() > 2 | cd.equals(""))) {
+					if((party.equals("R") | party.equals("REP") | party.equals("D") | party.equals("DEM") | party.equals("DFL") | party.equals("DNL"))
+							& !fecid.equals("n/a") 
+							& !(cd.equals("H") | cd.equals("S") | cd.length() > 2 | cd.equals(""))) {
 						//set incumbency
 						if(!incumbency.equals("")) {
 							incum = 1;
@@ -218,19 +232,22 @@ public class BuildDataset {
 						if(gen_runoff.length()>1) {
 							result = Double.parseDouble(gen_runoff.substring(0, gen_runoff.length()-1));
 							insert = true;
+							type = 3;
 						} else if(gen_comb.length()>1) {
 							result = Double.parseDouble(gen_comb.substring(0, gen_comb.length()-1));
 							insert = true;
+							type = 2;
 						} else {
 							//if not blank
-							if(gen_prct.length()>1) {
+							if(gen_prct.length()>1 | gen_count.length() > 1) {
 								//if unopposed... 100%
-								if(gen_prct.equals("n/a")) {
+								if(gen_prct.equals("n/a") | gen_count.equals("Unopposed")) {
 									result = 100;
 								} else {
 									result = Double.parseDouble(gen_prct.substring(0, gen_prct.length()-1));
 								}
 								insert = true;
+								type = 1;
 							}
 						}
 						
@@ -266,9 +283,9 @@ public class BuildDataset {
 							
 							//insert the values
 							if(CDs.containsKey(cdlookup)) {
-								CDs.get(cdlookup).insertResults(fecid, incum, can_name, party, result);
-								System.out.println(Arrays.toString(holder));
-								System.out.println(fecid + "," + incum + "," + can_name + "," + party + "," + result);
+								CDs.get(cdlookup).insertResults(fecid, incum, can_name, party, result,type);
+								//System.out.println(Arrays.toString(holder));
+								
 							}
 						}
 						

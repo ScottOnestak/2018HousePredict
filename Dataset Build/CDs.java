@@ -4,7 +4,7 @@ public class CDs {
 	private String name,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,
 			HSGrad,BachGrad,MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem;
-	private int year,inc_gop,inc_dem;
+	private int year,inc_gop,inc_dem,type;
 	private double gop_prct,dem_prct;
 	private boolean gop,dem;
 
@@ -44,35 +44,39 @@ public class CDs {
 		//set candidate values to false
 		gop = false;
 		dem = false;
+		type = 0;
 	}
 	
 	//insert FEC election results data
-	public void insertResults(String fecid, int incumbency, String can_name, String party, double result) {
-		if(party.equals("R") | party.equals("REP")) {
-			if(gop==false) {
-				gop = true;
-				fecid_gop = fecid;
-				inc_gop = incumbency;
-				can_gop = can_name;
-				gop_prct = result;
-			} else {
-				gop_prct += result;
-			}
+	public void insertResults(String fecid, int incumbency, String can_name, String party, double result, int itype) {
+		if(type != 3 | itype == 3) {
+			type = itype;
 			
-		} 
-		
-		if(party.equals("D") | party.equals("DEM")) {
-			if(dem==false) {
-				dem = true;
-				fecid_dem = fecid;
-				inc_dem = incumbency;
-				can_dem = can_name;
-				dem_prct = result;
-			} else {
-				dem_prct += result;
-			}
-		}
+			if(party.equals("R") | party.equals("REP")) {
+				if(gop==false) {
+					gop = true;
+					fecid_gop = fecid;
+					inc_gop = incumbency;
+					can_gop = can_name;
+					gop_prct = result;
+				} else {
+					gop_prct += result;
+				}
+				
+			} 
 			
+			if(party.equals("D") | party.equals("DEM") | party.equals("DFL") | party.equals("DNL")) {
+				if(dem==false) {
+					dem = true;
+					fecid_dem = fecid;
+					inc_dem = incumbency;
+					can_dem = can_name;
+					dem_prct = result;
+				} else {
+					dem_prct += result;
+				}
+			}
+		}			
 	}
 	
 	//check if both a democrat and republican candidate... if not, fill in NA and 0s for dataset before writing
