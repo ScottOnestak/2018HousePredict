@@ -557,6 +557,17 @@ public class BuildDataset {
 						} else {
 							cdlookup = State + cd + "_" + i;
 						}
+						
+						//insert data
+						if(CDs.containsKey(cdlookup)) {
+							CDs.get(cdlookup).insertFEC(fecid,party,Total_Receipts,Total_Disbursment,COH_Ending,COH_Beginning,
+									Debt_Owed_By_Committee,Individual_Itemized_Contribution,Individual_Unitemized_Contribution,
+									Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
+									Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,
+									Offset_To_Operating_Expenditure,Other_Receipts,Operating_Expenditure,
+									Transfer_To_Other_Authorized_Committee,Total_Loan_Repayment,Total_Contribution_Refund,
+									Other_Disbursments,Net_Contribution,Net_Operating_Expenditure);
+						}
 					}
 				}
 				
