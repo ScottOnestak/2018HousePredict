@@ -1,0 +1,829 @@
+State,StateAbbr,District,Name,Party,Incumbent,FECID
+Alabama,AL,1,Bradley Byrne,Republican,Yes,H4AL01123
+Alabama,AL,1,Robert Kennedy,Democratic,,H8AL01066
+Alabama,AL,2,Tabitha Isner,Democratic,,H8AL02197
+Alabama,AL,2,Martha Roby,Republican,Yes,H0AL02087
+Alabama,AL,3,Mallory Hagan,Democratic,,H8AL03054
+Alabama,AL,3,Mike D. Rogers,Republican,Yes,H2AL03032
+Alabama,AL,4,Lee Auman,Democratic,,H8AL04094
+Alabama,AL,4,Robert Aderholt,Republican,Yes,H6AL04098
+Alabama,AL,5,Mo Brooks,Republican,Yes,H0AL05163
+Alabama,AL,5,Peter Joffrion,Democratic,,H8AL05190
+Alabama,AL,6,Gary Palmer,Republican,Yes,H4AL06098
+Alabama,AL,6,Danner Kline,Democratic,,H8AL06099
+Alabama,AL,7,Terri Sewell,Democratic,Yes,H0AL07086
+Alaska,AK,1,Don Young,Republican,Yes,H6AK00045
+Alaska,AK,1,Alyse Galvin,Democratic,,H8AK00140
+Arizona,AZ,1,Tom O'Halleran,Democratic,Yes,H6AZ01199
+Arizona,AZ,1,Wendy Rogers,Republican,,H2AZ09035
+Arizona,AZ,2,Ann Kirkpatrick,Democratic,,H8AZ02151
+Arizona,AZ,2,Lea Marquez Peterson,Republican,,H8AZ02185
+Arizona,AZ,3,Nick Pierson,Republican,,H8AZ03159
+Arizona,AZ,3,Raul Grijalva,Democratic,Yes,H2AZ07070
+Arizona,AZ,4,David Brill,Democratic,,H8AZ04140
+Arizona,AZ,4,Paul Gosar,Republican,Yes,H0AZ01259
+Arizona,AZ,5,Andy Biggs,Republican,Yes,H6AZ05083
+Arizona,AZ,5,Joan Greene,Democratic,,H8AZ05154
+Arizona,AZ,6,David Schweikert,Republican,Yes,H4AZ06045
+Arizona,AZ,6,Anita Malik,Democratic,,H8AZ06103
+Arizona,AZ,7,Ruben Gallego,Democratic,Yes,H4AZ07043
+Arizona,AZ,8,Hiral Tipirneni,Democratic,,H8AZ08083
+Arizona,AZ,8,Debbie Lesko,Republican,Yes,H8AZ08158
+Arizona,AZ,9,Greg Stanton,Democratic,,H8AZ09040
+Arizona,AZ,9,Steve Ferrara,Republican,,H8AZ09024
+Arkansas,AR,1,Chintan Desai,Democratic,,H8AR01029
+Arkansas,AR,1,Rick Crawford,Republican,Yes,H0AR01083
+Arkansas,AR,2,French Hill,Republican,Yes,H4AR02141
+Arkansas,AR,2,Clarke Tucker,Democratic,,H8AR02159
+Arkansas,AR,3,Josh Mahony,Democratic,,H8AR03074
+Arkansas,AR,3,Steve Womack,Republican,Yes,H0AR03055
+Arkansas,AR,4,Bruce Westerman,Republican,Yes,H4AR04048
+Arkansas,AR,4,Hayden Shamel,Democratic,,H8AR04130
+California,CA,1,Doug LaMalfa,Republican,Yes,H2CA02142
+California,CA,1,Audrey Denney,Democratic,,H8CA01257
+California,CA,2,Jared Huffman,Democratic,Yes,H2CA06259
+California,CA,2,Dale Mensing,Republican,,H4CA02098
+California,CA,3,John Garamendi,Democratic,Yes,H0CA10149
+California,CA,3,Charlie Schaupp,Republican,,H6CA03067
+California,CA,4,Tom McClintock,Republican,Yes,H8CA04152
+California,CA,4,Jessica Morse,Democratic,,H8CA04210
+California,CA,5,Mike Thompson,Democratic,Yes,H8CA01109
+California,CA,6,Doris Matsui,Democratic,Yes,H6CA05195
+California,CA,7,Ami Bera,Democratic,Yes,H0CA03078
+California,CA,7,Andrew Grant,Republican,,H8CA07056
+California,CA,8,Paul Cook,Republican,Yes,H2CA08164
+California,CA,9,Jerry McNerney,Democratic,Yes,H4CA11081
+California,CA,9,Marla Livengood,Republican,,H8CA09144
+California,CA,10,Jeff Denham,Republican,Yes,H0CA19173
+California,CA,10,Josh Harder,Democratic,,H8CA10126
+California,CA,11,Mark DeSaulnier,Democratic,Yes,H0CA10073
+California,CA,11,John Fitzgerald,Republican,,H0CA07111
+California,CA,12,Nancy Pelosi,Democratic,Yes,H8CA05035
+California,CA,13,Barbara Lee,Democratic,Yes,H8CA09060
+California,CA,14,Jackie Speier,Democratic,Yes,H8CA12171
+California,CA,14,Cristina Osmena,Republican,,H8CA14185
+California,CA,15,Eric Swalwell,Democratic,Yes,H2CA15094
+California,CA,15,Rudy Peters,Republican,,H8CA15117
+California,CA,16,Jim Costa,Democratic,Yes,H4CA20082
+California,CA,16,Elizabeth Heng,Republican,,H8CA16065
+California,CA,17,Ro Khanna,Democratic,Yes,H4CA12055
+California,CA,17,Ron Cohen,Republican,,H6CA17141
+California,CA,18,Anna Eshoo,Democratic,Yes,H8CA12098
+California,CA,18,Christine Russell,Republican,,H8CA18087
+California,CA,19,Zoe Lofgren,Democratic,Yes,H4CA16049
+California,CA,20,Jimmy Panetta,Democratic,Yes,H6CA20152
+California,CA,21,David Valadao,Republican,Yes,H2CA20094
+California,CA,21,T.J. Cox,Democratic,,H6CA19113
+California,CA,22,Devin Nunes,Republican,Yes,H8CA20059
+California,CA,22,Andrew Janz,Democratic,,H8CA22139
+California,CA,23,Kevin McCarthy,Republican,Yes,H6CA22125
+California,CA,23,Tatiana Matta,Democratic,,H8CA23103
+California,CA,24,Salud Carbajal,Democratic,Yes,H6CA24303
+California,CA,24,Justin Fareed,Republican,,H4CA24142
+California,CA,25,Steve Knight,Republican,Yes,H4CA25123
+California,CA,25,Katie Hill,Democratic,,H8CA25074
+California,CA,26,Julia Brownley,Democratic,Yes,H2CA00120
+California,CA,26,Antonio Sabato,Republican,,H8CA26114
+California,CA,27,Judy Chu,Democratic,Yes,H0CA32101
+California,CA,27,Bryan Witt,Republican,,H8CA27112
+California,CA,28,Adam Schiff,Democratic,Yes,H0CA27085
+California,CA,28,Johnny Nalbandian,Republican,,H8CA28185
+California,CA,29,Tony Cardenas,Democratic,Yes,H2CA28113
+California,CA,29,Benny Bernal,Republican,,H6CA29203
+California,CA,30,Brad Sherman,Democratic,Yes,H6CA24113
+California,CA,30,Mark Reed,Republican,,H6CA30185
+California,CA,31,Pete Aguilar,Democratic,Yes,H2CA31125
+California,CA,31,Sean Flynn,Republican,,H6CA31134
+California,CA,32,Grace Napolitano,Democratic,Yes,H8CA34068
+California,CA,33,Ted Lieu,Democratic,Yes,H4CA33119
+California,CA,33,Kenneth Wright,Republican,,H6CA33106
+California,CA,34,Jimmy Gomez,Democratic,Yes,H8CA34266
+California,CA,34,Kenneth Mejia,Green,,H6CA34237
+California,CA,35,Norma Torres,Democratic,Yes,H4CA35031
+California,CA,35,Christian Valiente,Republican,,H8CA35115
+California,CA,36,Raul Ruiz,Democratic,Yes,H2CA36439
+California,CA,36,Kimberlin Pelzer,Republican,,H8CA36170
+California,CA,37,Karren Bass,Democratic,Yes,H0CA33117
+California,CA,37,Ron Bassilian,Republican,,H8CA37293
+California,CA,38,Linda Sanchez,Democratic,Yes,H2CA39078
+California,CA,38,Ryan Downing,Republican,,H4CA31105
+California,CA,39,Young Kim,Republican,,H8CA39240
+California,CA,39,Gil Cisneros,Democratic,,H8CA39174
+California,CA,40,Lucille Roybal-Allard,Democratic,Yes,H2CA33048
+California,CA,40,Rodolfo Barragan,Green,,H8CA40214
+California,CA,41,Mark Takano,Democratic,Yes,H2CA43245
+California,CA,41,Aja Smith,Republican,,H8CA41170
+California,CA,42,Ken Calvert,Republican,Yes,H2CA37023
+California,CA,42,Julia Peacock,Democratic,,H8CA42228
+California,CA,43,Maxine Waters,Democratic,Yes,H4CA23011
+California,CA,43,Omar Navarro,Republican,,H6CA44145
+California,CA,44,Nanette Barragan,Democratic,Yes,H6CA44103
+California,CA,45,Mimi Walters,Republican,Yes,H4CA45097
+California,CA,45,Katie Porter,Democratic,,H8CA45130
+California,CA,46,J. Luis Correa,Democratic,Yes,H6CA46116
+California,CA,46,Russell Lambert,Republican,,H8CA46120
+California,CA,47,Alan Lowenthal,Democratic,Yes,H2CA00104
+California,CA,47,John Briscoe,Republican,,H8CA47078
+California,CA,48,Dana Rohrabacher,Republican,Yes,H8CA42061
+California,CA,48,Hans Keirstead,Democratic,,H8CA48076
+California,CA,49,Diane Harkey,Republican,Yes,H8CA49082
+California,CA,49,Mike Levin,Democratic,,H8CA49058
+California,CA,50,Duncan Hunter,Republican,Yes,H8CA52052
+California,CA,50,Ammar Campa-Najjar,Democratic,,H8CA50098
+California,CA,51,Juan Vargas,Democratic,Yes,H2CA50026
+California,CA,51,Juan Hidalgo,Republican,,H8CA51062
+California,CA,52,Scott Peters,Democratic,Yes,H2CA52089
+California,CA,52,Omar Qudrat,Republican,,H8CA52102
+California,CA,53,Susan Davis,Democratic,Yes,H0CA49055
+California,CA,53,Morgan Murtaugh,Republican,,H8CA53084
+Colorado,CO,1,Diana DeGette,Democratic,Yes,H6CO01141
+Colorado,CO,1,Casper Stockham,Republican,,H8CO01162
+Colorado,CO,2,Peter Yu,Republican,,H8CO02251
+Colorado,CO,2,Joe Neguse,Democratic,,H8CO02160
+Colorado,CO,3,Diane Mitsch Bush,Democratic,,H8CO03192
+Colorado,CO,3,Scott Tipton,Republican,Yes,H6CO03139
+Colorado,CO,4,Karen McCormick,Democratic,,H8CO04091
+Colorado,CO,4,Ken Bucks,Republican,Yes,H4CO04090
+Colorado,CO,5,Doug Lamborn,Republican,Yes,H6CO05159
+Colorado,CO,5,Stephany Spaulding,Democratic,,H8CO05130
+Colorado,CO,6,Mike Coffman,Republican,Yes,H8CO06138
+Colorado,CO,6,Jason Crow,Democratic,,H8CO06229
+Colorado,CO,7,Ed Perlmutter,Democratic,Yes,H6CO07023
+Colorado,CO,7,Mark Barrington,Republican,,H8CO07094
+Connecticut,CT,1,Jennifer Nye,Republican,,H8CT01145
+Connecticut,CT,1,John B. Larson,Democratic,Yes,H8CT01046
+Connecticut,CT,2,Danny Postemski,Republican,,H8CT02101
+Connecticut,CT,2,Joe Courtney,Democratic,Yes,H2CT02112
+Connecticut,CT,3,Angel Cadena,Republican,,H6CT03145
+Connecticut,CT,3,Rose DeLauro,Democratic,Yes,H0CT03072
+Connecticut,CT,4,Jim Himes,Democratic,Yes,H8CT04172
+Connecticut,CT,4,Harry Arora,Republican,,H8CT04214
+Connecticut,CT,5,Jahana Hayes,Democratic,,H8CT05245
+Connecticut,CT,5,Manny Santos,Republican,,H8CT05187
+Delaware,DE,1,Lisa Rochester,Democratic,Yes,H6DE00206
+Delaware,DE,1,Scott Walker,Republican,,H6DE00214
+Florida,FL,1,Jennifer Zimmerman,Democratic,,H8FL01115
+Florida,FL,1,Matt Gaetz,Republican,Yes,H6FL01119
+Florida,FL,2,Neal Dunn,Republican,Yes,H6FL02208
+Florida,FL,2,Bob Rackleff,Democratic,,H8FL02097
+Florida,FL,3,Yvonne Hayes Hinson,Democratic,,H8FL03038
+Florida,FL,3,Ted Yoho,Republican,Yes,H2FL06109
+Florida,FL,4,John Rutherford,Republican,Yes,H6FL04105
+Florida,FL,4,Ges Selmont,Democratic,,H8FL04085
+Florida,FL,5,Virginia Fuller,Republican,,H8FL05157
+Florida,FL,5,Al Lawson,Democratic,Yes,H0FL02086
+Florida,FL,6,Nancy Soderberg,Democratic,,H8FL06098
+Florida,FL,6,Michael Waltz,Republican,,H8FL06148
+Florida,FL,7,Stephanie Murphy,Democratic,Yes,H6FL07140
+Florida,FL,7,Mike Miller,Republican,,H8FL07062
+Florida,FL,8,Bill Posey,Republican,Yes,H8FL15107
+Florida,FL,8,Sanjay Patel,Democratic,,H8FL08102
+Florida,FL,9,Darren Soto,Democratic,Yes,H6FL09179
+Florida,FL,9,Wayne Liebnitzky,Republican,,H6FL09195
+Florida,FL,10,Val Demings,Democratic,Yes,H2FL08063
+Florida,FL,11,Dana Cottrell,Democratic,,H8FL11130
+Florida,FL,11,Daniel Webster,Republican,Yes,H0FL08208
+Florida,FL,12,Chris Hunter,Democratic,,H8FL12088
+Florida,FL,12,Gus Bilirakis,Republican,Yes,H6FL09070
+Florida,FL,13,George Buck,Republican,,H8FL13136
+Florida,FL,13,Charlie Crist,Democratic,Yes,H6FL13205
+Florida,FL,14,Kathy Castor,Democratic,Yes,H6FL11126
+Florida,FL,15,Ross Spano,Republican,,H8FL15230
+Florida,FL,15,Kristen Carlson,Democratic,,H8FL15271
+Florida,FL,16,David Shapiro,Democratic,,H8FL16055
+Florida,FL,16,Vern Buchanan,Republican,Yes,H6FL13148
+Florida,FL,17,April Freeman,Democratic,,H4FL19058
+Florida,FL,17,Greg Steube,Republican,,H8FL17053
+Florida,FL,18,Brian Mast,Republican,Yes,H6FL18097
+Florida,FL,18,Lauren Baer,Democratic,,H8FL18028
+Florida,FL,19,Francis Rooney,Republican,Yes,H6FL19087
+Florida,FL,19,David Holden,Democratic,,H8FL19067
+Florida,FL,20,Alcee Hastings,Democratic,Yes,H2FL23021
+Florida,FL,21,Lois Frankel,Democratic,Yes,H2FL14053
+Florida,FL,22,Ted Deutch,Democratic,Yes,H0FL19080
+Florida,FL,22,Nicolas Kimaz,Republican,,H8FL22061
+Florida,FL,23,Debbie Wasserman Schultz,Democratic,Yes,H4FL20023
+Florida,FL,23,Joe Kaufman,Republican,,H2FL20043
+Florida,FL,24,Frederica Wilson,Democratic,Yes,H0FL17068
+Florida,FL,25,Mario Diaz-Balart,Republican,Yes,H2FL25018
+Florida,FL,25,Mary Barzee Flores,Democratic,,H8FL27086
+Florida,FL,26,Carlos Curbelo,Republican,Yes,H4FL26038
+Florida,FL,26,Debbie Mucarsel-Powell,Democratic,,H8FL26039
+Florida,FL,27,Maria Salazar,Republican,,H8FL27185
+Florida,FL,27,Donna Shalala,Democratic,,H8FL27193
+Georgia,GA,1,Lisa Ring,Democratic,,H8GA01063
+Georgia,GA,1,"Earl L. ""Buddy"" Carter",Republican,Yes,H4GA01039
+Georgia,GA,2,Herman West,Republican,,H8GA02087
+Georgia,GA,2,Sanford Bishop Jr.,Democratic,Yes,H2GA02031
+Georgia,GA,3,Drew Ferguson,Republican,Yes,H6GA03113
+Georgia,GA,3,Chuck Enderlin,Democratic,,H8GA03051
+Georgia,GA,4,Joe Profit,Republican,,H8GA04125
+Georgia,GA,4,Hank Johnson,Democratic,Yes,H6GA04129
+Georgia,GA,5,John Lewis,Democratic,Yes,H6GA05217
+Georgia,GA,6,Lucy McBath,Democratic,,H8GA06393
+Georgia,GA,6,Karen Handel,Republican,Yes,H8GA06286
+Georgia,GA,7,Carolyn Bourdeaux,Democratic,,H8GA07201
+Georgia,GA,7,Rob Woodall,Republican,Yes,H0GA07133
+Georgia,GA,8,Austin Scott,Republican,Yes,H0GA08099
+Georgia,GA,9,Doug Collins,Republican,Yes,H2GA09150
+Georgia,GA,9,Josh McCall,Democratic,,H8GA09058
+Georgia,GA,10,Jody Hice,Republican,Yes,H0GA07125
+Georgia,GA,10,Tabitha Johnson-Green,Democratic,,H8GA10197
+Georgia,GA,11,Barry Loudermilk,Republican,Yes,H4GA11061
+Georgia,GA,11,Flynn Broady,Democratic,,H8GA11062
+Georgia,GA,12,Rick Allen,Republican,Yes,H2GA12121
+Georgia,GA,12,Francys Johnson,Democratic,,H8GA12078
+Georgia,GA,13,David Scott,Democratic,Yes,H2GA13012
+Georgia,GA,13,David Callahan,Republican,,H8GA13035
+Georgia,GA,14,Tom Graves,Republican,Yes,H8GA14033
+Georgia,GA,14,Steven Foster,Independent,,H8GA14025
+Hawaii,HI,1,Ed Case,Democratic,Yes,H8HI01234
+Hawaii,HI,1,Cam Cavasso,Republican,,H8HI00012
+Hawaii,HI,2,Tulsi Gabbard,Democratic,Yes,H2HI02508
+Hawaii,HI,2,Brian Evans,Republican,,H8HI02141
+Idaho,ID,1,Cristina McNeil,Democratic,,H8ID01207
+Idaho,ID,1,Russ Fulcher,Republican,,H8ID01124
+Idaho,ID,2,Mike Simpson,Republican,Yes,H8ID02064
+Idaho,ID,2,Carlton Swisher,Democratic,,H8ID02148
+Illinois,IL,1,Jimmy Lee Tillman,Republican,,H2IL01182
+Illinois,IL,1,Bobby Rush,Democratic,Yes,H2IL01042
+Illinois,IL,2,David Merkle,Republican,,H8IL02120
+Illinois,IL,2,Robin Kelly,Democratic,Yes,H2IL02172
+Illinois,IL,3,Daniel Lipinski,Democratic,Yes,H4IL03077
+Illinois,IL,3,Arthur Jones,Republican,,H6IL03148
+Illinois,IL,4,Jesus Garcia,Democratic,,H8IL04134
+Illinois,IL,4,Mark Lorch,Republican,,H8IL04175
+Illinois,IL,5,Tom Hanson,Republican,,H8IL05073
+Illinois,IL,5,Mike Quigley,Democratic,Yes,H0IL05096
+Illinois,IL,6,Sean Casten,Democratic,,H8IL06139
+Illinois,IL,6,Peter Roskam,Republican,Yes,H6IL06117
+Illinois,IL,7,Danny Davis,Democratic,Yes,H4IL07037
+Illinois,IL,7,Craig Cameron,Republican,,H8IL17045
+Illinois,IL,8,Raja Krishnamoorthi,Democratic,Yes,H6IL08147
+Illinois,IL,8,JD Diganvker,Republican,,H8IL08101
+Illinois,IL,9,Jan Schakowsky,Democratic,Yes,H8IL09067
+Illinois,IL,9,John Elleson,Republican,,H8IL09224
+Illinois,IL,10,Brad Schneider,Democratic,Yes,H2IL10068
+Illinois,IL,10,Douglas Bennett,Republican,,H8IL10115
+Illinois,IL,11,Bill Foster,Democratic,Yes,H8IL14067
+Illinois,IL,11,Nick Stella,Republican,,H6IL11133
+Illinois,IL,12,Mike Bost,Republican,Yes,H4IL12060
+Illinois,IL,12,Brendan Kelly,Democratic,,H8IL12129
+Illinois,IL,13,Betsy Dirksen Londrigan,Democratic,,H8IL13150
+Illinois,IL,13,Rodney Davis,Republican,Yes,H2IL13120
+Illinois,IL,14,Randy Hultgren,Republican,Yes,H0IL14080
+Illinois,IL,14,Lauren Underwood,Democratic,,H8IL14174
+Illinois,IL,15,John Shimkus,Republican,Yes,H2IL20042
+Illinois,IL,15,Kevin Gaither,Democratic,,H8IL15072
+Illinois,IL,16,Adam Kinzinger,Republican,Yes,H0IL11052
+Illinois,IL,16,Sara Dady,Democratic,,H8IL16120
+Illinois,IL,17,Cheri Bustos,Democratic,Yes,H2IL17071
+Illinois,IL,17,Bill Fawell,Republican,,H4IL17077
+Illinois,IL,18,Darin LaHood,Republican,Yes,H6IL18088
+Illinois,IL,18,Junius Rodriguez,Democratic,,H6IL18161
+Indiana,IN,1,Mark Leyva,Republican,,H8IN01096
+Indiana,IN,1,Peter Visclosky,Democratic,Yes,H4IN01012
+Indiana,IN,2,Jackie Walorski,Republican,Yes,H0IN02190
+Indiana,IN,2,Mel Hall,Democratic,,H8IN02169
+Indiana,IN,3,Jim Banks,Republican,Yes,H6IN03229
+Indiana,IN,3,Courtney Tritch,Democratic,,H8IN03076
+Indiana,IN,4,Tobi Beck,Democratic,,H8IN04124
+Indiana,IN,4,Jim Baird,Republican,,H8IN04199
+Indiana,IN,5,Dee Thornton,Democratic,,H8IN05188
+Indiana,IN,5,Susan Brooks,Republican,Yes,H2IN05082
+Indiana,IN,6,Greg Pence,Republican,,H8IN06129
+Indiana,IN,6,Jeannine Lake,Democratic,,H8IN06152
+Indiana,IN,7,Andre Carson,Democratic,Yes,H8IN07184
+Indiana,IN,7,Wayne Harmon,Republican,,H8IN07150
+Indiana,IN,8,Larry Bucshon,Republican,Yes,H0IN08114
+Indiana,IN,8,William Tanoos,Democratic,,H8IN08141
+Indiana,IN,9,Trey Hollingsworth,Republican,Yes,H6IN09176
+Indiana,IN,9,Liz Watson,Democratic,,H8IN09107
+Iowa,IA,1,Abby Finkenauer,Democratic,,H8IA01094
+Iowa,IA,1,Rob Blum,Republican,Yes,H2IA01055
+Iowa,IA,2,Dave Loebsck,Democratic,Yes,H6IA02146
+Iowa,IA,2,Christopher Peters,Republican,,H6IA02161
+Iowa,IA,3,David Young,Republican,Yes,H4IA03115
+Iowa,IA,3,Cindy Axne,Democratic,,H8IA03124
+Iowa,IA,4,Steve King,Republican,Yes,H2IA05072
+Iowa,IA,4,J.D. Scholten,Democratic,,H8IA04106
+Kansas,KS,1,Alan LaPolice,Democratic,,H4KS01059
+Kansas,KS,1,Roger Marshall,Republican,Yes,H6KS01179
+Kansas,KS,2,Steve Watkins,Republican,,H8KS02199
+Kansas,KS,2,Paul Davis,Democratic,,H8KS02173
+Kansas,KS,3,Kevin Yoder,Republican,Yes,H0KS03137
+Kansas,KS,3,Sharice Davids,Democratic,,H8KS03155
+Kansas,KS,4,Ron Estes,Republican,Yes,H8KS04112
+Kansas,KS,4,James Thompson,Democratic,,H8KS04120
+Kentucky,KY,1,James Comer,Republican,Yes,H6KY01110
+Kentucky,KY,1,Paul Walter,Democratic,,H8KY01074
+Kentucky,KY,2,Brett Guthrie,Republican,Yes,H8KY02031
+Kentucky,KY,2,Hank Linderman,Democratic,,H8KY02080
+Kentucky,KY,3,Vickie Glisson,Republican,,H8KY03211
+Kentucky,KY,3,John Yarmuth,Democratic,Yes,H6KY03124
+Kentucky,KY,4,Seth Hall,Democratic,,H8KY04169
+Kentucky,KY,4,Thomas Massie,Republican,Yes,H2KY04121
+Kentucky,KY,5,Harold Rogers,Republican,Yes,H0KY05015
+Kentucky,KY,5,Kenneth Stepp,Democratic,,H6KY05111
+Kentucky,KY,6,Andy Barr,Republican,Yes,H0KY06104
+Kentucky,KY,6,Amy McGrath,Democratic,,H8KY06164
+Louisiana,LA,1,Jim Francis,Democratic,,H8LA01130
+Louisiana,LA,1,Steve Scalise,Republican,Yes,H0LA01087
+Louisiana,LA,2,Cedrick Richmond,Democratic,Yes,H8LA02054
+Louisiana,LA,3,Clay Higgins,Republican,Yes,H6LA03148
+Louisiana,LA,3,Mimi Methvin,Democratic,,H8LA03094
+Louisiana,LA,4,Mike Johnson,Republican,Yes,H6LA04138
+Louisiana,LA,4,Ryan Trundle,Democratic,,H8LA04282
+Louisiana,LA,5,Ralph Abraham,Republican,Yes,H4LA05221
+Louisiana,LA,5,Jessee Carlton Fleenor,Republican,,H8LA05099
+Louisiana,LA,6,Garrett Graves,Republican,Yes,H4LA06153
+Louisiana,LA,6,Justin DeWitt,Democratic,,H8LA06154
+Maine,ME,1,Mark Holbrook,Republican,,H6ME01207
+Maine,ME,1,Chellie Pingree,Democratic,Yes,H8ME01120
+Maine,ME,2,Bruce Poliquin,Republican,Yes,H4ME02234
+Maine,ME,2,Jared Golden,Democratic,,H8ME02185
+Maryland,MD,1,Andy Harris,Republican,Yes,H8MD01094
+Maryland,MD,1,Jesse Colvin,Democratic,,H8MD01193
+Maryland,MD,2,Liz Matory,Republican,,H8MD02118
+Maryland,MD,2,Dutch Ruppersberger,Democratic,Yes,H2MD02160
+Maryland,MD,3,Charles Anthony,Republican,,H8MD03165
+Maryland,MD,3,John Sarbanes,Democratic,Yes,H6MD03292
+Maryland,MD,4,Anthony Brown,Democratic,Yes,H6MD04209
+Maryland,MD,4,George McDermott,Republican,,NA
+Maryland,MD,5,William Devine,Republican,,H8MD05145
+Maryland,MD,5,Steny Hoyer,Democratic,Yes,H2MD05155
+Maryland,MD,6,David Trone,Democratic,,H8MD06168
+Maryland,MD,6,Amie Hoeber,Republican,,H6MD06212
+Maryland,MD,7,Elijah Cummings,Democratic,Yes,H6MD07160
+Maryland,MD,7,Richmond Davis,Republican,,H8MD07083
+Maryland,MD,8,Jamie Raskin,Democratic,Yes,H6MD08457
+Maryland,MD,8,John Walsh,Republican,,H8MD08248
+Massachusetts,MA,1,Richard E. Neal,Democratic,Yes,H8MA02041
+Massachusetts,MA,2,Jim McGovern,Democratic,Yes,H4MA03022
+Massachusetts,MA,3,Tracy Lovvorn,Republican,,H8MA02116
+Massachusetts,MA,3,Lori Trahan,Democratic,,H8MA03106
+Massachusetts,MA,3,Rick Green,Republican,,H8MA03114
+Massachusetts,MA,4,Joseph P. Kennedy III,Democratic,Yes,H2MA04073
+Massachusetts,MA,5,Katherine Clark,Democratic,Yes,H4MA05084
+Massachusetts,MA,5,John Hugo,Republican,,H8MA05234
+Massachusetts,MA,6,Seth Moulton,Democratic,Yes,H4MA06090
+Massachusetts,MA,6,Joseph Schneider,Republican,,H8MA06133
+Massachusetts,MA,7,Ayanna Pressley,Democratic,,H8MA07032
+Massachusetts,MA,8,Stephen Lynch,Democratic,Yes,H2MA09072
+Massachusetts,MA,9,Bill Keating,Democratic,Yes,H0MA10082
+Massachusetts,MA,9,Peter Tedeschi,Republican,,H8MA09046
+Michigan,MI,1,Jack Bergman,Republican,Yes,H6MI01226
+Michigan,MI,2,Bill Huizenga,Republican,Yes,H0MI02094
+Michigan,MI,2,Rob Davidson,Democratic,,H8MI02113
+Michigan,MI,3,Cathy Albro,Democratic,,H8MI03079
+Michigan,MI,3,Justin Amash,Republican,Yes,H0MI03126
+Michigan,MI,4,Jerry Hilliard,Democratic,,H8MI04101
+Michigan,MI,4,John Moolenaar,Republican,Yes,H4MI04126
+Michigan,MI,5,Daniel Kildee,Democratic,Yes,H2MI05119
+Michigan,MI,5,Travis Wines,Republican,,H8MI05116
+Michigan,MI,6,Matt Longjohn,Democratic,,H8MI06155
+Michigan,MI,6,Fred Upton,Republican,Yes,H6MI04113
+Michigan,MI,7,Gretchen Driskell,Democratic,,H6MI07223
+Michigan,MI,7,Tim Walberg,Republican,Yes,H4MI07103
+Michigan,MI,8,Elissa Slotkin,Democratic,,H8MI08102
+Michigan,MI,8,Mike Bishop,Republican,Yes,H4MI08135
+Michigan,MI,9,Candius Stearns,Republican,,H8MI09092
+Michigan,MI,9,Andy Levin,Democratic,Yes,H8MI09118
+Michigan,MI,10,Paul Mitchell,Republican,Yes,H4MI04118
+Michigan,MI,10,Kimberly Bizon,Democratic,,H8MI10108
+Michigan,MI,11,Lena Epstein,Republican,,H8MI11320
+Michigan,MI,11,Haley Stevens,Democratic,,H8MI11254
+Michigan,MI,12,Debbie Dingell,Democratic,Yes,H4MI12079
+Michigan,MI,12,Jeff Jones,Republican,,H6MI12264
+Michigan,MI,13,Rashida Tlaib,Democratic,Yes,H8MI13250
+Michigan,MI,14,Brenda Lawrence,Democratic,Yes,H2MI14111
+Michigan,MI,14,Marc Herschfus,Republican,,H8MI14100
+Minnesota,MN,1,Jim Hagedorn,Republican,,H0MN01045
+Minnesota,MN,1,Dan Feehan,Democratic,,H8MN01279
+Minnesota,MN,2,Angie Craig,Democratic,,H6MN02131
+Minnesota,MN,2,Jason Lewis,Republican,Yes,H6MN02149
+Minnesota,MN,3,Erik Paulsen,Republican,Yes,H8MN03077
+Minnesota,MN,3,Dean Phillips,Democratic,,H8MN03143
+Minnesota,MN,4,Betty McCollum,Democratic,Yes,H0MN04049
+Minnesota,MN,4,Greg Ryan,Republican,,H6MN04236
+Minnesota,MN,5,Ilhan Omar,Democratic,,H8MN05239
+Minnesota,MN,5,Jennifer Zielinski,Republican,,H8MN05213
+Minnesota,MN,6,Ian Todd,Democratic,,H8MN06096
+Minnesota,MN,6,Tom Emmer,Republican,Yes,H4MN06087
+Minnesota,MN,7,Collin C. Peterson,Democratic,Yes,H2MN07014
+Minnesota,MN,7,Dave Hughes,Republican,,H6MN07304
+Minnesota,MN,8,Joe Radinovich,Democratic,,H8MN08068
+Minnesota,MN,8,Pete Stauber,Republican,,H8MN08043
+Mississippi,MS,1,Randy Wadkins,Democratic,,H8MS01145
+Mississippi,MS,1,Trent Kelly,Republican,Yes,H6MS01131
+Mississippi,MS,2,Bennie Thompson,Democratic,Yes,H4MS02068
+Mississippi,MS,3,Michael Guest,Republican,,H8MS03125
+Mississippi,MS,3,Michael Evans,Democratic,,H8MS03190
+Mississippi,MS,4,Steven Palazzo,Republican,Yes,H0MS04120
+Mississippi,MS,4,Jeramey Anderson,Democratic,,H8MS04438
+Missouri,MO,1,Robert Vroman,Republican,,H8MO01184
+Missouri,MO,1,William Lacy Clay,Democratic,Yes,H0MO01066
+Missouri,MO,2,Ann Wagner,Republican,Yes,H2MO02102
+Missouri,MO,2,Cort VanOstran,Democratic,,H8MO02208
+Missouri,MO,3,Blaine Luetkemeyer,Republican,Yes,H8MO09153
+Missouri,MO,3,Katy Geppert,Democratic,,H8MO03198
+Missouri,MO,4,Renee Hoagenson,Democratic,,H8MO04071
+Missouri,MO,4,Vicky Hartzler,Republican,Yes,H0MO04086
+Missouri,MO,5,Emanuel Cleaver II,Democratic,Yes,H4MO05234
+Missouri,MO,5,Jacob Turk,Republican,,H6MO05189
+Missouri,MO,6,Sam Graves,Republican,Yes,H0MO06073
+Missouri,MO,6,Henry Martin,Democratic,,H8MO06092
+Missouri,MO,7,Billy Long,Republican,Yes,H0MO07113
+Missouri,MO,7,Jamie Schoolcraft,Democratic,,H8MO07223
+Missouri,MO,8,Jason Smith,Republican,Yes,H4MO08162
+Missouri,MO,8,Kathy Ellis,Democratic,,H8MO08098
+Montana,MT,1,Greg Gianforte,Republican,Yes,H8MT01182
+Montana,MT,1,Kathleen Williams,Democratic,,H8MT01232
+Nebraska,NE,1,Jessica McClure,Democratic,,H8NE01081
+Nebraska,NE,1,Jeff Fortenberry,Republican,Yes,H4NE01064
+Nebraska,NE,2,Kara Eastman,Democratic,,H8NE02220
+Nebraska,NE,2,Don Bacon,Republican,Yes,H6NE02125
+Nebraska,NE,3,Adrian Smith,Republican,Yes,H6NE03115
+Nebraska,NE,3,Paul Theobald,Democratic,,H8NE03095
+Nevada,NV,1,Joyce Bentley,Republican,,H8NV01261
+Nevada,NV,1,Dina Titus,Democratic,Yes,H8NV03036
+Nevada,NV,2,Clint Koble,Democratic,,H8NV02095
+Nevada,NV,2,Mark Amodei,Republican,Yes,H2NV02395
+Nevada,NV,3,Danny Tarkanian,Republican,,H8NV03275
+Nevada,NV,3,Susie Lee,Democratic,,H8NV03200
+Nevada,NV,4,Cresent Hardy,Republican,,H8NV04059
+Nevada,NV,4,Steven Horsford,Democratic,,H2NV04011
+New Hampshire,NH,1,Chris Pappas,Democratic,,H8NH01210
+New Hampshire,NH,1,Eddie Edwards,Republican,,H8NH01152
+New Hampshire,NH,2,Ann McLane Kuster,Democratic,Yes,H0NH02181
+New Hampshire,NH,2,Steve Negron,Republican,,H8NH02275
+New Jersey,NJ,1,Paul Dilks,Republican,,H8NJ01259
+New Jersey,NJ,1,Donald Norcross,Democratic,Yes,H4NJ01084
+New Jersey,NJ,2,Jeff Van Drew,Democratic,,H8NJ02166
+New Jersey,NJ,2,Seth Grossman,Republican,,H8NJ02232
+New Jersey,NJ,3,Andy Kim,Democratic,,H8NJ03206
+New Jersey,NJ,3,Tom MacArthur,Republican,Yes,H4NJ03130
+New Jersey,NJ,4,Christopher Smith,Republican,Yes,H8NJ04014
+New Jersey,NJ,4,Joshua Welle,Democratic,,H8NJ04188
+New Jersey,NJ,5,Josh Gottheimer,Democratic,Yes,H6NJ05171
+New Jersey,NJ,5,John McCann,Republican,,H8NJ05136
+New Jersey,NJ,6,Richard Pezzullo,Republican,,H8NJ10110
+New Jersey,NJ,6,Frank Pallone Jr.,Democratic,Yes,H8NJ03073
+New Jersey,NJ,7,Tom Malinowksi,Democratic,,H8NJ07223
+New Jersey,NJ,7,Leonard Lance,Republican,Yes,H6NJ12136
+New Jersey,NJ,8,Albio Sires,Democratic,Yes,H6NJ13191
+New Jersey,NJ,8,John Muniz,Republican,,H8NJ08072
+New Jersey,NJ,9,Bill Pascrell Jr.,Democratic,Yes,H6NJ08118
+New Jersey,NJ,9,Eric Fisher,Republican,,H8NJ09138
+New Jersey,NJ,10,Donald Payne Jr.,Democratic,Yes,H2NJ10154
+New Jersey,NJ,10,Agha Khan,Republican,,H6NJ08167
+New Jersey,NJ,11,Jay Webber,Republican,,H8NJ11217
+New Jersey,NJ,11,Mikie Sherrill,Democratic,,H8NJ11142
+New Jersey,NJ,12,Bonnie Watson Coleman,Democratic,Yes,H4NJ12149
+New Jersey,NJ,12,Daryl Kipnis,Republican,,H8NJ12108
+New Mexico,NM,1,Janice Arnold-Jones,Republican,,H8NM01372
+New Mexico,NM,1,Debra Haaland,Democratic,,H8NM01331
+New Mexico,NM,2,Xochitl Torres Small,Democratic,,H8NM02248
+New Mexico,NM,2,Yvette Herrell,Republican,,H8NM02156
+New Mexico,NM,3,Ben Ray Lujan,Democratic,Yes,H8NM03196
+New Mexico,NM,3,Jerald Steve McFall,Republican,,H6NM03059
+New York,NY,1,Perry Gershon,Democratic,,H8NY01155
+New York,NY,1,Lee Zeldin,Republican,Yes,H8NY01148
+New York,NY,2,Liuba Shirley,Democratic,,H8NY02104
+New York,NY,2,Peter King,Republican,Yes,H2NY03089
+New York,NY,3,Dan DeBono,Republican,,H8NY03151
+New York,NY,3,Thomas Suozzi,Democratic,Yes,H6NY03247
+New York,NY,4,Ameer Benno,Republican,,H8NY04084
+New York,NY,4,Kathleen Rice,Democratic,Yes,H4NY04075
+New York,NY,5,Gregory Meeks,Democratic,Yes,H8NY06048
+New York,NY,6,Grace Meng,Democratic,Yes,H2NY06116
+New York,NY,7,Nydia Velazquez,Democratic,Yes,H2NY00010
+New York,NY,8,Hakeem Jeffries,Democratic,Yes,H2NY10092
+New York,NY,9,Lutchi Gayot,Republican,,H8NY09174
+New York,NY,9,Yvette Clarke,Democratic,Yes,H4NY11138
+New York,NY,10,Naomi Levin,Republican,,H8NY10099
+New York,NY,10,Jerrold Nadler,Democratic,Yes,H2NY17071
+New York,NY,11,Dan Donovan,Republican,Yes,H6NY11174
+New York,NY,11,Max Rose,Democratic,,H8NY11113
+New York,NY,12,Carolyn Maloney,Democratic,Yes,H2NY14037
+New York,NY,12,Eliot Rabin,Republican,,H8NY12145
+New York,NY,13,Adriano Espaillat,Democratic,Yes,H2NY13096
+New York,NY,13,Jineea Butler,Republican,,H8NY13150
+New York,NY,14,Anthony Pappas,Republican,,H8NY14133
+New York,NY,14,Alexandria Ocasio-Cortez,Democratic,,H8NY15148
+New York,NY,15,Jose Serrano,Democratic,Yes,H0NY18065
+New York,NY,15,Jason Gonzalez,Republican,,H8NY15155
+New York,NY,16,Eliot Engel,Democratic,Yes,H8NY19058
+New York,NY,17,Nita Lowey,Democratic,Yes,H8NY20056
+New York,NY,18,James O'Donnell,Republican,,H8NY18274
+New York,NY,18,Sean Patrick Maloney,Democratic,Yes,H2NY22139
+New York,NY,19,John Faso,Republican,Yes,H6NY19169
+New York,NY,19,Antonio Delgado,Democratic,,H8NY19181
+New York,NY,20,Fancis Vitollo,Republican,,H6NY20209
+New York,NY,20,Paul Tonko,Democratic,Yes,H8NY21203
+New York,NY,21,Elise Stefanik,Republican,Yes,H4NY21079
+New York,NY,21,Tedra Cobb,Democratic,,H8NY21245
+New York,NY,22,Claudia Tenney,Republican,Yes,H4NY22051
+New York,NY,22,Anthony Brindisi,Democratic,,H8NY22151
+New York,NY,23,Max Della Pia,Democratic,,H8NY23175
+New York,NY,23,Thomas Reed,Republican,Yes,H0NY29054
+New York,NY,24,John Katko,Republican,Yes,H4NY24073
+New York,NY,24,Dana Balter,Democratic,,H8NY24090
+New York,NY,25,Joseph Morelle,Democratic,,H8NY25105
+New York,NY,25,Jim Maxwell,Republican,,H8NY25097
+New York,NY,26,Brian Higgins,Democratic,Yes,H4NY27076
+New York,NY,26,Renee Zeno,Republican,,H8NY26137
+New York,NY,27,Chris Collins,Republican,Yes,H8NY29032
+New York,NY,27,Nate McMurray,Democratic,,H8NY27176
+North Carolina,NC,1,Roger Allison,Republican,,H8NC01104
+North Carolina,NC,1,G.K. Butterfield,Democratic,Yes,H4NC01046
+North Carolina,NC,2,George Holding,Republican,Yes,H2NC13110
+North Carolina,NC,2,Linda Coleman,Democratic,,H8NC02110
+North Carolina,NC,3,Walter Jones,Republican,Yes,H2NC01081
+North Carolina,NC,4,David Price,Democratic,Yes,H6NC04037
+North Carolina,NC,4,Seve Loor,Republican,,H8NC04090
+North Carolina,NC,5,DD Adams,Democratic,,H8NC05063
+North Carolina,NC,5,Virginia Foxx,Republican,Yes,H4NC05146
+North Carolina,NC,6,Ryan Watts,Democratic,,H8NC06079
+North Carolina,NC,6,Mark Walker,Republican,Yes,H4NC06052
+North Carolina,NC,7,David Rouzer,Republican,Yes,H2NC07096
+North Carolina,NC,7,Kyle Horton,Democratic,,H8NC07101
+North Carolina,NC,8,Frank McNeill,Democratic,,H8NC08083
+North Carolina,NC,8,Richard Hudson,Republican,Yes,H2NC08185
+North Carolina,NC,9,Dan McCready,Democratic,,H8NC09123
+North Carolina,NC,9,Mark Harris,Republican,,H8NC09131
+North Carolina,NC,10,Patrick McHenry,Republican,Yes,H4NC10047
+North Carolina,NC,10,David Brown,Democratic,,H8NC10097
+North Carolina,NC,11,Mark Meadows,Republican,Yes,H2NC11080
+North Carolina,NC,11,Phillip Price,Democratic,,H8NC11103
+North Carolina,NC,12,Alma Adams,Democratic,Yes,H4NC12100
+North Carolina,NC,12,Paul Wright,Republican,,H6NC12089
+North Carolina,NC,13,Ted Budd,Republican,Yes,H6NC13129
+North Carolina,NC,13,Kathy Manning,Democratic,,H8NC13067
+North Dakota,ND,1,Kelly Armstrong,Republican,,H8ND00096
+North Dakota,ND,1,Mac Schneider,Democratic,,H8ND00112
+Ohio,OH,1,Steve Chabot,Republican,Yes,H8OH01043
+Ohio,OH,1,Aftab Pureval,Democratic,,H8OH01118
+Ohio,OH,2,Brad Wenstrup,Republican,Yes,H2OH02085
+Ohio,OH,2,Jill Schiller,Democratic,,H8OH02124
+Ohio,OH,3,Joyce Beatty,Democratic,Yes,H2OH03125
+Ohio,OH,3,Jim Burgess,Republican,,H8OH03106
+Ohio,OH,4,Jim Jordan,Republican,Yes,H6OH04082
+Ohio,OH,4,Janet Garrett,Democratic,,H4OH04046
+Ohio,OH,5,Bob Latta,Republican,Yes,H8OH05036
+Ohio,OH,5,Michael Galbraith,Democratic,,H8OH05150
+Ohio,OH,6,Bill Johnson,Republican,Yes,H0OH06189
+Ohio,OH,6,Shawna Roberts,Democratic,,H8OH06133
+Ohio,OH,7,Bob Gibbs,Republican,Yes,H0OH18077
+Ohio,OH,7,Ken Harbaugh,Democratic,,H8OH07123
+Ohio,OH,8,Warren Davidson,Republican,Yes,H6OH08315
+Ohio,OH,8,Vanessa Enoch,Democratic,,H8OH08097
+Ohio,OH,9,Marcy Kaptur,Democratic,Yes,H2OH09031
+Ohio,OH,9,Steven Kraus,Republican,,H8OH09111
+Ohio,OH,10,Michael Turner,Republican,Yes,H2OH03067
+Ohio,OH,10,Theresa Gasper,Democratic,,H8OH10119
+Ohio,OH,11,Marcia Fudge,Democratic,Yes,H8OH11141
+Ohio,OH,11,Beverly Goldstein,Republican,,H6OH11160
+Ohio,OH,12,Troy Balderson,Republican,Yes,H8OH12180
+Ohio,OH,12,Danny O'Connor,Democratic,,H8OH12297
+Ohio,OH,13,Tim Ryan,Democratic,Yes,H2OH17109
+Ohio,OH,13,Chris DePizzo,Republican,,H8OH13147
+Ohio,OH,14,David Joyce,Republican,Yes,H2OH14064
+Ohio,OH,14,Betsy Rader,Democratic,,H8OH14111
+Ohio,OH,15,Steve Stivers,Republican,Yes,H8OH15076
+Ohio,OH,15,Rick Neal,Democratic,,H8OH15134
+Ohio,OH,16,Anthony Gonzalez,Republican,,H8OH16124
+Ohio,OH,16,Susan Moran Palmer,Democratic,,H8OH16157
+Oklahoma,OK,1,Kevin Hern,Republican,,H8OK01157
+Oklahoma,OK,1,Tim Gilpin,Democratic,,H8OK01173
+Oklahoma,OK,2,Jason Nichols,Democratic,,H8OK02148
+Oklahoma,OK,2,Markwayne Mullin,Republican,Yes,H2OK02083
+Oklahoma,OK,3,Frank Lucas,Republican,Yes,H4OK06056
+Oklahoma,OK,3,Frankie Robbins,Democratic,,H8OK03047
+Oklahoma,OK,4,Mary Brannon,Democratic,,H8OK04094
+Oklahoma,OK,4,Tom Cole,Republican,Yes,H2OK04055
+Oklahoma,OK,5,Steve Russell,Republican,Yes,H4OK05132
+Oklahoma,OK,5,Kendra Horn,Democratic,,H8OK05109
+Oregon,OR,1,John Verbeek,Republican,,H8OR01262
+Oregon,OR,1,Suzanne Bonamici,Democratic,Yes,H2OR01133
+Oregon,OR,2,Greg Walden,Republican,Yes,H6OR02116
+Oregon,OR,2,Jamie McLeod-Skinner,Democratic,,H8OR02161
+Oregon,OR,3,Earl Blumenauer,Democratic,Yes,H6OR03064
+Oregon,OR,4,Peter DeFazio,Democratic,Yes,H6OR04047
+Oregon,OR,4,Arthur Robinson,Republican,,H0OR04081
+Oregon,OR,5,Kurt Schrader,Democratic,Yes,H8OR05107
+Oregon,OR,5,Mark Callahan,Republican,,H8OR05198
+Pennsylvania,PA,1,Brian Fitzpatrick,Republican,Yes,H6PA08277
+Pennsylvania,PA,1,Scott Wallace,Democratic,,H8PA08174
+Pennsylvania,PA,2,Brendan Boyle,Democratic,Yes,H4PA13199
+Pennsylvania,PA,2,David Torres,Republican,,H8PA02110
+Pennsylvania,PA,3,Bryan Leib,Republican,,H6PA01165
+Pennsylvania,PA,3,Dwight Evans,Democratic,Yes,H6PA02171
+Pennsylvania,PA,4,Madeleine Dean,Democratic,,H8PA04116
+Pennsylvania,PA,4,Dan David,Republican,,H8PA15286
+Pennsylvania,PA,5,Pearl Kim,Republican,,H8PA05295
+Pennsylvania,PA,5,Mary Gay Scanlon,Democratic,,H8PA07200
+Pennsylvania,PA,6,Chrissy Houlahan,Democratic,,H8PA06087
+Pennsylvania,PA,6,Greg McCauley,Republican,,H8PA07192
+Pennsylvania,PA,7,Susan Wild,Democratic,,H8PA15229
+Pennsylvania,PA,7,Marty Nothstein,Republican,,H8PA15245
+Pennsylvania,PA,8,John Chrin,Republican,,H8PA17050
+Pennsylvania,PA,8,Matt Cartwright,Democratic,Yes,H2PA17079
+Pennsylvania,PA,9,Dan Meuser,Republican,,H8PA10147
+Pennsylvania,PA,9,Denny Wolff,Democratic,,H8PA11095
+Pennsylvania,PA,10,George Scott,Democratic,,H8PA04090
+Pennsylvania,PA,10,Scott Perry,Republican,Yes,H2PA04135
+Pennsylvania,PA,11,Lloyd Smucker,Republican,Yes,H6PA16320
+Pennsylvania,PA,11,Jess King,Democratic,,H8PA16078
+Pennsylvania,PA,12,Tom Marino,Republican,Yes,H0PA10078
+Pennsylvania,PA,12,Marc Fredenberg,Democratic,,H8PA05204
+Pennsylvania,PA,13,Brent Ottaway,Democratic,,H8PA13133
+Pennsylvania,PA,13,John Joyce,Republican,,H8PA13125
+Pennsylvania,PA,14,Bibiana Boerio,Democratic,,H8PA14065
+Pennsylvania,PA,14,Guy Reschenthaler,Republican,,H8PA18199
+Pennsylvania,PA,15,Glenn Thompson,Republican,Yes,H8PA05071
+Pennsylvania,PA,15,Susan Boser,Democratic,,H8PA09065
+Pennsylvania,PA,16,Mike Kelly,Republican,Yes,H0PA03271
+Pennsylvania,PA,16,Ron DiNicola,Democratic,,H4PA21069
+Pennsylvania,PA,17,Conor Lamb,Democratic,Yes,H8PA18181
+Pennsylvania,PA,17,Keith Rothfus,Republican,Yes,H0PA04220
+Pennsylvania,PA,18,Mike Doyle,Democratic,Yes,H4PA18131
+Rhode Island,RI,1,David Cicilline,Democratic,Yes,H0RI01073
+Rhode Island,RI,1,Patrick Donovan,Republican,,H8RI01100
+Rhode Island,RI,2,Jim Langevin,Democratic,Yes,H0RI02139
+Rhode Island,RI,2,Salvatore Caiozzo,Republican,,H6RI02284
+South Carolina,SC,1,Joe Cunningham,Democratic,,H8SC01116
+South Carolina,SC,1,Katie Arrington,Republican,,H8SC01124
+South Carolina,SC,2,Sean Carrigan,Democratic,,H8SC02106
+South Carolina,SC,2,Joe Wilson,Republican,Yes,H2SC02059
+South Carolina,SC,3,Jeff Duncan,Republican,Yes,H0SC03077
+South Carolina,SC,3,Mary Geren,Democratic,,H8SC03070
+South Carolina,SC,4,Brandon Brown,Democratic,,H8SC04300
+South Carolina,SC,4,William Timmons,Republican,,H8SC04250
+South Carolina,SC,5,Ralph Norman,Republican,Yes,H8SC05158
+South Carolina,SC,5,Archie Parnell,Democratic,,H8SC05174
+South Carolina,SC,6,James Clyburn,Democratic,Yes,H2SC02042
+South Carolina,SC,6,Gerhard Gressmann,Republican,,H8SC06107
+South Carolina,SC,7,Tom Rice,Republican,Yes,H2SC07066
+South Carolina,SC,7,Robert Williams,Democratic,,H8SC07063
+South Dakota,SC,1,Dusty Johnson,Republican,,H8SD01055
+South Dakota,SC,1,Tim Bjorkman,Democratic,,H8SD01097
+Tennessee,TN,1,Marty Olsen,Democratic,,H8TN01079
+Tennessee,TN,1,Phil Roe,Republican,Yes,H6TN01388
+Tennessee,TN,2,Renee Hoyos,Democratic,,H8TN02176
+Tennessee,TN,2,Tim Burchett,Republican,,H8TN02119
+Tennessee,TN,3,Chuck Fleischmann,Republican,Yes,H0TN03254
+Tennessee,TN,3,Danielle Mitchell,Democratic,,H8TN03208
+Tennessee,TN,4,Mariah Phillips,Democratic,,H8TN04099
+Tennessee,TN,4,Scott DesJarlais,Republican,Yes,H0TN04195
+Tennessee,TN,5,Jim Cooper,Democratic,Yes,H2TN05131
+Tennessee,TN,5,Jody Ball,Republican,,H6TN05314
+Tennessee,TN,6,John Rose,Republican,,H8TN06094
+Tennessee,TN,6,Dawn Barlow,Democratic,,H8TN06128
+Tennessee,TN,7,Mark Green,Republican,,H8TN07076
+Tennessee,TN,7,Justin Kanew,Democratic,,H8TN07068
+Tennessee,TN,8,David Kustoff,Republican,Yes,H2TN07103
+Tennessee,TN,8,Erika Pearson,Democratic,,H6TN08250
+Tennessee,TN,9,Steve Cohen,Democratic,Yes,H6TN09068
+Tennessee,TN,9,Charlotte Bergmann,Republican,,H8TN09114
+Texas,TX,1,Shirley McKellar,Democratic,,H2TX01062
+Texas,TX,1,Louie Gohmert,Republican,Yes,H4TX04039
+Texas,TX,2,Todd Litton,Democratic,,H8TX02067
+Texas,TX,2,Dan Crenshaw,Republican,,H8TX02166
+Texas,TX,3,Lorie Burch,Democratic,,H8TX03099
+Texas,TX,3,Van Taylor,Republican,,H8TX03123
+Texas,TX,4,Catherine Krantz,Democratic,,H8TX04162
+Texas,TX,4,John Ratcliffe,Republican,Yes,H4TX04153
+Texas,TX,5,Dan Wood,Democratic,,H8TX05086
+Texas,TX,5,Lance Gooden,Republican,,H8TX05144
+Texas,TX,6,Jana Lynne Sanchez,Democratic,,H8TX06183
+Texas,TX,6,Ron Wright,Republican,,H8TX06233
+Texas,TX,7,Lizzie Pannill Fletcher,Democratic,,H8TX07140
+Texas,TX,7,John Culberson,Republican,Yes,H0TX07055
+Texas,TX,8,Steven David,Democratic,,H8TX08080
+Texas,TX,8,Kevin Brady,Republican,Yes,H6TX08100
+Texas,TX,9,Al Green,Democratic,Yes,H4TX09095
+Texas,TX,10,Mike Siegel,Democratic,,H8TX10110
+Texas,TX,10,Michael McCaul,Republican,Yes,H4TX10093
+Texas,TX,11,Mike Conaway,Republican,Yes,H4TX19136
+Texas,TX,11,Jennie Lou Leeder,Democratic,,H8TX11100
+Texas,TX,12,Vanessa Adia,Democratic,,H8TX12074
+Texas,TX,12,Kay Granger,Republican,Yes,H6TX12060
+Texas,TX,13,Greg Sagan,Democratic,,H8TX13163
+Texas,TX,13,Mac Thornberry,Republican,Yes,H4TX13014
+Texas,TX,14,Adrienne Bell,Democratic,,H8TX14120
+Texas,TX,14,Randy Weber,Republican,Yes,H2TX14149
+Texas,TX,15,Vincente Gonzalez,Democratic,Yes,H6TX15162
+Texas,TX,15,Tim Westley,Republican,,H6TX15204
+Texas,TX,16,Veronica Escobar,Democratic,,H8TX16109
+Texas,TX,16,Rick Seeberger,Republican,,H8TX16133
+Texas,TX,17,Bill Flores,Republican,Yes,H0TX17104
+Texas,TX,17,Rick Kennedy,Democratic,,H8TX17149
+Texas,TX,18,Ava Pate,Republican,,H6TX18158
+Texas,TX,18,Sheila Jackson Lee,Democratic,Yes,H4TX18054
+Texas,TX,19,Miguel Levario,Democratic,,H8TX19111
+Texas,TX,19,Jodey Arrington,Republican,Yes,H6TX19099
+Texas,TX,20,Joaquin Castro,Democratic,Yes,H2TX35011
+Texas,TX,21,Chip Roy,Republican,,H8TX21307
+Texas,TX,21,Joseph Kopser,Democratic,,H8TX21190
+Texas,TX,22,Sri Kulkarni,Democratic,,H8TX22313
+Texas,TX,22,Pete Olson,Republican,Yes,H8TX22107
+Texas,TX,23,Gina Ortiz Jones,Democratic,,H8TX23121
+Texas,TX,23,Will Hurd,Republican,Yes,H0TX23086
+Texas,TX,24,Kenny Marchant,Republican,Yes,H4TX24094
+Texas,TX,24,Jan McDowell,Democratic,,H6TX24149
+Texas,TX,25,Julie Oliver,Democratic,,H8TX25159
+Texas,TX,25,Roger Williams,Republican,Yes,H2TX33040
+Texas,TX,26,Michael Burgess,Republican,Yes,H2TX26093
+Texas,TX,26,Linsey Fagan,Democratic,,H8TX26124
+Texas,TX,27,Michael Cloud,Republican,,H8TX27049
+Texas,TX,27,Eric Holguin,Democratic,,H8TX27056
+Texas,TX,28,Henry Cuellar,Democratic,Yes,H2TX23082
+Texas,TX,29,Sylvia Garcia,Democratic,Yes,H8TX29052
+Texas,TX,29,Phillip Aronoff,Republican,,H8TX29094
+Texas,TX,30,Eddie Bernice Johnson,Democratic,Yes,H2TX00015
+Texas,TX,31,John Carter,Republican,Yes,H2TX31044
+Texas,TX,31,Mary Hegar,Democratic,,H8TX31058
+Texas,TX,32,Pete Sessions,Republican,Yes,H2TX03126
+Texas,TX,32,Colin Allred,Democratic,,H8TX32098
+Texas,TX,33,Marc Veasey,Democratic,Yes,H2TX33073
+Texas,TX,33,Willie Billups,Republican,,H8TX33021
+Texas,TX,34,Filemon Vela,Democratic,Yes,H2TX27190
+Texas,TX,34,Rey Gonzalez,Republican,,H6TX34031
+Texas,TX,35,Lloyd Doggett,Democratic,Yes,H4TX10028
+Texas,TX,35,David Smalling,Republican,,H8TX35026
+Texas,TX,36,Brian Babin,Republican,Yes,H6TX02079
+Texas,TX,36,Dayna Steele,Democratic,,H8TX36024
+Utah,UT,1,Lee Castillo,Democratic,,H8UT01158
+Utah,UT,1,Rob Bishop,Republican,Yes,H2UT01094
+Utah,UT,2,Chris Steart,Republican,Yes,H2UT02324
+Utah,UT,2,Shireen Ghorbani,Democratic,,H8UT02255
+Utah,UT,3,John Curtis,Republican,Yes,H8UT03238
+Utah,UT,3,James Singer,Democratic,,H8UT03402
+Utah,UT,4,Mia Love,Republican,Yes,H2UT04023
+Utah,UT,4,Ben McAdams,Democratic,,H8UT04053
+Vermont,VT,1,Peter Welch,Democratic,Yes,H6VT00160
+Vermont,VT,1,Brooke Paige,Republican,,H8VT00158
+Virginia,VA,1,Vangie Williams,Democratic,,H8VA01303
+Virginia,VA,1,Rob Wittman,Republican,Yes,H8VA01147
+Virginia,VA,2,Elaine Luria,Democratic,,H8VA02111
+Virginia,VA,2,Scott Taylor,Republican,Yes,H0VA02118
+Virginia,VA,3,Robert Scott,Democratic,Yes,H6VA01117
+Virginia,VA,4,A. Donald McEachin,Democratic,Yes,H6VA04061
+Virginia,VA,4,Ryan McAdams,Republican,,H8VA04026
+Virginia,VA,5,Denver Riggleman,Republican,,H8VA05171
+Virginia,VA,5,Leslie Cockburn,Democratic,,H8VA05155
+Virginia,VA,6,Ben Cline,Republican,,H8VA06104
+Virginia,VA,6,Jennifer Lewis,Democratic,,H8VA06138
+Virginia,VA,7,David Brat,Republican,Yes,H4VA07143
+Virginia,VA,7,Abigail Spanberger,Democratic,,H8VA07094
+Virginia,VA,8,Don Beyer,Democratic,Yes,H4VA08224
+Virginia,VA,8,Thomas Oh,Republican,,H8VA08159
+Virginia,VA,9,Morgan Griffith,Republican,Yes,H0VA09055
+Virginia,VA,9,Anthony Flaccavento,Democratic,,H8VA09066
+Virginia,VA,10,Barabara Comstock,Republican,Yes,H4VA10089
+Virginia,VA,10,Jennifer Wexton,Democratic,,H8VA10106
+Virginia,VA,11,Gerald Connolly,Democratic,Yes,H8VA11062
+Virginia,VA,11,Jeff Dove,Republican,,H8VA11070
+Washington,WA,1,Jeffrey Beeler,Republican,,H8WA01077
+Washington,WA,1,Suzan DelBene,Democratic,Yes,H0WA08046
+Washington,WA,2,Rick Larsen,Democratic,Yes,H0WA02080
+Washington,WA,3,Carolyn Long,Democratic,,H8WA03198
+Washington,WA,3,Jaime Herrera Beutler,Republican,Yes,H6WA03234
+Washington,WA,4,Dan Newhouse,Republican,Yes,H4WA04104
+Washington,WA,4,Christine Brown,Democratic,,H8WA04089
+Washington,WA,5,Cathy McMorris Rodgers,Republican,Yes,H4WA05077
+Washington,WA,5,Lisa Brown,Democratic,,H8WA05193
+Washington,WA,6,Derek Kilmer,Democratic,Yes,H2WA06129
+Washington,WA,6,Douglas Dightman,Republican,,H8WA06100
+Washington,WA,7,Pramila Jayapal,Democratic,Yes,H6WA07458
+Washington,WA,7,Craig Keller,Republican,,H4WA07073
+Washington,WA,8,Dino Rossi,Republican,,H8WA08205
+Washington,WA,8,Kim Schrier,Democratic,,H8WA08189
+Washington,WA,9,Adam Smith,Democratic,Yes,H6WA09025
+Washington,WA,9,Sarah Smith,Democratic,,H8WA09054
+Washington,WA,10,Denny Heck,Democratic,Yes,H0WA03161
+Washington,WA,10,Joseph Brumbles,Republican,,H8WA10045
+West Virginia,WV,1,Kendra Fershee,Democratic,,H8WV01075
+West Virginia,WV,1,David McKinley,Republican,Yes,H0WV01072
+West Virginia,WV,2,Alex Mooney,Republican,Yes,H4WV02080
+West Virginia,WV,2,Talley Sergent,Democratic,,H8WV02115
+West Virginia,WV,3,Carol Miller,Republican,,H8WV03097
+West Virginia,WV,3,Richard Ojeda,Democratic,,H8WV03048
+Wisconsin,WI,1,Randy Bryce,Democratic,,H8WI01123
+Wisconsin,WI,1,Bryan Steil,Republican,,H8WI01156
+Wisconsin,WI,2,Mark Pocan,Democratic,Yes,H2WI02124
+Wisconsin,WI,3,Ron Kind,Democratic,Yes,H6WI03099
+Wisconsin,WI,3,Steve Toft,Republican,,H8WI03103
+Wisconsin,WI,4,Gwen Moore,Democratic,Yes,H4WI04183
+Wisconsin,WI,4,Tim Rogers,Republican,,H8WI04069
+Wisconsin,WI,5,Jim Sensenbrenner,Republican,Yes,H8WI09050
+Wisconsin,WI,5,Tom Palzewicz,Democratic,,H8WI05165
+Wisconsin,WI,6,Glenn Grothman,Republican,Yes,H4WI06048
+Wisconsin,WI,6,Dan Kohl,Democratic,,H8WI06098
+Wisconsin,WI,7,Margaret Engebretson,Democratic,,H8WI07096
+Wisconsin,WI,7,Sean P. Duffy,Republican,Yes,H0WI07051
+Wisconsin,WI,8,Mike Gallagher,Republican,Yes,H6WI08155
+Wisconsin,WI,8,Beau Liegeois,Democratic,,H8WI08045
+Wyoming,WY,1,Liz Cheney,Republican,Yes,H6WY00159
+Wyoming,WY,1,Greg Hunter,Democratic,,H8WY01062
