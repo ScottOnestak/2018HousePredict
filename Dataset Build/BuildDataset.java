@@ -15,7 +15,12 @@ public class BuildDataset {
 	
 	public static Map<String,CDs> CDs = new TreeMap<String,CDs>();
 	public static Map<String,Cluster> clusters = new HashMap<String,Cluster>();
-	public static LinkedList<String> fecids = new LinkedList<String>();
+	public static LinkedList<String> fecids2008 = new LinkedList<String>();
+	public static LinkedList<String> fecids2010 = new LinkedList<String>();
+	public static LinkedList<String> fecids2012 = new LinkedList<String>();
+	public static LinkedList<String> fecids2014 = new LinkedList<String>();
+	public static LinkedList<String> fecids2016 = new LinkedList<String>();
+	public static LinkedList<String> fecids2018 = new LinkedList<String>();
 
 	public static void main(String[] args) throws IOException {
 		
@@ -30,6 +35,14 @@ public class BuildDataset {
 		double result = 0;
 		int incum = 0,type = 0;
 		boolean insert = false;
+		String TotRec,TotDisb,COHCOP,COHBOP,DebtOBC,IndItemCont,IndUnitemCont,IndCont,OthCommContr,PartyCommContr,TotCont,
+			TransFOAC,TotLoan,OfftoOpExpend,OthReceipts,OpExpend,TransTOAC,TotLoanRepay,TotContrRef,OthDisb,NetContr,NetOpExp;
+		double Total_Receipts,Total_Disbursment,COH_Ending,COH_Beginning,Debt_Owed_By_Committee,Individual_Itemized_Contribution,
+			Individual_Unitemized_Contribution,Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
+			Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,Offset_To_Operating_Expenditure,Other_Receipts,
+			Operating_Expenditure,Transfer_To_Other_Authorized_Committee,Total_Loan_Repayment,Total_Contribution_Refund,
+			Other_Disbursments,Net_Contribution,Net_Operating_Expenditure;
+			
 		
 		String holder[];
 		int firstyear;
@@ -129,6 +142,7 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
+		//read in election results and fec id numbers for 2008-2016 elections
 		for(int i = 2008; i <= 2016; i = i+2) {
 			//set fec file name to read in
 			fec_file = "C:/Users/onest/Desktop/2018 House Model/election data files/house_results_" + i + ".csv";
@@ -167,10 +181,6 @@ public class BuildDataset {
 						} else {
 							state = holder[1].trim().replace("\"", "").replace(" ", "");
 						}
-					}
-					
-					if(Integer.parseInt(holder[0])<200) {
-						System.out.println(i + ", " + Arrays.toString(holder));
 					}
 					
 					if(holder.length >= 4) {
@@ -287,9 +297,30 @@ public class BuildDataset {
 							//insert the values
 							if(CDs.containsKey(cdlookup)) {
 								CDs.get(cdlookup).insertResults(fecid, incum, can_name, party, result,type);
-								if(!fecids.contains(fecid)) {
-									fecids.add(fecid);
+								if(i==2008) {
+									if(!fecids2008.contains(fecid)) {
+										fecids2008.add(fecid);
+									}
+								} else if(i==2010) {
+									if(!fecids2010.contains(fecid)) {
+										fecids2010.add(fecid);
+									}
+								} else if(i==2012) {
+									if(!fecids2012.contains(fecid)) {
+										fecids2012.add(fecid);
+									}
+								} else if(i==2014) {
+									if(!fecids2014.contains(fecid)) {
+										fecids2014.add(fecid);
+									}
+								} else if(i==2016) {
+									if(!fecids2016.contains(fecid)) {
+										fecids2016.add(fecid);
+									}
+								} else {
+									System.out.println("Problem: " + i);
 								}
+								
 								//System.out.println(Arrays.toString(holder));
 								
 							}
@@ -302,7 +333,235 @@ public class BuildDataset {
 				
 				br.close();
 			} catch(FileNotFoundException e){
-				System.out.println("File not found: " + args[0]);
+				System.out.println("File not found: " + i);
+			} catch(IOException e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		//read in fec id for 2018 candidates
+		try {
+			
+			BufferedReader br = new BufferedReader(new FileReader("C:/Users/onest/Desktop/2018 House Model/election data files/FECNum2018.csv"));
+			
+			//skip header
+			theline = br.readLine();
+			theline = br.readLine();
+			
+			while(theline != null) {
+				
+				state = "";
+				cd = "";
+				can_name = "";
+				party = "";
+				incumbency = "";
+				fecid = "";
+				
+				holder = theline.split(",");
+				
+				state = holder[1].trim().replace("\"", "");
+				cd = holder[2].trim().replace("\"", "");
+				can_name = holder[3].trim().replace("\"", "");
+				party = holder[4].trim().replace("\"", "");
+				incumbency = holder[5].trim().replace("\"", "");
+				fecid = holder[6].trim().replace("\"", "");
+							
+				//construct lookup
+				if(cd.equals("0")) {
+					cd = "1";
+				}
+				if(cd.length() < 2) {
+					cd = "0" + cd;
+				}
+				
+				//set incumbency
+				if(!incumbency.equals("")) {
+					incum = 1;
+				} else {
+					incum = 0;
+				}
+				
+				//if no fec info, set blank  (George McDermott - MD04)
+				if(fecid == "NA") {
+					fecid = "";
+				}
+				
+				cdlookup = state + cd + "_2018";
+				
+				//insert
+				if(CDs.containsKey(cdlookup)) {
+					CDs.get(cdlookup).insert2018(fecid, incum, can_name, party);
+					if(!fecids2018.contains(fecid)) {
+						fecids2018.add(fecid);
+					}
+				}
+				
+				theline = br.readLine();
+			}
+			
+			br.close();
+		} catch(FileNotFoundException e){
+			System.out.println("File not found: FECNum2018.csv");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} 
+		
+		//read in and store FEC data for 2008-2018
+		for(int i = 2008; i <= 2018; i = i+2) {
+			String thefile = "C:/Users/onest/Desktop/2018 House Model/election data files/candidate_summary_" + i + ".csv";
+			
+			//try...catch statement
+			try {
+			
+				BufferedReader br = new BufferedReader(new FileReader(thefile));
+				
+				//skip first line
+				theline = br.readLine();
+				theline = br.readLine();
+				boolean exists = false;
+				
+				while(theline != null) {
+					fecid = "";
+					State = "";
+					cd = "";
+					party = "";
+					TotRec = "";
+					TotDisb = "";
+					COHCOP = "";
+					COHBOP = "";
+					DebtOBC = "";
+					IndItemCont = "";
+					IndUnitemCont = "";
+					IndCont = "";
+					OthCommContr = "";
+					PartyCommContr = "";
+					TotCont = "";
+					TransFOAC = "";
+					TotLoan = "";
+					OfftoOpExpend = "";
+					OthReceipts = "";
+					OpExpend = "";
+					TransTOAC = "";
+					TotLoanRepay = "";
+					TotContrRef = "";
+					OthDisb = "";
+					NetContr = "";
+					NetOpExp = "";
+					exists = false;
+					
+					holder = theline.split(",");
+					
+					fecid = holder[2];
+					
+					if(i==2008) {
+						if(fecids2008.contains(fecid)) {
+							exists = true;
+						}
+					} else if(i==2010) {
+						if(fecids2010.contains(fecid)) {
+							exists = true;
+						}
+					} else if(i==2012) {
+						if(fecids2012.contains(fecid)) {
+							exists = true;
+						}
+					} else if(i==2014) {
+						if(fecids2014.contains(fecid)) {
+							exists = true;
+						}
+					} else if(i==2016) {
+						if(fecids2016.contains(fecid)) {
+							exists = true;
+						}
+					} else if(i==2018) {
+						if(fecids2018.contains(fecid)) {
+							exists = true;
+						}
+					} else {}
+					
+					if(exists==true) {
+						State = holder[4];
+						cd = holder[5];
+						party = holder[6];
+						TotRec = holder[8];
+						TotDisb = holder[9];
+						COHCOP = holder[10];
+						COHBOP = holder[47];
+						DebtOBC = holder[11];
+						IndItemCont = holder[18];
+						IndUnitemCont = holder[19];
+						IndCont = holder[20];
+						OthCommContr = holder[21];
+						PartyCommContr = holder[22];
+						TotCont = holder[24];
+						TransFOAC = holder[25];
+						TotLoan = holder[28];
+						OfftoOpExpend = holder[29];
+						OthReceipts = holder[32];
+						OpExpend = holder[33];
+						TransTOAC = holder[36];
+						TotLoanRepay = holder[39];
+						TotContrRef = holder[43];
+						OthDisb = holder[44];
+						NetContr = holder[45];
+						NetOpExp = holder[46];
+						
+						Total_Receipts = Double.parseDouble(TotRec);
+						Total_Disbursment = Double.parseDouble(TotDisb);
+						COH_Ending = Double.parseDouble(COHCOP);
+						COH_Beginning = Double.parseDouble(COHBOP);
+						Debt_Owed_By_Committee = Double.parseDouble(DebtOBC);
+						Individual_Itemized_Contribution = Double.parseDouble(IndItemCont);
+						Individual_Unitemized_Contribution = Double.parseDouble(IndUnitemCont);
+						Individual_Contribution = Double.parseDouble(IndCont);
+						Other_Committee_Contribution = Double.parseDouble(OthCommContr);
+						Party_Committee_Contribution = Double.parseDouble(PartyCommContr);
+						Total_Contribution = Double.parseDouble(TotCont);
+						Transfer_From_Other_Authorized_Committee = Double.parseDouble(TransFOAC);
+						Total_Loan = Double.parseDouble(TotLoan);
+						Offset_To_Operating_Expenditure = Double.parseDouble(OfftoOpExpend);
+						Other_Receipts = Double.parseDouble(OthReceipts);
+						Operating_Expenditure = Double.parseDouble(OpExpend);
+						Transfer_To_Other_Authorized_Committee = Double.parseDouble(TransTOAC);
+						Total_Loan_Repayment = Double.parseDouble(TotLoanRepay);
+						Total_Contribution_Refund = Double.parseDouble(TotContrRef);
+						Other_Disbursments = Double.parseDouble(OthDisb);
+						Net_Contribution = Double.parseDouble(NetContr);
+						Net_Operating_Expenditure = Double.parseDouble(NetOpExp);
+						
+						//construct lookup
+						if(cd.equals("0")) {
+							cd = "1";
+						}
+						if(cd.length() < 2) {
+							cd = "0" + cd;
+						}
+						
+						//construct hashmap name
+						if(i <= 2010) {
+							cdlookup = State + cd + "o_" + i;
+						} else if(State.equals("PA") | State.equals("NC") | State.equals("FL")) {
+							if(State.equals("PA")) {
+								if(i < 2018) {
+									cdlookup = State + cd + "r_" + i;
+								} else {
+									cdlookup = State + cd + "_" + i;
+								}
+							} else if (State.equals("NC") | State.equals("FL")) {
+								if(i < 2016) {
+									cdlookup = State + cd + "r_" + i;
+								} else {
+									cdlookup = State + cd + "_" + i;
+								}
+							}
+						} else {
+							cdlookup = State + cd + "_" + i;
+						}
+					}
+				}
+				
+			} catch(FileNotFoundException e){
+				System.out.println("File not found: FECNum2018.csv");
 			} catch(IOException e) {
 				e.printStackTrace();
 			} 
