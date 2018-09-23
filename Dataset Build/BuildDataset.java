@@ -37,7 +37,7 @@ public class BuildDataset {
 		boolean insert = false;
 		String TotRec,TotDisb,COHCOP,COHBOP,DebtOBC,IndItemCont,IndUnitemCont,IndCont,OthCommContr,PartyCommContr,TotCont,
 			TransFOAC,TotLoan,OfftoOpExpend,OthReceipts,OpExpend,TransTOAC,TotLoanRepay,TotContrRef,OthDisb,NetContr,NetOpExp;
-		double Total_Receipts,Total_Disbursment,COH_Ending,COH_Beginning,Debt_Owed_By_Committee,Individual_Itemized_Contribution,
+		double Total_Receipts,Total_Disbursement,COH_Ending,COH_Beginning,Debt_Owed_By_Committee,Individual_Itemized_Contribution,
 			Individual_Unitemized_Contribution,Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
 			Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,Offset_To_Operating_Expenditure,Other_Receipts,
 			Operating_Expenditure,Transfer_To_Other_Authorized_Committee,Total_Loan_Repayment,Total_Contribution_Refund,
@@ -480,6 +480,7 @@ public class BuildDataset {
 					} else {}
 					
 					if(exists==true) {
+						System.out.println(i + "   " + theline);
 						State = holder[4];
 						cd = holder[5];
 						party = holder[6];
@@ -506,28 +507,138 @@ public class BuildDataset {
 						NetContr = holder[45];
 						NetOpExp = holder[46];
 						
-						Total_Receipts = Double.parseDouble(TotRec);
-						Total_Disbursment = Double.parseDouble(TotDisb);
-						COH_Ending = Double.parseDouble(COHCOP);
-						COH_Beginning = Double.parseDouble(COHBOP);
-						Debt_Owed_By_Committee = Double.parseDouble(DebtOBC);
-						Individual_Itemized_Contribution = Double.parseDouble(IndItemCont);
-						Individual_Unitemized_Contribution = Double.parseDouble(IndUnitemCont);
-						Individual_Contribution = Double.parseDouble(IndCont);
-						Other_Committee_Contribution = Double.parseDouble(OthCommContr);
-						Party_Committee_Contribution = Double.parseDouble(PartyCommContr);
-						Total_Contribution = Double.parseDouble(TotCont);
-						Transfer_From_Other_Authorized_Committee = Double.parseDouble(TransFOAC);
-						Total_Loan = Double.parseDouble(TotLoan);
-						Offset_To_Operating_Expenditure = Double.parseDouble(OfftoOpExpend);
-						Other_Receipts = Double.parseDouble(OthReceipts);
-						Operating_Expenditure = Double.parseDouble(OpExpend);
-						Transfer_To_Other_Authorized_Committee = Double.parseDouble(TransTOAC);
-						Total_Loan_Repayment = Double.parseDouble(TotLoanRepay);
-						Total_Contribution_Refund = Double.parseDouble(TotContrRef);
-						Other_Disbursments = Double.parseDouble(OthDisb);
-						Net_Contribution = Double.parseDouble(NetContr);
-						Net_Operating_Expenditure = Double.parseDouble(NetOpExp);
+						if(TotRec.length()>0) {
+							Total_Receipts = Double.parseDouble(TotRec);
+						} else {
+							Total_Receipts = 0;
+						}
+						
+						if(TotDisb.length()>0) {
+							Total_Disbursement = Double.parseDouble(TotDisb);
+						} else {
+							Total_Disbursement = 0;
+						}
+						
+						if(COHCOP.length()>0) {
+							COH_Ending = Double.parseDouble(COHCOP);
+						} else {
+							COH_Ending = 0;
+						}
+						
+						if(COHBOP.length()>0) {
+							COH_Beginning = Double.parseDouble(COHBOP);
+						} else {
+							COH_Beginning = 0;
+						}
+						
+						if(DebtOBC.length()>0) {
+							Debt_Owed_By_Committee = Double.parseDouble(DebtOBC);
+						} else {
+							Debt_Owed_By_Committee = 0;
+						}
+						
+						if(IndItemCont.length()>0) {
+							Individual_Itemized_Contribution = Double.parseDouble(IndItemCont);
+						} else {
+							Individual_Itemized_Contribution = 0;
+						}
+						
+						if(IndUnitemCont.length()>0) {
+							Individual_Unitemized_Contribution = Double.parseDouble(IndUnitemCont);
+						} else {
+							Individual_Unitemized_Contribution = 0;
+						}
+						
+						if(IndCont.length()>0) {
+							Individual_Contribution = Double.parseDouble(IndCont);
+						} else {
+							Individual_Contribution = 0;
+						}
+						
+						if(OthCommContr.length()>0) {
+							Other_Committee_Contribution = Double.parseDouble(OthCommContr);
+						} else {
+							Other_Committee_Contribution = 0;
+						}
+						
+						if(PartyCommContr.length()>0) {
+							Party_Committee_Contribution = Double.parseDouble(PartyCommContr);
+						} else {
+							Party_Committee_Contribution = 0;
+						}
+						
+						if(TotCont.length()>0) {
+							Total_Contribution = Double.parseDouble(TotCont);
+						} else {
+							Total_Contribution = 0;
+						}
+						
+						if(TransFOAC.length()>0) {
+							Transfer_From_Other_Authorized_Committee = Double.parseDouble(TransFOAC);
+						} else {
+							Transfer_From_Other_Authorized_Committee = 0;
+						}
+						
+						if(TotLoan.length()>0) {
+							Total_Loan = Double.parseDouble(TotLoan);
+						} else {
+							Total_Loan = 0;
+						}
+						
+						if(OfftoOpExpend.length()>0) {
+							Offset_To_Operating_Expenditure = Double.parseDouble(OfftoOpExpend);
+						} else {
+							Offset_To_Operating_Expenditure = 0;
+						}
+						
+						if(OthReceipts.length()>0) {
+							Other_Receipts = Double.parseDouble(OthReceipts);
+						} else {
+							Other_Receipts = 0;
+						}
+						
+						if(OpExpend.length()>0) {
+							Operating_Expenditure = Double.parseDouble(OpExpend);
+						} else {
+							Operating_Expenditure = 0;
+						}
+						
+						if(TransTOAC.length()>0) {
+							Transfer_To_Other_Authorized_Committee = Double.parseDouble(TransTOAC);
+						} else {
+							Transfer_To_Other_Authorized_Committee = 0;
+						}
+						
+						if(TotLoanRepay.length()>0) {
+							Total_Loan_Repayment = Double.parseDouble(TotLoanRepay);
+						} else {
+							Total_Loan_Repayment = 0;
+						}
+						
+						if(TotContrRef.length()>0) {
+							Total_Contribution_Refund = Double.parseDouble(TotContrRef);
+						} else {
+							Total_Contribution_Refund = 0;
+						}
+						
+						if(OthDisb.length()>0) {
+							Other_Disbursments = Double.parseDouble(OthDisb);
+						} else {
+							Other_Disbursments = 0;
+						}
+						
+						if(NetContr.length()>0) {
+							Net_Contribution = Double.parseDouble(NetContr);
+						} else {
+							Net_Contribution = 0;
+						}
+						
+						if(NetOpExp.length()>0) {
+							Net_Operating_Expenditure = Double.parseDouble(NetOpExp);
+						} else {
+							Net_Operating_Expenditure = 0;
+						}
+						
 						
 						//construct lookup
 						if(cd.equals("0")) {
@@ -560,7 +671,8 @@ public class BuildDataset {
 						
 						//insert data
 						if(CDs.containsKey(cdlookup)) {
-							CDs.get(cdlookup).insertFEC(fecid,party,Total_Receipts,Total_Disbursment,COH_Ending,COH_Beginning,
+							System.out.println("Inserting:" + cdlookup + " " + fecid + " " + party);
+							CDs.get(cdlookup).insertFEC(fecid,party,Total_Receipts,Total_Disbursement,COH_Ending,COH_Beginning,
 									Debt_Owed_By_Committee,Individual_Itemized_Contribution,Individual_Unitemized_Contribution,
 									Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
 									Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,
@@ -569,6 +681,8 @@ public class BuildDataset {
 									Other_Disbursments,Net_Contribution,Net_Operating_Expenditure);
 						}
 					}
+					
+					theline = br.readLine();
 				}
 				
 			} catch(FileNotFoundException e){
@@ -578,9 +692,26 @@ public class BuildDataset {
 			} 
 		}
 		
-		
-		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
+		
+		bw.write("name,State,District,CD_Name,year,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad," + 
+					"MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity," + 
+					"Evangelical,Catholic,Veteran,Cluster,GOP_Candidate,GOP_Incumbent,GOP_Result,Dem_Candidate,Dem_Incumbent," + 
+					"Dem_Result,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,Debt_Owed_By_Committee_GOP," + 
+					"Individual_Itemized_Contribution_GOP,Individual_Unitemized_Contribution_GOP,Individual_Contribution_GOP," + 
+					"Other_Committee_Contribution_GOP,Party_Committee_Contribution_GOP,Total_Contribution_GOP,Transfer_From_Other_Authorized_Committee_GOP," + 
+					"Total_Loan_GOP,Offset_To_Operating_Expenditure_GOP,Other_Receipts_GOP,Operating_Expenditure_GOP," + 
+					"Transfer_To_Other_Authorized_Committee_GOP,Total_Loan_Repayment_GOP,Total_Contribution_Refund_GOP," + 
+					"Other_Disbursements_GOP,Net_Contribution_GOP,Net_Operating_Expenditure_GOP,Prct_Receipts_From_Ind_Contr_GOP," +
+					"Prct_Receipts_From_Committee_GOP,Burn_Rate_GOP,Total_Receipts_Dem,Total_Disbursement_Dem,COH_Ending_Dem,COH_Beginning_Dem,Debt_Owed_By_Committee_Dem," + 
+					"Individual_Itemized_Contribution_Dem,Individual_Unitemized_Contribution_Dem,Individual_Contribution_Dem," +
+					"Other_Committee_Contribution_Dem,Party_Committee_Contribution_Dem,Total_Contribution_Dem,"+ 
+					"Transfer_From_Other_Authorized_Committee_Dem,Total_Loan_Dem,Offset_To_Operating_Expenditure_Dem,Other_Receipts_Dem," + 
+					"Operating_Expenditure_Dem,Transfer_To_Other_Authorized_Committee_Dem,Total_Loan_Repayment_Dem," + 
+					"Total_Contribution_Refund_Dem,Other_Disbursements_Dem,Net_Contribution_Dem,Net_Operating_Expenditure_Dem," + 
+					"Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,Prct_Total_Receipts_GOP," + 
+					"Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP," +
+					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP\n");
 		
 		int i = 0;
 		for(Map.Entry<String,CDs> entry: CDs.entrySet()){

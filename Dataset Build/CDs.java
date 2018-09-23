@@ -6,19 +6,23 @@ public class CDs {
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem;
 	private int year,inc_gop,inc_dem,type;
 	String gop_prctstr,dem_prctstr;
-	private boolean gop,dem;
-	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursments_GOP,COH_Ending_GOP,COH_Beginning_GOP,
-		Debt_Owed_By_Committee_GOP,Individual_Itemized_Contribution_GOP,Individaul_Unitemized_Contribution_GOP,
+	private boolean gop,dem,gopfec,demfec;
+	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
+		Debt_Owed_By_Committee_GOP,Individual_Itemized_Contribution_GOP,Individual_Unitemized_Contribution_GOP,
 		Individual_Contribution_GOP,Other_Committee_Contribution_GOP,Party_Committee_Contribution_GOP,Total_Contribution_GOP,
 		Transfer_From_Other_Authorized_Committee_GOP,Total_Loan_GOP,Offset_To_Operating_Expenditure_GOP,
 		Other_Receipts_GOP,Operating_Expenditure_GOP,Transfer_To_Other_Authorized_Committee_GOP,Total_Loan_Repayment_GOP,
-		Total_Contribution_Refund_GOP,Other_Disbursments_GOP,Net_Contribution_GOP,Net_Operating_Expenditure_GOP,
-		Total_Receipts_Dem,Total_Disbursments_Dem,COH_Ending_Dem,COH_Beginning_Dem,
-		Debt_Owed_By_Committee_Dem,Individual_Itemized_Contribution_Dem,Individaul_Unitemized_Contribution_Dem,
+		Total_Contribution_Refund_GOP,Other_Disbursements_GOP,Net_Contribution_GOP,Net_Operating_Expenditure_GOP,
+		Prct_Receipts_From_Ind_Contr_GOP,Prct_Receipts_From_Committee_GOP,Burn_Rate_GOP,
+		Total_Receipts_Dem,Total_Disbursement_Dem,COH_Ending_Dem,COH_Beginning_Dem,
+		Debt_Owed_By_Committee_Dem,Individual_Itemized_Contribution_Dem,Individual_Unitemized_Contribution_Dem,
 		Individual_Contribution_Dem,Other_Committee_Contribution_Dem,Party_Committee_Contribution_Dem,Total_Contribution_Dem,
 		Transfer_From_Other_Authorized_Committee_Dem,Total_Loan_Dem,Offset_To_Operating_Expenditure_Dem,
 		Other_Receipts_Dem,Operating_Expenditure_Dem,Transfer_To_Other_Authorized_Committee_Dem,Total_Loan_Repayment_Dem,
-		Total_Contribution_Refund_Dem,Other_Disbursments_Dem,Net_Contribution_Dem,Net_Operating_Expenditure_Dem;
+		Total_Contribution_Refund_Dem,Other_Disbursements_Dem,Net_Contribution_Dem,Net_Operating_Expenditure_Dem,
+		Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,
+		Prct_Total_Receipts_GOP,Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP,
+		Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP;
 	
 
 	//constructor
@@ -55,8 +59,8 @@ public class CDs {
 		this.Cluster = Cluster;	
 		
 		//set candidate values to false
-		gop = false;
-		dem = false;
+		gop = false; gopfec = false;
+		dem = false; demfec = false;
 		type = 0;
 	}
 	
@@ -110,22 +114,24 @@ public class CDs {
 		}
 	}
 	
-	public void insertFEC(String fecid,String party,Double Total_Receipts,Double Total_Disbursment,Double COH_Ending,
+	public void insertFEC(String fecid,String party,Double Total_Receipts,Double Total_Disbursement,Double COH_Ending,
 			Double COH_Beginning,Double Debt_Owed_By_Committee,Double Individual_Itemized_Contribution,
 			Double Individual_Unitemized_Contribution,Double Individual_Contribution,Double Other_Committee_Contribution,
 			Double Party_Committee_Contribution,Double Total_Contribution,Double Transfer_From_Other_Authorized_Committee,
 			Double Total_Loan,Double Offset_To_Operating_Expenditure,Double Other_Receipts,Double Operating_Expenditure,
 			Double Transfer_To_Other_Authorized_Committee,Double Total_Loan_Repayment,Double Total_Contribution_Refund,
-			Double Other_Disbursments,Double Net_Contribution,Double Net_Operating_Expenditure) {
-		
-		if(fecid==fecid_gop) {
+			Double Other_Disbursements,Double Net_Contribution,Double Net_Operating_Expenditure) {
+		System.out.println(fecid_gop + "," + fecid_dem);
+		if(fecid.equals(fecid_gop)) {
+			System.out.println("GOP Match");
+			gopfec = true;
 			Total_Receipts_GOP = Total_Receipts;
-			Total_Disbursments_GOP = Total_Disbursment;
+			Total_Disbursement_GOP = Total_Disbursement;
 			COH_Ending_GOP = COH_Ending;
 			COH_Beginning_GOP = COH_Beginning;
 			Debt_Owed_By_Committee_GOP = Debt_Owed_By_Committee;
 			Individual_Itemized_Contribution_GOP = Individual_Itemized_Contribution;
-			Individaul_Unitemized_Contribution_GOP = Individual_Unitemized_Contribution;
+			Individual_Unitemized_Contribution_GOP = Individual_Unitemized_Contribution;
 			Individual_Contribution_GOP = Individual_Contribution;
 			Other_Committee_Contribution_GOP = Other_Committee_Contribution;
 			Party_Committee_Contribution_GOP = Party_Committee_Contribution;
@@ -138,19 +144,32 @@ public class CDs {
 			Transfer_To_Other_Authorized_Committee_GOP = Transfer_To_Other_Authorized_Committee;
 			Total_Loan_Repayment_GOP = Total_Loan_Repayment;
 			Total_Contribution_Refund_GOP = Total_Contribution_Refund;
-			Other_Disbursments_GOP = Other_Disbursments;
+			Other_Disbursements_GOP = Other_Disbursements;
 			Net_Contribution_GOP = Net_Contribution;
 			Net_Operating_Expenditure_GOP = Net_Operating_Expenditure;
+			
+			//total receipts %
+			if(Total_Receipts_GOP > 0) {
+				Prct_Receipts_From_Ind_Contr_GOP = Individual_Contribution_GOP / Total_Receipts_GOP * 100;
+				Prct_Receipts_From_Committee_GOP = Other_Committee_Contribution_GOP / Total_Receipts_GOP * 100;
+				Burn_Rate_GOP = Total_Disbursement_GOP / (Total_Receipts_GOP + Total_Disbursement_GOP) * 100;
+			} else {
+				Prct_Receipts_From_Ind_Contr_GOP = 0;
+				Prct_Receipts_From_Committee_GOP = 0;
+				Burn_Rate_GOP = 0;
+			}
 		}
 		
-		if(fecid==fecid_dem) {
+		if(fecid.equals(fecid_dem)) {
+			System.out.println("Dem Match");
+			demfec = true;
 			Total_Receipts_Dem = Total_Receipts;
-			Total_Disbursments_Dem = Total_Disbursment;
+			Total_Disbursement_Dem = Total_Disbursement;
 			COH_Ending_Dem = COH_Ending;
 			COH_Beginning_Dem = COH_Beginning;
 			Debt_Owed_By_Committee_Dem = Debt_Owed_By_Committee;
 			Individual_Itemized_Contribution_Dem = Individual_Itemized_Contribution;
-			Individaul_Unitemized_Contribution_Dem = Individual_Unitemized_Contribution;
+			Individual_Unitemized_Contribution_Dem = Individual_Unitemized_Contribution;
 			Individual_Contribution_Dem = Individual_Contribution;
 			Other_Committee_Contribution_Dem = Other_Committee_Contribution;
 			Party_Committee_Contribution_Dem = Party_Committee_Contribution;
@@ -163,9 +182,20 @@ public class CDs {
 			Transfer_To_Other_Authorized_Committee_Dem = Transfer_To_Other_Authorized_Committee;
 			Total_Loan_Repayment_Dem = Total_Loan_Repayment;
 			Total_Contribution_Refund_Dem = Total_Contribution_Refund;
-			Other_Disbursments_Dem = Other_Disbursments;
+			Other_Disbursements_Dem = Other_Disbursements;
 			Net_Contribution_Dem = Net_Contribution;
 			Net_Operating_Expenditure_Dem = Net_Operating_Expenditure;
+			
+			//total receipts %
+			if(Total_Receipts_Dem > 0) {
+				Prct_Receipts_From_Ind_Contr_Dem = Individual_Contribution_Dem / Total_Receipts_Dem * 100;
+				Prct_Receipts_From_Committee_Dem = Other_Committee_Contribution_Dem / Total_Receipts_Dem * 100;
+				Burn_Rate_Dem = Total_Disbursement_Dem / (Total_Receipts_Dem + Total_Disbursement_Dem) * 100;
+			} else {
+				Prct_Receipts_From_Ind_Contr_Dem = 0;
+				Prct_Receipts_From_Committee_Dem = 0;
+				Burn_Rate_Dem = 0;
+			}
 		}
 		
 	}
@@ -183,6 +213,96 @@ public class CDs {
 			inc_dem = 0;
 			dem_prct = 0;
 		}
+		
+		if(gopfec==false) {
+			Total_Receipts_GOP = 0;
+			Total_Disbursement_GOP = 0;
+			COH_Ending_GOP = 0;
+			COH_Beginning_GOP = 0;
+			Debt_Owed_By_Committee_GOP = 0;
+			Individual_Itemized_Contribution_GOP = 0;
+			Individual_Unitemized_Contribution_GOP = 0;
+			Individual_Contribution_GOP = 0;
+			Other_Committee_Contribution_GOP = 0;
+			Party_Committee_Contribution_GOP = 0;
+			Total_Contribution_GOP = 0;
+			Transfer_From_Other_Authorized_Committee_GOP = 0;
+			Total_Loan_GOP = 0;
+			Offset_To_Operating_Expenditure_GOP = 0;
+			Other_Receipts_GOP = 0;
+			Operating_Expenditure_GOP = 0;
+			Transfer_To_Other_Authorized_Committee_GOP = 0;
+			Total_Loan_Repayment_GOP = 0;
+			Total_Contribution_Refund_GOP = 0;
+			Other_Disbursements_GOP = 0;
+			Net_Contribution_GOP = 0;
+			Net_Operating_Expenditure_GOP = 0;
+			Prct_Receipts_From_Ind_Contr_GOP = 0;
+			Prct_Receipts_From_Committee_GOP = 0;
+		}
+		
+		if(demfec==false) {
+			Total_Receipts_Dem = 0;
+			Total_Disbursement_Dem = 0;
+			COH_Ending_Dem = 0;
+			COH_Beginning_Dem = 0;
+			Debt_Owed_By_Committee_Dem = 0;
+			Individual_Itemized_Contribution_Dem = 0;
+			Individual_Unitemized_Contribution_Dem = 0;
+			Individual_Contribution_Dem = 0;
+			Other_Committee_Contribution_Dem = 0;
+			Party_Committee_Contribution_Dem = 0;
+			Total_Contribution_Dem = 0;
+			Transfer_From_Other_Authorized_Committee_Dem = 0;
+			Total_Loan_Dem = 0;
+			Offset_To_Operating_Expenditure_Dem = 0;
+			Other_Receipts_Dem = 0;
+			Operating_Expenditure_Dem = 0;
+			Transfer_To_Other_Authorized_Committee_Dem = 0;
+			Total_Loan_Repayment_Dem = 0;
+			Total_Contribution_Refund_Dem = 0;
+			Other_Disbursements_Dem = 0;
+			Net_Contribution_Dem = 0;
+			Net_Operating_Expenditure_Dem = 0;
+			Prct_Receipts_From_Ind_Contr_Dem = 0;
+			Prct_Receipts_From_Committee_Dem = 0;
+		}
+		
+		if((Total_Receipts_GOP+Total_Receipts_Dem)>0) {
+			Prct_Total_Receipts_GOP = (Total_Receipts_GOP / (Total_Receipts_GOP+Total_Receipts_Dem)) * 100;
+		} else {
+			Prct_Total_Receipts_GOP = -1;
+		}
+		
+		if((Total_Disbursement_GOP+Total_Disbursement_Dem)>0) {
+			Prct_Total_Disbursement_GOP = (Total_Disbursement_GOP / (Total_Disbursement_GOP+Total_Disbursement_Dem)) * 100;
+		} else {
+			Prct_Total_Disbursement_GOP = -1;
+		}
+		
+		if((COH_Ending_GOP+COH_Ending_Dem)>0) {
+			Prct_COH_GOP = (COH_Ending_GOP / (COH_Ending_GOP+COH_Ending_Dem)) * 100;
+		} else {
+			Prct_COH_GOP = -1;
+		}
+		
+		if((Individual_Contribution_GOP+Individual_Contribution_Dem)>0) {
+			Prct_Individual_Contribution_GOP = (Individual_Contribution_GOP / (Individual_Contribution_GOP+Individual_Contribution_Dem)) * 100;
+		} else {
+			Prct_Individual_Contribution_GOP = -1;
+		}
+		
+		if((Other_Committee_Contribution_GOP+Other_Committee_Contribution_Dem)>0) {
+			Prct_Committee_Contribution_GOP = (Other_Committee_Contribution_GOP / (Other_Committee_Contribution_GOP+Other_Committee_Contribution_Dem)) * 100;
+		} else {
+			Prct_Committee_Contribution_GOP = -1;
+		}
+		
+		Total_Receipts_Diff_GOP = Total_Receipts_GOP - Total_Receipts_Dem;
+		Total_Disbursement_Diff_GOP = Total_Disbursement_GOP - Total_Disbursement_Dem;
+		COH_Adv_GOP = COH_Ending_GOP - COH_Ending_Dem;
+		Individual_Contribution_Adv_GOP = Individual_Contribution_GOP - Individual_Contribution_Dem;
+		Committee_Contribution_Adv_GOP = Other_Committee_Contribution_GOP - Other_Committee_Contribution_Dem;
 		
 		//if 2018... results should be NA
 		if(year == 2018) {
@@ -203,6 +323,25 @@ public class CDs {
 					Black  + "," + Hispanic + "," + ForeignBorn + "," + Married + "," + HSGrad + "," + BachGrad + "," + MedianIncome
 					 + "," + Poverty + "," + MedianEarningsHS + "," + MedianEarningsBach + "," + MedEarnDiff + "," + Urbanicity
 					 + "," + LFPR + "," + Religiosity + "," + Evangelical + "," + Catholic + "," + Veteran + "," + Cluster + "," +
-					 can_gop + "," + inc_gop + "," + gop_prctstr + "," + can_dem + "," + inc_dem + "," + dem_prctstr + "\n";
+					 can_gop + "," + inc_gop + "," + gop_prctstr + "," + can_dem + "," + inc_dem + "," + dem_prctstr + "," +
+					 Total_Receipts_GOP + "," + Total_Disbursement_GOP + "," + COH_Ending_GOP  + "," +  COH_Beginning_GOP + "," +
+					 Debt_Owed_By_Committee_GOP + "," + Individual_Itemized_Contribution_GOP  + "," + Individual_Unitemized_Contribution_GOP
+					 + "," + Individual_Contribution_GOP + "," + Other_Committee_Contribution_GOP + "," + 
+					 Party_Committee_Contribution_GOP + "," + Total_Contribution_GOP + "," + Transfer_From_Other_Authorized_Committee_GOP
+					 + "," + Total_Loan_GOP + "," + Offset_To_Operating_Expenditure_GOP + "," + Other_Receipts_GOP + "," + 
+					 Operating_Expenditure_GOP + "," + Transfer_To_Other_Authorized_Committee_GOP + "," +  Total_Loan_Repayment_GOP
+					 + "," + Total_Contribution_Refund_GOP + "," + Other_Disbursements_GOP + "," + Net_Contribution_GOP + "," + 
+					 Net_Operating_Expenditure_GOP + "," + Prct_Receipts_From_Ind_Contr_GOP + "," + Prct_Receipts_From_Committee_GOP + "," + Burn_Rate_GOP + "," +
+					 Total_Receipts_Dem + "," + Total_Disbursement_Dem + "," + COH_Ending_Dem  + "," +  COH_Beginning_Dem + "," +
+					 Debt_Owed_By_Committee_Dem + "," + Individual_Itemized_Contribution_Dem  + "," + Individual_Unitemized_Contribution_Dem
+					 + "," + Individual_Contribution_Dem + "," + Other_Committee_Contribution_Dem + "," + 
+					 Party_Committee_Contribution_Dem + "," + Total_Contribution_Dem + "," + Transfer_From_Other_Authorized_Committee_Dem
+					 + "," + Total_Loan_Dem + "," + Offset_To_Operating_Expenditure_Dem + "," + Other_Receipts_Dem + "," + 
+					 Operating_Expenditure_Dem + "," + Transfer_To_Other_Authorized_Committee_Dem + "," +  Total_Loan_Repayment_Dem
+					 + "," + Total_Contribution_Refund_Dem + "," + Other_Disbursements_Dem + "," + Net_Contribution_Dem + "," + 
+					 Net_Operating_Expenditure_Dem + "," + Prct_Receipts_From_Ind_Contr_Dem + "," + Prct_Receipts_From_Committee_Dem + "," + Burn_Rate_Dem + "," + 
+					 Prct_Total_Receipts_GOP + "," + Prct_Total_Disbursement_GOP + "," + Prct_COH_GOP + "," + Prct_Individual_Contribution_GOP
+					 + "," + Prct_Committee_Contribution_GOP + "," + Total_Receipts_Diff_GOP + "," + Total_Disbursement_Diff_GOP + "," +
+					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "\n";
 	}
 }
