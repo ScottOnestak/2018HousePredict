@@ -15,6 +15,7 @@ public class BuildDataset {
 	
 	public static Map<String,CDs> CDs = new TreeMap<String,CDs>();
 	public static Map<String,Cluster> clusters = new HashMap<String,Cluster>();
+	public static Map<String,Double> PVIs = new HashMap<String,Double>();
 	public static LinkedList<String> fecids2008 = new LinkedList<String>();
 	public static LinkedList<String> fecids2010 = new LinkedList<String>();
 	public static LinkedList<String> fecids2012 = new LinkedList<String>();
@@ -28,11 +29,11 @@ public class BuildDataset {
 		//CDs values
 		String theline,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad,
 				MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity,
-				Evangelical,Catholic,Veteran,Cluster;
+				Evangelical,Catholic,Veteran,Cluster,thePVI;
 		//fec results variables
 		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null;
 		String cdlookup = null;
-		double result = 0;
+		double result = 0,pvi;
 		int incum = 0,type = 0;
 		boolean insert = false;
 		String TotRec,TotDisb,COHCOP,COHBOP,DebtOBC,IndItemCont,IndUnitemCont,IndCont,OthCommContr,PartyCommContr,TotCont,
@@ -685,12 +686,44 @@ public class BuildDataset {
 					theline = br.readLine();
 				}
 				
+				br.close();
 			} catch(FileNotFoundException e){
 				System.out.println("File not found: FECNum2018.csv");
 			} catch(IOException e) {
 				e.printStackTrace();
 			} 
 		}
+		
+		//read in PVIs
+		try {
+			
+			BufferedReader br = new BufferedReader(new FileReader("C:/Users/onest/Desktop/2018 House Model/election data files/PVIs.csv"));
+			
+			//skip header
+			theline = br.readLine();
+			theline = br.readLine();
+			
+			while(theline != null) {
+				
+				holder = theline.split(",");
+				
+				cdlookup = holder[2];
+				pvi = Double.parseDouble(holder[3]);
+				
+				if(CDs.containsKey(cdlookup)) {
+					CDs.get(cdlookup).insertPVI(pvi);
+					PVIs.put(cdlookup, pvi);
+				}
+				
+				theline = br.readLine();
+			}
+			
+			br.close();
+		} catch(FileNotFoundException e){
+			System.out.println("File not found: FECNum2018.csv");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} 
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
 		
@@ -711,7 +744,8 @@ public class BuildDataset {
 					"Total_Contribution_Refund_Dem,Other_Disbursements_Dem,Net_Contribution_Dem,Net_Operating_Expenditure_Dem," + 
 					"Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,Prct_Total_Receipts_GOP," + 
 					"Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP," +
-					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP\n");
+					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP," +
+					"PVI,President,President_Time,House,House_Time,CD_Time_Indicator\n");
 		
 		int i = 0;
 		for(Map.Entry<String,CDs> entry: CDs.entrySet()){

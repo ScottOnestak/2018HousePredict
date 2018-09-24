@@ -3,8 +3,8 @@ public class CDs {
 	
 	private String name,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,
 			HSGrad,BachGrad,MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,
-			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem;
-	private int year,inc_gop,inc_dem,type;
+			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem,President,House;
+	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator;
 	String gop_prctstr,dem_prctstr;
 	private boolean gop,dem,gopfec,demfec;
 	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
@@ -22,7 +22,8 @@ public class CDs {
 		Total_Contribution_Refund_Dem,Other_Disbursements_Dem,Net_Contribution_Dem,Net_Operating_Expenditure_Dem,
 		Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,
 		Prct_Total_Receipts_GOP,Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP,
-		Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP;
+		Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP,
+		pvi;
 	
 
 	//constructor
@@ -200,6 +201,11 @@ public class CDs {
 		
 	}
 	
+	//insert PVI method
+	public void insertPVI(double pvi) {
+		this.pvi = pvi;
+	}
+	
 	//check if both a democrat and republican candidate... if not, fill in NA and 0s for dataset before writing
 	public void check() {
 		if(gop==false) {
@@ -312,6 +318,61 @@ public class CDs {
 			gop_prctstr = Double.toString(gop_prct);
 			dem_prctstr = Double.toString(dem_prct);
 		}
+		
+		//pres party in power
+		if(year == 2006 | year == 2008 | year == 2018) {
+			President = "R";
+		} else {
+			President = "D";
+		}
+		
+		//pres time in office
+		if(year == 2006) {
+			President_Time = 6;
+		} else if(year == 2008) {
+			President_Time = 8;
+		} else if(year == 2010) {
+			President_Time = -2;
+		} else if(year == 2012) {
+			President_Time = -4;
+		} else if(year == 2014) {
+			President_Time = -6;
+		} else if(year == 2016) {
+			President_Time = -8;
+		} else {
+			President_Time = 2;
+		}
+		
+		//part in control house
+		if(year == 2008 | year == 2010) {
+			House = "D";
+		} else {
+			House = "R";
+		}
+		
+		//time control of house
+		if(year == 2006) {
+			House_Time = 12;
+		} else if(year == 2008) {
+			House_Time = -2;
+		} else if(year == 2010) {
+			House_Time = -4;
+		} else if(year == 2012) {
+			House_Time = 2;
+		} else if(year == 2014) {
+			House_Time = 4;
+		} else if(year == 2016) {
+			House_Time = 6;
+		} else {
+			House_Time = 8;
+		}
+		
+		//cd time indicator... new vs. old districts
+		if(year > 2010) {
+			CD_Time_Indicator = 1;
+		} else {
+			CD_Time_Indicator = 0;
+		}
 	}
 	
 	//toString...return to write dataset
@@ -342,6 +403,7 @@ public class CDs {
 					 Net_Operating_Expenditure_Dem + "," + Prct_Receipts_From_Ind_Contr_Dem + "," + Prct_Receipts_From_Committee_Dem + "," + Burn_Rate_Dem + "," + 
 					 Prct_Total_Receipts_GOP + "," + Prct_Total_Disbursement_GOP + "," + Prct_COH_GOP + "," + Prct_Individual_Contribution_GOP
 					 + "," + Prct_Committee_Contribution_GOP + "," + Total_Receipts_Diff_GOP + "," + Total_Disbursement_Diff_GOP + "," +
-					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "\n";
+					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "," + pvi + "," +
+					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "\n";
 	}
 }
