@@ -5,17 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 public class BuildDataset {
 	
 	public static Map<String,CDs> CDs = new TreeMap<String,CDs>();
 	public static Map<String,Cluster> clusters = new HashMap<String,Cluster>();
 	public static Map<String,Double> PVIs = new HashMap<String,Double>();
+	public static Map<String,Polls> genericballot = new HashMap<String,Polls>();
 	public static LinkedList<String> fecids2008 = new LinkedList<String>();
 	public static LinkedList<String> fecids2010 = new LinkedList<String>();
 	public static LinkedList<String> fecids2012 = new LinkedList<String>();
@@ -23,13 +28,13 @@ public class BuildDataset {
 	public static LinkedList<String> fecids2016 = new LinkedList<String>();
 	public static LinkedList<String> fecids2018 = new LinkedList<String>();
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		
 		String theCDs = "C:/Users/onest/Desktop/2018 House Model/CDs.csv";
 		//CDs values
-		String theline,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad,
+		String theline=null,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad,
 				MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity,
-				Evangelical,Catholic,Veteran,Cluster,thePVI;
+				Evangelical,Catholic,Veteran,Cluster,pollster,year;
 		//fec results variables
 		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null;
 		String cdlookup = null;
@@ -42,8 +47,16 @@ public class BuildDataset {
 			Individual_Unitemized_Contribution,Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
 			Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,Offset_To_Operating_Expenditure,Other_Receipts,
 			Operating_Expenditure,Transfer_To_Other_Authorized_Committee,Total_Loan_Repayment,Total_Contribution_Refund,
-			Other_Disbursments,Net_Contribution,Net_Operating_Expenditure;
-			
+			Other_Disbursments,Net_Contribution,Net_Operating_Expenditure,pollster_grade,gop,dem;
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		Date thedate;
+		
+		Date Election2008 = (Date) formatter.parse("11/4/2008"); 
+		Date Election2010 = (Date) formatter.parse("11/2/2010");
+		Date Election2012 = (Date) formatter.parse("11/6/2012");
+		Date Election2014 = (Date) formatter.parse("11/4/2014");
+		Date Election2016 = (Date) formatter.parse("11/8/2016");
+		Date current = (Date) formatter.parse("10/2/2018");
 		
 		String holder[];
 		int firstyear;
@@ -481,7 +494,7 @@ public class BuildDataset {
 					} else {}
 					
 					if(exists==true) {
-						System.out.println(i + "   " + theline);
+						//System.out.println(i + "   " + theline);
 						State = holder[4];
 						cd = holder[5];
 						party = holder[6];
@@ -672,7 +685,7 @@ public class BuildDataset {
 						
 						//insert data
 						if(CDs.containsKey(cdlookup)) {
-							System.out.println("Inserting:" + cdlookup + " " + fecid + " " + party);
+							//System.out.println("Inserting:" + cdlookup + " " + fecid + " " + party);
 							CDs.get(cdlookup).insertFEC(fecid,party,Total_Receipts,Total_Disbursement,COH_Ending,COH_Beginning,
 									Debt_Owed_By_Committee,Individual_Itemized_Contribution,Individual_Unitemized_Contribution,
 									Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
@@ -722,6 +735,74 @@ public class BuildDataset {
 		} catch(FileNotFoundException e){
 			System.out.println("File not found: FECNum2018.csv");
 		} catch(IOException e) {
+			e.printStackTrace();
+		} 
+		
+		
+		//read in generic ballot data
+		try {
+			
+			BufferedReader br = new BufferedReader(new FileReader("C:/Users/onest/Desktop/2018 House Model/election data files/genericballotcsv.csv"));
+			
+			theline = br.readLine();
+			theline = br.readLine();
+			
+			long days;
+			
+			while(theline != null) {
+				holder = theline.split(",");
+				
+				pollster = holder[0];
+				thedate = (Date) formatter.parse(holder[1]);
+				pollster_grade = Double.parseDouble(holder[9]);
+				gop = Double.parseDouble(holder[10]);
+				dem = Double.parseDouble(holder[11]);
+				
+				if(thedate.getTime()-Election2008.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2008.getTime()), TimeUnit.MILLISECONDS);
+					year = "2008";
+				} else if(thedate.getTime()-Election2010.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2010.getTime()), TimeUnit.MILLISECONDS);
+					year = "2010";
+				} else if(thedate.getTime()-Election2012.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2012.getTime()), TimeUnit.MILLISECONDS);
+					year = "2012";
+				} else if(thedate.getTime()-Election2014.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2014.getTime()), TimeUnit.MILLISECONDS);
+					year = "2014";
+				} else if(thedate.getTime()-Election2016.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2016.getTime()), TimeUnit.MILLISECONDS);
+					year = "2016";
+				} else {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
+					year = "2018";
+				}
+				
+				//if within last 3 weeks, insert
+				if(days<=21) {
+					if(!genericballot.containsKey(year)) {
+						genericballot.put(year, new Polls(year));
+					} 
+					genericballot.get(year).insert(pollster, pollster_grade, gop, dem, thedate, days);
+					//System.out.println(year + "," + pollster + "," + pollster_grade + "," + gop + "," + dem + "," + thedate + "," + days + "\n");
+				}
+				
+				theline = br.readLine();
+			}
+			
+			for(Map.Entry<String, Polls> entry: genericballot.entrySet()) {
+				entry.getValue().getPoll();
+				System.out.println(entry.getKey() + "," + entry.getValue().getGOP() + "," + entry.getValue().getDem() + "," + entry.getValue().getGap() + "\n");
+			}
+			
+			
+			br.close();
+		}catch(FileNotFoundException e){
+			System.out.println("File not found: genericballotcsv.csv");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println(theline);
 			e.printStackTrace();
 		} 
 		

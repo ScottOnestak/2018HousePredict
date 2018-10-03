@@ -122,9 +122,9 @@ public class CDs {
 			Double Total_Loan,Double Offset_To_Operating_Expenditure,Double Other_Receipts,Double Operating_Expenditure,
 			Double Transfer_To_Other_Authorized_Committee,Double Total_Loan_Repayment,Double Total_Contribution_Refund,
 			Double Other_Disbursements,Double Net_Contribution,Double Net_Operating_Expenditure) {
-		System.out.println(fecid_gop + "," + fecid_dem);
+		//System.out.println(fecid_gop + "," + fecid_dem);
 		if(fecid.equals(fecid_gop)) {
-			System.out.println("GOP Match");
+			//System.out.println("GOP Match");
 			gopfec = true;
 			Total_Receipts_GOP = Total_Receipts;
 			Total_Disbursement_GOP = Total_Disbursement;
@@ -162,7 +162,7 @@ public class CDs {
 		}
 		
 		if(fecid.equals(fecid_dem)) {
-			System.out.println("Dem Match");
+			//System.out.println("Dem Match");
 			demfec = true;
 			Total_Receipts_Dem = Total_Receipts;
 			Total_Disbursement_Dem = Total_Disbursement;
