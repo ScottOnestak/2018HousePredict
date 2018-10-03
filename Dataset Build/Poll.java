@@ -35,11 +35,11 @@ public class Poll {
 	
 	//calculate weight method
 	public double calcWeight(double max_poll, double min_poll, double max_days, double min_days) {
-		double pollster = (2*(pollster_rating-min_poll))/(max_poll - min_poll)-1;
-		double dayrate = ((2*(days-min_days))/(max_days-min_days)-1)*-1;
+		double pollster_rate = (pollster_rating-min_poll)/(max_poll - min_poll);
+		double dayrate = (max_days-days)/(max_days-min_days);
 		
-		weight = .6*Math.asin(pollster)+.4*Math.asin(dayrate);
-		//System.out.println(pollster+","+dayrate+","+weight);
+		weight = .6*Math.asin(pollster_rate)+.4*Math.asin(dayrate);
+		//System.out.println(pollster+","+pollster_rate+","+dayrate+","+weight);
 		return weight;
 	}
 }

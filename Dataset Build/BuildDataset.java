@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +23,7 @@ public class BuildDataset {
 	public static Map<String,Cluster> clusters = new HashMap<String,Cluster>();
 	public static Map<String,Double> PVIs = new HashMap<String,Double>();
 	public static Map<String,Polls> genericballot = new HashMap<String,Polls>();
+	public static Map<Date,Polls> genericballot18 = new TreeMap<Date,Polls>();
 	public static LinkedList<String> fecids2008 = new LinkedList<String>();
 	public static LinkedList<String> fecids2010 = new LinkedList<String>();
 	public static LinkedList<String> fecids2012 = new LinkedList<String>();
@@ -738,6 +741,21 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
+		//create generic ballot 2018 instances
+		long days;
+		Date startdate = formatter.parse("5/1/2018");
+		days = TimeUnit.DAYS.convert(Math.abs(current.getTime()-startdate.getTime()), TimeUnit.MILLISECONDS);
+		Date iterate = startdate;
+		
+		for(int i = 0; i <= days; i++) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(startdate);
+			cal.add(Calendar.DATE, i); 
+			iterate = cal.getTime();
+			
+			genericballot18.put(iterate, new Polls(iterate.toString()));
+		}
+		
 		
 		//read in generic ballot data
 		try {
@@ -746,8 +764,6 @@ public class BuildDataset {
 			
 			theline = br.readLine();
 			theline = br.readLine();
-			
-			long days;
 			
 			while(theline != null) {
 				holder = theline.split(",");
@@ -776,10 +792,18 @@ public class BuildDataset {
 				} else {
 					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
 					year = "2018";
+					
+					for(Map.Entry<Date, Polls> entry: genericballot18.entrySet()) {
+						if(TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) > 0 &&
+								TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) <= 28 ) {
+							//System.out.println("Inserting: " + thedate + " for " + entry.getKey());
+							entry.getValue().insert(pollster, pollster_grade, gop, dem, thedate,TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS));
+						}
+					}
 				}
 				
 				//if within last 3 weeks, insert
-				if(days<=21) {
+				if(days<=28) {
 					if(!genericballot.containsKey(year)) {
 						genericballot.put(year, new Polls(year));
 					} 
@@ -792,9 +816,8 @@ public class BuildDataset {
 			
 			for(Map.Entry<String, Polls> entry: genericballot.entrySet()) {
 				entry.getValue().getPoll();
-				System.out.println(entry.getKey() + "," + entry.getValue().getGOP() + "," + entry.getValue().getDem() + "," + entry.getValue().getGap() + "\n");
-			}
-			
+				System.out.println(entry.getKey() + "," + entry.getValue().getGOP() + "," + entry.getValue().getDem() + "," + entry.getValue().getGap());
+			}			
 			
 			br.close();
 		}catch(FileNotFoundException e){
@@ -834,8 +857,18 @@ public class BuildDataset {
 			//System.out.println(i + ": " + entry.getValue().toString());
 			i++;
 		}
-		
 		bw.close();
+		
+		BufferedWriter bw2 = new BufferedWriter(new FileWriter(new File("GenericBallot2018.csv")));
+		
+		bw2.write("Date,GOP,Dem,Gap\n");
+		
+		for(Map.Entry<Date, Polls> entry: genericballot18.entrySet()) {
+			entry.getValue().getPoll();
+			bw2.write(formatter.format(entry.getKey()) + "," + Math.round(entry.getValue().getGOP()*100.0)/100.0 + "," + Math.round(entry.getValue().getDem()*100.0)/100.0 + "," + Math.round(entry.getValue().getGap()*100.0)/100.0 + "\n");
+		}
+		bw2.close();
+		
 		System.out.println(i);
 	}
 
