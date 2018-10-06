@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 public class BuildDataset {
 	
 	public static Map<String,CDs> CDs = new TreeMap<String,CDs>();
-	public static Map<String,Cluster> clusters = new HashMap<String,Cluster>();
 	public static Map<String,Double> PVIs = new HashMap<String,Double>();
 	public static Map<String,Polls> genericballot = new HashMap<String,Polls>();
 	public static Map<Date,Polls> genericballot18 = new TreeMap<Date,Polls>();
@@ -41,13 +40,13 @@ public class BuildDataset {
 				MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity,
 				Evangelical,Catholic,Veteran,Cluster,pollster,year;
 		//fec results variables
-		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null;
+		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null,cCluster=null,cCD = null;
 		String cdlookup = null;
-		double result = 0,pvi;
-		int incum = 0,type = 0;
+		double result = 0,pvi,cPVI = 0;
+		int incum = 0,type = 0,cYear = 0;
 		boolean insert = false;
 		String TotRec,TotDisb,COHCOP,COHBOP,DebtOBC,IndItemCont,IndUnitemCont,IndCont,OthCommContr,PartyCommContr,TotCont,
-			TransFOAC,TotLoan,OfftoOpExpend,OthReceipts,OpExpend,TransTOAC,TotLoanRepay,TotContrRef,OthDisb,NetContr,NetOpExp;
+			TransFOAC,TotLoan,OfftoOpExpend,OthReceipts,OpExpend,TransTOAC,TotLoanRepay,TotContrRef,OthDisb,NetContr,NetOpExp,district;
 		double Total_Receipts,Total_Disbursement,COH_Ending,COH_Beginning,Debt_Owed_By_Committee,Individual_Itemized_Contribution,
 			Individual_Unitemized_Contribution,Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
 			Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,Offset_To_Operating_Expenditure,Other_Receipts,
@@ -846,7 +845,7 @@ public class BuildDataset {
 		}
 		
 		
-		//read in generic ballot data
+		//read in presidential approval data
 		try {
 			
 			BufferedReader br = new BufferedReader(new FileReader("C:/Users/onest/Desktop/2018 House Model/election data files/presapprovalcsv.csv"));
@@ -918,8 +917,63 @@ public class BuildDataset {
 			System.out.println(theline);
 			e.printStackTrace();
 		} 
-
 		
+		//read in district-level polling data
+		try {
+			
+			BufferedReader br = new BufferedReader(new FileReader("C:/Users/onest/Desktop/2018 House Model/election data files/house_polls.csv"));
+			
+			theline = br.readLine();
+			theline = br.readLine();
+			
+			while(theline != null) {
+				holder = theline.split(",");
+				
+				cCluster = null;
+				pollster = holder[2];
+				thedate = (Date) formatter.parse(holder[5]);
+				pollster_grade = Double.parseDouble(holder[10]);
+				gop = Double.parseDouble(holder[11]);
+				dem = Double.parseDouble(holder[12]);
+				district = holder[14];
+				
+				if(thedate.getTime()-Election2008.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2008.getTime()), TimeUnit.MILLISECONDS);
+					year = "2008";
+				} else if(thedate.getTime()-Election2010.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2010.getTime()), TimeUnit.MILLISECONDS);
+					year = "2010";
+				} else if(thedate.getTime()-Election2012.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2012.getTime()), TimeUnit.MILLISECONDS);
+					year = "2012";
+				} else if(thedate.getTime()-Election2014.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2014.getTime()), TimeUnit.MILLISECONDS);
+					year = "2014";
+				} else if(thedate.getTime()-Election2016.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2016.getTime()), TimeUnit.MILLISECONDS);
+					year = "2016";
+				} else {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
+					year = "2018";
+				}
+				
+				if(CDs.containsKey(district)) {
+					CDs.get(district).insertPoll(pollster,pollster_grade,gop,dem,thedate,days);
+				} else {
+					System.out.println("District Poll Problem: " + district + "," + year);
+				}
+				
+				theline = br.readLine();
+			}			
+			br.close();
+		}catch(FileNotFoundException e){
+			System.out.println("File not found: genericballotcsv.csv");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println(theline);
+			e.printStackTrace();
+		} 
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
 		

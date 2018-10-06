@@ -1,3 +1,6 @@
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CDs {
 	
@@ -6,7 +9,7 @@ public class CDs {
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem,President,House;
 	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator,Midterm;
 	String gop_prctstr,dem_prctstr;
-	private boolean gop,dem,gopfec,demfec;
+	private boolean gop,dem,gopfec,demfec,districtpolling;
 	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
 		Debt_Owed_By_Committee_GOP,Individual_Itemized_Contribution_GOP,Individual_Unitemized_Contribution_GOP,
 		Individual_Contribution_GOP,Other_Committee_Contribution_GOP,Party_Committee_Contribution_GOP,Total_Contribution_GOP,
@@ -24,7 +27,8 @@ public class CDs {
 		Prct_Total_Receipts_GOP,Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP,
 		Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP,
 		pvi;
-	
+	public Map<String,Poll> thepolls = new HashMap<String,Poll>();
+	double max_poll,min_poll,max_days,min_days,gop_poll,dem_poll,gap,avgpollster;
 
 	//constructor
 	public CDs(String name,String State,String CDNum,String CD_Name,int year,String MedianAge,String Male,
@@ -63,6 +67,7 @@ public class CDs {
 		gop = false; gopfec = false;
 		dem = false; demfec = false;
 		type = 0;
+		districtpolling = false;
 	}
 	
 	//insert FEC election results data... 2008 - 2016
@@ -204,6 +209,96 @@ public class CDs {
 	//insert PVI method
 	public void insertPVI(double pvi) {
 		this.pvi = pvi;
+	}
+	
+	//insert district-level polling data
+	public void insertPoll(String pollster,double pollster_rating,double gop_poll,double dem_poll,Date thedate,long days) {
+		
+		String key = pollster + days;
+		
+		if(!thepolls.containsKey(key)) {
+			thepolls.put(key, new Poll(pollster,pollster_rating,gop_poll,dem_poll,thedate,days));
+			districtpolling = true;
+		} else {
+			System.out.println("District Poll exists: " + pollster + "," + days + "," + year + "," + CD_Name);
+		}
+		
+		if(pollster_rating > max_poll) {
+			max_poll = pollster_rating;
+		}
+		
+		if(pollster_rating < min_poll) {
+			min_poll = pollster_rating;
+		}
+		
+		if((double) days > max_days) {
+			max_days = (double) days;
+		}
+		
+		if((double) days < min_days) {
+			min_days = (double) days;
+		}
+		
+	}
+	
+	public void calcPoll() {
+		double sumofweights = 0;
+		double sumofweightedgop = 0;
+		double sumofweighteddem = 0;
+		double avgpollsterrating = 0;
+		double pollscount = 0;
+		double weight = 0;
+		
+		//System.out.println(name + ": " + max_poll + "," + min_poll + "," + max_days + "," + min_days + "\n");
+		
+		for(Map.Entry<String, Poll> entry: thepolls.entrySet()) {
+			weight = entry.getValue().calcDistWeight(max_poll, min_poll);
+			
+			sumofweights += weight;
+			sumofweightedgop += weight * entry.getValue().getGOP();
+			sumofweighteddem += weight * entry.getValue().getDem();
+			avgpollsterrating += entry.getValue().getPollsterRating();
+			
+			pollscount++;
+		}
+		
+		gop_poll = sumofweightedgop/sumofweights;
+		dem_poll = sumofweighteddem/sumofweights;
+		avgpollster = avgpollsterrating / pollscount;
+		gap = gop_poll - dem_poll;
+	}
+	
+	//get district-level polling info for clusters
+	public double getGOPPoll() {
+		return gop_poll;
+	}
+	
+	public double getDemPoll() {
+		return dem_poll;
+	}
+	
+	public double getAvgPollster() {
+		return avgpollster;
+	}
+	
+	public boolean isDistrictPolling() {
+		return districtpolling;
+	}
+	
+	public String getCluster() {
+		return Cluster;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	
+	public double getPVI() {
+		return pvi;
+	}
+	
+	public String getCD_Name() {
+		return CD_Name;
 	}
 	
 	//check if both a democrat and republican candidate... if not, fill in NA and 0s for dataset before writing

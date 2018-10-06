@@ -33,12 +33,32 @@ public class Poll {
 		return days;
 	}
 	
+	public double getPollsterRating() {
+		return pollster_rating;
+	}
+	
 	//calculate weight method
 	public double calcWeight(double max_poll, double min_poll, double max_days, double min_days) {
 		double pollster_rate = (pollster_rating-min_poll)/(max_poll - min_poll);
 		double dayrate = (max_days-days)/(max_days-min_days);
 		
 		weight = .6*Math.asin(pollster_rate)+.4*Math.asin(dayrate);
+		//System.out.println(pollster+","+pollster_rate+","+dayrate+","+weight);
+		return weight;
+	}
+	
+	//calculate district weight method
+	public double calcDistWeight(double max_poll, double min_poll) {
+		double pollster_rate = (pollster_rating-min_poll)/(max_poll - min_poll);
+		double dayrate;
+		if(days<50) {
+			dayrate = (50-days)/50;
+		} else {
+			dayrate = 0;
+		}
+		
+		
+		weight = .8*Math.asin(pollster_rate)+.2*Math.asin(dayrate);
 		//System.out.println(pollster+","+pollster_rate+","+dayrate+","+weight);
 		return weight;
 	}
