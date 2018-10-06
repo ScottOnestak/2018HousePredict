@@ -4,7 +4,7 @@ public class CDs {
 	private String name,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,
 			HSGrad,BachGrad,MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem,President,House;
-	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator;
+	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator,Midterm;
 	String gop_prctstr,dem_prctstr;
 	private boolean gop,dem,gopfec,demfec;
 	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
@@ -373,6 +373,12 @@ public class CDs {
 		} else {
 			CD_Time_Indicator = 0;
 		}
+		
+		if(year%4==0) {
+			Midterm=0;
+		} else {
+			Midterm=1;
+		}
 	}
 	
 	//toString...return to write dataset
@@ -404,6 +410,6 @@ public class CDs {
 					 Prct_Total_Receipts_GOP + "," + Prct_Total_Disbursement_GOP + "," + Prct_COH_GOP + "," + Prct_Individual_Contribution_GOP
 					 + "," + Prct_Committee_Contribution_GOP + "," + Total_Receipts_Diff_GOP + "," + Total_Disbursement_Diff_GOP + "," +
 					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "," + pvi + "," +
-					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "\n";
+					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "," + Midterm + "\n";
 	}
 }

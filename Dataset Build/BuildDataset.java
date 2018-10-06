@@ -24,6 +24,8 @@ public class BuildDataset {
 	public static Map<String,Double> PVIs = new HashMap<String,Double>();
 	public static Map<String,Polls> genericballot = new HashMap<String,Polls>();
 	public static Map<Date,Polls> genericballot18 = new TreeMap<Date,Polls>();
+	public static Map<String,Polls> presapproval = new HashMap<String,Polls>();
+	public static Map<Date,Polls> Trumpapproval = new TreeMap<Date,Polls>();
 	public static LinkedList<String> fecids2008 = new LinkedList<String>();
 	public static LinkedList<String> fecids2010 = new LinkedList<String>();
 	public static LinkedList<String> fecids2012 = new LinkedList<String>();
@@ -50,7 +52,7 @@ public class BuildDataset {
 			Individual_Unitemized_Contribution,Individual_Contribution,Other_Committee_Contribution,Party_Committee_Contribution,
 			Total_Contribution,Transfer_From_Other_Authorized_Committee,Total_Loan,Offset_To_Operating_Expenditure,Other_Receipts,
 			Operating_Expenditure,Transfer_To_Other_Authorized_Committee,Total_Loan_Repayment,Total_Contribution_Refund,
-			Other_Disbursments,Net_Contribution,Net_Operating_Expenditure,pollster_grade,gop,dem;
+			Other_Disbursments,Net_Contribution,Net_Operating_Expenditure,pollster_grade,gop,dem,approve,disapprove;
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		Date thedate;
 		
@@ -829,6 +831,96 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
+		//create Trump approval instances
+		startdate = formatter.parse("2/1/2017");
+		days = TimeUnit.DAYS.convert(Math.abs(current.getTime()-startdate.getTime()), TimeUnit.MILLISECONDS);
+		iterate = startdate;
+		
+		for(int i = 0; i <= days; i++) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(startdate);
+			cal.add(Calendar.DATE, i); 
+			iterate = cal.getTime();
+			
+			Trumpapproval.put(iterate, new Polls(iterate.toString()));
+		}
+		
+		
+		//read in generic ballot data
+		try {
+			
+			BufferedReader br = new BufferedReader(new FileReader("C:/Users/onest/Desktop/2018 House Model/election data files/presapprovalcsv.csv"));
+			
+			theline = br.readLine();
+			theline = br.readLine();
+			
+			while(theline != null) {
+				holder = theline.split(",");
+				
+				pollster = holder[0];
+				thedate = (Date) formatter.parse(holder[1]);
+				pollster_grade = Double.parseDouble(holder[8]);
+				approve = Double.parseDouble(holder[9]);
+				disapprove = Double.parseDouble(holder[10]);
+				
+				if(thedate.getTime()-Election2008.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2008.getTime()), TimeUnit.MILLISECONDS);
+					year = "2008";
+				} else if(thedate.getTime()-Election2010.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2010.getTime()), TimeUnit.MILLISECONDS);
+					year = "2010";
+				} else if(thedate.getTime()-Election2012.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2012.getTime()), TimeUnit.MILLISECONDS);
+					year = "2012";
+				} else if(thedate.getTime()-Election2014.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2014.getTime()), TimeUnit.MILLISECONDS);
+					year = "2014";
+				} else if(thedate.getTime()-Election2016.getTime()<=0) {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2016.getTime()), TimeUnit.MILLISECONDS);
+					year = "2016";
+				} else {
+					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
+					year = "2018";
+					
+					for(Map.Entry<Date, Polls> entry: Trumpapproval.entrySet()) {
+						if(TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) > 0 &&
+								TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) <= 28 ) {
+							//System.out.println("Inserting: " + thedate + " for " + entry.getKey());
+							entry.getValue().insert(pollster, pollster_grade, approve, disapprove, thedate,TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS));
+						}
+					}
+				}
+				
+				//if within last 3 weeks, insert
+				if(days<=28) {
+					if(!presapproval.containsKey(year)) {
+						presapproval.put(year, new Polls(year));
+					} 
+					presapproval.get(year).insert(pollster, pollster_grade, approve, disapprove, thedate, days);
+					//System.out.println(year + "," + pollster + "," + pollster_grade + "," + gop + "," + dem + "," + thedate + "," + days + "\n");
+				}
+				
+				theline = br.readLine();
+			}
+			
+			System.out.println("\n");
+			for(Map.Entry<String, Polls> entry: presapproval.entrySet()) {
+				entry.getValue().getPoll();
+				System.out.println(entry.getKey() + "," + entry.getValue().getGOP() + "," + entry.getValue().getDem() + "," + entry.getValue().getGap());
+			}			
+			
+			br.close();
+		}catch(FileNotFoundException e){
+			System.out.println("File not found: genericballotcsv.csv");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println(theline);
+			e.printStackTrace();
+		} 
+
+		
+		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
 		
 		bw.write("name,State,District,CD_Name,year,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad," + 
@@ -849,7 +941,7 @@ public class BuildDataset {
 					"Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,Prct_Total_Receipts_GOP," + 
 					"Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP," +
 					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP," +
-					"PVI,President,President_Time,House,House_Time,CD_Time_Indicator\n");
+					"PVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm\n");
 		
 		int i = 0;
 		for(Map.Entry<String,CDs> entry: CDs.entrySet()){
@@ -868,6 +960,16 @@ public class BuildDataset {
 			bw2.write(formatter.format(entry.getKey()) + "," + Math.round(entry.getValue().getGOP()*100.0)/100.0 + "," + Math.round(entry.getValue().getDem()*100.0)/100.0 + "," + Math.round(entry.getValue().getGap()*100.0)/100.0 + "\n");
 		}
 		bw2.close();
+		
+		BufferedWriter bw3 = new BufferedWriter(new FileWriter(new File("TrumpApproval.csv")));
+		
+		bw3.write("Date,Approve,Disapprove,Gap\n");
+		
+		for(Map.Entry<Date, Polls> entry: Trumpapproval.entrySet()) {
+			entry.getValue().getPoll();
+			bw3.write(formatter.format(entry.getKey()) + "," + Math.round(entry.getValue().getGOP()*100.0)/100.0 + "," + Math.round(entry.getValue().getDem()*100.0)/100.0 + "," + Math.round(entry.getValue().getGap()*100.0)/100.0 + "\n");
+		}
+		bw3.close();
 		
 		System.out.println(i);
 	}
