@@ -8,7 +8,7 @@ public class CDs {
 			HSGrad,BachGrad,MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem,President,House;
 	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator,Midterm;
-	String gop_prctstr,dem_prctstr;
+	String gop_prctstr,dem_prctstr,goppoll,dempoll,thegap,avgpoll;
 	private boolean gop,dem,gopfec,demfec,districtpolling;
 	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
 		Debt_Owed_By_Committee_GOP,Individual_Itemized_Contribution_GOP,Individual_Unitemized_Contribution_GOP,
@@ -26,7 +26,7 @@ public class CDs {
 		Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,
 		Prct_Total_Receipts_GOP,Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP,
 		Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP,
-		pvi;
+		pvi,gop_gb,dem_gb,gap_gb,pres_approve,pres_disapprove,pres_approvalgap,adj_pvi;
 	public Map<String,Poll> thepolls = new HashMap<String,Poll>();
 	double max_poll,min_poll,max_days,min_days,gop_poll,dem_poll,gap,avgpollster;
 
@@ -268,6 +268,22 @@ public class CDs {
 		gap = gop_poll - dem_poll;
 	}
 	
+	//insert generic ballot
+	public void insertGenericBallot(double gop_gb,double dem_gb,double gap_gb) {
+		this.gop_gb = gop_gb;
+		this.dem_gb = dem_gb;
+		this.gap_gb = gap_gb;
+		adj_pvi = pvi + gap_gb;
+	}
+	
+	//insert presidential approval
+	public void insertPresApproval(double approve, double disapprove, double gap) {
+		pres_approve = approve;
+		pres_disapprove = disapprove;
+		pres_approvalgap = gap;
+	}
+	
+	
 	//get district-level polling info for clusters
 	public double getGOPPoll() {
 		return gop_poll;
@@ -474,6 +490,18 @@ public class CDs {
 		} else {
 			Midterm=1;
 		}
+		
+		if(districtpolling==true) {
+			goppoll = Double.toString(gop_poll);
+			dempoll = Double.toString(dem_poll);
+			thegap = Double.toString(gap);
+			avgpoll = Double.toString(avgpollster);
+		} else {
+			goppoll = "NA";
+			dempoll = "NA";
+			thegap = "NA";
+			avgpoll = "NA";
+		}
 	}
 	
 	//toString...return to write dataset
@@ -504,7 +532,9 @@ public class CDs {
 					 Net_Operating_Expenditure_Dem + "," + Prct_Receipts_From_Ind_Contr_Dem + "," + Prct_Receipts_From_Committee_Dem + "," + Burn_Rate_Dem + "," + 
 					 Prct_Total_Receipts_GOP + "," + Prct_Total_Disbursement_GOP + "," + Prct_COH_GOP + "," + Prct_Individual_Contribution_GOP
 					 + "," + Prct_Committee_Contribution_GOP + "," + Total_Receipts_Diff_GOP + "," + Total_Disbursement_Diff_GOP + "," +
-					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "," + pvi + "," +
-					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "," + Midterm + "\n";
+					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "," + pvi + "," + adj_pvi + "," +
+					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "," + Midterm +
+					 "," + goppoll + "," + dempoll + "," + thegap + "," + avgpoll + "," + gop_gb + "," + dem_gb + "," + gap_gb + "," +
+					 pres_approve + "," + pres_disapprove + "," + pres_approvalgap + "\n";
 	}
 }

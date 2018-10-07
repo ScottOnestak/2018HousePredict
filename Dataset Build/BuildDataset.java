@@ -43,7 +43,7 @@ public class BuildDataset {
 		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null,cCluster=null,cCD = null;
 		String cdlookup = null;
 		double result = 0,pvi,cPVI = 0;
-		int incum = 0,type = 0,cYear = 0;
+		int incum = 0,type = 0,cYear = 0,theyear=0;
 		boolean insert = false;
 		String TotRec,TotDisb,COHCOP,COHBOP,DebtOBC,IndItemCont,IndUnitemCont,IndCont,OthCommContr,PartyCommContr,TotCont,
 			TransFOAC,TotLoan,OfftoOpExpend,OthReceipts,OpExpend,TransTOAC,TotLoanRepay,TotContrRef,OthDisb,NetContr,NetOpExp,district;
@@ -975,6 +975,19 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
+		//insert generic ballot and presidential approval ratings...calc polling
+		for(Map.Entry<String, CDs> entry: CDs.entrySet()) {
+			theyear = entry.getValue().getYear();
+			//System.out.println(theyear);
+			entry.getValue().insertGenericBallot(genericballot.get(Integer.toString(theyear)).getGOP(),
+					genericballot.get(Integer.toString(theyear)).getDem(),
+					genericballot.get(Integer.toString(theyear)).getGap());
+			entry.getValue().insertPresApproval(presapproval.get(Integer.toString(theyear)).getGOP(),
+					presapproval.get(Integer.toString(theyear)).getDem(),
+					presapproval.get(Integer.toString(theyear)).getGap());
+			entry.getValue().calcPoll();
+		}
+		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
 		
 		bw.write("name,State,District,CD_Name,year,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad," + 
@@ -995,7 +1008,8 @@ public class BuildDataset {
 					"Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,Prct_Total_Receipts_GOP," + 
 					"Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP," +
 					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP," +
-					"PVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm\n");
+					"PVI,AdjPVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm,GOP_Polling,Dem_Polling,Gap_Polling,AvgPollsterRating_Polling," + 
+					"GOP_GenericBallot,Dem_GenericBallot,Gap_GenericBallot,Pres_Approval,Pres_Disapproval,Pres_NetApproval\n");
 		
 		int i = 0;
 		for(Map.Entry<String,CDs> entry: CDs.entrySet()){
