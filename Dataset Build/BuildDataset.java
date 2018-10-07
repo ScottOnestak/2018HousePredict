@@ -38,9 +38,11 @@ public class BuildDataset {
 		//CDs values
 		String theline=null,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,HSGrad,BachGrad,
 				MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,LFPR,Religiosity,
-				Evangelical,Catholic,Veteran,Cluster,pollster,year;
+				Evangelical,Catholic,Veteran,Cluster,pollster,year,indicator,temp;
+		char first;
 		//fec results variables
-		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,gen_runoff = null,gen_comb = null,gen_count=null,cCluster=null,cCD = null;
+		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,
+				gen_runoff = null,gen_comb = null,gen_count=null,amount=null,committee=null;
 		String cdlookup = null;
 		double result = 0,pvi,cPVI = 0;
 		int incum = 0,type = 0,cYear = 0,theyear=0;
@@ -711,6 +713,146 @@ public class BuildDataset {
 			} 
 		}
 		
+		//read in and store FEC committee data for 2008-2018
+		String thefile = "C:/Users/onest/Desktop/2018 House Model/election data files/CommitteeData.csv";
+		
+		//try...catch statement
+		try {
+		
+			BufferedReader br = new BufferedReader(new FileReader(thefile));
+			
+			//skip first line
+			theline = br.readLine();
+			theline = br.readLine();
+			boolean exists = false;
+			
+			while(theline != null) {
+				committee = "";
+				fecid = "";
+				State = "";
+				cd = "";
+				party = "";
+				year = "";
+				amount = "";
+				indicator = "";
+				exists = false;
+				
+				
+				holder = theline.split(",");
+				
+				fecid = holder[26].trim().replace("\"", "");
+				year = holder[2].trim().replace("\"", "");				
+				
+				if(year.equals("2008")|year.equals("2007")) {
+					year="2008";
+					if(fecids2008.contains(fecid)) {
+						exists = true;
+					}
+				} else if(year.equals("2010")|year.equals("2009")) {
+					year="2010";
+					if(fecids2010.contains(fecid)) {
+						exists = true;
+					}
+				} else if(year.equals("2012")|year.equals("2011")) {
+					year = "2012";
+					if(fecids2012.contains(fecid)) {
+						exists = true;
+					}
+				} else if(year.equals("2014")|year.equals("2013")) {
+					year = "2014";
+					if(fecids2014.contains(fecid)) {
+						exists = true;
+					}
+				} else if(year.equals("2016")|year.equals("2015")) {
+					year = "2016";
+					if(fecids2016.contains(fecid)) {
+						exists = true;
+					}
+				} else if(year.equals("2018")|year.equals("2017")) {
+					year = "2018";
+					if(fecids2018.contains(fecid)) {
+						exists = true;
+					}
+				} else {}
+				
+				if(exists==true) {
+					//System.out.println(year + "   " + theline);
+					committee = holder[1].trim().replace("\"", "");
+					State = holder[34].trim().replace("\"", "");
+					cd = holder[35].trim().replace("\"", "");
+					party = holder[36].trim().replace("\"", "");
+					amount = holder[19].trim().replace("\"", "");
+					indicator = holder[23].trim().replace("\"", "");
+					
+					//check if state and cd are mixed around in file
+					first = State.charAt(0);
+					if(first=='0'|first=='1'|first=='2'| first=='3'|first=='4'|first=='5'|first=='6'|first=='7'|first=='8'|first=='9'){
+						temp = State;
+						State = cd;
+						cd = temp;
+					}
+					
+					//fix 2012 Steve King cd 5 -> 4 (new CDs)
+					if(year.equals("2012") & State.equals("IA") & cd.equals("5")) {
+						cd = "4";
+					}
+					
+					//fix MN 8 Rick Nolan -> indicator for HMP should be S, not O
+					if(year.equals("2016") & State.equals("MN") & cd.equals("8") & fecid.equals("H2MN08111")) {
+						indicator = "S";
+					}
+					
+					//construct lookup
+					if(cd.equals("0")) {
+						cd = "1";
+					}
+					if(cd.length() < 2) {
+						cd = "0" + cd;
+					}
+					
+					//construct hashmap name
+					if(year.equals("2008") | year.equals("2010")) {
+						cdlookup = State + cd + "o_" + year;
+					} else if(State.equals("PA") | State.equals("NC") | State.equals("FL")) {
+						if(State.equals("PA")) {
+							if(!year.equals("2018")) {
+								cdlookup = State + cd + "r_" + year;
+							} else {
+								cdlookup = State + cd + "_" + year;
+							}
+						} else if (State.equals("NC") | State.equals("FL")) {
+							if(year.equals("2012") | year.equals("2014")) {
+								cdlookup = State + cd + "r_" + year;
+							} else {
+								cdlookup = State + cd + "_" + year;
+							}
+						}
+					} else {
+						cdlookup = State + cd + "_" + year;
+					}
+					
+					//insert data if congressional district exists and amount parsable
+					if(CDs.containsKey(cdlookup) && amount.length()>0) {
+						//System.out.println("Inserting");
+						CDs.get(cdlookup).insertPAC(committee,Double.parseDouble(amount),indicator,fecid);
+					} else {
+						if(committee.equals("DEMOCRATIC CONGRESSIONAL CAMPAIGN COMMITTEE") | committee.equals("DCCC") |
+								committee.equals("NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE") | committee.equals("NRCC") |
+								committee.equals("HOUSE MAJORITY PAC") | committee.equals("CONGRESSIONAL LEADERSHIP FUND"))
+						System.out.println("Skipping:" + cdlookup + "," + amount + "    " + theline);
+					}
+				}
+				
+				theline = br.readLine();
+			}
+			
+			br.close();
+		} catch(FileNotFoundException e){
+			System.out.println("File not found: CommitteeData.csv");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} 
+		
 		//read in PVIs
 		try {
 			
@@ -928,8 +1070,7 @@ public class BuildDataset {
 			
 			while(theline != null) {
 				holder = theline.split(",");
-				
-				cCluster = null;
+			
 				pollster = holder[2];
 				thedate = (Date) formatter.parse(holder[5]);
 				pollster_grade = Double.parseDouble(holder[10]);
@@ -1008,6 +1149,8 @@ public class BuildDataset {
 					"Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,Prct_Total_Receipts_GOP," + 
 					"Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP," +
 					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP," +
+					"dccc_dem_support,dccc_dem_oppose,dccc_gop_support,dccc_gop_oppose,dccc_indicator,nrcc_dem_support,nrcc_dem_oppose,nrcc_gop_support,nrcc_gop_oppose,nrccc_indicator," +
+					"hmp_dem_support,hmp_dem_oppose,hmp_gop_support,hmp_gop_oppose,hmp_indicator,clf_dem_support,clf_dem_oppose,clf_gop_support,clf_gop_oppose,clf_indicator," + 
 					"PVI,AdjPVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm,GOP_Polling,Dem_Polling,Gap_Polling,AvgPollsterRating_Polling," + 
 					"GOP_GenericBallot,Dem_GenericBallot,Gap_GenericBallot,Pres_Approval,Pres_Disapproval,Pres_NetApproval\n");
 		

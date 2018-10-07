@@ -7,7 +7,8 @@ public class CDs {
 	private String name,State,CDNum,CD_Name,MedianAge,Male,White,Black,Hispanic,ForeignBorn,Married,
 			HSGrad,BachGrad,MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem,President,House;
-	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator,Midterm;
+	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator,Midterm,dccc_involvement,nrcc_involvement,
+					hmp_involvement,clf_involvement;
 	String gop_prctstr,dem_prctstr,goppoll,dempoll,thegap,avgpoll;
 	private boolean gop,dem,gopfec,demfec,districtpolling;
 	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
@@ -26,7 +27,10 @@ public class CDs {
 		Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,
 		Prct_Total_Receipts_GOP,Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP,
 		Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP,
-		pvi,gop_gb,dem_gb,gap_gb,pres_approve,pres_disapprove,pres_approvalgap,adj_pvi;
+		pvi,gop_gb,dem_gb,gap_gb,pres_approve,pres_disapprove,pres_approvalgap,adj_pvi,dccc_dem_support,dccc_dem_oppose,dccc_gop_support,
+		dccc_gop_oppose,nrcc_dem_support,nrcc_dem_oppose,nrcc_gop_support,nrcc_gop_oppose,hmp_dem_support,hmp_dem_oppose,
+		hmp_gop_support,hmp_gop_oppose,clf_dem_support,clf_dem_oppose,clf_gop_support,clf_gop_oppose,othercomm_dem_support,
+		othercomm_dem_oppose,othercomm_gop_support,othercomm_gop_oppose,GOPfavor_PACspending,DEMfavor_PACspending;
 	public Map<String,Poll> thepolls = new HashMap<String,Poll>();
 	double max_poll,min_poll,max_days,min_days,gop_poll,dem_poll,gap,avgpollster;
 
@@ -68,6 +72,27 @@ public class CDs {
 		dem = false; demfec = false;
 		type = 0;
 		districtpolling = false;
+		
+		dccc_dem_support = 0;
+		dccc_dem_oppose = 0;
+		dccc_gop_support = 0;
+		dccc_gop_oppose = 0;
+		nrcc_dem_support = 0;
+		nrcc_dem_oppose = 0;
+		nrcc_gop_support = 0;
+		nrcc_gop_oppose = 0;
+		hmp_dem_support = 0;
+		hmp_dem_oppose = 0;
+		hmp_gop_support = 0;
+		hmp_gop_oppose = 0;
+		clf_dem_support = 0;
+		clf_dem_oppose = 0;
+		clf_gop_support = 0;
+		clf_gop_oppose = 0;
+		othercomm_dem_support = 0;
+		othercomm_dem_oppose = 0;
+		othercomm_gop_support = 0;
+		othercomm_gop_oppose = 0;
 	}
 	
 	//insert FEC election results data... 2008 - 2016
@@ -120,6 +145,7 @@ public class CDs {
 		}
 	}
 	
+	//insert fec candidate data
 	public void insertFEC(String fecid,String party,Double Total_Receipts,Double Total_Disbursement,Double COH_Ending,
 			Double COH_Beginning,Double Debt_Owed_By_Committee,Double Individual_Itemized_Contribution,
 			Double Individual_Unitemized_Contribution,Double Individual_Contribution,Double Other_Committee_Contribution,
@@ -204,6 +230,63 @@ public class CDs {
 			}
 		}
 		
+	}
+	
+	//insert fec pac spending data
+	public void insertPAC(String committee,double amount,String indicator,String candid) {
+		//if gop
+		if(candid.equals(fecid_gop)) {
+			if(indicator.equals("S")) {
+				if(committee.equals("DEMOCRATIC CONGRESSIONAL CAMPAIGN COMMITTEE") | committee.equals("DCCC")) {
+					dccc_gop_support += amount;
+				} else if(committee.equals("NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE") | committee.equals("NRCC")) {
+					nrcc_gop_support += amount;
+				} else if(committee.equals("HOUSE MAJORITY PAC")) {
+					hmp_gop_support += amount;
+				} else if(committee.equals("CONGRESSIONAL LEADERSHIP FUND")) {
+					clf_gop_support += amount;
+				} else {
+					othercomm_gop_support += amount;
+				}
+			} else {
+				if(committee.equals("DEMOCRATIC CONGRESSIONAL CAMPAIGN COMMITTEE") | committee.equals("DCCC")) {
+					dccc_gop_oppose += amount;
+				} else if(committee.equals("NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE") | committee.equals("NRCC")) {
+					nrcc_gop_oppose += amount;
+				} else if(committee.equals("HOUSE MAJORITY PAC")) {
+					hmp_gop_oppose += amount;
+				} else if(committee.equals("CONGRESSIONAL LEADERSHIP FUND")) {
+					clf_gop_oppose += amount;
+				} else {
+					othercomm_gop_oppose += amount;
+				}
+			}
+		}
+		
+		//if dem
+		if(candid.equals(fecid_dem)) {
+			if(indicator.equals("S")) {
+				if(committee.equals("DEMOCRATIC CONGRESSIONAL CAMPAIGN COMMITTEE") | committee.equals("DCCC")) {
+					dccc_dem_support += amount;
+				} else if(committee.equals("NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE") | committee.equals("NRCC")) {
+					nrcc_dem_support += amount;
+				} else if(committee.equals("HOUSE MAJORITY PAC")) {
+					hmp_dem_support += amount;
+				} else if(committee.equals("CONGRESSIONAL LEADERSHIP FUND")) {
+					clf_dem_support += amount;
+				} 
+			} else {
+				if(committee.equals("DEMOCRATIC CONGRESSIONAL CAMPAIGN COMMITTEE") | committee.equals("DCCC")) {
+					dccc_dem_oppose += amount;
+				} else if(committee.equals("NATIONAL REPUBLICAN CONGRESSIONAL COMMITTEE") | committee.equals("NRCC")) {
+					nrcc_dem_oppose += amount;
+				} else if(committee.equals("HOUSE MAJORITY PAC")) {
+					hmp_dem_oppose += amount;
+				} else if(committee.equals("CONGRESSIONAL LEADERSHIP FUND")) {
+					clf_dem_oppose += amount;
+				}
+			}
+		}
 	}
 	
 	//insert PVI method
@@ -491,6 +574,7 @@ public class CDs {
 			Midterm=1;
 		}
 		
+		//change polling to strings so NA values can be output
 		if(districtpolling==true) {
 			goppoll = Double.toString(gop_poll);
 			dempoll = Double.toString(dem_poll);
@@ -501,6 +585,31 @@ public class CDs {
 			dempoll = "NA";
 			thegap = "NA";
 			avgpoll = "NA";
+		}
+		
+		//set congression pac indicator variables
+		if(dccc_dem_support > 0 | dccc_dem_oppose > 0 | dccc_gop_support > 0 | dccc_gop_oppose > 0) {
+			dccc_involvement = 1;
+		} else {
+			dccc_involvement = 0;
+		}
+		
+		if(nrcc_dem_support > 0 | nrcc_dem_oppose > 0 | nrcc_gop_support > 0 | nrcc_gop_oppose > 0) {
+			nrcc_involvement = 1;
+		} else {
+			nrcc_involvement = 0;
+		}
+		
+		if(hmp_dem_support > 0 | hmp_dem_oppose > 0 | hmp_gop_support > 0 | hmp_gop_oppose > 0) {
+			hmp_involvement = 1;
+		} else {
+			hmp_involvement = 0;
+		}
+		
+		if(clf_dem_support > 0 | clf_dem_oppose > 0 | clf_gop_support > 0 | clf_gop_oppose > 0) {
+			clf_involvement = 1;
+		} else {
+			clf_involvement = 0;
 		}
 	}
 	
@@ -532,7 +641,11 @@ public class CDs {
 					 Net_Operating_Expenditure_Dem + "," + Prct_Receipts_From_Ind_Contr_Dem + "," + Prct_Receipts_From_Committee_Dem + "," + Burn_Rate_Dem + "," + 
 					 Prct_Total_Receipts_GOP + "," + Prct_Total_Disbursement_GOP + "," + Prct_COH_GOP + "," + Prct_Individual_Contribution_GOP
 					 + "," + Prct_Committee_Contribution_GOP + "," + Total_Receipts_Diff_GOP + "," + Total_Disbursement_Diff_GOP + "," +
-					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "," + pvi + "," + adj_pvi + "," +
+					 COH_Adv_GOP + "," + Individual_Contribution_Adv_GOP + "," + Committee_Contribution_Adv_GOP + "," +
+					 dccc_dem_support + "," + dccc_dem_oppose + "," + dccc_gop_support + "," + dccc_gop_oppose + "," + dccc_involvement + "," +
+					 nrcc_dem_support + "," + nrcc_dem_oppose + "," + nrcc_gop_support + "," + nrcc_gop_oppose + "," + nrcc_involvement + "," + 
+					 hmp_dem_support + "," + hmp_dem_oppose + "," + hmp_gop_support + "," + hmp_gop_oppose + "," + hmp_involvement + "," +
+					 clf_dem_support + "," + clf_dem_oppose + "," + clf_gop_support + "," + clf_gop_oppose + "," + clf_involvement + "," + pvi + "," + adj_pvi + "," +
 					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "," + Midterm +
 					 "," + goppoll + "," + dempoll + "," + thegap + "," + avgpoll + "," + gop_gb + "," + dem_gb + "," + gap_gb + "," +
 					 pres_approve + "," + pres_disapprove + "," + pres_approvalgap + "\n";
