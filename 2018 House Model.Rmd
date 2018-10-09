@@ -1,0 +1,196 @@
+---
+title: "2018 House Model"
+author: "Scott Onestak"
+date: "October 7, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(dplyr)
+```
+
+```{r read in data file}
+theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181002.csv")
+
+```
+
+```{r districts polled by cluster}
+test = theData
+test$count = 1
+test$polled = ifelse(is.na(test$AvgPollsterRating_Polling),0,1)
+
+polled = test %>% filter(polled==1) %>%
+  group_by(Cluster,year) %>%
+  summarise(count = sum(count))
+
+```
+
+#IMPUTE CDS WITHOUT POLLING DATA
+```{r impute missing CD polling}
+test$Clusters = as.factor(test$Cluster)
+polleddistricts = test[which(test$polled==1),c(1,2,3,4,5,26,27,28,29,30,31,32,113,114,120,121,122,123,124,125,135)]
+unpolleddistricts = test[which(test$polled==0),c(1,2,3,4,5,26,27,28,29,30,31,32,113,114,120,121,122,123,124,125,135)]
+```
+
+##2008
+```{r 2008 regress}
+polled2008 = polleddistricts %>% filter(year==2008)
+unpolled2008 = unpolleddistricts %>% filter(year==2010,Cluster %in% c(1,3,4,5,6))
+unpolledrem = unpolleddistricts %>% filter(year==2010,Cluster %in% c(2,7))
+
+polled2008$gap = polled2008$GOP_Result - polled2008$Dem_Result
+polled2008$GOPadj = polled2008$GOP_Polling + .5*polled2008$AdjPVI
+polled2008$Demadj = polled2008$Dem_Polling - .5*polled2008$AdjPVI
+polled2008$GAPadj = polled2008$GOPadj - polled2008$Demadj
+
+cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2008)
+
+cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2008)
+
+summary(cluster_model_gop)
+summary(cluster_model_dem)
+
+unpolled2008$gap = unpolled2008$GOP_Result - unpolled2008$Dem_Result
+unpolled2008$GOPadj = predict(cluster_model_gop,unpolled2008)
+unpolled2008$Demadj = predict(cluster_model_dem,unpolled2008)
+unpolled2008$GAPadj = unpolled2008$GOPadj - unpolled2008$Demadj
+cor(unpolled2008$gap,unpolled2008$GAPadj)
+cor(unpolled2008$gap,unpolled2008$PVI)
+cor(unpolled2008$gap,unpolled2008$AdjPVI)
+```
+
+##2010
+```{r 2010 regress}
+polled2010 = polleddistricts %>% filter(year==2010)
+unpolled2010 = unpolleddistricts %>% filter(year==2010,Cluster %in% c(1,3,4,5,6,7))
+unpolledrem = unpolleddistricts %>% filter(year==2010,Cluster %in% c(7))
+
+polled2010$gap = polled2010$GOP_Result - polled2010$Dem_Result
+polled2010$GOPadj = polled2010$GOP_Polling + .5*polled2010$AdjPVI
+polled2010$Demadj = polled2010$Dem_Polling - .5*polled2010$AdjPVI
+polled2010$GAPadj = polled2010$GOPadj - polled2010$Demadj
+
+cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2010)
+
+cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2010)
+
+summary(cluster_model_gop)
+summary(cluster_model_dem)
+
+unpolled2010$gap = unpolled2010$GOP_Result - unpolled2010$Dem_Result
+unpolled2010$GOPadj = predict(cluster_model_gop,unpolled2010)
+unpolled2010$Demadj = predict(cluster_model_dem,unpolled2010)
+unpolled2010$GAPadj = unpolled2010$GOPadj - unpolled2010$Demadj
+cor(unpolled2010$gap,unpolled2010$GAPadj)
+cor(unpolled2010$gap,unpolled2010$PVI)
+cor(unpolled2010$gap,unpolled2010$AdjPVI)
+```
+
+##2012
+```{r 2012 regress}
+polled2012 = polleddistricts %>% filter(year==2012)
+unpolled2012 = unpolleddistricts %>% filter(year==2012,Cluster %in% c(1,3,4,5,6,7))
+unpolledrem = unpolleddistricts %>% filter(year==2012,Cluster %in% c(7))
+
+polled2012$gap = polled2012$GOP_Result - polled2012$Dem_Result
+polled2012$GOPadj = polled2012$GOP_Polling + .5*polled2012$AdjPVI
+polled2012$Demadj = polled2012$Dem_Polling - .5*polled2012$AdjPVI
+polled2012$GAPadj = polled2012$GOPadj - polled2012$Demadj
+
+cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2012)
+
+cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2012)
+
+summary(cluster_model_gop)
+summary(cluster_model_dem)
+
+unpolled2012$gap = unpolled2012$GOP_Result - unpolled2012$Dem_Result
+unpolled2012$GOPadj = predict(cluster_model_gop,unpolled2012)
+unpolled2012$Demadj = predict(cluster_model_dem,unpolled2012)
+unpolled2012$GAPadj = unpolled2012$GOPadj - unpolled2012$Demadj
+cor(unpolled2012$gap,unpolled2012$GAPadj)
+cor(unpolled2012$gap,unpolled2012$PVI)
+cor(unpolled2012$gap,unpolled2012$AdjPVI)
+```
+
+##2014
+```{r 2014 regress}
+polled2014 = polleddistricts %>% filter(year==2014)
+unpolled2014 = unpolleddistricts %>% filter(year==2014,Cluster %in% c(1,3,4,5,6,7))
+unpolledrem = unpolleddistricts %>% filter(year==2014,Cluster %in% c(7))
+
+polled2014$gap = polled2014$GOP_Result - polled2014$Dem_Result
+polled2014$GOPadj = polled2014$GOP_Polling + .5*polled2014$AdjPVI
+polled2014$Demadj = polled2014$Dem_Polling - .5*polled2014$AdjPVI
+polled2014$GAPadj = polled2014$GOPadj - polled2014$Demadj
+
+cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2014)
+
+cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2014)
+
+summary(cluster_model_gop)
+summary(cluster_model_dem)
+
+unpolled2014$gap = unpolled2014$GOP_Result - unpolled2014$Dem_Result
+unpolled2014$GOPadj = predict(cluster_model_gop,unpolled2014)
+unpolled2014$Demadj = predict(cluster_model_dem,unpolled2014)
+unpolled2014$GAPadj = unpolled2014$GOPadj - unpolled2014$Demadj
+cor(unpolled2014$gap,unpolled2014$GAPadj)
+cor(unpolled2014$gap,unpolled2014$PVI)
+cor(unpolled2014$gap,unpolled2014$AdjPVI)
+```
+
+##2016
+```{r 2016 regress}
+polled2016 = polleddistricts %>% filter(year==2016)
+unpolled2016 = unpolleddistricts %>% filter(year==2016,Cluster %in% c(1,3,4,5,6,7))
+unpolledrem = unpolleddistricts %>% filter(year==2016,Cluster %in% c(7))
+
+polled2016$gap = polled2016$GOP_Result - polled2016$Dem_Result
+polled2016$GOPadj = polled2016$GOP_Polling + .5*polled2016$AdjPVI
+polled2016$Demadj = polled2016$Dem_Polling - .5*polled2016$AdjPVI
+polled2016$GAPadj = polled2016$GOPadj - polled2016$Demadj
+
+cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2016)
+
+cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2016)
+
+summary(cluster_model_gop)
+summary(cluster_model_dem)
+
+unpolled2016$gap = unpolled2016$GOP_Result - unpolled2016$Dem_Result
+unpolled2016$GOPadj = predict(cluster_model_gop,unpolled2016)
+unpolled2016$Demadj = predict(cluster_model_dem,unpolled2016)
+unpolled2016$GAPadj = unpolled2016$GOPadj - unpolled2016$Demadj
+cor(unpolled2016$gap,unpolled2016$GAPadj)
+cor(unpolled2016$gap,unpolled2016$PVI)
+cor(unpolled2016$gap,unpolled2016$AdjPVI)
+```
+
+##2018
+```{r 2018 regress}
+polled2018 = polleddistricts %>% filter(year==2018)
+unpolled2018 = unpolleddistricts %>% filter(year==2018,Cluster %in% c(1,3,4,5,6,7))
+unpolledrem = unpolleddistricts %>% filter(year==2018,Cluster %in% c(7))
+
+polled2018$gap = polled2018$GOP_Result - polled2018$Dem_Result
+polled2018$GOPadj = polled2018$GOP_Polling + .5*polled2018$AdjPVI
+polled2018$Demadj = polled2018$Dem_Polling - .5*polled2018$AdjPVI
+polled2018$GAPadj = polled2018$GOPadj - polled2018$Demadj
+
+cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2018)
+
+cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2018)
+
+summary(cluster_model_gop)
+summary(cluster_model_dem)
+
+unpolled2018$gap = unpolled2018$GOP_Result - unpolled2018$Dem_Result
+unpolled2018$GOPadj = predict(cluster_model_gop,unpolled2018)
+unpolled2018$Demadj = predict(cluster_model_dem,unpolled2018)
+unpolled2018$GAPadj = unpolled2018$GOPadj - unpolled2018$Demadj
+```
