@@ -8,8 +8,8 @@ public class CDs {
 			HSGrad,BachGrad,MedianIncome,Poverty,MedianEarningsHS,MedianEarningsBach,MedEarnDiff,Urbanicity,
 			LFPR,Religiosity,Evangelical,Catholic,Veteran,Cluster,fecid_gop,fecid_dem,can_gop,can_dem,President,House;
 	private int year,inc_gop,inc_dem,type,President_Time,House_Time,CD_Time_Indicator,Midterm,dccc_involvement,nrcc_involvement,
-					hmp_involvement,clf_involvement;
-	String gop_prctstr,dem_prctstr,goppoll,dempoll,thegap,avgpoll;
+					hmp_involvement,clf_involvement,pollscount;
+	String gop_prctstr,dem_prctstr,goppoll,dempoll,thegap,avgpoll,winner;
 	private boolean gop,dem,gopfec,demfec,districtpolling;
 	private double gop_prct,dem_prct,Total_Receipts_GOP,Total_Disbursement_GOP,COH_Ending_GOP,COH_Beginning_GOP,
 		Debt_Owed_By_Committee_GOP,Individual_Itemized_Contribution_GOP,Individual_Unitemized_Contribution_GOP,
@@ -329,7 +329,7 @@ public class CDs {
 		double sumofweightedgop = 0;
 		double sumofweighteddem = 0;
 		double avgpollsterrating = 0;
-		double pollscount = 0;
+		pollscount = 0;
 		double weight = 0;
 		
 		//System.out.println(name + ": " + max_poll + "," + min_poll + "," + max_days + "," + min_days + "\n");
@@ -611,6 +611,17 @@ public class CDs {
 		} else {
 			clf_involvement = 0;
 		}
+		
+		if(year<2018) {
+			if(gop_prct>dem_prct) {
+				winner = "1";
+			} else {
+				winner = "0";
+			}
+		} else {
+			winner = "NA";
+		}
+		
 	}
 	
 	//toString...return to write dataset
@@ -647,7 +658,7 @@ public class CDs {
 					 hmp_dem_support + "," + hmp_dem_oppose + "," + hmp_gop_support + "," + hmp_gop_oppose + "," + hmp_involvement + "," +
 					 clf_dem_support + "," + clf_dem_oppose + "," + clf_gop_support + "," + clf_gop_oppose + "," + clf_involvement + "," + pvi + "," + adj_pvi + "," +
 					 President + "," + President_Time + "," + House + "," + House_Time + "," + CD_Time_Indicator + "," + Midterm +
-					 "," + goppoll + "," + dempoll + "," + thegap + "," + avgpoll + "," + gop_gb + "," + dem_gb + "," + gap_gb + "," +
-					 pres_approve + "," + pres_disapprove + "," + pres_approvalgap + "\n";
+					 "," + goppoll + "," + dempoll + "," + thegap + "," + avgpoll + "," + pollscount + "," + gop_gb + "," + dem_gb + "," + gap_gb + "," +
+					 pres_approve + "," + pres_disapprove + "," + pres_approvalgap + "," + winner + "\n";
 	}
 }

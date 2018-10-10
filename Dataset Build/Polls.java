@@ -6,7 +6,7 @@ public class Polls {
 	
 	String name;
 	public Map<String,Poll> thepolls = new HashMap<String,Poll>();
-	double max_poll,min_poll,max_days,min_days,gop,dem,gap;
+	double max_poll,min_poll,max_days,min_days,gop,dem,gap,count;
 	
 	//constructor
 	public Polls(String name) {
@@ -15,6 +15,7 @@ public class Polls {
 		min_poll = Double.MAX_VALUE;
 		max_days = Double.MIN_VALUE;
 		min_days = Double.MAX_VALUE;
+		count=0;
 	}
 	
 	//insert method
@@ -44,6 +45,8 @@ public class Polls {
 		if((double) days < min_days) {
 			min_days = (double) days;
 		}
+		
+		count++;
 	}
 	
 	//calculate weighted poll
@@ -79,5 +82,9 @@ public class Polls {
 	
 	public double getGap() {
 		return gap;
+	}
+	
+	public double getCount() {
+		return count;
 	}
 }

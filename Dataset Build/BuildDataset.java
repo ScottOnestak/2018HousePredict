@@ -62,7 +62,7 @@ public class BuildDataset {
 		Date Election2012 = (Date) formatter.parse("11/6/2012");
 		Date Election2014 = (Date) formatter.parse("11/4/2014");
 		Date Election2016 = (Date) formatter.parse("11/8/2016");
-		Date current = (Date) formatter.parse("10/2/2018");
+		Date current = (Date) formatter.parse("10/9/2018");
 		
 		String holder[];
 		int firstyear;
@@ -1052,7 +1052,7 @@ public class BuildDataset {
 			
 			br.close();
 		}catch(FileNotFoundException e){
-			System.out.println("File not found: genericballotcsv.csv");
+			System.out.println("File not found: presapprovalcsv.csv");
 		} catch(IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
@@ -1151,8 +1151,8 @@ public class BuildDataset {
 					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP," +
 					"dccc_dem_support,dccc_dem_oppose,dccc_gop_support,dccc_gop_oppose,dccc_indicator,nrcc_dem_support,nrcc_dem_oppose,nrcc_gop_support,nrcc_gop_oppose,nrccc_indicator," +
 					"hmp_dem_support,hmp_dem_oppose,hmp_gop_support,hmp_gop_oppose,hmp_indicator,clf_dem_support,clf_dem_oppose,clf_gop_support,clf_gop_oppose,clf_indicator," + 
-					"PVI,AdjPVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm,GOP_Polling,Dem_Polling,Gap_Polling,AvgPollsterRating_Polling," + 
-					"GOP_GenericBallot,Dem_GenericBallot,Gap_GenericBallot,Pres_Approval,Pres_Disapproval,Pres_NetApproval\n");
+					"PVI,AdjPVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm,GOP_Polling,Dem_Polling,Gap_Polling,AvgPollsterRating_Polling,NumberOfPolls," + 
+					"GOP_GenericBallot,Dem_GenericBallot,Gap_GenericBallot,Pres_Approval,Pres_Disapproval,Pres_NetApproval,winner\n");
 		
 		int i = 0;
 		for(Map.Entry<String,CDs> entry: CDs.entrySet()){
