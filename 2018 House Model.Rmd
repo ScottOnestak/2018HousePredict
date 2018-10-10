@@ -16,7 +16,10 @@ library(dplyr)
 ```{r read in data file}
 theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181002.csv")
 
+results = read.delim("C:/Users/onest/Desktop/2018 House Model/election data files/1976-2016-house.tab")
+results = results %>% filter(year>= 2006)
 ```
+
 
 ```{r districts polled by cluster}
 test = theData
@@ -27,6 +30,22 @@ polled = test %>% filter(polled==1) %>%
   group_by(Cluster,year) %>%
   summarise(count = sum(count))
 
+```
+
+#ATTACH PRIOR YEAR ELECTION RESULTS
+```{r election results}
+GOPVotes = results %>% mutate(GOP_Prct = candidatevotes / totalvotes * 100) %>% 
+  filter(party=="republican") %>%
+  select(year,state_po,district,GOP_Prct) %>%
+  group_by(year,state_po,district) %>%
+  filter(GOP_Prct == max(GOP_Prct))
+DemVotes = results %>% mutate(Dem_Prct = candidatevotes / totalvotes * 100) %>% 
+  filter(party %in% c("democrat","democratic-farmer-labor")) %>%
+  select(year,state_po,district,Dem_Prct) %>%
+  group_by(year,state_po,district) %>%
+  filter(Dem_Prct == max(Dem_Prct))
+Votes = GOPVotes %>% inner_join(.,DemVotes,by=c("year","state_po","district"))  
+Votes$year = Votes$year + 2
 ```
 
 #IMPUTE CDS WITHOUT POLLING DATA
@@ -47,9 +66,9 @@ polled2008$GOPadj = polled2008$GOP_Polling + .5*polled2008$AdjPVI
 polled2008$Demadj = polled2008$Dem_Polling - .5*polled2008$AdjPVI
 polled2008$GAPadj = polled2008$GOPadj - polled2008$Demadj
 
-cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2008)
+cluster_model_gop = lm(GOPadj ~  PVI + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(AvgPollsterRating_Polling),data=polled2008)
 
-cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2008)
+cluster_model_dem = lm(Demadj ~  PVI + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(AvgPollsterRating_Polling),data=polled2008)
 
 summary(cluster_model_gop)
 summary(cluster_model_dem)
@@ -67,16 +86,16 @@ cor(unpolled2008$gap,unpolled2008$AdjPVI)
 ```{r 2010 regress}
 polled2010 = polleddistricts %>% filter(year==2010)
 unpolled2010 = unpolleddistricts %>% filter(year==2010,Cluster %in% c(1,3,4,5,6,7))
-unpolledrem = unpolleddistricts %>% filter(year==2010,Cluster %in% c(7))
+unpolledrem2010 = unpolleddistricts %>% filter(year==2010,Cluster %in% c(7))
 
 polled2010$gap = polled2010$GOP_Result - polled2010$Dem_Result
 polled2010$GOPadj = polled2010$GOP_Polling + .5*polled2010$AdjPVI
 polled2010$Demadj = polled2010$Dem_Polling - .5*polled2010$AdjPVI
 polled2010$GAPadj = polled2010$GOPadj - polled2010$Demadj
 
-cluster_model_gop = lm(GOPadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2010)
+cluster_model_gop = lm(GOPadj ~  PVI + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(AvgPollsterRating_Polling^2),data=polled2010)
 
-cluster_model_dem = lm(Demadj ~  PVI + I(PVI^2) + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(.5*AvgPollsterRating_Polling^2),data=polled2010)
+cluster_model_dem = lm(Demadj ~  PVI + GOP_Incumbent + Dem_Incumbent + Clusters,weights = I(AvgPollsterRating_Polling^2),data=polled2010)
 
 summary(cluster_model_gop)
 summary(cluster_model_dem)
@@ -88,6 +107,9 @@ unpolled2010$GAPadj = unpolled2010$GOPadj - unpolled2010$Demadj
 cor(unpolled2010$gap,unpolled2010$GAPadj)
 cor(unpolled2010$gap,unpolled2010$PVI)
 cor(unpolled2010$gap,unpolled2010$AdjPVI)
+
+forecasted2010 = rbind(polled2010,unpolled2010)
+forecasted2010comp = forecasted2010 %>% filter(!is.na(GOP_Candidate),!is.na(Dem_Candidate))
 ```
 
 ##2012
