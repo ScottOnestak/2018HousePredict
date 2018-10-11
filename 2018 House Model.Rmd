@@ -50,16 +50,124 @@ Votes = GOPVotes %>% inner_join(.,DemVotes,by=c("year","state_po","district")) %
   filter(!state_po == "PA" | (state_po == "PA" & year != 2016))
 Votes$year = Votes$year + 2
 Votes2010 = Votes %>% filter(year == 2014)
-Votes2010$year = 2010
+Votes2010$year = 2012
 Votes = rbind(Votes,Votes2010)
 colnames(Votes)[2] = "State"
 colnames(Votes)[3] = "District"
 Votes[Votes == 0] = 1
 
-AllCDs = theData[,c(2,3,5,8,11,12,14,15,16,20,22,23,26,113,121,122,123)] %>% left_join(.,Votes,by=c("State","District","year"))
+AllCDs = theData[,c(2,3,5,8,11,12,14,15,16,20,22,23,26,27,30,113,121,122,123)] %>% left_join(.,Votes,by=c("State","District","year"))
 
-NoChallengerCDs = AllCDs %>% filter(is.na(GOP_Prct))
-ChallengerCDs = AllCDs %>% filter(!is.na(GOP_Prct))
+ChallengerCDs = AllCDs %>% filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
+ChalKnown = ChallengerCDs %>% filter(!is.na(GOP_Prct))
+ChalUnknown = ChallengerCDs %>% filter(is.na(GOP_Prct))
+
+ChalKnownNorm = cbind(cbind(ChalKnown[,c(1:3,13)],scale(ChalKnown[,c(4:12,16)])),ChalKnown[,c(20,21)])
+ChalUnknownNorm = cbind(ChalUnknown[,c(1:3,13)],scale(ChalUnknown[,c(4:12,16)]))
+
+ChalKnownNorm$State = as.character(ChalKnownNorm$State)
+
+#create variables...set equal to NA
+ChalUnknownNorm$State1 = NA
+ChalUnknownNorm$State2 = NA
+ChalUnknownNorm$State3 = NA
+
+ChalUnknownNorm$District1 = NA
+ChalUnknownNorm$District2 = NA
+ChalUnknownNorm$District3 = NA
+
+ChalUnknownNorm$dist1 = 100000
+ChalUnknownNorm$dist2 = 100000
+ChalUnknownNorm$dist3 = 100000
+
+ChalUnknownNorm$GOP_Results1 = NA
+ChalUnknownNorm$GOP_Results2 = NA
+ChalUnknownNorm$GOP_Results3 = NA
+
+ChalUnknownNorm$Dem_Results1 = NA
+ChalUnknownNorm$Dem_Results2 = NA
+ChalUnknownNorm$Dem_Results3 = NA
+
+#loop through, find 3 "closest" CDs -> Collect their results
+for(i in seq(from=1,to=dim(ChalUnknownNorm)[1],by=1)){
+  for(j in seq(from=1,to=dim(ChalKnownNorm)[1],by=1)){
+    if(ChalUnknownNorm[i,4]==ChalKnownNorm[j,4]){
+      if(ChalUnknownNorm[i,3]==ChalKnownNorm[j,3]){
+        dist = 0;
+        #calc distance
+        for(k in seq(from=5,to=14,by=1)){
+          dist = dist + abs(ChalUnknownNorm[i,k]-ChalKnownNorm[j,k])^2
+        }
+        if(dist<ChalUnknownNorm[i,21]){
+          ChalUnknownNorm[i,17] = ChalUnknownNorm[i,16]
+          ChalUnknownNorm[i,16] = ChalUnknownNorm[i,15]
+          ChalUnknownNorm[i,15] = ChalKnownNorm[j,1]
+          
+          ChalUnknownNorm[i,20] = ChalUnknownNorm[i,19]
+          ChalUnknownNorm[i,19] = ChalUnknownNorm[i,18]
+          ChalUnknownNorm[i,18] = ChalKnownNorm[j,2]
+          
+          ChalUnknownNorm[i,23] = ChalUnknownNorm[i,22]
+          ChalUnknownNorm[i,22] = ChalUnknownNorm[i,21]
+          ChalUnknownNorm[i,21] = dist
+          
+          ChalUnknownNorm[i,26] = ChalUnknownNorm[i,25]
+          ChalUnknownNorm[i,25] = ChalUnknownNorm[i,24]
+          ChalUnknownNorm[i,24] = ChalKnownNorm[j,15]
+          
+          ChalUnknownNorm[i,29] = ChalUnknownNorm[i,28]
+          ChalUnknownNorm[i,28] = ChalUnknownNorm[i,27]
+          ChalUnknownNorm[i,27] = ChalKnownNorm[j,16]
+        } else if(dist<ChalUnknownNorm[i,22]){
+          ChalUnknownNorm[i,17] = ChalUnknownNorm[i,16]
+          ChalUnknownNorm[i,16] = ChalKnownNorm[j,1]
+          
+          ChalUnknownNorm[i,20] = ChalUnknownNorm[i,19]
+          ChalUnknownNorm[i,19] = ChalKnownNorm[j,2]
+          
+          ChalUnknownNorm[i,23] = ChalUnknownNorm[i,22]
+          ChalUnknownNorm[i,22] = dist
+          
+          ChalUnknownNorm[i,26] = ChalUnknownNorm[i,25]
+          ChalUnknownNorm[i,25] = ChalKnownNorm[j,15]
+          
+          ChalUnknownNorm[i,29] = ChalUnknownNorm[i,28]
+          ChalUnknownNorm[i,28] = ChalKnownNorm[j,16]
+        } else if(dist<ChalUnknownNorm[i,23]){
+          ChalUnknownNorm[i,17] = ChalKnownNorm[j,1]
+          
+          ChalUnknownNorm[i,20] = ChalKnownNorm[j,2]
+          
+          ChalUnknownNorm[i,23] = dist
+          
+          ChalUnknownNorm[i,26] = ChalKnownNorm[j,15]
+          
+          ChalUnknownNorm[i,29] = ChalKnownNorm[j,16]
+        }
+      }
+    }
+  }
+}
+
+MaxDist = max(ChalUnknownNorm$dist1,ChalUnknownNorm$dist2,ChalUnknownNorm$dist3)
+MinDist = min(ChalUnknownNorm$dist1,ChalUnknownNorm$dist2,ChalUnknownNorm$dist3)
+
+ChalUnknownNorm$weight1 = (MaxDist-ChalUnknownNorm$dist1)/(MaxDist-MinDist)
+ChalUnknownNorm$weight2 = (MaxDist-ChalUnknownNorm$dist2)/(MaxDist-MinDist)
+ChalUnknownNorm$weight3 = (MaxDist-ChalUnknownNorm$dist3)/(MaxDist-MinDist)
+ChalUnknownNorm$weightsum = ChalUnknownNorm$weight1 + ChalUnknownNorm$weight2 + ChalUnknownNorm$weight3
+
+ChalUnknownNorm$GOP_Prct = (ChalUnknownNorm$weight1 * ChalUnknownNorm$GOP_Results1 + ChalUnknownNorm$weight2 *
+                                 ChalUnknownNorm$GOP_Results2 + ChalUnknownNorm$weight3 * ChalUnknownNorm$GOP_Results3) / ChalUnknownNorm$weightsum
+ChalUnknownNorm$Dem_Prct = (ChalUnknownNorm$weight1 * ChalUnknownNorm$Dem_Results1 + ChalUnknownNorm$weight2 *
+                                 ChalUnknownNorm$Dem_Results2 + ChalUnknownNorm$weight3 * ChalUnknownNorm$Dem_Results3) / ChalUnknownNorm$weightsum
+
+DistrictsJoin = rbind(ChalKnown[,c(1,2,3,20,21)],ChalUnknownNorm[,c(1,2,3,34,35)])
+
+modeldata = theData %>% 
+  left_join(.,DistrictsJoin,by=c("State","District","year")) %>%
+  filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
+
 ```
 
 #IMPUTE CDS WITHOUT POLLING DATA
