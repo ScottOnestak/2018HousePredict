@@ -44,8 +44,22 @@ DemVotes = results %>% mutate(Dem_Prct = candidatevotes / totalvotes * 100) %>%
   select(year,state_po,district,Dem_Prct) %>%
   group_by(year,state_po,district) %>%
   filter(Dem_Prct == max(Dem_Prct))
-Votes = GOPVotes %>% inner_join(.,DemVotes,by=c("year","state_po","district"))  
+Votes = GOPVotes %>% inner_join(.,DemVotes,by=c("year","state_po","district")) %>% 
+  filter(year != 2010) %>% 
+  filter(!state_po %in% c("NC","FL") | (state_po %in% c("NC","FL") & year != 2014)) %>%
+  filter(!state_po == "PA" | (state_po == "PA" & year != 2016))
 Votes$year = Votes$year + 2
+Votes2010 = Votes %>% filter(year == 2014)
+Votes2010$year = 2010
+Votes = rbind(Votes,Votes2010)
+colnames(Votes)[2] = "State"
+colnames(Votes)[3] = "District"
+Votes[Votes == 0] = 1
+
+AllCDs = theData[,c(2,3,5,8,11,12,14,15,16,20,22,23,26,113,121,122,123)] %>% left_join(.,Votes,by=c("State","District","year"))
+
+NoChallengerCDs = AllCDs %>% filter(is.na(GOP_Prct))
+ChallengerCDs = AllCDs %>% filter(!is.na(GOP_Prct))
 ```
 
 #IMPUTE CDS WITHOUT POLLING DATA
