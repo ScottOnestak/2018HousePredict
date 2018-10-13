@@ -12,10 +12,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r packages}
 library(dplyr)
 library(h2o)
+library(glmnet)
 ```
 
 ```{r read in data file}
 theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181009.csv")
+theData$ActAdjPVI = ifelse(theData$year==2008,theData$PVI-10.7,
+                           ifelse(theData$year==2010,theData$PVI+6.8,
+                                  ifelse(theData$year==2012,theData$PVI-1.2,
+                                         ifelse(theData$year==2014,theData$PVI+5.7,
+                                                ifelse(theData$year==2016,theData$PVI+1.1,theData$AdjPVI)))))
 
 results = read.delim("C:/Users/onest/Desktop/2018 House Model/election data files/1976-2016-house.tab")
 results = results %>% filter(year>= 2006)
@@ -47,25 +53,49 @@ DemVotes = results %>% mutate(Dem_Prct = candidatevotes / totalvotes * 100) %>%
   select(year,state_po,district,Dem_Prct) %>%
   group_by(year,state_po,district) %>%
   filter(Dem_Prct == max(Dem_Prct))
-Votes = GOPVotes %>% inner_join(.,DemVotes,by=c("year","state_po","district")) %>% 
+GOPVotes[GOPVotes == 0] = 1
+DemVotes[DemVotes == 0] = 1
+PVIs = GOPVotes %>% full_join(.,DemVotes,by=c("year","state_po","district")) %>%
+  select(year,State=state_po,District=district) %>%
+  full_join(.,theData,by=c("year","State","District")) %>%
+  select(year,State,District,PVI,AdjPVI,ActAdjPVI) %>% 
+  filter(year < 2018)
+PVIs2006 = PVIs %>% filter(year == 2006) %>% select(year,State,District)
+PVIs = PVIs %>% filter(year != 2006)
+
+PVIs2006 = PVIs2006 %>% mutate(year_join = 2008) %>%
+  left_join(.,PVIs,by=c("year_join"="year","State"="State","District"="District"))
+PVIs2006$AdjPVI = PVIs2006$PVI - 12.926
+PVIs2006$ActAdjPVI = PVIs2006$PVI - 7.9
+PVIs2006 = PVIs2006[,-c(4)]
+
+PVIs2010 = PVIs %>% filter(year == 2014)
+PVIs = PVIs %>% filter(year != 2010)
+PVIs2010$year = 2010
+PVIs = rbind(PVIs,PVIs2006)
+PVIs = rbind(PVIs,PVIs2010)
+colnames(PVIs)[4:6] = c("PVI_old","AdjPVI_old","ActAdjPVI_old")
+
+Votes = GOPVotes %>% inner_join(.,DemVotes,by=c("year","state_po","district")) %>%
   filter(year != 2010) %>% 
   filter(!state_po %in% c("NC","FL") | (state_po %in% c("NC","FL") & year != 2014)) %>%
-  filter(!state_po == "PA" | (state_po == "PA" & year != 2016))
+  filter(!state_po == "PA" | (state_po == "PA" & year != 2016)) %>% 
+  inner_join(.,PVIs,by=c("year"="year","state_po"="State","district"="District"))
 Votes$year = Votes$year + 2
-Votes2010 = Votes %>% filter(year == 2014)
+Votes2010 = Votes %>% filter(year == 2016)
 Votes2010$year = 2012
 Votes = rbind(Votes,Votes2010)
 colnames(Votes)[2] = "State"
 colnames(Votes)[3] = "District"
-Votes[Votes == 0] = 1
 
-AllCDs = theData[,c(2,3,5,8,11,12,14,15,16,20,22,23,26,27,30,113,121,122,123)] %>% left_join(.,Votes,by=c("State","District","year"))
+
+AllCDs = theData[,c(2,3,5,8,11,12,14,15,16,20,22,23,26,27,30,113,121,122,123,133)] %>% left_join(.,Votes,by=c("State","District","year"))
 
 ChallengerCDs = AllCDs %>% filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
 ChalKnown = ChallengerCDs %>% filter(!is.na(GOP_Prct))
 ChalUnknown = ChallengerCDs %>% filter(is.na(GOP_Prct))
 
-ChalKnownNorm = cbind(cbind(ChalKnown[,c(1:3,13)],scale(ChalKnown[,c(4:12,16)])),ChalKnown[,c(20,21)])
+ChalKnownNorm = cbind(cbind(ChalKnown[,c(1:3,13)],scale(ChalKnown[,c(4:12,16)])),ChalKnown[,c(21:25)])
 ChalUnknownNorm = cbind(ChalUnknown[,c(1:3,13)],scale(ChalUnknown[,c(4:12,16)]))
 
 ChalKnownNorm$State = as.character(ChalKnownNorm$State)
@@ -90,6 +120,18 @@ ChalUnknownNorm$GOP_Results3 = NA
 ChalUnknownNorm$Dem_Results1 = NA
 ChalUnknownNorm$Dem_Results2 = NA
 ChalUnknownNorm$Dem_Results3 = NA
+
+ChalUnknownNorm$PVI_old1 = NA
+ChalUnknownNorm$PVI_old2 = NA
+ChalUnknownNorm$PVI_old33 = NA
+
+ChalUnknownNorm$AdjPVI_old1 = NA
+ChalUnknownNorm$AdjPVI_old2 = NA
+ChalUnknownNorm$AdjPVI_old33 = NA
+
+ChalUnknownNorm$ActAdjPVI_old1 = NA
+ChalUnknownNorm$ActAdjPVI_old2 = NA
+ChalUnknownNorm$ActAdjPVI_old33 = NA
 
 #loop through, find 3 "closest" CDs -> Collect their results
 for(i in seq(from=1,to=dim(ChalUnknownNorm)[1],by=1)){
@@ -121,6 +163,18 @@ for(i in seq(from=1,to=dim(ChalUnknownNorm)[1],by=1)){
           ChalUnknownNorm[i,29] = ChalUnknownNorm[i,28]
           ChalUnknownNorm[i,28] = ChalUnknownNorm[i,27]
           ChalUnknownNorm[i,27] = ChalKnownNorm[j,16]
+          
+          ChalUnknownNorm[i,32] = ChalUnknownNorm[i,31]
+          ChalUnknownNorm[i,31] = ChalUnknownNorm[i,30]
+          ChalUnknownNorm[i,30] = ChalKnownNorm[j,17]
+          
+          ChalUnknownNorm[i,35] = ChalUnknownNorm[i,34]
+          ChalUnknownNorm[i,34] = ChalUnknownNorm[i,33]
+          ChalUnknownNorm[i,33] = ChalKnownNorm[j,18]
+          
+          ChalUnknownNorm[i,38] = ChalUnknownNorm[i,37]
+          ChalUnknownNorm[i,37] = ChalUnknownNorm[i,36]
+          ChalUnknownNorm[i,36] = ChalKnownNorm[j,19]
         } else if(dist<ChalUnknownNorm[i,22]){
           ChalUnknownNorm[i,17] = ChalUnknownNorm[i,16]
           ChalUnknownNorm[i,16] = ChalKnownNorm[j,1]
@@ -136,6 +190,15 @@ for(i in seq(from=1,to=dim(ChalUnknownNorm)[1],by=1)){
           
           ChalUnknownNorm[i,29] = ChalUnknownNorm[i,28]
           ChalUnknownNorm[i,28] = ChalKnownNorm[j,16]
+          
+          ChalUnknownNorm[i,32] = ChalUnknownNorm[i,31]
+          ChalUnknownNorm[i,31] = ChalKnownNorm[j,17]
+          
+          ChalUnknownNorm[i,35] = ChalUnknownNorm[i,34]
+          ChalUnknownNorm[i,34] = ChalKnownNorm[j,18]
+          
+          ChalUnknownNorm[i,38] = ChalUnknownNorm[i,37]
+          ChalUnknownNorm[i,37] = ChalKnownNorm[j,19]
         } else if(dist<ChalUnknownNorm[i,23]){
           ChalUnknownNorm[i,17] = ChalKnownNorm[j,1]
           
@@ -146,6 +209,12 @@ for(i in seq(from=1,to=dim(ChalUnknownNorm)[1],by=1)){
           ChalUnknownNorm[i,26] = ChalKnownNorm[j,15]
           
           ChalUnknownNorm[i,29] = ChalKnownNorm[j,16]
+          
+          ChalUnknownNorm[i,32] = ChalKnownNorm[j,17]
+          
+          ChalUnknownNorm[i,35] = ChalKnownNorm[j,18]
+          
+          ChalUnknownNorm[i,38] = ChalKnownNorm[j,19]
         }
       }
     }
@@ -165,23 +234,42 @@ ChalUnknownNorm$GOP_Prct = (ChalUnknownNorm$weight1 * ChalUnknownNorm$GOP_Result
 ChalUnknownNorm$Dem_Prct = (ChalUnknownNorm$weight1 * ChalUnknownNorm$Dem_Results1 + ChalUnknownNorm$weight2 *
                                  ChalUnknownNorm$Dem_Results2 + ChalUnknownNorm$weight3 * ChalUnknownNorm$Dem_Results3) / ChalUnknownNorm$weightsum
 
-DistrictsJoin = rbind(ChalKnown[,c(1,2,3,20,21)],ChalUnknownNorm[,c(1,2,3,34,35)])
+ChalUnknownNorm$PVI_old = (ChalUnknownNorm$weight1 * ChalUnknownNorm$PVI_old1 + ChalUnknownNorm$weight2 *
+                                 ChalUnknownNorm$PVI_old2 + ChalUnknownNorm$weight3 * ChalUnknownNorm$PVI_old3) / ChalUnknownNorm$weightsum
+
+ChalUnknownNorm$AdjPVI_old = (ChalUnknownNorm$weight1 * ChalUnknownNorm$AdjPVI_old1 + ChalUnknownNorm$weight2 *
+                                 ChalUnknownNorm$AdjPVI_old2 + ChalUnknownNorm$weight3 * ChalUnknownNorm$AdjPVI_old3) / ChalUnknownNorm$weightsum
+
+ChalUnknownNorm$ActAdjPVI_old = (ChalUnknownNorm$weight1 * ChalUnknownNorm$ActAdjPVI_old1 + ChalUnknownNorm$weight2 *
+                                 ChalUnknownNorm$ActAdjPVI_old2 + ChalUnknownNorm$weight3 * ChalUnknownNorm$ActAdjPVI_old3) / ChalUnknownNorm$weightsum
+
+DistrictsJoin = rbind(ChalKnown[,c(1,2,3,21,22,23,24,25)],ChalUnknownNorm[,c(1,2,3,43,44,45,46,47)])
 DistrictsJoin$Gap_Prct = DistrictsJoin$GOP_Prct - DistrictsJoin$Dem_Prct
 
 theCDsToModel = theData %>% 
   left_join(.,DistrictsJoin,by=c("State","District","year")) %>%
   filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
 
-modeldata = theCDsToModel %>% filter(year < 2018)
+modeldata = theCDsToModel %>% filter(year < 2018) %>%
+  mutate(AdjPVI_chg = AdjPVI - AdjPVI_old,
+         ActAdjPVI_chg = ActAdjPVI - ActAdjPVI_old)
 
-currAttach = theCDsToModel %>% filter(year == 2018) %>% select(name,GOP_Prct,Dem_Prct,Gap_Prct)
+currAttach = theCDsToModel %>% filter(year == 2018) %>% select(name,GOP_Prct,Dem_Prct,Gap_Prct,PVI_old,AdjPVI_old,ActAdjPVI_old)
 
 ```
 
 #READ IN TEST SET
 ```{r test set - aka, the most recent dataset}
 testing_data = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181009.csv")
-testing_data = testing_data %>% filter(year==2018) %>% left_join(.,currAttach,by="name")
+testing_data$ActAdjPVI = ifelse(testing_data$year==2008,testing_data$PVI-10.7,
+                           ifelse(testing_data$year==2010,testing_data$PVI+6.8,
+                                  ifelse(testing_data$year==2012,testing_data$PVI-1.2,
+                                         ifelse(testing_data$year==2014,testing_data$PVI+5.7,
+                                                ifelse(testing_data$year==2016,testing_data$PVI+1.1,testing_data$AdjPVI)))))
+testing_data = testing_data %>% filter(year==2018) %>% 
+  left_join(.,currAttach,by="name") %>%
+  mutate(AdjPVI_chg = AdjPVI - AdjPVI_old,
+         ActAdjPVI_chg = ActAdjPVI - ActAdjPVI_old)
 
 modelingCDs = testing_data %>% filter(!is.na(GOP_Prct))
 nonCompCDs = testing_data %>% filter(is.na(GOP_Prct))
@@ -189,10 +277,144 @@ nonCompCDs = testing_data %>% filter(is.na(GOP_Prct))
 nonCompCDs$GOPWin = ifelse(is.na(nonCompCDs$GOP_Candidate),0,1)
 ```
 
+#IMPUTE POLLING FOR UNPOLLED DISTRICTS
+```{r impute polling}
+polledCDs = modeldata %>% filter(!is.na(GOP_Polling))
+unpolledCDs = modeldata %>% filter(is.na(GOP_Polling))
+
+polledCDs$Undec_Polling = 100 - polledCDs$GOP_Polling - polledCDs$Dem_Polling
+
+polledCDs$AdjGOP_Polling = polledCDs$GOP_Polling + ((50+polledCDs$ActAdjPVI)/100)*polledCDs$Undec_Polling
+polledCDs$AdjDem_Polling = polledCDs$Dem_Polling + ((50-polledCDs$ActAdjPVI)/100)*polledCDs$Undec_Polling
+
+polledCDs$PredGOP = polledCDs$GOP_Prct + .5 * polledCDs$AdjPVI_chg
+polledCDs$PredDem = polledCDs$Dem_Prct - .5 * polledCDs$AdjPVI_chg
+
+polledCDs$ActPredGOP = polledCDs$GOP_Prct + .5 * polledCDs$ActAdjPVI_chg
+polledCDs$ActPredDem = polledCDs$Dem_Prct - .5 * polledCDs$ActAdjPVI_chg
+
+model = lm(AdjGOP_Polling ~ AdjPVI,data=polledCDs)
+influence = influence.measures(model)
+hat = influence$infmat[,6]
+boxplot_info = boxplot.stats(hat, coef = 1.5, do.out = TRUE)
+outliers = boxplot_info$out
+min_outlier = min(outliers)
+
+plot(polledCDs$AdjPVI,polledCDs$AdjGOP_Polling, pch = 20, col = 1 + (hat >= min_outlier))
+abline(model,col='yellow', lwd=2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#REDUCE FEATURS FOR NAIVE BAYES AND LINEAR REGRESSION MODELS
+```{r lasso}
+pred = modeldata[,29]
+vars = modeldata[,c(6:26,28,31,33:120,126:132,134:136)]
+
+#lasso
+lasso = cv.glmnet(vars,pred)
+
+```
+
 #BUILD THE MODEL
 ```{r model building}
-train = modeldata[,c(6:26,28,31,33:136)]
-test = 
+#create training and test sets for final model
+train_set = modeldata[,c(1,6:26,28,31,33:132,134:136)]
+test_set = modelingCDs[,c(1,6:26,28,31,33:135)]
+
+train_set$winner = as.factor(train_set$winner)
+test_set$winner = as.factor(test_set$winner)
+#h2o connection 
+h2o.init(nthreads=-1,max_mem_size='6G')
+
+train = as.h2o(train_set)
+test = as.h2o(test_set)
+
+train.split <- h2o.splitFrame(train, seed = 111)
+train.train <- train.split[[1]]
+train.calib <- train.split[[2]]
+
+y = "winner"
+x = setdiff(names(train),c(y,"name"))
+
+rf = h2o.randomForest(x = x,
+                      y = y,
+                      training_frame = train.train,
+                      ntrees = 250,
+                      nfolds = 10,
+                      fold_assignment = "Modulo",
+                      keep_cross_validation_predictions = TRUE,
+                      calibrate_model = T,
+                      calibration_frame = train.calib,
+                      seed = 111)
+test_results = h2o.predict(rf, newdata = test)
+test_set$results = as.data.frame(test_results$p1)
+test_set$results2 = as.data.frame(test_results$cal_p1)
+see_results = test_set[,c(1,128,129)]
+
+gb = h2o.gbm(x = x,
+            y = y,
+            training_frame = train,
+            ntrees = 50,
+            max_depth = 20,
+            min_rows = 2,
+            learn_rate = 0.2,
+            nfolds = 10,
+            fold_assignment = "Modulo",
+            calibrate_model = T,
+            keep_cross_validation_predictions = TRUE,
+            seed = 1)
+
+ensemble = h2o.stackedEnsemble(x = x,
+                                y = y,
+                                training_frame = train,
+                                model_id = "my_ensemble",
+                                base_models = list(rf,gb))
+
+
+
+
+
+lr = h2o.glm(x = x,
+             y = y,
+             training_frame = train,
+             family = binomial,
+             nfolds = 10,
+             fold_assignment = "Modulo",
+             keep_cross_validation_predictions = TRUE,
+             seed = 111)
+
+nb = h2o.naiveBayes(x = x,
+                    y = y,
+                    training_frame = train,
+                    nfolds = 10,
+                    fold_assignment = "Modulo",
+                    keep_cross_validation_predictions = TRUE,
+                    seed = 111)
+
 ```
 
 
