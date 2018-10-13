@@ -1,4 +1,4 @@
-State,StateAbbr,District,Name,Party,Incumbent,FECID
+State,StateAbbr,District,Name,Party,115th Congress,FEC ID
 Alabama,AL,1,Bradley Byrne,Republican,Yes,H4AL01123
 Alabama,AL,1,Robert Kennedy,Democratic,,H8AL01066
 Alabama,AL,2,Tabitha Isner,Democratic,,H8AL02197
@@ -59,6 +59,7 @@ California,CA,10,Josh Harder,Democratic,,H8CA10126
 California,CA,11,Mark DeSaulnier,Democratic,Yes,H0CA10073
 California,CA,11,John Fitzgerald,Republican,,H0CA07111
 California,CA,12,Nancy Pelosi,Democratic,Yes,H8CA05035
+California,CA,12,Lisa Remmer,Republican,,H8CA12270
 California,CA,13,Barbara Lee,Democratic,Yes,H8CA09060
 California,CA,14,Jackie Speier,Democratic,Yes,H8CA12171
 California,CA,14,Cristina Osmena,Republican,,H8CA14185
@@ -71,6 +72,7 @@ California,CA,17,Ron Cohen,Republican,,H6CA17141
 California,CA,18,Anna Eshoo,Democratic,Yes,H8CA12098
 California,CA,18,Christine Russell,Republican,,H8CA18087
 California,CA,19,Zoe Lofgren,Democratic,Yes,H4CA16049
+California,CA,19,Justin James Aguilera,Republican,,H8CA19051
 California,CA,20,Jimmy Panetta,Democratic,Yes,H6CA20152
 California,CA,21,David Valadao,Republican,Yes,H2CA20094
 California,CA,21,T.J. Cox,Democratic,,H6CA19113
@@ -85,7 +87,6 @@ California,CA,25,Katie Hill,Democratic,,H8CA25074
 California,CA,26,Julia Brownley,Democratic,Yes,H2CA00120
 California,CA,26,Antonio Sabato,Republican,,H8CA26114
 California,CA,27,Judy Chu,Democratic,Yes,H0CA32101
-California,CA,27,Bryan Witt,Republican,,H8CA27112
 California,CA,28,Adam Schiff,Democratic,Yes,H0CA27085
 California,CA,28,Johnny Nalbandian,Republican,,H8CA28185
 California,CA,29,Tony Cardenas,Democratic,Yes,H2CA28113
@@ -95,10 +96,10 @@ California,CA,30,Mark Reed,Republican,,H6CA30185
 California,CA,31,Pete Aguilar,Democratic,Yes,H2CA31125
 California,CA,31,Sean Flynn,Republican,,H6CA31134
 California,CA,32,Grace Napolitano,Democratic,Yes,H8CA34068
+California,CA,32,Joshua M. Scott,Republican,,H8CA32088
 California,CA,33,Ted Lieu,Democratic,Yes,H4CA33119
 California,CA,33,Kenneth Wright,Republican,,H6CA33106
 California,CA,34,Jimmy Gomez,Democratic,Yes,H8CA34266
-California,CA,34,Kenneth Mejia,Green,,H6CA34237
 California,CA,35,Norma Torres,Democratic,Yes,H4CA35031
 California,CA,35,Christian Valiente,Republican,,H8CA35115
 California,CA,36,Raul Ruiz,Democratic,Yes,H2CA36439
@@ -110,7 +111,6 @@ California,CA,38,Ryan Downing,Republican,,H4CA31105
 California,CA,39,Young Kim,Republican,,H8CA39240
 California,CA,39,Gil Cisneros,Democratic,,H8CA39174
 California,CA,40,Lucille Roybal-Allard,Democratic,Yes,H2CA33048
-California,CA,40,Rodolfo Barragan,Green,,H8CA40214
 California,CA,41,Mark Takano,Democratic,Yes,H2CA43245
 California,CA,41,Aja Smith,Republican,,H8CA41170
 California,CA,42,Ken Calvert,Republican,Yes,H2CA37023
@@ -236,7 +236,7 @@ Georgia,GA,12,Francys Johnson,Democratic,,H8GA12078
 Georgia,GA,13,David Scott,Democratic,Yes,H2GA13012
 Georgia,GA,13,David Callahan,Republican,,H8GA13035
 Georgia,GA,14,Tom Graves,Republican,Yes,H8GA14033
-Georgia,GA,14,Steven Foster,Independent,,H8GA14025
+Georgia,GA,14,Steven Foster,Democratic,,H8GA14025
 Hawaii,HI,1,Ed Case,Democratic,Yes,H8HI01234
 Hawaii,HI,1,Cam Cavasso,Republican,,H8HI00012
 Hawaii,HI,2,Tulsi Gabbard,Democratic,Yes,H2HI02508
@@ -335,7 +335,7 @@ Louisiana,LA,3,Mimi Methvin,Democratic,,H8LA03094
 Louisiana,LA,4,Mike Johnson,Republican,Yes,H6LA04138
 Louisiana,LA,4,Ryan Trundle,Democratic,,H8LA04282
 Louisiana,LA,5,Ralph Abraham,Republican,Yes,H4LA05221
-Louisiana,LA,5,Jessee Carlton Fleenor,Republican,,H8LA05099
+Louisiana,LA,5,Jessee Carlton Fleenor,Democratic,,H8LA05099
 Louisiana,LA,6,Garrett Graves,Republican,Yes,H4LA06153
 Louisiana,LA,6,Justin DeWitt,Democratic,,H8LA06154
 Maine,ME,1,Mark Holbrook,Republican,,H6ME01207
@@ -360,7 +360,7 @@ Maryland,MD,8,Jamie Raskin,Democratic,Yes,H6MD08457
 Maryland,MD,8,John Walsh,Republican,,H8MD08248
 Massachusetts,MA,1,Richard E. Neal,Democratic,Yes,H8MA02041
 Massachusetts,MA,2,Jim McGovern,Democratic,Yes,H4MA03022
-Massachusetts,MA,3,Tracy Lovvorn,Republican,,H8MA02116
+Massachusetts,MA,2,Tracy Lovvorn,Republican,,H8MA02116
 Massachusetts,MA,3,Lori Trahan,Democratic,,H8MA03106
 Massachusetts,MA,3,Rick Green,Republican,,H8MA03114
 Massachusetts,MA,4,Joseph P. Kennedy III,Democratic,Yes,H2MA04073
@@ -373,6 +373,7 @@ Massachusetts,MA,8,Stephen Lynch,Democratic,Yes,H2MA09072
 Massachusetts,MA,9,Bill Keating,Democratic,Yes,H0MA10082
 Massachusetts,MA,9,Peter Tedeschi,Republican,,H8MA09046
 Michigan,MI,1,Jack Bergman,Republican,Yes,H6MI01226
+Michigan,MI,1,Matt Morgan,Democratic,,H8MI01149
 Michigan,MI,2,Bill Huizenga,Republican,Yes,H0MI02094
 Michigan,MI,2,Rob Davidson,Democratic,,H8MI02113
 Michigan,MI,3,Cathy Albro,Democratic,,H8MI03079
@@ -666,8 +667,8 @@ South Carolina,SC,6,James Clyburn,Democratic,Yes,H2SC02042
 South Carolina,SC,6,Gerhard Gressmann,Republican,,H8SC06107
 South Carolina,SC,7,Tom Rice,Republican,Yes,H2SC07066
 South Carolina,SC,7,Robert Williams,Democratic,,H8SC07063
-South Dakota,SC,1,Dusty Johnson,Republican,,H8SD01055
-South Dakota,SC,1,Tim Bjorkman,Democratic,,H8SD01097
+South Dakota,SD,1,Dusty Johnson,Republican,,H8SD01055
+South Dakota,SD,1,Tim Bjorkman,Democratic,,H8SD01097
 Tennessee,TN,1,Marty Olsen,Democratic,,H8TN01079
 Tennessee,TN,1,Phil Roe,Republican,Yes,H6TN01388
 Tennessee,TN,2,Renee Hoyos,Democratic,,H8TN02176
@@ -801,7 +802,6 @@ Washington,WA,7,Craig Keller,Republican,,H4WA07073
 Washington,WA,8,Dino Rossi,Republican,,H8WA08205
 Washington,WA,8,Kim Schrier,Democratic,,H8WA08189
 Washington,WA,9,Adam Smith,Democratic,Yes,H6WA09025
-Washington,WA,9,Sarah Smith,Democratic,,H8WA09054
 Washington,WA,10,Denny Heck,Democratic,Yes,H0WA03161
 Washington,WA,10,Joseph Brumbles,Republican,,H8WA10045
 West Virginia,WV,1,Kendra Fershee,Democratic,,H8WV01075
