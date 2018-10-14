@@ -28,6 +28,34 @@ results = read.delim("C:/Users/onest/Desktop/2018 House Model/election data file
 results = results %>% filter(year>= 2006)
 ```
 
+```{r two party results}
+twoparty = theData %>% filter(!is.na(GOP_Candidate) & !is.na(Dem_Candidate),year<2018) %>%
+  select(name,State,District,CD_Name,year,GOP_Result,Dem_Result)
+
+twoparty$GOP_Base = ifelse(twoparty$year==2008,twoparty$GOP_Result-(-10.7/2),
+                           ifelse(twoparty$year==2010,twoparty$GOP_Result-(6.8/2),
+                                  ifelse(twoparty$year==2012,twoparty$GOP_Result-(-1.2/2),
+                                         ifelse(twoparty$year==2014,twoparty$GOP_Result-(5.7/2),
+                                                ifelse(twoparty$year==2016,twoparty$GOP_Result-(1.1/2),"")))))
+
+twoparty$Dem_Base = ifelse(twoparty$year==2008,twoparty$Dem_Result+(-10.7/2),
+                           ifelse(twoparty$year==2010,twoparty$Dem_Result+(6.8/2),
+                                  ifelse(twoparty$year==2012,twoparty$Dem_Result+(-1.2/2),
+                                         ifelse(twoparty$year==2014,twoparty$Dem_Result-+(5.7/2),
+                                                ifelse(twoparty$year==2016,twoparty$Dem_Result+(1.1/2),"")))))
+twoparty$time = ifelse(twoparty$year<=2010,"old","new")
+
+twoparty$GOP_Base = as.numeric(twoparty$GOP_Base)
+twoparty$Dem_Base = as.numeric(twoparty$Dem_Base)
+
+baselines = twoparty %>% group_by(State,District,CD_Name,time) %>%
+  summarise(GOP_Base = mean(GOP_Base),
+            Dem_Base = mean(Dem_Base),
+            count = n()) %>%
+  mutate(Gap_Base = GOP_Base - Dem_Base)
+
+```
+
 
 ```{r districts polled by cluster}
 test = theData
@@ -57,7 +85,7 @@ GOPVotes = results %>% filter(party %in% c("republican") & writein==FALSE) %>%
   select(year,state_po,district,GOP_Votes = candidatevotes)
 DemVotes = results %>% filter(party %in% c("democrat","democratic-farmer-labor","working families") & writein==FALSE) %>%
   select(year,state_po,district,candidatevotes,candidate) %>%
-  group_by(year,state_po,district,candidate) %>%2
+  group_by(year,state_po,district,candidate) %>%
   summarise(candidatevotes = sum(candidatevotes)) %>%
   group_by(year,state_po,district) %>%
   filter(candidatevotes == max(candidatevotes)) %>%
@@ -103,7 +131,7 @@ colnames(Votes)[2] = "State"
 colnames(Votes)[3] = "District"
 
 
-AllCDs = theData[,c(2,3,5,8,11,12,14,15,16,20,22,23,26,27,30,113,121,122,123,133)] %>% 
+AllCDs = theData[,c(1,2,3,5,27,30)] %>% 
   left_join(.,Votes,by=c("State","District","year")) %>%
   left_join(.,PVIs,by=c("State","District","year"))
 
@@ -111,204 +139,101 @@ ChallengerCDs = AllCDs %>% filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
 ChalKnown = ChallengerCDs %>% filter(!is.na(GOP_Prct))
 ChalUnknown = ChallengerCDs %>% filter(is.na(GOP_Prct))
 
-ChalKnownNorm = cbind(cbind(ChalKnown[,c(1:3,13)],scale(ChalKnown[,c(4:12)])),ChalKnown[,c(16,24:28)])
-ChalUnknownNorm = cbind(ChalUnknown[,c(1:3,13)],scale(ChalUnknown[,c(4:12)]),ChalUnknown[,c(16,26:28)])
+Matches = read.csv("C:/Users/onest/Desktop/2018 House Model/CDsMatch.csv")
 
-ChalKnownNorm$State = as.character(ChalKnownNorm$State)
+ChalUnknown = ChalUnknown %>% left_join(.,Matches[,-c(2,3,4,12,13)],by="name")
 
-#create variables...set equal to NA
-ChalUnknownNorm$State1 = NA
-ChalUnknownNorm$State2 = NA
-ChalUnknownNorm$State3 = NA
-ChalUnknownNorm$State4 = NA
-ChalUnknownNorm$state5 = NA
+ChalUnknown$GOP1 = NA
+ChalUnknown$GOP2 = NA
+ChalUnknown$GOP3 = NA
+ChalUnknown$GOP4 = NA
+ChalUnknown$GOP5 = NA
+ChalUnknown$GOP6 = NA
+ChalUnknown$GOP7 = NA
+ChalUnknown$GOP8 = NA
+ChalUnknown$GOP9 = NA
+ChalUnknown$GOP10 = NA
 
-ChalUnknownNorm$District1 = NA
-ChalUnknownNorm$District2 = NA
-ChalUnknownNorm$District3 = NA
-ChalUnknownNorm$District4 = NA
-ChalUnknownNorm$District5 = NA
+ChalUnknown$Dem1 = NA
+ChalUnknown$Dem2 = NA
+ChalUnknown$Dem3 = NA
+ChalUnknown$Dem4 = NA
+ChalUnknown$Dem5 = NA
+ChalUnknown$Dem6 = NA
+ChalUnknown$Dem7 = NA
+ChalUnknown$Dem8 = NA
+ChalUnknown$Dem9 = NA
+ChalUnknown$Dem10 = NA
 
-ChalUnknownNorm$dist1 = 100000
-ChalUnknownNorm$dist2 = 100000
-ChalUnknownNorm$dist3 = 100000
-ChalUnknownNorm$dist4 = 100000
-ChalUnknownNorm$dist5 = 100000
+ChalUnknown$PVI1 = NA
+ChalUnknown$PVI2 = NA
+ChalUnknown$PVI3 = NA
+ChalUnknown$PVI4 = NA
+ChalUnknown$PVI5 = NA
+ChalUnknown$PVI6 = NA
+ChalUnknown$PVI7 = NA
+ChalUnknown$PVI8 = NA
+ChalUnknown$PVI9 = NA
+ChalUnknown$PVI10 = NA
 
-ChalUnknownNorm$GOP_Results1 = NA
-ChalUnknownNorm$GOP_Results2 = NA
-ChalUnknownNorm$GOP_Results3 = NA
-ChalUnknownNorm$GOP_Results4 = NA
-ChalUnknownNorm$GOP_Results5 = NA
+ChalKnown$name = as.character(ChalKnown$name)
+ChalUnknown$name = as.character(ChalUnknown$name)
+ChalUnknown$name1 = as.character(ChalUnknown$name1)
+ChalUnknown$name2 = as.character(ChalUnknown$name2)
+ChalUnknown$name3 = as.character(ChalUnknown$name3)
+ChalUnknown$name4 = as.character(ChalUnknown$name4)
+ChalUnknown$name5 = as.character(ChalUnknown$name5)
+ChalUnknown$name6 = as.character(ChalUnknown$name6)
+ChalUnknown$name7 = as.character(ChalUnknown$name7)
+ChalUnknown$name8 = as.character(ChalUnknown$name8)
+ChalUnknown$name9 = as.character(ChalUnknown$name9)
+ChalUnknown$name10 = as.character(ChalUnknown$name10)
 
-ChalUnknownNorm$Dem_Results1 = NA
-ChalUnknownNorm$Dem_Results2 = NA
-ChalUnknownNorm$Dem_Results3 = NA
-ChalUnknownNorm$Dem_Results4 = NA
-ChalUnknownNorm$Dem_Results5 = NA
-
-#loop through, find 3 "closest" CDs -> Collect their results
-for(i in seq(from=1,to=dim(ChalUnknownNorm)[1],by=1)){
-  for(j in seq(from=1,to=dim(ChalKnownNorm)[1],by=1)){
-    if(ChalUnknownNorm[i,4]==ChalKnownNorm[j,4]){
-      if(ChalUnknownNorm[i,3]==ChalKnownNorm[j,3]){
-        dist = 0;
-        #calc distance
-        for(k in seq(from=5,to=13,by=1)){
-          dist = dist + abs(ChalUnknownNorm[i,k]-ChalKnownNorm[j,k])^2
-        }
-        
-        GOP_insert = ChalKnownNorm[j,15] + .5*(ChalUnknownNorm[i,14]-ChalKnownNorm[j,14])
-        Dem_insert = ChalKnownNorm[j,16] - .5*(ChalUnknownNorm[i,14]-ChalKnownNorm[j,14])
-        PVIDiff = abs(ChalUnknownNorm[i,14]-ChalKnownNorm[j,14])
-        
-        if(dist<ChalUnknownNorm[i,28] & PVIDiff < 10){
-          ChalUnknownNorm[i,22] = ChalUnknownNorm[i,21]
-          ChalUnknownNorm[i,21] = ChalUnknownNorm[i,20]
-          ChalUnknownNorm[i,20] = ChalUnknownNorm[i,19]
-          ChalUnknownNorm[i,19] = ChalUnknownNorm[i,18]
-          ChalUnknownNorm[i,18] = ChalKnownNorm[j,1]
-          
-          ChalUnknownNorm[i,27] = ChalUnknownNorm[i,26]
-          ChalUnknownNorm[i,26] = ChalUnknownNorm[i,25]
-          ChalUnknownNorm[i,25] = ChalUnknownNorm[i,24]
-          ChalUnknownNorm[i,24] = ChalUnknownNorm[i,23]
-          ChalUnknownNorm[i,23] = ChalKnownNorm[j,2]
-          
-          ChalUnknownNorm[i,32] = ChalUnknownNorm[i,31]
-          ChalUnknownNorm[i,31] = ChalUnknownNorm[i,30]
-          ChalUnknownNorm[i,30] = ChalUnknownNorm[i,29]
-          ChalUnknownNorm[i,29] = ChalUnknownNorm[i,28]
-          ChalUnknownNorm[i,28] = dist
-          
-          ChalUnknownNorm[i,37] = ChalUnknownNorm[i,36]
-          ChalUnknownNorm[i,36] = ChalUnknownNorm[i,35]
-          ChalUnknownNorm[i,35] = ChalUnknownNorm[i,34]
-          ChalUnknownNorm[i,34] = ChalUnknownNorm[i,33]
-          ChalUnknownNorm[i,33] = GOP_insert
-          
-          ChalUnknownNorm[i,42] = ChalUnknownNorm[i,41]
-          ChalUnknownNorm[i,41] = ChalUnknownNorm[i,40]
-          ChalUnknownNorm[i,40] = ChalUnknownNorm[i,39]
-          ChalUnknownNorm[i,39] = ChalUnknownNorm[i,38]
-          ChalUnknownNorm[i,38] = Dem_insert
-          
-        } else if(dist<ChalUnknownNorm[i,29]  & PVIDiff < 10){
-          ChalUnknownNorm[i,22] = ChalUnknownNorm[i,21]
-          ChalUnknownNorm[i,21] = ChalUnknownNorm[i,20]
-          ChalUnknownNorm[i,20] = ChalUnknownNorm[i,19]
-          ChalUnknownNorm[i,19] = ChalKnownNorm[j,1]
-          
-          ChalUnknownNorm[i,27] = ChalUnknownNorm[i,26]
-          ChalUnknownNorm[i,26] = ChalUnknownNorm[i,25]
-          ChalUnknownNorm[i,25] = ChalUnknownNorm[i,24]
-          ChalUnknownNorm[i,24] = ChalKnownNorm[j,2]
-          
-          ChalUnknownNorm[i,32] = ChalUnknownNorm[i,31]
-          ChalUnknownNorm[i,31] = ChalUnknownNorm[i,30]
-          ChalUnknownNorm[i,30] = ChalUnknownNorm[i,29]
-          ChalUnknownNorm[i,29] = dist
-          
-          ChalUnknownNorm[i,37] = ChalUnknownNorm[i,36]
-          ChalUnknownNorm[i,36] = ChalUnknownNorm[i,35]
-          ChalUnknownNorm[i,35] = ChalUnknownNorm[i,34]
-          ChalUnknownNorm[i,34] = GOP_insert
-          
-          ChalUnknownNorm[i,42] = ChalUnknownNorm[i,41]
-          ChalUnknownNorm[i,41] = ChalUnknownNorm[i,40]
-          ChalUnknownNorm[i,40] = ChalUnknownNorm[i,39]
-          ChalUnknownNorm[i,39] = Dem_insert
-          
-        } else if(dist<ChalUnknownNorm[i,30]  & PVIDiff < 10){
-          ChalUnknownNorm[i,22] = ChalUnknownNorm[i,21]
-          ChalUnknownNorm[i,21] = ChalUnknownNorm[i,20]
-          ChalUnknownNorm[i,20] = ChalKnownNorm[j,1]
-          
-          ChalUnknownNorm[i,27] = ChalUnknownNorm[i,26]
-          ChalUnknownNorm[i,26] = ChalUnknownNorm[i,25]
-          ChalUnknownNorm[i,25] = ChalKnownNorm[j,2]
-          
-          ChalUnknownNorm[i,32] = ChalUnknownNorm[i,31]
-          ChalUnknownNorm[i,31] = ChalUnknownNorm[i,30]
-          ChalUnknownNorm[i,30] = dist
-          
-          ChalUnknownNorm[i,37] = ChalUnknownNorm[i,36]
-          ChalUnknownNorm[i,36] = ChalUnknownNorm[i,35]
-          ChalUnknownNorm[i,35] = GOP_insert
-          
-          ChalUnknownNorm[i,42] = ChalUnknownNorm[i,41]
-          ChalUnknownNorm[i,41] = ChalUnknownNorm[i,40]
-          ChalUnknownNorm[i,40] = Dem_insert
-          
-         } else if(dist<ChalUnknownNorm[i,31]  & PVIDiff < 10){
-          ChalUnknownNorm[i,22] = ChalUnknownNorm[i,21]
-          ChalUnknownNorm[i,21] = ChalKnownNorm[j,1]
-          
-          ChalUnknownNorm[i,27] = ChalUnknownNorm[i,26]
-          ChalUnknownNorm[i,26] = ChalKnownNorm[j,2]
-          
-          ChalUnknownNorm[i,32] = ChalUnknownNorm[i,31]
-          ChalUnknownNorm[i,31] = dist
-          
-          ChalUnknownNorm[i,37] = ChalUnknownNorm[i,36]
-          ChalUnknownNorm[i,36] = GOP_insert
-          
-          ChalUnknownNorm[i,42] = ChalUnknownNorm[i,41]
-          ChalUnknownNorm[i,41] = Dem_insert
-          
-        } else if(dist<ChalUnknownNorm[i,32]  & PVIDiff < 10){
-          ChalUnknownNorm[i,22] = ChalKnownNorm[j,1]
-          
-          ChalUnknownNorm[i,27] = ChalKnownNorm[j,2]
-          
-          ChalUnknownNorm[i,32] = dist
-          
-          ChalUnknownNorm[i,37] = GOP_insert
-          
-          ChalUnknownNorm[i,42] = Dem_insert
-        }
-      }
+for(i in seq(from=1,to=dim(ChalUnknown)[1],by=1)){
+  for(j in seq(from=1,to=dim(ChalKnown)[1],by=1)){
+    if(ChalUnknown[i,42]==ChalKnown[j,1]){
+      ChalUnknown[i,52] = ChalKnown[j,10]
+      ChalUnknown[i,62] = ChalKnown[j,11]
+      ChalUnknown[i,72] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,43]==ChalKnown[j,1]){
+      ChalUnknown[i,53] = ChalKnown[j,10]
+      ChalUnknown[i,63] = ChalKnown[j,11]
+      ChalUnknown[i,73] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,44]==ChalKnown[j,1]){
+      ChalUnknown[i,54] = ChalKnown[j,10]
+      ChalUnknown[i,64] = ChalKnown[j,11]
+      ChalUnknown[i,74] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,45]==ChalKnown[j,1]){
+      ChalUnknown[i,55] = ChalKnown[j,10]
+      ChalUnknown[i,65] = ChalKnown[j,11]
+      ChalUnknown[i,75] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,46]==ChalKnown[j,1]){
+      ChalUnknown[i,56] = ChalKnown[j,10]
+      ChalUnknown[i,66] = ChalKnown[j,11]
+      ChalUnknown[i,76] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,47]==ChalKnown[j,1]){
+      ChalUnknown[i,57] = ChalKnown[j,10]
+      ChalUnknown[i,67] = ChalKnown[j,11]
+      ChalUnknown[i,77] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,48]==ChalKnown[j,1]){
+      ChalUnknown[i,58] = ChalKnown[j,10]
+      ChalUnknown[i,68] = ChalKnown[j,11]
+      ChalUnknown[i,78] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,49]==ChalKnown[j,1]){
+      ChalUnknown[i,59] = ChalKnown[j,10]
+      ChalUnknown[i,69] = ChalKnown[j,11]
+      ChalUnknown[i,79] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,50]==ChalKnown[j,1]){
+      ChalUnknown[i,60] = ChalKnown[j,10]
+      ChalUnknown[i,70] = ChalKnown[j,11]
+      ChalUnknown[i,80] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,51]==ChalKnown[j,1]){
+      ChalUnknown[i,61] = ChalKnown[j,10]
+      ChalUnknown[i,71] = ChalKnown[j,11]
+      ChalUnknown[i,81] = ChalKnown[j,12]
     }
   }
 }
-
-ChalUnknownNorm$MaxDist = apply(ChalUnknownNorm[,28:32], 1, max)
-ChalUnknownNorm$MinDist = apply(ChalUnknownNorm[,28:32],1,min)
-
-ChalUnknownNorm$weight1 = asin((ChalUnknownNorm$MaxDist-ChalUnknownNorm$dist1)/(ChalUnknownNorm$MaxDist-ChalUnknownNorm$MinDist)*.5+.5)
-ChalUnknownNorm$weight2 = asin((ChalUnknownNorm$MaxDist-ChalUnknownNorm$dist2)/(ChalUnknownNorm$MaxDist-ChalUnknownNorm$MinDist)*.5+.5)
-ChalUnknownNorm$weight3 = asin((ChalUnknownNorm$MaxDist-ChalUnknownNorm$dist3)/(ChalUnknownNorm$MaxDist-ChalUnknownNorm$MinDist)*.5+.5)
-ChalUnknownNorm$weight4 = asin((ChalUnknownNorm$MaxDist-ChalUnknownNorm$dist4)/(ChalUnknownNorm$MaxDist-ChalUnknownNorm$MinDist)*.5+.5)
-ChalUnknownNorm$weight5 = asin((ChalUnknownNorm$MaxDist-ChalUnknownNorm$dist5)/(ChalUnknownNorm$MaxDist-ChalUnknownNorm$MinDist)*.5+.5)
-ChalUnknownNorm$weightsum = rowSums(ChalUnknownNorm[,c("weight1", "weight2","weight3","weight4","weight5")], na.rm=TRUE)
-
-ChalUnknownNorm$GOP_WR1 = ChalUnknownNorm$weight1 * ChalUnknownNorm$GOP_Results1
-ChalUnknownNorm$GOP_WR2 = ChalUnknownNorm$weight2 * ChalUnknownNorm$GOP_Results2
-ChalUnknownNorm$GOP_WR3 = ChalUnknownNorm$weight3 * ChalUnknownNorm$GOP_Results3
-ChalUnknownNorm$GOP_WR4 = ChalUnknownNorm$weight4 * ChalUnknownNorm$GOP_Results4
-ChalUnknownNorm$GOP_WR5 = ChalUnknownNorm$weight5 * ChalUnknownNorm$GOP_Results5
-
-ChalUnknownNorm$Dem_WR1 = ChalUnknownNorm$weight1 * ChalUnknownNorm$Dem_Results1
-ChalUnknownNorm$Dem_WR2 = ChalUnknownNorm$weight2 * ChalUnknownNorm$Dem_Results2
-ChalUnknownNorm$Dem_WR3 = ChalUnknownNorm$weight3 * ChalUnknownNorm$Dem_Results3
-ChalUnknownNorm$Dem_WR4 = ChalUnknownNorm$weight4 * ChalUnknownNorm$Dem_Results4
-ChalUnknownNorm$Dem_WR5 = ChalUnknownNorm$weight5 * ChalUnknownNorm$Dem_Results5
-
-ChalUnknownNorm$GOP_Prct = rowSums(ChalUnknownNorm[,c("GOP_WR1","GOP_WR2","GOP_WR3","GOP_WR4","GOP_WR5")],na.rm=T) / ChalUnknownNorm$weightsum
-ChalUnknownNorm$Dem_Prct = rowSums(ChalUnknownNorm[,c("Dem_WR1","Dem_WR2","Dem_WR3","Dem_WR4","Dem_WR5")],na.rm=T) / ChalUnknownNorm$weightsum
-
-DistrictsJoin = rbind(ChalKnown[,c(1,2,3,24:28)],ChalUnknownNorm[,c(1,2,3,61,62,15:17)])
-DistrictsJoin$Gap_Prct = DistrictsJoin$GOP_Prct - DistrictsJoin$Dem_Prct
-
-theCDsToModel = theData %>% 
-  left_join(.,DistrictsJoin,by=c("State","District","year")) %>%
-  filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
-
-modeldata = theCDsToModel %>% filter(year < 2018) %>%
-  mutate(AdjPVI_chg = AdjPVI - AdjPVI_old,
-         ActAdjPVI_chg = ActAdjPVI - ActAdjPVI_old)
-
-currAttach = theCDsToModel %>% filter(year == 2018) %>% select(name,GOP_Prct,Dem_Prct,Gap_Prct,PVI_old,AdjPVI_old,ActAdjPVI_old)
 
 ```
 
@@ -332,10 +257,17 @@ nonCompCDs$GOPWin = ifelse(is.na(nonCompCDs$GOP_Candidate),0,1)
 ```
 
 ```{r analyze cluster swings}
-modelingCDs2008 = modeldata %>% filter(year == 2008) %>% 
+modelingCDs2008 = modeldata %>% filter(year == 2016) %>% 
   mutate(Gap = GOP_Result - Dem_Result,GapDiff = Gap - Gap_Prct) %>%
-  select(State,District,year,GOP_Result,Dem_Result,Gap,GOP_Prct,Dem_Prct,Gap_Prct,GapDiff)
+  select(State,District,year,GOP_Result,Dem_Result,Gap,GOP_Prct,Dem_Prct,Gap_Prct,GapDiff,prev_comp,Cluster)
 
+mean(modelingCDs2008[modelingCDs2008$Cluster==1&modelingCDs2008$prev_comp==0,]$GapDiff)
+mean(modelingCDs2008[modelingCDs2008$Cluster==2&modelingCDs2008$prev_comp==0,]$GapDiff)
+mean(modelingCDs2008[modelingCDs2008$Cluster==3&modelingCDs2008$prev_comp==0,]$GapDiff)
+mean(modelingCDs2008[modelingCDs2008$Cluster==4&modelingCDs2008$prev_comp==0,]$GapDiff)
+mean(modelingCDs2008[modelingCDs2008$Cluster==5&modelingCDs2008$prev_comp==0,]$GapDiff)
+mean(modelingCDs2008[modelingCDs2008$Cluster==6&modelingCDs2008$prev_comp==0,]$GapDiff)
+mean(modelingCDs2008[modelingCDs2008$Cluster==7&modelingCDs2008$prev_comp==0,]$GapDiff)
 ```
 
 #IMPUTE POLLING FOR UNPOLLED DISTRICTS

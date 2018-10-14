@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(stringr)
 ```
 
 ```{r data}
@@ -35,7 +36,7 @@ PA$Urban = as.numeric(as.character(PA$Urban))
 PA$LFPR = as.numeric(as.character(PA$LFPR))
 ```
 
-```{r Pres Dist Work}
+```{r Pres Dist Work,cache=TRUE}
 Dist2018$AvgGOPPres = (Dist2018$GOP16 + Dist2018$GOP12) / 2
 Dist2000$AvgGOPPres = (Dist2000$GOP08 + Dist2000$GOP04) / 2
 
@@ -46,7 +47,7 @@ plot(density(Dist2000$AvgGOPPres), xlim=c(0,100), ylim=c(0,.03),main="GOP Averag
 Districts = rbind(Dist2018[,c(1,2,3,20)],Dist2000[,c(1,2,3,23)])
 ```
 
-```{r House Results Agg}
+```{r House Results Agg,cache=TRUE}
 options("scipen"=100, "digits"=2)
 
 HouseResults$district[HouseResults$district == 0] = 1
@@ -67,7 +68,7 @@ HouseCDs$GOPCDAdv = HouseCDs$republican - HouseCDs$democrat
 HouseCDs$GOPCDAdv[abs(HouseCDs$GOPCDAdv) >= 90] = NA
 ```
 
-```{r PA}
+```{r PA,cache=TRUE}
 
 PA_agg = PA %>% dplyr::select(-Id,-Id2,-Geography,-borough,-County,-State) %>%
   mutate(VotingAge=rowSums(PA[,c("Pop18to24","Pop25to35","Pop35to45","Pop45to55","Pop55to65","Pop65to75","Pop75Over")],na.rm=T),
@@ -127,7 +128,7 @@ PA_agg = PA_agg %>% dplyr::select(State,Congressional.District.Number,CD_Name, e
 PA_agg = left_join(PA_agg,PA_religion,by="CD_Name")
 ```
 
-```{r total us}
+```{r total us,cache=TRUE}
 CDs = Demographics %>%
   mutate(VotingAge=rowSums(Demographics[,c("Pop18to24","Pop25to35","Pop35to45","Pop45to55","Pop55to65","Pop65to75","Pop75Over")],na.rm=T),
          Under35 = rowSums(Demographics[,c("Pop18to24","Pop25to35")],na.rm=T),
@@ -168,7 +169,7 @@ CDs = CDs %>%
 ```
 
 
-```{r plots and plots and plots}
+```{r plots and plots and plots,cache=TRUE}
 plot(density(CDs$Under35),main="% Under 35",col="blue")
 plot(density(CDs$Over65),main="% Over 65",col="blue")
 plot(density(CDs$MedianAge),main="Median Age",col="blue")
@@ -199,7 +200,7 @@ plot(density(CDs$Evangelical),main="Evangelical %",col="blue")
 plot(density(CDs$RomanCatholic),main="Roman Catholic %",col="blue")
 ```
 
-```{r normalize}
+```{r normalize,cache=TRUE}
 CDs_sub = CDs[,-c(4,5,10,12,14,16,17,18)]
 norm = cbind(CDs_sub[,c(1:3)],scale(CDs_sub[,c(4:23)]))
 
@@ -208,7 +209,7 @@ plot(norm[,c(10:16,22)],pch=20)
 plot(norm[,c(17:23)],pch=20)
 ```
 
-```{r pca}
+```{r pca,cache=TRUE}
 pcs = princomp(norm[,c(4:23)])
 plot(pcs)
 plot(pcs, type='l')
@@ -219,7 +220,7 @@ comp <- data.frame(pcs2$x[,1:7])
 plot(comp, pch=16)
 ```
 
-```{r k-means cluster}
+```{r k-means cluster,cache=TRUE}
 set.seed(412)
 km = matrix(nrow=10,ncol=2)
 for(i in seq(1:10)){
@@ -236,19 +237,19 @@ kmeans = kmeans(comp,centers = 7,iter.max = 1000,nstart=25)
 norm$cluster = kmeans$cluster
 ```
 
-```{r plots and plots and plots of clusters}
+```{r plots and plots and plots of clusters,cache=TRUE}
 palette(c("blue","green","skyblue","purple","orange","red","gold"))
 plot(norm[,c(4:10,22)],col=norm$cluster,pch=16)
 plot(norm[,c(11:16,22)],col=norm$cluster,pch=16)
 plot(norm[,c(17:23)],col=norm$cluster,pch=16)
 ```
 
-```{r export cluster data}
+```{r export cluster data,cache=TRUE}
 clusters = norm[,c(3,24)]
 write.csv(clusters,file="clusters.csv",row.names = F)
 ```
 
-```{r cluster analysis - density plots}
+```{r cluster analysis - density plots,cache=TRUE}
 CDs$cluster = kmeans$cluster
 CDs$cluster = as.factor(CDs$cluster)
 
@@ -371,6 +372,237 @@ ggplot(CDs, aes(x=cluster, y=Veteran,col=cluster)) +
 
 ```{r write demographics}
 write.csv(CDs,file="CDs.csv",row.names = F)
+```
+
+```{r get closest CDs list}
+CDsClosest = cbind(CDs[,c(1,2,3)],comp) %>% left_join(.,clusters,by="CD_Name")
+CDsClosest$length = nchar(CDsClosest$CD_Name)
+CDsClosest$last = str_sub(CDsClosest$CD_Name,5)
+
+CDs2000s = CDsClosest %>% filter(length > 4 & last == 'o')
+CDs2010s = CDsClosest %>% filter(length <= 4 & !State %in% c("FL","NC","PA"))
+CDsNCFLr = CDsClosest %>% filter(length > 4 & last == 'r' & State %in% c("FL","NC"))
+CDsPAr = CDsClosest %>% filter(length > 4 & last == 'r' & State == "PA")
+CDsNCFL = CDsClosest %>% filter(length <= 4 & State %in% c("FL","NC"))
+CDsPA = CDsClosest %>% filter(length <= 4 & State == "PA")
+
+CDs2008 = CDs2000s
+CDs2008$year = 2008
+CDs2010 = CDs2000s
+CDs2010$year = 2010
+CDs2012 = CDs2010s
+CDs2012$year = 2012
+CDs2014 = CDs2010s
+CDs2014$year = 2014
+CDs2016 = CDs2010s
+CDs2016$year = 2016
+CDs2018 = CDs2010s
+CDs2018$year = 2018
+CDsNCFL2012 = CDsNCFLr
+CDsNCFL2012$year = 2012
+CDsNCFL2014 = CDsNCFLr
+CDsNCFL2014$year = 2014
+CDsNCFL2016 = CDsNCFL 
+CDsNCFL2016$year = 2016
+CDsNCFL2018 = CDsNCFL
+CDsNCFL2018$year = 2018
+CDsPA2012 = CDsPAr
+CDsPA2012$year = 2012
+CDsPA2014 = CDsPAr
+CDsPA2014$year = 2014
+CDsPA2016 = CDsPAr
+CDsPA2016$year = 2016
+CDsPA2018 = CDsPA
+CDsPA2018$year = 2018
+
+CDsMatch = do.call("rbind", list(CDs2008,CDs2010,CDs2012,CDs2014,CDs2016,CDs2018,CDsNCFL2012,CDsNCFL2014,CDsNCFL2016,CDsNCFL2018,CDsPA2012,
+                                 CDsPA2014,CDsPA2016,CDsPA2018)) %>% dplyr::select(.,-c("length","last"))
+
+CDsMatch$closest1 = NA
+CDsMatch$closest2 = NA
+CDsMatch$closest3 = NA
+CDsMatch$closest4 = NA
+CDsMatch$closest5 = NA
+CDsMatch$closest6 = NA
+CDsMatch$closest7 = NA
+CDsMatch$closest8 = NA
+CDsMatch$closest9 = NA
+CDsMatch$closest10 = NA
+
+CDsMatch$dist1 = 10000
+CDsMatch$dist2 = 10000
+CDsMatch$dist3 = 10000
+CDsMatch$dist4 = 10000
+CDsMatch$dist5 = 10000
+CDsMatch$dist6 = 10000
+CDsMatch$dist7 = 10000
+CDsMatch$dist8 = 10000
+CDsMatch$dist9 = 10000
+CDsMatch$dist10 = 10000
+
+CDsMatch$State = as.character(CDsMatch$State)
+
+for(i in seq(from=1,to=dim(CDsMatch)[1],by=1)){
+  for(j in seq(from=1,to=dim(CDsMatch)[1],by=1)){
+    if(CDsMatch[i,3]!=CDsMatch[j,3]){
+      if(CDsMatch[i,12]==CDsMatch[j,12]){
+        if(CDsMatch[i,11]==CDsMatch[j,11]){
+          allowed = TRUE
+          if(CDsMatch[j,12]==2014&CDsMatch[j,1] %in% c("FL","NC")){
+            allowed = FALSE
+          }
+          if(CDsMatch[j,12]==2016&CDsMatch[j,1]=="PA"){
+            allowed = FALSE
+          }
+          
+          if(allowed==TRUE){
+            dist = 0
+            for(k in seq(from=4,to=10,by=1)){
+              dist = dist + abs(CDsMatch[i,k] - CDsMatch[j,k])^2
+            }
+            
+            if(dist<CDsMatch[i,23]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[i,18]
+              CDsMatch[i,18] = CDsMatch[i,17]
+              CDsMatch[i,17] = CDsMatch[i,16]
+              CDsMatch[i,16] = CDsMatch[i,15]
+              CDsMatch[i,15] = CDsMatch[i,14]
+              CDsMatch[i,14] = CDsMatch[i,13]
+              CDsMatch[i,13] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = CDsMatch[i,28]
+              CDsMatch[i,28] = CDsMatch[i,27]
+              CDsMatch[i,27] = CDsMatch[i,26]
+              CDsMatch[i,26] = CDsMatch[i,25]
+              CDsMatch[i,25] = CDsMatch[i,24]
+              CDsMatch[i,24] = CDsMatch[i,23]
+              CDsMatch[i,23] = dist
+            } else if(dist<CDsMatch[i,24]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[i,18]
+              CDsMatch[i,18] = CDsMatch[i,17]
+              CDsMatch[i,17] = CDsMatch[i,16]
+              CDsMatch[i,16] = CDsMatch[i,15]
+              CDsMatch[i,15] = CDsMatch[i,14]
+              CDsMatch[i,14] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = CDsMatch[i,28]
+              CDsMatch[i,28] = CDsMatch[i,27]
+              CDsMatch[i,27] = CDsMatch[i,26]
+              CDsMatch[i,26] = CDsMatch[i,25]
+              CDsMatch[i,25] = CDsMatch[i,24]
+              CDsMatch[i,24] = dist
+            } else if(dist<CDsMatch[i,25]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[i,18]
+              CDsMatch[i,18] = CDsMatch[i,17]
+              CDsMatch[i,17] = CDsMatch[i,16]
+              CDsMatch[i,16] = CDsMatch[i,15]
+              CDsMatch[i,15] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = CDsMatch[i,28]
+              CDsMatch[i,28] = CDsMatch[i,27]
+              CDsMatch[i,27] = CDsMatch[i,26]
+              CDsMatch[i,26] = CDsMatch[i,25]
+              CDsMatch[i,25] = dist
+            } else if(dist<CDsMatch[i,26]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[i,18]
+              CDsMatch[i,18] = CDsMatch[i,17]
+              CDsMatch[i,17] = CDsMatch[i,16]
+              CDsMatch[i,16] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = CDsMatch[i,28]
+              CDsMatch[i,28] = CDsMatch[i,27]
+              CDsMatch[i,27] = CDsMatch[i,26]
+              CDsMatch[i,26] = dist
+            } else if(dist<CDsMatch[i,27]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[i,18]
+              CDsMatch[i,18] = CDsMatch[i,17]
+              CDsMatch[i,17] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = CDsMatch[i,28]
+              CDsMatch[i,28] = CDsMatch[i,27]
+              CDsMatch[i,27] = dist
+            } else if(dist<CDsMatch[i,28]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[i,18]
+              CDsMatch[i,18] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = CDsMatch[i,28]
+              CDsMatch[i,28] = dist
+            } else if(dist<CDsMatch[i,29]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[i,19]
+              CDsMatch[i,19] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = CDsMatch[i,29]
+              CDsMatch[i,29] = dist
+            } else if(dist<CDsMatch[i,30]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[i,20]
+              CDsMatch[i,20] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = CDsMatch[i,30]
+              CDsMatch[i,30] = dist
+            } else if(dist<CDsMatch[i,31]){
+              CDsMatch[i,22] = CDsMatch[i,21]
+              CDsMatch[i,21] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = CDsMatch[i,31]
+              CDsMatch[i,31] = dist
+            } else if(dist<CDsMatch[i,32]){
+              CDsMatch[i,22] = CDsMatch[j,3]
+              
+              CDsMatch[i,32] = dist
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+```
+
+```{r write to csv}
+write.csv(CDsMatch,file="CDsMatch.csv",row.names = F)
 ```
 
 
