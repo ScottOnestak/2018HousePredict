@@ -54,6 +54,13 @@ baselines = twoparty %>% group_by(State,District,CD_Name,time) %>%
             count = n()) %>%
   mutate(Gap_Base = GOP_Base - Dem_Base)
 
+theCDs = theData %>% select(State,District,CD_Name) %>% group_by(State,District,CD_Name) %>%
+  summarise(n=n()) %>%
+  select(State,District,CD_Name) %>%
+  left_join(.,baselines,by=c("State","District","CD_Name"))
+
+theCDs = theCDs[,c(3,5:8)]
+
 ```
 
 
@@ -141,7 +148,7 @@ ChalUnknown = ChallengerCDs %>% filter(is.na(GOP_Prct))
 
 Matches = read.csv("C:/Users/onest/Desktop/2018 House Model/CDsMatch.csv")
 
-ChalUnknown = ChalUnknown %>% left_join(.,Matches[,-c(2,3,4,12,13)],by="name")
+ChalUnknown = ChalUnknown %>% left_join(.,Matches[,-c(2,3,12,13)],by="name")
 
 ChalUnknown$GOP1 = NA
 ChalUnknown$GOP2 = NA
@@ -191,11 +198,7 @@ ChalUnknown$name10 = as.character(ChalUnknown$name10)
 
 for(i in seq(from=1,to=dim(ChalUnknown)[1],by=1)){
   for(j in seq(from=1,to=dim(ChalKnown)[1],by=1)){
-    if(ChalUnknown[i,42]==ChalKnown[j,1]){
-      ChalUnknown[i,52] = ChalKnown[j,10]
-      ChalUnknown[i,62] = ChalKnown[j,11]
-      ChalUnknown[i,72] = ChalKnown[j,12]
-    } else if(ChalUnknown[i,43]==ChalKnown[j,1]){
+    if(ChalUnknown[i,43]==ChalKnown[j,1]){
       ChalUnknown[i,53] = ChalKnown[j,10]
       ChalUnknown[i,63] = ChalKnown[j,11]
       ChalUnknown[i,73] = ChalKnown[j,12]
@@ -231,212 +234,306 @@ for(i in seq(from=1,to=dim(ChalUnknown)[1],by=1)){
       ChalUnknown[i,61] = ChalKnown[j,10]
       ChalUnknown[i,71] = ChalKnown[j,11]
       ChalUnknown[i,81] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,52]==ChalKnown[j,1]){
+      ChalUnknown[i,62] = ChalKnown[j,10]
+      ChalUnknown[i,72] = ChalKnown[j,11]
+      ChalUnknown[i,82] = ChalKnown[j,12]
     }
   }
 }
 
+ChalUnknown = ChalUnknown %>% left_join(.,theCDs,by="CD_Name")
+
+ChalUnknown$GOPBase1 = NA
+ChalUnknown$GOPBase2 = NA
+ChalUnknown$GOPBase3 = NA
+ChalUnknown$GOPBase4 = NA
+ChalUnknown$GOPBase5 = NA
+ChalUnknown$GOPBase6 = NA
+ChalUnknown$GOPBase7 = NA
+ChalUnknown$GOPBase8 = NA
+ChalUnknown$GOPBase9 = NA
+ChalUnknown$GOPBase10 = NA
+
+ChalUnknown$DemBase1 = NA
+ChalUnknown$DemBase2 = NA
+ChalUnknown$DemBase3 = NA
+ChalUnknown$DemBase4 = NA
+ChalUnknown$DemBase5 = NA
+ChalUnknown$DemBase6 = NA
+ChalUnknown$DemBase7 = NA
+ChalUnknown$DemBase8 = NA
+ChalUnknown$DemBase9 = NA
+ChalUnknown$DemBase10 = NA
+
+ChalUnknown$closest1 = as.character(ChalUnknown$closest1)
+ChalUnknown$closest2 = as.character(ChalUnknown$closest2)
+ChalUnknown$closest3 = as.character(ChalUnknown$closest3)
+ChalUnknown$closest4 = as.character(ChalUnknown$closest4)
+ChalUnknown$closest5 = as.character(ChalUnknown$closest5)
+ChalUnknown$closest6 = as.character(ChalUnknown$closest6)
+ChalUnknown$closest7 = as.character(ChalUnknown$closest7)
+ChalUnknown$closest8 = as.character(ChalUnknown$closest8)
+ChalUnknown$closest9 = as.character(ChalUnknown$closest9)
+ChalUnknown$closest10 = as.character(ChalUnknown$closest10)
+
+baselines$CD_Name = as.character(baselines$CD_Name)
+
+for(i in seq(from=1,to=dim(ChalUnknown)[1],by=1)){
+  for(j in seq(from=1,to=dim(baselines)[1],by=1)){
+    if(ChalUnknown[i,23]==baselines[j,3]){
+      ChalUnknown[i,87] = baselines[j,5]
+      ChalUnknown[i,97] = baselines[j,6]
+    } else if(ChalUnknown[i,24]==baselines[j,3]){
+      ChalUnknown[i,88] = baselines[j,5]
+      ChalUnknown[i,98] = baselines[j,6]
+    } else if(ChalUnknown[i,25]==baselines[j,3]){
+      ChalUnknown[i,89] = baselines[j,5]
+      ChalUnknown[i,99] = baselines[j,6]
+    } else if(ChalUnknown[i,26]==baselines[j,3]){
+      ChalUnknown[i,90] = baselines[j,5]
+      ChalUnknown[i,100] = baselines[j,6]
+    } else if(ChalUnknown[i,27]==baselines[j,3]){
+      ChalUnknown[i,91] = baselines[j,5]
+      ChalUnknown[i,101] = baselines[j,6]
+    } else if(ChalUnknown[i,28]==baselines[j,3]){
+      ChalUnknown[i,92] = baselines[j,5]
+      ChalUnknown[i,102] = baselines[j,6]
+    } else if(ChalUnknown[i,29]==baselines[j,3]){
+      ChalUnknown[i,93] = baselines[j,5]
+      ChalUnknown[i,103] = baselines[j,6]
+    } else if(ChalUnknown[i,30]==baselines[j,3]){
+      ChalUnknown[i,94] = baselines[j,5]
+      ChalUnknown[i,104] = baselines[j,6]
+    } else if(ChalUnknown[i,31]==baselines[j,3]){
+      ChalUnknown[i,95] = baselines[j,5]
+      ChalUnknown[i,105] = baselines[j,6]
+    } else if(ChalUnknown[i,32]==baselines[j,3]){
+      ChalUnknown[i,96] = baselines[j,5]
+      ChalUnknown[i,106] = baselines[j,6]
+    } 
+  }
+}
+
+ChalUnknownCond = ChalUnknown[,c(1:4,12:14,53:106)]
+ChalUnknownCond$GOP_prev = rowMeans(ChalUnknownCond[,c("GOP1","GOP2","GOP3","GOP4","GOP5","GOP6","GOP7","GOP8","GOP9","GOP10")],na.rm=T)
+ChalUnknownCond$Dem_prev = rowMeans(ChalUnknownCond[,c("Dem1","Dem2","Dem3","Dem4","Dem5","Dem6","Dem7","Dem8","Dem9","Dem10")],na.rm=T)
+ChalUnknownCond$GOP_AdjBase = ChalUnknownCond$GOP_Base+((ChalUnknownCond$ActAdjPVI_old-ChalUnknownCond$PVI_old)/2)
+ChalUnknownCond$Dem_AdjBase = ChalUnknownCond$Dem_Base-((ChalUnknownCond$ActAdjPVI_old-ChalUnknownCond$PVI_old)/2)
+ChalUnknownCond$GOP_Prct = ifelse(is.na(ChalUnknownCond$GOP_prev),ChalUnknownCond$GOP_AdjBase,
+                                  ifelse(is.na(ChalUnknownCond$GOP_AdjBase),ChalUnknownCond$GOP_prev,
+                                         (ChalUnknownCond$count)/4*ChalUnknownCond$GOP_AdjBase+(4-ChalUnknownCond$count)/
+                                           4*ChalUnknownCond$GOP_prev))
+ChalUnknownCond$Dem_Prct = ifelse(is.na(ChalUnknownCond$Dem_prev),ChalUnknownCond$Dem_AdjBase,
+                                  ifelse(is.na(ChalUnknownCond$Dem_AdjBase),ChalUnknownCond$Dem_prev,
+                                         (ChalUnknownCond$count)/4*ChalUnknownCond$Dem_AdjBase+(4-ChalUnknownCond$count)/
+                                           4*ChalUnknownCond$Dem_prev))
+                           
+ChalKnown = ChalKnown %>% left_join(.,Matches[,-c(2,3,12,13)],by="name") %>% left_join(.,theCDs,by="CD_Name")
+
+DistrictsJoin = rbind(ChalKnown[,c(2,3,4,10:14,53,54)],ChalUnknownCond[,c(2:7,38,39,66,67)])
+DistrictsJoin$Gap_Prct = DistrictsJoin$GOP_Prct - DistrictsJoin$Dem_Prct
+DistrictsJoin$Gap_Base = DistrictsJoin$GOP_Base - DistrictsJoin$Dem_Base
+
+theCDsToModel = theData %>% 
+  left_join(.,DistrictsJoin,by=c("State","District","year")) %>%
+  filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
 ```
 
-#READ IN TEST SET
-```{r test set - aka, the most recent dataset}
-testing_data = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181009.csv")
-testing_data$ActAdjPVI = ifelse(testing_data$year==2008,testing_data$PVI-10.7,
-                           ifelse(testing_data$year==2010,testing_data$PVI+6.8,
-                                  ifelse(testing_data$year==2012,testing_data$PVI-1.2,
-                                         ifelse(testing_data$year==2014,testing_data$PVI+5.7,
-                                                ifelse(testing_data$year==2016,testing_data$PVI+1.1,testing_data$AdjPVI)))))
-testing_data = testing_data %>% filter(year==2018) %>% 
-  left_join(.,currAttach,by="name") %>%
-  mutate(AdjPVI_chg = AdjPVI - AdjPVI_old,
-         ActAdjPVI_chg = ActAdjPVI - ActAdjPVI_old)
+#CREATE POLLING/POLLING PREDICTION VARIABLE
+```{r create polling prediction}
+pollingCDs = theData %>% select(name,State,District,year,GOP_Polling,Dem_Polling,Gap_Polling,NumberOfPolls,AvgPollsterRating_Polling) %>%
+  filter(!is.na(GOP_Polling))
 
-modelingCDs = testing_data %>% filter(!is.na(GOP_Prct))
-nonCompCDs = testing_data %>% filter(is.na(GOP_Prct))
+theCDs2 = theData %>% select(State,District,CD_Name,year) %>%
+  left_join(.,Matches[,-c(2,3,5:12,14:33)],by=c("CD_Name","year"))
 
-nonCompCDs$GOPWin = ifelse(is.na(nonCompCDs$GOP_Candidate),0,1)
+theCDs2$GOP_Polling1 = NA
+theCDs2$GOP_Polling2 = NA
+theCDs2$GOP_Polling3 = NA
+theCDs2$GOP_Polling4 = NA
+theCDs2$GOP_Polling5 = NA
+theCDs2$GOP_Polling6 = NA
+theCDs2$GOP_Polling7 = NA
+theCDs2$GOP_Polling8 = NA
+theCDs2$GOP_Polling9 = NA
+theCDs2$GOP_Polling10 = NA
+
+theCDs2$Dem_Polling1 = NA
+theCDs2$Dem_Polling2 = NA
+theCDs2$Dem_Polling3 = NA
+theCDs2$Dem_Polling4 = NA
+theCDs2$Dem_Polling5 = NA
+theCDs2$Dem_Polling6 = NA
+theCDs2$Dem_Polling7 = NA
+theCDs2$Dem_Polling8 = NA
+theCDs2$Dem_Polling9 = NA
+theCDs2$Dem_Polling10 = NA
+
+theCDs2$NumOfPolls1 = NA
+theCDs2$NumOfPolls2 = NA
+theCDs2$NumOfPolls3 = NA
+theCDs2$NumOfPolls4 = NA
+theCDs2$NumOfPolls5 = NA
+theCDs2$NumOfPolls6 = NA
+theCDs2$NumOfPolls7 = NA
+theCDs2$NumOfPolls8 = NA
+theCDs2$NumOfPolls9 = NA
+theCDs2$NumOfPolls10 = NA
+
+theCDs2$AvgPollster1 = NA
+theCDs2$AvgPollster2 = NA
+theCDs2$AvgPollster3 = NA
+theCDs2$AvgPollster4 = NA
+theCDs2$AvgPollster5 = NA
+theCDs2$AvgPollster6 = NA
+theCDs2$AvgPollster7 = NA
+theCDs2$AvgPollster8 = NA
+theCDs2$AvgPollster9 = NA
+theCDs2$AvgPollster10 = NA
+
+pollingCDs$name = as.character(pollingCDs$name)
+theCDs2$name1 = as.character(theCDs2$name1)
+theCDs2$name2 = as.character(theCDs2$name2)
+theCDs2$name3 = as.character(theCDs2$name3)
+theCDs2$name4 = as.character(theCDs2$name4)
+theCDs2$name5 = as.character(theCDs2$name5)
+theCDs2$name6 = as.character(theCDs2$name6)
+theCDs2$name7 = as.character(theCDs2$name7)
+theCDs2$name8 = as.character(theCDs2$name8)
+theCDs2$name9 = as.character(theCDs2$name9)
+theCDs2$name10 = as.character(theCDs2$name10)
+
+for(i in seq(from=1,to=dim(theCDs2)[1],by=1)){
+  for(j in seq(from=1,to=dim(pollingCDs)[1],by=1)){
+    if(theCDs2[i,6] == pollingCDs[j,1]){
+      theCDs2[i,16] = pollingCDs[j,5]
+      theCDs2[i,26] = pollingCDs[j,6]
+      theCDs2[i,36] = pollingCDs[j,8]
+      theCDs2[i,46] = pollingCDs[j,9]
+    } else if(theCDs2[i,7] == pollingCDs[j,1]){
+      theCDs2[i,17] = pollingCDs[j,5]
+      theCDs2[i,27] = pollingCDs[j,6]
+      theCDs2[i,37] = pollingCDs[j,8]
+      theCDs2[i,47] = pollingCDs[j,9]
+    } else if(theCDs2[i,8] == pollingCDs[j,1]){
+      theCDs2[i,18] = pollingCDs[j,5]
+      theCDs2[i,28] = pollingCDs[j,6]
+      theCDs2[i,38] = pollingCDs[j,8]
+      theCDs2[i,48] = pollingCDs[j,9]
+    } else if(theCDs2[i,9] == pollingCDs[j,1]){
+      theCDs2[i,19] = pollingCDs[j,5]
+      theCDs2[i,29] = pollingCDs[j,6]
+      theCDs2[i,39] = pollingCDs[j,8]
+      theCDs2[i,49] = pollingCDs[j,9]
+    } else if(theCDs2[i,10] == pollingCDs[j,1]){
+      theCDs2[i,20] = pollingCDs[j,5]
+      theCDs2[i,30] = pollingCDs[j,6]
+      theCDs2[i,40] = pollingCDs[j,8]
+      theCDs2[i,50] = pollingCDs[j,9]
+    } else if(theCDs2[i,11] == pollingCDs[j,1]){
+      theCDs2[i,21] = pollingCDs[j,5]
+      theCDs2[i,31] = pollingCDs[j,6]
+      theCDs2[i,41] = pollingCDs[j,8]
+      theCDs2[i,51] = pollingCDs[j,9]
+    } else if(theCDs2[i,12] == pollingCDs[j,1]){
+      theCDs2[i,22] = pollingCDs[j,5]
+      theCDs2[i,32] = pollingCDs[j,6]
+      theCDs2[i,42] = pollingCDs[j,8]
+      theCDs2[i,52] = pollingCDs[j,9]
+    } else if(theCDs2[i,13] == pollingCDs[j,1]){
+      theCDs2[i,23] = pollingCDs[j,5]
+      theCDs2[i,33] = pollingCDs[j,6]
+      theCDs2[i,43] = pollingCDs[j,8]
+      theCDs2[i,53] = pollingCDs[j,9]
+    } else if(theCDs2[i,14] == pollingCDs[j,1]){
+      theCDs2[i,24] = pollingCDs[j,5]
+      theCDs2[i,34] = pollingCDs[j,6]
+      theCDs2[i,44] = pollingCDs[j,8]
+      theCDs2[i,54] = pollingCDs[j,9]
+    } else if(theCDs2[i,15] == pollingCDs[j,1]){
+      theCDs2[i,25] = pollingCDs[j,5]
+      theCDs2[i,35] = pollingCDs[j,6]
+      theCDs2[i,45] = pollingCDs[j,8]
+      theCDs2[i,55] = pollingCDs[j,9]
+    }
+  }
+}
+
+theCDs2$GOP_weight1 = ifelse(!is.na(theCDs2$GOP_Polling1),theCDs2$GOP_Polling1 * theCDs2$NumOfPolls1,NA)
+theCDs2$GOP_weight2 = ifelse(!is.na(theCDs2$GOP_Polling2),theCDs2$GOP_Polling2 * theCDs2$NumOfPolls2,NA)
+theCDs2$GOP_weight3 = ifelse(!is.na(theCDs2$GOP_Polling3),theCDs2$GOP_Polling3 * theCDs2$NumOfPolls3,NA)
+theCDs2$GOP_weight4 = ifelse(!is.na(theCDs2$GOP_Polling4),theCDs2$GOP_Polling4 * theCDs2$NumOfPolls4,NA)
+theCDs2$GOP_weight5 = ifelse(!is.na(theCDs2$GOP_Polling5),theCDs2$GOP_Polling5 * theCDs2$NumOfPolls5,NA)
+theCDs2$GOP_weight6 = ifelse(!is.na(theCDs2$GOP_Polling6),theCDs2$GOP_Polling6 * theCDs2$NumOfPolls6,NA)
+theCDs2$GOP_weight7 = ifelse(!is.na(theCDs2$GOP_Polling7),theCDs2$GOP_Polling7 * theCDs2$NumOfPolls7,NA)
+theCDs2$GOP_weight8 = ifelse(!is.na(theCDs2$GOP_Polling8),theCDs2$GOP_Polling8 * theCDs2$NumOfPolls8,NA)
+theCDs2$GOP_weight9 = ifelse(!is.na(theCDs2$GOP_Polling9),theCDs2$GOP_Polling9 * theCDs2$NumOfPolls9,NA)
+theCDs2$GOP_weight10 = ifelse(!is.na(theCDs2$GOP_Polling10),theCDs2$GOP_Polling10 * theCDs2$NumOfPolls10,NA)
+
+theCDs2$Dem_weight1 = ifelse(!is.na(theCDs2$Dem_Polling1),theCDs2$Dem_Polling1 * theCDs2$NumOfPolls1,NA)
+theCDs2$Dem_weight2 = ifelse(!is.na(theCDs2$Dem_Polling2),theCDs2$Dem_Polling2 * theCDs2$NumOfPolls2,NA)
+theCDs2$Dem_weight3 = ifelse(!is.na(theCDs2$Dem_Polling3),theCDs2$Dem_Polling3 * theCDs2$NumOfPolls3,NA)
+theCDs2$Dem_weight4 = ifelse(!is.na(theCDs2$Dem_Polling4),theCDs2$Dem_Polling4 * theCDs2$NumOfPolls4,NA)
+theCDs2$Dem_weight5 = ifelse(!is.na(theCDs2$Dem_Polling5),theCDs2$Dem_Polling5 * theCDs2$NumOfPolls5,NA)
+theCDs2$Dem_weight6 = ifelse(!is.na(theCDs2$Dem_Polling6),theCDs2$Dem_Polling6 * theCDs2$NumOfPolls6,NA)
+theCDs2$Dem_weight7 = ifelse(!is.na(theCDs2$Dem_Polling7),theCDs2$Dem_Polling7 * theCDs2$NumOfPolls7,NA)
+theCDs2$Dem_weight8 = ifelse(!is.na(theCDs2$Dem_Polling8),theCDs2$Dem_Polling8 * theCDs2$NumOfPolls8,NA)
+theCDs2$Dem_weight9 = ifelse(!is.na(theCDs2$Dem_Polling9),theCDs2$Dem_Polling9 * theCDs2$NumOfPolls9,NA)
+theCDs2$Dem_weight10 = ifelse(!is.na(theCDs2$Dem_Polling10),theCDs2$Dem_Polling10 * theCDs2$NumOfPolls10,NA)
+
+theCDs2$GOP_PollingW = rowSums(theCDs2[,c("GOP_weight1","GOP_weight2","GOP_weight3","GOP_weight4","GOP_weight5","GOP_weight6",
+                                          "GOP_weight7","GOP_weight8","GOP_weight9","GOP_weight10")],na.rm = T) /
+  rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
+                     "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
+theCDs2$Dem_PollingW = rowSums(theCDs2[,c("Dem_weight1","Dem_weight2","Dem_weight3","Dem_weight4","Dem_weight5","Dem_weight6",
+                                          "Dem_weight7","Dem_weight8","Dem_weight9","Dem_weight10")],na.rm = T) /
+  rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
+                     "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
+theCDs2$NumOfPolls = rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
+                     "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
+theCDs2[is.na(theCDs2)] = NA
+
+theCDs2Join = theCDs2 %>% select(State,District,CD_Name,year,GOP_PollingW,Dem_PollingW,NumOfPolls) %>%
+  mutate(Gap_PollingW = GOP_PollingW - Dem_PollingW)
+
+theCDsToModel = theCDsToModel %>% left_join(.,theCDs2Join,by=c("State","District","CD_Name","year"))
+
+theCDsToModel$GOP_BaseAdj = theCDsToModel$GOP_Base + .5*theCDsToModel$ActAdjPVI
+theCDsToModel$Dem_BaseAdj = theCDsToModel$Dem_Base - .5*theCDsToModel$ActAdjPVI
+
+theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
+                                 ifelse(theCDsToModel$NumberOfPolls>=5,100,
+                                        100/theCDsToModel$NumberOfPolls))
+theCDsToModel$AssPollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls)| theCDsToModel$NumberOfPolls == 0,0,
+                                    ifelse(theCDsToModel$NumOfPolls>=15,30,
+                                           theCDsToModel$NumOfPolls*2))
+theCDsToModel$BaseWeight = ifelse(theCDsToModel$PollingWeight + theCDsToModel$AssPollingWeight>100,0,
+                              100 - theCDsToModel$PollingWeight - theCDsToModel$AssPollingWeight)
+
+theCDsToModel$GOPPollingW = theCDsToModel$GOP_Polling * theCDsToModel$PollingWeight
+theCDsToModel$GOPAssPollingW = theCDsToModel$GOP_PollingW * theCDsToModel$AssPollingWeight
+theCDsToModel$GOPBaseW = theCDsToModel$GOP_BaseAdj * theCDsToModel$BaseWeight
+
+theCDsToModel$DemPollingW = theCDsToModel$Dem_Polling * theCDsToModel$PollingWeight
+theCDsToModel$DemAssPollingW = theCDsToModel$Dem_PollingW * theCDsToModel$AssPollingWeight
+theCDsToModel$DemBaseW = theCDsToModel$Dem_BaseAdj * theCDsToModel$BaseWeight
+
+theCDsToModel$GOP_Pred = rowSums(theCDsToModel[,c("GOPPollingW","GOPAssPollingW","GOPBaseW")],na.rm = T) / 
+  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","BaseWeight")],na.rm=T)
+theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW","DemBaseW")],na.rm = T) / 
+  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","BaseWeight")],na.rm=T)
+theCDsToModel$Gap_Pred = theCDsToModel$GOP_Pred - theCDsToModel$Dem_Pred
+
+theCDsToModel$AdjPVI_chg = theCDsToModel$AdjPVI - theCDsToModel$AdjPVI_old
+theCDsToModel$ActAdjpVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_old
+
+theCDsToModel = theCDsToModel[,-c(121:125,134,140,141,143:158)]
+
+modeldata = theCDsToModel %>% filter(year < 2018)
+
+test = theCDsToModel %>% filter(year == 2018)
 ```
-
-```{r analyze cluster swings}
-modelingCDs2008 = modeldata %>% filter(year == 2016) %>% 
-  mutate(Gap = GOP_Result - Dem_Result,GapDiff = Gap - Gap_Prct) %>%
-  select(State,District,year,GOP_Result,Dem_Result,Gap,GOP_Prct,Dem_Prct,Gap_Prct,GapDiff,prev_comp,Cluster)
-
-mean(modelingCDs2008[modelingCDs2008$Cluster==1&modelingCDs2008$prev_comp==0,]$GapDiff)
-mean(modelingCDs2008[modelingCDs2008$Cluster==2&modelingCDs2008$prev_comp==0,]$GapDiff)
-mean(modelingCDs2008[modelingCDs2008$Cluster==3&modelingCDs2008$prev_comp==0,]$GapDiff)
-mean(modelingCDs2008[modelingCDs2008$Cluster==4&modelingCDs2008$prev_comp==0,]$GapDiff)
-mean(modelingCDs2008[modelingCDs2008$Cluster==5&modelingCDs2008$prev_comp==0,]$GapDiff)
-mean(modelingCDs2008[modelingCDs2008$Cluster==6&modelingCDs2008$prev_comp==0,]$GapDiff)
-mean(modelingCDs2008[modelingCDs2008$Cluster==7&modelingCDs2008$prev_comp==0,]$GapDiff)
-```
-
-#IMPUTE POLLING FOR UNPOLLED DISTRICTS
-```{r impute polling}
-polledCDs = modeldata %>% filter(!is.na(GOP_Polling))
-unpolledCDs = modeldata %>% filter(is.na(GOP_Polling))
-
-polledCDs$Undec_Polling = 100 - polledCDs$GOP_Polling - polledCDs$Dem_Polling
-polledCDs$weight = polledCDs$NumberOfPolls * polledCDs$AvgPollsterRating_Polling
-polledCDs$weight = ifelse(polledCDs$weight>8,8,polledCDs$weight) / 8
-
-polledCDs$AdjGOP_Polling = (polledCDs$weight * (polledCDs$GOP_Polling + ((50+polledCDs$ActAdjPVI)/100)*polledCDs$Undec_Polling)) +
-  ((1-polledCDs$weight)*polledCDs$GOP_Prct + .5 * polledCDs$ActAdjPVI_chg)
-polledCDs$AdjDem_Polling = (polledCDs$weight* (polledCDs$Dem_Polling + ((50-polledCDs$ActAdjPVI)/100)*polledCDs$Undec_Polling)) +
-  ((1-polledCDs$weight)*polledCDs$Dem_Prct - .5 * polledCDs$ActAdjPVI_chg)
-
-#remove high leverage points and outliers
-model = lm(AdjGOP_Polling ~ GOP_Prct,data=polledCDs)
-summary(model)
-influence = influence.measures(model)
-hat = influence$infmat[,6]
-boxplot_info = boxplot.stats(hat, coef = 1.5, do.out = TRUE)
-outliers = boxplot_info$out
-min_outlier = min(outliers)
-
-DFFITS = influence$infmat[,3]
-DFFITS_classifications = DFFITS
-DFFITS_influential = 2 * sqrt((2+1)/(length(DFFITS) - 2 - 1))
-
-for(i in seq(1:length(DFFITS))){
-  if(abs(DFFITS[i]) >= DFFITS_influential){
-    if(DFFITS[i] < 0){
-      DFFITS_classifications[i] = 1 #blue triange
-    } else {
-      DFFITS_classifications[i] = 2 #green triangle
-    }
-  } else {
-    DFFITS_classifications[i] = 3 #black circle (default)
-  }
-}
-
-cov = influence$infmat[,4]
-cov_class = cov
-cov_influence = (3*2) / length(cov)
-
-for(i in seq(1:length(cov))){
-  if(abs(cov[i]-1) >= cov_influence){
-    if(cov[i] < 1){
-      cov_class[i] = 1 #blue triangle
-    } else {
-      cov_class[i] = 2 #green triangle
-    }
-  } else {
-    cov_class[i] = 3 #black circle (default)
-  }
-}
-
-plot(polledCDs$GOP_Prct,polledCDs$AdjGOP_Polling, pch=20)
-par(new = TRUE)
-plot(polledCDs$GOP_Prct,polledCDs$AdjGOP_Polling, pch = c(2,2,20)[as.numeric(DFFITS_classifications)] , col = c('blue','green','black')[as.numeric(DFFITS_classifications)])
-par(new = TRUE)
-plot(polledCDs$GOP_Prct,polledCDs$AdjGOP_Polling, pch = c(6,6,20)[as.numeric(cov_class)] , col = c('blue','green','black')[as.numeric(cov_class)])
-par(new = TRUE)
-plot(polledCDs$GOP_Prct,polledCDs$AdjGOP_Polling, pch = 20, col = 1 + (hat >= min_outlier))
-abline(model,col='red',lwd=4)
-
-polledCDs$hat = influence$infmat[,6]
-polledCDs$DFFITS = influence$infmat[,3]
-polledCDs$cov = influence$infmat[,4]
-polledCDs$drop = 0
-
-for(i in seq(from=1,to=dim(polledCDs)[1],by=1)){
-  if(polledCDs[i,150]>=min_outlier){
-    polledCDs[i,153] = 1
-  }
-  if(abs(polledCDs[i,151]) >= DFFITS_influential){
-    polledCDs[i,153] = 1
-  } 
-  if(abs(polledCDs[i,152]-1) >= cov_influence){
-    polledCDs[i,153] = 1
-  }
-}
-
-#model 2
-model2 = lm(AdjGOP_Polling ~ ActAdjPVI,data=polledCDs)
-summary(model2)
-influence = influence.measures(model2)
-hat = influence$infmat[,6]
-boxplot_info = boxplot.stats(hat, coef = 1.5, do.out = TRUE)
-outliers = boxplot_info$out
-min_outlier = min(outliers)
-
-DFFITS = influence$infmat[,3]
-DFFITS_classifications = DFFITS
-DFFITS_influential = 2 * sqrt((2+1)/(length(DFFITS) - 2 - 1))
-
-for(i in seq(1:length(DFFITS))){
-  if(abs(DFFITS[i]) >= DFFITS_influential){
-    if(DFFITS[i] < 0){
-      DFFITS_classifications[i] = 1 #blue triange
-    } else {
-      DFFITS_classifications[i] = 2 #green triangle
-    }
-  } else {
-    DFFITS_classifications[i] = 3 #black circle (default)
-  }
-}
-
-cov = influence$infmat[,4]
-cov_class = cov
-cov_influence = (3*2) / length(cov)
-
-for(i in seq(1:length(cov))){
-  if(abs(cov[i]-1) >= cov_influence){
-    if(cov[i] < 1){
-      cov_class[i] = 1 #blue triangle
-    } else {
-      cov_class[i] = 2 #green triangle
-    }
-  } else {
-    cov_class[i] = 3 #black circle (default)
-  }
-}
-
-plot(polledCDs$ActAdjPVI,polledCDs$AdjGOP_Polling, pch=20)
-par(new = TRUE)
-plot(polledCDs$ActAdjPVI,polledCDs$AdjGOP_Polling, pch = c(2,2,20)[as.numeric(DFFITS_classifications)] , col = c('blue','green','black')[as.numeric(DFFITS_classifications)])
-par(new = TRUE)
-plot(polledCDs$ActAdjPVI,polledCDs$AdjGOP_Polling, pch = c(6,6,20)[as.numeric(cov_class)] , col = c('blue','green','black')[as.numeric(cov_class)])
-par(new = TRUE)
-plot(polledCDs$ActAdjPVI,polledCDs$AdjGOP_Polling, pch = 20, col = 1 + (hat >= min_outlier))
-abline(model2,col='red',lwd=4)
-
-polledCDs$hat = influence$infmat[,6]
-polledCDs$DFFITS = influence$infmat[,3]
-polledCDs$cov = influence$infmat[,4]
-
-for(i in seq(from=1,to=dim(polledCDs)[1],by=1)){
-  if(polledCDs[i,150]>=min_outlier){
-    polledCDs[i,153] = 1
-  }
-  if(abs(polledCDs[i,151]) >= DFFITS_influential){
-    polledCDs[i,153] = 1
-  } 
-  if(abs(polledCDs[i,152]-1) >= cov_influence){
-    polledCDs[i,153] = 1
-  }
-}
-
-regbuild = polledCDs %>% filter(drop==0)
-
-model2 = lm(AdjGOP_Polling ~ ActAdjPVI + GOP_Prct + Gap_Prct + President + ActAdjPVI_old + GOP_Incumbent + Dem_Incumbent + BachGrad + MedianIncome + Evangelical + Catholic + Veteran + White,data=regbuild)
-summary(model2)
-plot(regbuild$ActAdjPVI,regbuild$AdjGOP_Polling, pch=20)
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -451,12 +548,9 @@ plot(regbuild$ActAdjPVI,regbuild$AdjGOP_Polling, pch=20)
 
 
 #REDUCE FEATURS FOR NAIVE BAYES AND LINEAR REGRESSION MODELS
-```{r lasso}
-pred = modeldata[,29]
-vars = modeldata[,c(6:26,28,31,33:120,126:132,134:136)]
+```{r stepwise}
 
-#lasso
-lasso = cv.glmnet(vars,pred)
+
 
 ```
 
