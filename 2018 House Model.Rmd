@@ -328,10 +328,13 @@ ChalUnknownCond$Dem_Prct = ifelse(is.na(ChalUnknownCond$Dem_prev),ChalUnknownCon
                                   ifelse(is.na(ChalUnknownCond$Dem_AdjBase),ChalUnknownCond$Dem_prev,
                                          (ChalUnknownCond$count)/4*ChalUnknownCond$Dem_AdjBase+(4-ChalUnknownCond$count)/
                                            4*ChalUnknownCond$Dem_prev))
-                           
+ChalKnown$competitive = 1
+
+ChalUnknownCond$competitive = 0
+                          
 ChalKnown = ChalKnown %>% left_join(.,Matches[,-c(2,3,12,13)],by="name") %>% left_join(.,theCDs,by="CD_Name")
 
-DistrictsJoin = rbind(ChalKnown[,c(2,3,4,10:14,53,54)],ChalUnknownCond[,c(2:7,38,39,66,67)])
+DistrictsJoin = rbind(ChalKnown[,c(2,3,4,10:15,54,55)],ChalUnknownCond[,c(2:7,38,39,66,67,68)])
 DistrictsJoin$Gap_Prct = DistrictsJoin$GOP_Prct - DistrictsJoin$Dem_Prct
 DistrictsJoin$Gap_Base = DistrictsJoin$GOP_Base - DistrictsJoin$Dem_Base
 
@@ -499,8 +502,11 @@ theCDs2Join = theCDs2 %>% select(State,District,CD_Name,year,GOP_PollingW,Dem_Po
 
 theCDsToModel = theCDsToModel %>% left_join(.,theCDs2Join,by=c("State","District","CD_Name","year"))
 
-theCDsToModel$GOP_BaseAdj = theCDsToModel$GOP_Base + .5*theCDsToModel$ActAdjPVI
-theCDsToModel$Dem_BaseAdj = theCDsToModel$Dem_Base - .5*theCDsToModel$ActAdjPVI
+theCDsToModel$AdjPVI_chg = theCDsToModel$AdjPVI - theCDsToModel$AdjPVI_old
+theCDsToModel$ActAdjPVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_old
+
+theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Prct + .5*theCDsToModel$ActAdjPVI_chg
+theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Prct - .5*theCDsToModel$ActAdjPVI_chg
 
 theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
                                  ifelse(theCDsToModel$NumberOfPolls>=5,100,
@@ -508,25 +514,22 @@ theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDs
 theCDsToModel$AssPollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls)| theCDsToModel$NumberOfPolls == 0,0,
                                     ifelse(theCDsToModel$NumOfPolls>=15,30,
                                            theCDsToModel$NumOfPolls*2))
-theCDsToModel$BaseWeight = ifelse(theCDsToModel$PollingWeight + theCDsToModel$AssPollingWeight>100,0,
+theCDsToModel$PrctWeight = ifelse(theCDsToModel$PollingWeight + theCDsToModel$AssPollingWeight>100,0,
                               100 - theCDsToModel$PollingWeight - theCDsToModel$AssPollingWeight)
 
 theCDsToModel$GOPPollingW = theCDsToModel$GOP_Polling * theCDsToModel$PollingWeight
 theCDsToModel$GOPAssPollingW = theCDsToModel$GOP_PollingW * theCDsToModel$AssPollingWeight
-theCDsToModel$GOPBaseW = theCDsToModel$GOP_BaseAdj * theCDsToModel$BaseWeight
+theCDsToModel$GOPPrctW = theCDsToModel$GOP_PrctAdj * theCDsToModel$PrctWeight
 
 theCDsToModel$DemPollingW = theCDsToModel$Dem_Polling * theCDsToModel$PollingWeight
 theCDsToModel$DemAssPollingW = theCDsToModel$Dem_PollingW * theCDsToModel$AssPollingWeight
-theCDsToModel$DemBaseW = theCDsToModel$Dem_BaseAdj * theCDsToModel$BaseWeight
+theCDsToModel$DemPrctW = theCDsToModel$Dem_PrctAdj * theCDsToModel$PrctWeight
 
-theCDsToModel$GOP_Pred = rowSums(theCDsToModel[,c("GOPPollingW","GOPAssPollingW","GOPBaseW")],na.rm = T) / 
-  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","BaseWeight")],na.rm=T)
-theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW","DemBaseW")],na.rm = T) / 
-  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","BaseWeight")],na.rm=T)
+theCDsToModel$GOP_Pred = rowSums(theCDsToModel[,c("GOPPollingW","GOPAssPollingW","GOPPrctW")],na.rm = T) / 
+  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
+theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW","DemPrctW")],na.rm = T) / 
+  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
 theCDsToModel$Gap_Pred = theCDsToModel$GOP_Pred - theCDsToModel$Dem_Pred
-
-theCDsToModel$AdjPVI_chg = theCDsToModel$AdjPVI - theCDsToModel$AdjPVI_old
-theCDsToModel$ActAdjpVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_old
 
 theCDsToModel = theCDsToModel[,-c(121:125,134,140,141,143:158)]
 
