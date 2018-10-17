@@ -570,43 +570,89 @@ theGaps = cbind(currTest[1:5],theGaps)
 
 ```
 
+```{r generate final matrix}
+sim = matrix(nrow=435,ncol=10000)
+
+onlyOne_Dem = theData %>% filter(year==2018) %>% 
+  filter(is.na(GOP_Candidate)) %>%
+  select(name,State,District,CD_Name) %>%
+  mutate(value = 0)
+
+onlyOne_GOP = theData %>% filter(year==2018) %>% 
+  filter(is.na(Dem_Candidate)) %>%
+  select(name,State,District,CD_Name) %>%
+  mutate(value = 1)
+
+#add Dem CDs with no challengers
+for(i in seq(from=1,to=dim(onlyOne_Dem)[1],by=1)){
+  for(j in seq(from=1,to=dim(sim)[2],by=1)){
+    sim[i,j] = 0
+  }
+}
+
+incr = dim(onlyOne_Dem)[1]
+
+#add GOP CDs with no challengers
+for(i in seq(from=1,to=dim(onlyOne_GOP)[1],by=1)){
+  for(j in seq(from=1,to=dim(sim)[2],by=1)){
+    sim[i+incr,j] = 1
+  }
+}
+
+incr = incr + dim(onlyOne_GOP)[1]
+
+for(i in seq(from=1,to=dim(theGaps)[1],by=1)){
+  for(j in seq(from=1,to=dim(sim)[2],by=1)){
+    sim[i+incr,j] = ifelse(theGaps[i,sample(1:1000,1)+5]>0,1,0)
+  }
+}
+
+theCDrows= rbind(rbind(onlyOne_Dem[,c(1,2,3,4)],onlyOne_GOP[,c(1,2,3,4)]),theGaps[,c(1,2,3,4)])
+
+finalMatrix = cbind(theCDrows,sim)
+
+GOPDistrictPrct = rowMeans(finalMatrix[,c(5:10004)])
+GOPDistrictPrct = cbind(theCDrows,GOPDistrictPrct)
+GOPDistrictPrct$Dem = 1 - GOPDistrictPrct$GOPDistrictPrct
+colnames(GOPDistrictPrct)[5] = "GOP"
+GOPDistrictPrct = GOPDistrictPrct %>% arrange(State,District)
+
+simulations = as.data.frame(colSums(finalMatrix[,c(5:10004)]))
+colnames(simulations)[1] = "SimulationResult"
+simulations$count = 1
+
+nrow(simulations[simulations$SimulationResult>217,])
+nrow(simulations[simulations$SimulationResult<=217,])
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #FEATURE REDUCTION...DON'T RUN ANYMORE
 ```{r model building}
-#create training and test sets for final model
-train_set = modeldata[,c(1:5,8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,127:131,133,138:140)]
-test_set = currTest[,c(1:5,8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,127:131,133,138:140)]
-
-#h2o connection 
-h2o.init(nthreads=-1,max_mem_size='6G')
-
-train = as.h2o(train_set)
-test = as.h2o(test_set)
-
-y = "winner"
-x = setdiff(names(train),c(y,"name","State","District","CD_Name","year"))
-
-rf = h2o.randomForest(x = x,
-                      y = y,
-                      training_frame = train,
-                      ntrees = 250,
-                      max_depth = 10,
-                      nfolds = 10,
-                      fold_assignment = "Stratified",
-                      keep_cross_validation_predictions = TRUE,
-                      seed = 111)
-
-test_results = h2o.predict_leaf_node_assignment(ensemble, newdata = test)
-leaves = as.data.frame(test_results)
-
-
-#lr = h2o.glm(x = x,
-#             y = y,
-#             training_frame = train,
-#             family = binomial,
-#             nfolds = 10,
-#             fold_assignment = "Modulo",
-#             keep_cross_validation_predictions = TRUE,
-#             seed = 111)
 
 y = "GOP_Result"
 x = setdiff(names(train),c(y,"Dem_Result","name","State","District","CD_Name","year"))
