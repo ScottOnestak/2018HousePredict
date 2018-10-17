@@ -12,12 +12,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r packages}
 library(dplyr)
 library(h2o)
-library(caret)
+library(randomForest)
 ```
 
 ```{r read in data file}
 options(scipen=999)
-theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181009.csv")
+theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181015.csv")
 theData$ActAdjPVI = ifelse(theData$year==2008,theData$PVI-10.7,
                            ifelse(theData$year==2010,theData$PVI+6.8,
                                   ifelse(theData$year==2012,theData$PVI-1.2,
@@ -509,8 +509,9 @@ theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Prct + .5*theCDsToModel$ActAdjPVI_
 theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Prct - .5*theCDsToModel$ActAdjPVI_chg
 
 theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
-                                 ifelse(theCDsToModel$NumberOfPolls>=5,100,
-                                        100/theCDsToModel$NumberOfPolls))
+                                 ifelse(theCDsToModel$NumberOfPolls>=4,100,
+                                        ifelse(theCDsToModel$NumberOfPolls==3,90,
+                                               ifelse(theCDsToModel$NumberOfPolls==2,75,50))))
 theCDsToModel$AssPollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls)| theCDsToModel$NumberOfPolls == 0,0,
                                     ifelse(theCDsToModel$NumOfPolls>=15,30,
                                            theCDsToModel$NumOfPolls*2))
@@ -538,98 +539,48 @@ modeldata = theCDsToModel %>% filter(year < 2018)
 currTest = theCDsToModel %>% filter(year == 2018)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-#REDUCE FEATURS FOR MODEL
+#REDUCE FEATURS AND BUILD MODEL!!!
 ```{r feature selection}
-featureTest = modeldata[,c(6:26,28,29,31:126,128:133,138:140)]
+modeldata$Gap = modeldata$GOP_Result - modeldata$Dem_Result
+currTest$Gap = NA
 
-y = "GOP_Result"
-x = setdiff(names(featureTest),c(y,"Dem_Result"))
-
-h2o.init(nthreads=-1,max_mem_size='6G')
-
-featureTest.h2o = as.h2o(featureTest)
-
-rf_features_GOP = h2o.randomForest(x = x,
-                      y = y,
-                      training_frame = featureTest.h2o,
-                      ntrees = 250,
-                      nfolds = 10,
-                      fold_assignment = "Modulo",
-                      keep_cross_validation_predictions = TRUE,
-                      seed = 111)
-
-h2o.varimp(rf_features_GOP)[1:20,]
-h2o.varimp(rf_features_GOP)[21:40,]
-h2o.varimp_plot(rf_features_GOP)
-
-y = "Dem_Result"
-x = setdiff(names(featureTest),c(y,"GOP_Result"))
-
-rf_features_Dem = h2o.randomForest(x = x,
-                      y = y,
-                      training_frame = featureTest.h2o,
-                      ntrees = 250,
-                      nfolds = 10,
-                      fold_assignment = "Modulo",
-                      keep_cross_validation_predictions = TRUE,
-                      seed = 111)
-
-h2o.varimp(rf_features_Dem)[1:20,]
-h2o.varimp(rf_features_Dem)[21:40,]
-h2o.varimp_plot(rf_features_Dem)
-
-
-featureTest.h2o$Gap = featureTest.h2o$GOP_Result - featureTest.h2o$Dem_Result
+train = modeldata[,c(8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,128,131,133,138:141)]
+test = currTest[,c(8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,128,131,133,138:141)]
 
 y = "Gap"
-x = setdiff(names(featureTest),c(y,"GOP_Result","Dem_Result"))
+x = setdiff(names(train),c(y,"GOP_Result","Dem_Result","name","State","District","CD_Name","year"))
 
-rf_features_Gap = h2o.randomForest(x = x,
-                      y = y,
-                      training_frame = featureTest.h2o,
-                      ntrees = 250,
-                      nfolds = 10,
-                      fold_assignment = "Modulo",
-                      keep_cross_validation_predictions = TRUE,
-                      seed = 111)
+rf_Gap = randomForest(Gap~.,
+                      ntree=1000,
+                      data=train,
+                      set.seed(111))
 
-h2o.varimp(rf_features_Gap)[1:20,]
-h2o.varimp(rf_features_Gap)[21:40,]
-h2o.varimp_plot(rf_features_Gap)
+#h2o.varimp(rf_features_Gap)[1:20,]
+#h2o.varimp(rf_features_Gap)[21:40,]
+#h2o.varimp_plot(rf_features_Gap)
+
+Gaps = predict(rf_Gap,test,predict.all=TRUE)
+theGaps = as.data.frame(Gaps$individual)
 
 ```
 
-#BUILD THE MODEL
+```{r density plot analysis}
+theGapsTrans = t(theGaps)
+theGaps = cbind(currTest[1:5],theGaps)
+
+```
+
+#FEATURE REDUCTION...DON'T RUN ANYMORE
 ```{r model building}
 #create training and test sets for final model
 train_set = modeldata[,c(1:5,8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,127:131,133,138:140)]
 test_set = currTest[,c(1:5,8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,127:131,133,138:140)]
-
-train_set$winner = as.factor(train_set$winner)
-test_set$winner = as.factor(test_set$winner)
-
 
 #h2o connection 
 h2o.init(nthreads=-1,max_mem_size='6G')
 
 train = as.h2o(train_set)
 test = as.h2o(test_set)
-
-train.split <- h2o.splitFrame(train, seed = 111)
-train.train <- train.split[[1]]
-train.calib <- train.split[[2]]
 
 y = "winner"
 x = setdiff(names(train),c(y,"name","State","District","CD_Name","year"))
@@ -642,33 +593,10 @@ rf = h2o.randomForest(x = x,
                       nfolds = 10,
                       fold_assignment = "Stratified",
                       keep_cross_validation_predictions = TRUE,
-                      calibrate_model = T,
-                      calibration_frame = train.calib,
                       seed = 111)
 
-nb = h2o.naiveBayes(x = x,
-                    y = y,
-                    training_frame = train,
-                    nfolds = 10,
-                    fold_assignment = "Stratified",
-                    keep_cross_validation_predictions = TRUE,
-                    seed = 111)
-
-ensemble = h2o.stackedEnsemble(x = x,
-                                y = y,
-                                training_frame = train,
-                                model_id = "scott_ensemble",
-                                base_models = list(rf,))
-
-
-test_results = h2o.predict(ensemble, newdata = test)
-test_resultsrf = h2o.predict(rf,newdata = test)
-test_resultsgb = h2o.predict(gb,newdata = test)
-test_resultsnb = h2o.predict(nb,newdata = test)
-test_set$results = as.data.frame(test_results$p1)
-test_set$resultsrf = as.data.frame(test_resultsrf$p1)
-test_set$resultsgb = as.data.frame(test_resultsgb$p1)
-see_results = test_set[,c(1,56,57,58)]
+test_results = h2o.predict_leaf_node_assignment(ensemble, newdata = test)
+leaves = as.data.frame(test_results)
 
 
 #lr = h2o.glm(x = x,
@@ -680,7 +608,46 @@ see_results = test_set[,c(1,56,57,58)]
 #             keep_cross_validation_predictions = TRUE,
 #             seed = 111)
 
+y = "GOP_Result"
+x = setdiff(names(train),c(y,"Dem_Result","name","State","District","CD_Name","year"))
 
+h2o.init(nthreads=-1,max_mem_size='6G')
+
+train.h2o = as.h2o(train)
+test.h2o = as.h2o(test)
+
+rf_GOP = h2o.randomForest(x = x,
+                      y = y,
+                      training_frame = train.h2o,
+                      ntrees = 250,
+                      nfolds = 10,
+                      fold_assignment = "Modulo",
+                      keep_cross_validation_predictions = TRUE,
+                      seed = 111)
+
+#h2o.varimp(rf_features_Dem)[1:20,]
+#h2o.varimp(rf_features_Dem)[21:40,]
+#h2o.varimp_plot(rf_features_Dem)
+
+GOPPrct = h2o.predict(rf_GOP,newdata = test.h2o)
+
+y = "Dem_Result"
+x = setdiff(names(train),c(y,"GOP_Result","name","State","District","CD_Name","year"))
+
+rf_Dem = h2o.randomForest(x = x,
+                      y = y,
+                      training_frame = train.h2o,
+                      ntrees = 250,
+                      nfolds = 10,
+                      fold_assignment = "Modulo",
+                      keep_cross_validation_predictions = TRUE,
+                      seed = 111)
+
+#h2o.varimp(rf_features_Dem)[1:20,]
+#h2o.varimp(rf_features_Dem)[21:40,]
+#h2o.varimp_plot(rf_features_Dem)
+
+DemPrct = h2o.predict(rf_Dem,newdata = test.h2o)
 
 ```
 
