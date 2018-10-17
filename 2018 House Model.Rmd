@@ -507,6 +507,16 @@ theCDsToModel$ActAdjPVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_
 
 theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Prct + .5*theCDsToModel$ActAdjPVI_chg
 theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Prct - .5*theCDsToModel$ActAdjPVI_chg
+theCDsToModel$PVIadjust = ifelse(abs(theCDsToModel$PVI)>10,10,abs(theCDsToModel$PVI))
+theCDsToModel$NumPollsAdj = ifelse(theCDsToModel$NumberOfPolls>4,4,theCDsToModel$NumberOfPolls)
+theCDsToModel$arcval = atan(3*((10-theCDsToModel$PVIadjust)/10)*((4-theCDsToModel$NumPollsAdj)/4))/1.25
+theCDsToModel$GOP_PrctAdj = ifelse(theCDsToModel$GOP_PrctAdj>theCDsToModel$Dem_PrctAdj,
+                               theCDsToModel$GOP_PrctAdj - theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5),
+                               theCDsToModel$GOP_PrctAdj + theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5))
+theCDsToModel$Dem_PrctAdj = ifelse(theCDsToModel$GOP_PrctAdj>theCDsToModel$Dem_PrctAdj,
+                               theCDsToModel$Dem_PrctAdj + theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5),
+                               theCDsToModel$Dem_PrctAdj - theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5))
+
 
 theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
                                  ifelse(theCDsToModel$NumberOfPolls>=4,100,
@@ -532,7 +542,7 @@ theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW"
   rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
 theCDsToModel$Gap_Pred = theCDsToModel$GOP_Pred - theCDsToModel$Dem_Pred
 
-theCDsToModel = theCDsToModel[,-c(121:125,134,140,141,143:158)]
+theCDsToModel = theCDsToModel[,-c(121:125,134,137:164)]
 
 modeldata = theCDsToModel %>% filter(year < 2018)
 
@@ -544,8 +554,8 @@ currTest = theCDsToModel %>% filter(year == 2018)
 modeldata$Gap = modeldata$GOP_Result - modeldata$Dem_Result
 currTest$Gap = NA
 
-train = modeldata[,c(8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,128,131,133,138:141)]
-test = currTest[,c(8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,128,131,133,138:141)]
+train = modeldata[,c(8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,128,131:134)]
+test = currTest[,c(8,14,28,31,33:35,38,40,41,43,48,54,56,58,59,60,63,65,66,68,73,79,81,83:88,92,93,96,97,99,100,102,113,121:123,128,131:134)]
 
 y = "Gap"
 x = setdiff(names(train),c(y,"GOP_Result","Dem_Result","name","State","District","CD_Name","year"))
@@ -623,6 +633,7 @@ simulations$count = 1
 
 nrow(simulations[simulations$SimulationResult>217,])
 nrow(simulations[simulations$SimulationResult<=217,])
+
 ```
 
 
