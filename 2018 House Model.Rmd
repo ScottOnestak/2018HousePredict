@@ -505,18 +505,8 @@ theCDsToModel = theCDsToModel %>% left_join(.,theCDs2Join,by=c("State","District
 theCDsToModel$AdjPVI_chg = theCDsToModel$AdjPVI - theCDsToModel$AdjPVI_old
 theCDsToModel$ActAdjPVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_old
 
-theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Prct + .5*theCDsToModel$ActAdjPVI_chg
-theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Prct - .5*theCDsToModel$ActAdjPVI_chg
-theCDsToModel$PVIadjust = ifelse(abs(theCDsToModel$PVI)>10,10,abs(theCDsToModel$PVI))
-theCDsToModel$NumPollsAdj = ifelse(theCDsToModel$NumberOfPolls>4,4,theCDsToModel$NumberOfPolls)
-theCDsToModel$arcval = atan(3*((10-theCDsToModel$PVIadjust)/10)*((4-theCDsToModel$NumPollsAdj)/4))/1.25
-theCDsToModel$GOP_PrctAdj = ifelse(theCDsToModel$GOP_PrctAdj>theCDsToModel$Dem_PrctAdj,
-                               theCDsToModel$GOP_PrctAdj - theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5),
-                               theCDsToModel$GOP_PrctAdj + theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5))
-theCDsToModel$Dem_PrctAdj = ifelse(theCDsToModel$GOP_PrctAdj>theCDsToModel$Dem_PrctAdj,
-                               theCDsToModel$Dem_PrctAdj + theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5),
-                               theCDsToModel$Dem_PrctAdj - theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5))
-
+theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Base + .5*theCDsToModel$ActAdjPVI
+theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Base - .5*theCDsToModel$ActAdjPVI
 
 theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
                                  ifelse(theCDsToModel$NumberOfPolls>=4,100,
@@ -542,7 +532,31 @@ theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW"
   rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
 theCDsToModel$Gap_Pred = theCDsToModel$GOP_Pred - theCDsToModel$Dem_Pred
 
-theCDsToModel = theCDsToModel[,-c(121:125,134,137:164)]
+theCDsToModel = theCDsToModel[,-c(121:125,134,137:161)]
+
+theCDsToPredPred = theCDsToModel %>% filter(GOP_Pred==0)
+theCDsToModel = theCDsToModel %>% filter(GOP_Pred!=0)
+
+ModelVals = theCDsToModel %>% filter(year < 2018)
+
+GOP_lm = lm(GOP_Pred ~ ActAdjPVI + White + Hispanic + BachGrad + Religiosity + Catholic + as.factor(Cluster),data=ModelVals)
+summary(GOP_lm)
+theCDsToPredPred$GOP_Pred = predict(GOP_lm,theCDsToPredPred)
+
+Dem_lm = lm(Dem_Pred ~ ActAdjPVI + White + Hispanic + BachGrad + Religiosity + Catholic + as.factor(Cluster),data=ModelVals)
+summary(Dem_lm)
+theCDsToPredPred$Dem_Pred = predict(Dem_lm,theCDsToPredPred)
+
+#manual adjustments for PA 2 and PA 3 -> outside range of well-predicted values in a linear regression
+theCDsToPredPred$GOP_Pred = ifelse(theCDsToPredPred$name=="PA02_2018",20,
+                                   ifelse(theCDsToPredPred$name=="PA03_2018",10,
+                                   theCDsToPredPred$GOP_Pred))
+
+theCDsToPredPred$Dem_Pred = ifelse(theCDsToPredPred$name=="PA02_2018",80,
+                                   ifelse(theCDsToPredPred$name=="PA03_2018",90,
+                                   theCDsToPredPred$Dem_Pred))
+
+theCDsToModel = rbind(theCDsToModel,theCDsToPredPred)
 
 modeldata = theCDsToModel %>% filter(year < 2018)
 
@@ -642,26 +656,6 @@ nrow(simulations[simulations$SimulationResult<=217,])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #FEATURE REDUCTION...DON'T RUN ANYMORE
 ```{r model building}
 
@@ -705,6 +699,16 @@ rf_Dem = h2o.randomForest(x = x,
 #h2o.varimp_plot(rf_features_Dem)
 
 DemPrct = h2o.predict(rf_Dem,newdata = test.h2o)
+
+theCDsToModel$PVIadjust = ifelse(abs(theCDsToModel$PVI)>10,10,abs(theCDsToModel$PVI))
+theCDsToModel$NumPollsAdj = ifelse(theCDsToModel$NumberOfPolls>4,4,theCDsToModel$NumberOfPolls)
+theCDsToModel$arcval = atan(3*((10-theCDsToModel$PVIadjust)/10)*((4-theCDsToModel$NumPollsAdj)/4))/1.25
+theCDsToModel$GOP_PrctAdj = ifelse(theCDsToModel$GOP_PrctAdj>theCDsToModel$Dem_PrctAdj,
+                               theCDsToModel$GOP_PrctAdj - theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5),
+                               theCDsToModel$GOP_PrctAdj + theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5))
+theCDsToModel$Dem_PrctAdj = ifelse(theCDsToModel$GOP_PrctAdj>theCDsToModel$Dem_PrctAdj,
+                               theCDsToModel$Dem_PrctAdj + theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5),
+                               theCDsToModel$Dem_PrctAdj - theCDsToModel$arcval*(abs(theCDsToModel$Gap_GenericBallot)/1.5))
 
 ```
 
