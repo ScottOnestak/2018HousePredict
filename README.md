@@ -1,6 +1,6 @@
 # 2018HousePredict
 
-*In Progress.  Coming Early October.*
+*In Progress.  Coming October 18th.*
 
 Tableau: https://public.tableau.com/profile/scott.onestak#!/
 
