@@ -19,7 +19,7 @@ library(tidyr)
 
 ```{r read in data file}
 options(scipen=999)
-theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181018.csv")
+theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181019.csv")
 theData$ActAdjPVI = ifelse(theData$year==2008,theData$PVI-10.7,
                            ifelse(theData$year==2010,theData$PVI+6.8,
                                   ifelse(theData$year==2012,theData$PVI-1.2,
@@ -670,7 +670,7 @@ nrow(simulations[simulations$SimulationResult>217,])
 nrow(simulations[simulations$SimulationResult<=217,])
 
 mean(simulations$SimulationResult)
-medain(simulations$SimulationResult)
+median(simulations$SimulationResult)
 
 write.csv(file="Predictions.csv",GOPDistrictPrct,row.names = F)
 ```
