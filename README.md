@@ -4,7 +4,7 @@ View Results Here: https://scottonestak.com/projects/2018-House-Model/2018HouseM
 
 Tableau: https://public.tableau.com/profile/scott.onestak#!/
 
-FEC Data:
+FEC Data: 
 
 https://www.fec.gov/campaign-finance-data/all-candidates-file-description/
 
