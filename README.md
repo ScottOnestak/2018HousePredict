@@ -1,6 +1,6 @@
 # 2018HousePredict
 
-*In Progress.  Coming October 18th.*
+View Results Here: https://scottonestak.com/projects/2018-House-Model/2018HouseModel.html
 
 Tableau: https://public.tableau.com/profile/scott.onestak#!/
 
