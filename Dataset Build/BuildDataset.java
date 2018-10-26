@@ -44,7 +44,7 @@ public class BuildDataset {
 		String fec_file,state,cd,fecid,incumbency = null,can_name1,can_name2,can_name=null,party = null,gen_prct = null,
 				gen_runoff = null,gen_comb = null,gen_count=null,amount=null,committee=null;
 		String cdlookup = null;
-		double result = 0,pvi,cPVI = 0;
+		double result = 0,pvi,cPVI = 0,avgpoll=0,pollcount=0;
 		int incum = 0,type = 0,cYear = 0,theyear=0;
 		boolean insert = false;
 		String TotRec,TotDisb,COHCOP,COHBOP,DebtOBC,IndItemCont,IndUnitemCont,IndCont,OthCommContr,PartyCommContr,TotCont,
@@ -62,7 +62,7 @@ public class BuildDataset {
 		Date Election2012 = (Date) formatter.parse("11/6/2012");
 		Date Election2014 = (Date) formatter.parse("11/4/2014");
 		Date Election2016 = (Date) formatter.parse("11/8/2016");
-		Date current = (Date) formatter.parse("10/9/2018");
+		Date current = (Date) formatter.parse("10/25/2018");
 		
 		String holder[];
 		int firstyear;
@@ -413,7 +413,11 @@ public class BuildDataset {
 					CDs.get(cdlookup).insert2018(fecid, incum, can_name, party);
 					if(!fecids2018.contains(fecid)) {
 						fecids2018.add(fecid);
+					} else {
+						System.out.println("Problem: " + fecid);
 					}
+				} else {
+					System.out.println("No CD: " + fecid);
 				}
 				
 				theline = br.readLine();
@@ -918,22 +922,22 @@ public class BuildDataset {
 				dem = Double.parseDouble(holder[11]);
 				
 				if(thedate.getTime()-Election2008.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2008.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2008.getTime(), TimeUnit.MILLISECONDS);
 					year = "2008";
 				} else if(thedate.getTime()-Election2010.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2010.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2010.getTime(), TimeUnit.MILLISECONDS);
 					year = "2010";
 				} else if(thedate.getTime()-Election2012.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2012.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2012.getTime(), TimeUnit.MILLISECONDS);
 					year = "2012";
 				} else if(thedate.getTime()-Election2014.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2014.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2014.getTime(), TimeUnit.MILLISECONDS);
 					year = "2014";
 				} else if(thedate.getTime()-Election2016.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2016.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2016.getTime(), TimeUnit.MILLISECONDS);
 					year = "2016";
 				} else {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-current.getTime(), TimeUnit.MILLISECONDS);
 					year = "2018";
 					
 					for(Map.Entry<Date, Polls> entry: genericballot18.entrySet()) {
@@ -1005,22 +1009,22 @@ public class BuildDataset {
 				disapprove = Double.parseDouble(holder[10]);
 				
 				if(thedate.getTime()-Election2008.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2008.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2008.getTime(), TimeUnit.MILLISECONDS);
 					year = "2008";
 				} else if(thedate.getTime()-Election2010.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2010.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2010.getTime(), TimeUnit.MILLISECONDS);
 					year = "2010";
 				} else if(thedate.getTime()-Election2012.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2012.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2012.getTime(), TimeUnit.MILLISECONDS);
 					year = "2012";
 				} else if(thedate.getTime()-Election2014.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2014.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2014.getTime(), TimeUnit.MILLISECONDS);
 					year = "2014";
 				} else if(thedate.getTime()-Election2016.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2016.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2016.getTime(), TimeUnit.MILLISECONDS);
 					year = "2016";
 				} else {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-current.getTime(), TimeUnit.MILLISECONDS);
 					year = "2018";
 					
 					for(Map.Entry<Date, Polls> entry: Trumpapproval.entrySet()) {
@@ -1082,26 +1086,28 @@ public class BuildDataset {
 					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2008.getTime()), TimeUnit.MILLISECONDS);
 					year = "2008";
 				} else if(thedate.getTime()-Election2010.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2010.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2010.getTime(), TimeUnit.MILLISECONDS);
 					year = "2010";
 				} else if(thedate.getTime()-Election2012.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2012.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2012.getTime(), TimeUnit.MILLISECONDS);
 					year = "2012";
 				} else if(thedate.getTime()-Election2014.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2014.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2014.getTime(), TimeUnit.MILLISECONDS);
 					year = "2014";
 				} else if(thedate.getTime()-Election2016.getTime()<=0) {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-Election2016.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-Election2016.getTime(), TimeUnit.MILLISECONDS);
 					year = "2016";
 				} else {
-					days = TimeUnit.DAYS.convert(Math.abs(thedate.getTime()-current.getTime()), TimeUnit.MILLISECONDS);
+					days = -TimeUnit.DAYS.convert(thedate.getTime()-current.getTime(), TimeUnit.MILLISECONDS);
 					year = "2018";
 				}
 				
-				if(CDs.containsKey(district)) {
+				if(CDs.containsKey(district) && days>0) {
 					CDs.get(district).insertPoll(pollster,pollster_grade,gop,dem,thedate,days);
+					avgpoll += pollster_grade;
+					pollcount++;
 				} else {
-					System.out.println("District Poll Problem: " + district + "," + year);
+					System.out.println("District Poll Problem: " + district + "," + year + "," + thedate.toString());
 				}
 				
 				theline = br.readLine();
@@ -1116,6 +1122,9 @@ public class BuildDataset {
 			e.printStackTrace();
 		} 
 		
+		avgpoll = avgpoll / (double) pollcount;
+		System.out.println("Avg Poll Rate:" + Math.round(avgpoll * 100.0) / 100.0);
+		
 		//insert generic ballot and presidential approval ratings...calc polling
 		for(Map.Entry<String, CDs> entry: CDs.entrySet()) {
 			theyear = entry.getValue().getYear();
@@ -1126,7 +1135,7 @@ public class BuildDataset {
 			entry.getValue().insertPresApproval(presapproval.get(Integer.toString(theyear)).getGOP(),
 					presapproval.get(Integer.toString(theyear)).getDem(),
 					presapproval.get(Integer.toString(theyear)).getGap());
-			entry.getValue().calcPoll();
+			entry.getValue().calcPoll(avgpoll);
 		}
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(new File("CDsDataset.csv")));
@@ -1149,7 +1158,7 @@ public class BuildDataset {
 					"Prct_Receipts_From_Ind_Contr_Dem,Prct_Receipts_From_Committee_Dem,Burn_Rate_Dem,Prct_Total_Receipts_GOP," + 
 					"Prct_Total_Disbursement_GOP,Prct_COH_GOP,Prct_Individual_Contribution_GOP,Prct_Committee_Contribution_GOP," +
 					"Total_Receipts_Diff_GOP,Total_Disbursement_Diff_GOP,COH_Adv_GOP,Individual_Contribution_Adv_GOP,Committee_Contribution_Adv_GOP," +
-					"dccc_dem_support,dccc_dem_oppose,dccc_gop_support,dccc_gop_oppose,dccc_indicator,nrcc_dem_support,nrcc_dem_oppose,nrcc_gop_support,nrcc_gop_oppose,nrccc_indicator," +
+					"dccc_dem_support,dccc_dem_oppose,dccc_gop_support,dccc_gop_oppose,dccc_indicator,nrcc_dem_support,nrcc_dem_oppose,nrcc_gop_support,nrcc_gop_oppose,nrcc_indicator," +
 					"hmp_dem_support,hmp_dem_oppose,hmp_gop_support,hmp_gop_oppose,hmp_indicator,clf_dem_support,clf_dem_oppose,clf_gop_support,clf_gop_oppose,clf_indicator," + 
 					"PVI,AdjPVI,President,President_Time,House,House_Time,CD_Time_Indicator,Midterm,GOP_Polling,Dem_Polling,Gap_Polling,AvgPollsterRating_Polling,NumberOfPolls," + 
 					"GOP_GenericBallot,Dem_GenericBallot,Gap_GenericBallot,Pres_Approval,Pres_Disapproval,Pres_NetApproval,winner\n");

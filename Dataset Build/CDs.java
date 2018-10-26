@@ -324,7 +324,7 @@ public class CDs {
 		
 	}
 	
-	public void calcPoll() {
+	public void calcPoll(double avgpoll) {
 		double sumofweights = 0;
 		double sumofweightedgop = 0;
 		double sumofweighteddem = 0;
@@ -335,8 +335,8 @@ public class CDs {
 		//System.out.println(name + ": " + max_poll + "," + min_poll + "," + max_days + "," + min_days + "\n");
 		
 		for(Map.Entry<String, Poll> entry: thepolls.entrySet()) {
-			weight = entry.getValue().calcDistWeight(max_poll, min_poll);
-			
+			//System.out.println(CD_Name + " " + year + " "+ entry.getKey());
+			weight = entry.getValue().calcDistWeight(avgpoll);
 			sumofweights += weight;
 			sumofweightedgop += weight * entry.getValue().getGOP();
 			sumofweighteddem += weight * entry.getValue().getDem();
