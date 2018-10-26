@@ -10,16 +10,28 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r packages}
+if(!require(dplyr)) install.packages('dplyr',dependencies = T)
 library(dplyr)
-library(h2o)
+
+if(!require(randomForest)) install.packages('randomForest',dependencies=T)
 library(randomForest)
+
+if(!require(ggplot2)) install.packages('ggplot2',dependencies = T)
 library(ggplot2)
+
+if(!require('tidyr')) install.packages('tidyr',dependencies = T)
 library(tidyr)
+
+if(!require('plotly')) install.packages('plotly',dependencies = T)
+library(plotly)
+
+Sys.setenv("plotly_username"="sonestak")
+Sys.setenv("plotly_api_key"="Qp9opKSaakBjxxvMK1DK")
 ```
 
 ```{r read in data file}
 options(scipen=999)
-theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181019.csv")
+theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181025.csv")
 theData$ActAdjPVI = ifelse(theData$year==2008,theData$PVI-10.7,
                            ifelse(theData$year==2010,theData$PVI+6.8,
                                   ifelse(theData$year==2012,theData$PVI-1.2,
@@ -368,10 +380,8 @@ theCDsToModel = theData %>%
 ```{r create polling prediction}
 pollingCDs = theData %>% select(name,State,District,year,GOP_Polling,Dem_Polling,Gap_Polling,NumberOfPolls,AvgPollsterRating_Polling) %>%
   filter(!is.na(GOP_Polling))
-
 theCDs2 = theData %>% select(State,District,CD_Name,year) %>%
   left_join(.,Matches[,-c(2,3,5:12,14:33)],by=c("CD_Name","year"))
-
 theCDs2$GOP_Polling1 = NA
 theCDs2$GOP_Polling2 = NA
 theCDs2$GOP_Polling3 = NA
@@ -382,7 +392,6 @@ theCDs2$GOP_Polling7 = NA
 theCDs2$GOP_Polling8 = NA
 theCDs2$GOP_Polling9 = NA
 theCDs2$GOP_Polling10 = NA
-
 theCDs2$Dem_Polling1 = NA
 theCDs2$Dem_Polling2 = NA
 theCDs2$Dem_Polling3 = NA
@@ -393,7 +402,6 @@ theCDs2$Dem_Polling7 = NA
 theCDs2$Dem_Polling8 = NA
 theCDs2$Dem_Polling9 = NA
 theCDs2$Dem_Polling10 = NA
-
 theCDs2$NumOfPolls1 = NA
 theCDs2$NumOfPolls2 = NA
 theCDs2$NumOfPolls3 = NA
@@ -404,7 +412,6 @@ theCDs2$NumOfPolls7 = NA
 theCDs2$NumOfPolls8 = NA
 theCDs2$NumOfPolls9 = NA
 theCDs2$NumOfPolls10 = NA
-
 theCDs2$AvgPollster1 = NA
 theCDs2$AvgPollster2 = NA
 theCDs2$AvgPollster3 = NA
@@ -415,7 +422,6 @@ theCDs2$AvgPollster7 = NA
 theCDs2$AvgPollster8 = NA
 theCDs2$AvgPollster9 = NA
 theCDs2$AvgPollster10 = NA
-
 pollingCDs$name = as.character(pollingCDs$name)
 theCDs2$name1 = as.character(theCDs2$name1)
 theCDs2$name2 = as.character(theCDs2$name2)
@@ -427,7 +433,6 @@ theCDs2$name7 = as.character(theCDs2$name7)
 theCDs2$name8 = as.character(theCDs2$name8)
 theCDs2$name9 = as.character(theCDs2$name9)
 theCDs2$name10 = as.character(theCDs2$name10)
-
 for(i in seq(from=1,to=dim(theCDs2)[1],by=1)){
   for(j in seq(from=1,to=dim(pollingCDs)[1],by=1)){
     if(theCDs2[i,6] == pollingCDs[j,1]){
@@ -483,7 +488,6 @@ for(i in seq(from=1,to=dim(theCDs2)[1],by=1)){
     }
   }
 }
-
 theCDs2$GOP_weight1 = ifelse(!is.na(theCDs2$GOP_Polling1),theCDs2$GOP_Polling1 * theCDs2$NumOfPolls1,NA)
 theCDs2$GOP_weight2 = ifelse(!is.na(theCDs2$GOP_Polling2),theCDs2$GOP_Polling2 * theCDs2$NumOfPolls2,NA)
 theCDs2$GOP_weight3 = ifelse(!is.na(theCDs2$GOP_Polling3),theCDs2$GOP_Polling3 * theCDs2$NumOfPolls3,NA)
@@ -494,7 +498,6 @@ theCDs2$GOP_weight7 = ifelse(!is.na(theCDs2$GOP_Polling7),theCDs2$GOP_Polling7 *
 theCDs2$GOP_weight8 = ifelse(!is.na(theCDs2$GOP_Polling8),theCDs2$GOP_Polling8 * theCDs2$NumOfPolls8,NA)
 theCDs2$GOP_weight9 = ifelse(!is.na(theCDs2$GOP_Polling9),theCDs2$GOP_Polling9 * theCDs2$NumOfPolls9,NA)
 theCDs2$GOP_weight10 = ifelse(!is.na(theCDs2$GOP_Polling10),theCDs2$GOP_Polling10 * theCDs2$NumOfPolls10,NA)
-
 theCDs2$Dem_weight1 = ifelse(!is.na(theCDs2$Dem_Polling1),theCDs2$Dem_Polling1 * theCDs2$NumOfPolls1,NA)
 theCDs2$Dem_weight2 = ifelse(!is.na(theCDs2$Dem_Polling2),theCDs2$Dem_Polling2 * theCDs2$NumOfPolls2,NA)
 theCDs2$Dem_weight3 = ifelse(!is.na(theCDs2$Dem_Polling3),theCDs2$Dem_Polling3 * theCDs2$NumOfPolls3,NA)
@@ -505,7 +508,6 @@ theCDs2$Dem_weight7 = ifelse(!is.na(theCDs2$Dem_Polling7),theCDs2$Dem_Polling7 *
 theCDs2$Dem_weight8 = ifelse(!is.na(theCDs2$Dem_Polling8),theCDs2$Dem_Polling8 * theCDs2$NumOfPolls8,NA)
 theCDs2$Dem_weight9 = ifelse(!is.na(theCDs2$Dem_Polling9),theCDs2$Dem_Polling9 * theCDs2$NumOfPolls9,NA)
 theCDs2$Dem_weight10 = ifelse(!is.na(theCDs2$Dem_Polling10),theCDs2$Dem_Polling10 * theCDs2$NumOfPolls10,NA)
-
 theCDs2$GOP_PollingW = rowSums(theCDs2[,c("GOP_weight1","GOP_weight2","GOP_weight3","GOP_weight4","GOP_weight5","GOP_weight6",
                                           "GOP_weight7","GOP_weight8","GOP_weight9","GOP_weight10")],na.rm = T) /
   rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
@@ -517,18 +519,13 @@ theCDs2$Dem_PollingW = rowSums(theCDs2[,c("Dem_weight1","Dem_weight2","Dem_weigh
 theCDs2$NumOfPolls = rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
                      "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
 theCDs2[is.na(theCDs2)] = NA
-
 theCDs2Join = theCDs2 %>% select(State,District,CD_Name,year,GOP_PollingW,Dem_PollingW,NumOfPolls) %>%
   mutate(Gap_PollingW = GOP_PollingW - Dem_PollingW)
-
 theCDsToModel = theCDsToModel %>% left_join(.,theCDs2Join,by=c("State","District","CD_Name","year"))
-
 theCDsToModel$AdjPVI_chg = theCDsToModel$AdjPVI - theCDsToModel$AdjPVI_old
 theCDsToModel$ActAdjPVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_old
-
 theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Base + .5*theCDsToModel$ActGap_GenericBallot
 theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Base - .5*theCDsToModel$ActGap_GenericBallot
-
 theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
                                  ifelse(theCDsToModel$NumberOfPolls>=4,100,
                                         ifelse(theCDsToModel$NumberOfPolls==3,90,
@@ -538,49 +535,36 @@ theCDsToModel$AssPollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls)| theC
                                            theCDsToModel$NumOfPolls*2))
 theCDsToModel$PrctWeight = ifelse(theCDsToModel$PollingWeight + theCDsToModel$AssPollingWeight>100,0,
                               100 - theCDsToModel$PollingWeight - theCDsToModel$AssPollingWeight)
-
 theCDsToModel$GOPPollingW = theCDsToModel$GOP_Polling * theCDsToModel$PollingWeight
 theCDsToModel$GOPAssPollingW = theCDsToModel$GOP_PollingW * theCDsToModel$AssPollingWeight
 theCDsToModel$GOPPrctW = theCDsToModel$GOP_PrctAdj * theCDsToModel$PrctWeight
-
 theCDsToModel$DemPollingW = theCDsToModel$Dem_Polling * theCDsToModel$PollingWeight
 theCDsToModel$DemAssPollingW = theCDsToModel$Dem_PollingW * theCDsToModel$AssPollingWeight
 theCDsToModel$DemPrctW = theCDsToModel$Dem_PrctAdj * theCDsToModel$PrctWeight
-
 theCDsToModel$GOP_Pred = rowSums(theCDsToModel[,c("GOPPollingW","GOPAssPollingW","GOPPrctW")],na.rm = T) / 
   rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
 theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW","DemPrctW")],na.rm = T) / 
   rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
 theCDsToModel$Gap_Pred = theCDsToModel$GOP_Pred - theCDsToModel$Dem_Pred
-
 theCDsToModel = theCDsToModel[,-c(121:125,132,140:164)]
-
 theCDsToPredPred = theCDsToModel %>% filter(GOP_Pred==0)
 theCDsToModel = theCDsToModel %>% filter(GOP_Pred!=0)
-
 ModelVals = theCDsToModel %>% filter(year < 2018)
-
 GOP_lm = lm(GOP_Pred ~ ActAdjPVI + White + Hispanic + BachGrad + Religiosity + Catholic + as.factor(Cluster),data=ModelVals)
 summary(GOP_lm)
 theCDsToPredPred$GOP_Pred = predict(GOP_lm,theCDsToPredPred)
-
 Dem_lm = lm(Dem_Pred ~ ActAdjPVI + White + Hispanic + BachGrad + Religiosity + Catholic + as.factor(Cluster),data=ModelVals)
 summary(Dem_lm)
 theCDsToPredPred$Dem_Pred = predict(Dem_lm,theCDsToPredPred)
-
 #manual adjustments for PA 2 and PA 3 -> outside range of well-predicted values in a linear regression
 theCDsToPredPred$GOP_Pred = ifelse(theCDsToPredPred$name=="PA02_2018",20,
                                    ifelse(theCDsToPredPred$name=="PA03_2018",10,
                                    theCDsToPredPred$GOP_Pred))
-
 theCDsToPredPred$Dem_Pred = ifelse(theCDsToPredPred$name=="PA02_2018",80,
                                    ifelse(theCDsToPredPred$name=="PA03_2018",90,
                                    theCDsToPredPred$Dem_Pred))
-
 theCDsToModel = rbind(theCDsToModel,theCDsToPredPred)
-
 modeldata = theCDsToModel %>% filter(year < 2018)
-
 currTest = theCDsToModel %>% filter(year == 2018)
 ```
 
@@ -616,6 +600,7 @@ theGaps = cbind(currTest[1:5],theGaps)
 ```
 
 ```{r generate final matrix}
+set.seed(412)
 sim = matrix(nrow=435,ncol=10000)
 
 onlyOne_Dem = theData %>% filter(year==2018) %>% 
@@ -646,6 +631,7 @@ for(i in seq(from=1,to=dim(onlyOne_GOP)[1],by=1)){
 
 incr = incr + dim(onlyOne_GOP)[1]
 
+#change
 for(i in seq(from=1,to=dim(theGaps)[1],by=1)){
   for(j in seq(from=1,to=dim(sim)[2],by=1)){
     sim[i+incr,j] = ifelse(theGaps[i,sample(1:1000,1)+5]>0,1,0)
@@ -682,34 +668,19 @@ gb = read.csv("C:/Users/onest/workspacep/DatasetBuildHouse2018/GenericBallot2018
 pres = pres[,c(1:3)]
 pres$Date = as.Date(pres$Date,format="%m/%d/%y%y")
 
-pres_plot = pres %>% group_by(Date) %>%
-  gather(key="Measure",value="Val",-Date)
+Approval = plot_ly(pres,x= ~Date,y= ~Approve, name='Approval', type="scatter", mode="lines",line=list(color='rgb(0, 100, 0)',width = 4)) %>%
+  add_trace(y=~Disapprove, name="Disapproval",mode="lines",mode="lines",line=list(color='rgb(255, 0, 0)',width = 4)) %>%
+  layout(yaxis = list(title = ""))
 
-Trump = ggplot(data=pres_plot, aes(x=Date, y=Val, group=Measure,color=Measure)) +
-  geom_line(size=1.5) +
-  theme(plot.background = element_blank(),
-        panel.background = element_blank(),
-        axis.line.y = element_blank()) +
-  ggtitle("Trump Approval Tracker") +
-  scale_color_manual(values=c("darkgreen","red"))
+approval_link = api_create(Approval, filename="Approval")
+approval_link
 
-Trump
+theGB = plot_ly(gb,x=~Date,y=~GOP,name="Republican",type="scatter",mode="lines",line=list(color='rgb(255,0,0)',width=4))%>%
+  add_trace(y=~Dem,name="Democrat",mode="lines",line=list(color='rgb(0,0,115)',width = 4)) %>%
+  layout(yaxis=list(title=""),xaxis=list(autotick=F,dtick=14))
 
-gb = gb[,c(1:3)]
-gb$Date = as.Date(gb$Date,format="%m/%d/%y%y")
-
-gb_plot = gb %>% group_by(Date) %>%
-  gather(key="Party",value="Val",-Date)
-
-theGB = ggplot(data=gb_plot, aes(x=Date, y=Val, group=Party,color=Party)) +
-  geom_line(size=1.5) +
-  theme(plot.background = element_blank(),
-        panel.background = element_blank(),
-        axis.title.y = element_blank()) +
-  ggtitle("Generic Ballot") +
-  scale_color_manual(values=c("blue","red"))
-  
-theGB
+theGB_link = api_create(theGB,filename="GenericBallot")
+theGB_link
 ```
 
 
