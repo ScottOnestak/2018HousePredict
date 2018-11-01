@@ -62,7 +62,7 @@ public class BuildDataset {
 		Date Election2012 = (Date) formatter.parse("11/6/2012");
 		Date Election2014 = (Date) formatter.parse("11/4/2014");
 		Date Election2016 = (Date) formatter.parse("11/8/2016");
-		Date current = (Date) formatter.parse("10/25/2018");
+		Date current = (Date) formatter.parse("10/31/2018");
 		
 		String holder[];
 		int firstyear;
@@ -941,7 +941,7 @@ public class BuildDataset {
 					year = "2018";
 					
 					for(Map.Entry<Date, Polls> entry: genericballot18.entrySet()) {
-						if(TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) > 0 &&
+						if(TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) >= 0 &&
 								TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) <= 28 ) {
 							//System.out.println("Inserting: " + thedate + " for " + entry.getKey());
 							entry.getValue().insert(pollster, pollster_grade, gop, dem, thedate,TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS));
@@ -949,7 +949,7 @@ public class BuildDataset {
 					}
 				}
 				
-				//if within last 3 weeks, insert
+				//if within last 4 weeks, insert
 				if(days<=28) {
 					if(!genericballot.containsKey(year)) {
 						genericballot.put(year, new Polls(year));
@@ -1028,7 +1028,7 @@ public class BuildDataset {
 					year = "2018";
 					
 					for(Map.Entry<Date, Polls> entry: Trumpapproval.entrySet()) {
-						if(TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) > 0 &&
+						if(TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) >= 0 &&
 								TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS) <= 28 ) {
 							//System.out.println("Inserting: " + thedate + " for " + entry.getKey());
 							entry.getValue().insert(pollster, pollster_grade, approve, disapprove, thedate,TimeUnit.DAYS.convert(entry.getKey().getTime()-thedate.getTime(), TimeUnit.MILLISECONDS));
