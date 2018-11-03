@@ -1,0 +1,651 @@
+#Scott Onestak
+#2018 House Forecast Model - R Version
+#Date: 11/3/2018
+
+#Packages
+if(!require(dplyr)) install.packages('dplyr',dependencies = T)
+library(dplyr)
+
+if(!require(randomForest)) install.packages('randomForest',dependencies=T)
+library(randomForest)
+
+if(!require(ggplot2)) install.packages('ggplot2',dependencies = T)
+library(ggplot2)
+
+if(!require('tidyr')) install.packages('tidyr',dependencies = T)
+library(tidyr)
+
+if(!require('plotly')) install.packages('plotly',dependencies = T)
+library(plotly)
+
+#Enter username and API Key here
+Sys.setenv("plotly_username"="")
+Sys.setenv("plotly_api_key"="")
+
+#Read In Data
+options(scipen=999)
+theData = read.csv("C:/Users/onest/Desktop/2018 House Model/Data Files/Dataset20181102FinUpdate.csv")
+theData$ActAdjPVI = ifelse(theData$year==2008,theData$PVI-10.7,
+                           ifelse(theData$year==2010,theData$PVI+6.8,
+                                  ifelse(theData$year==2012,theData$PVI-1.2,
+                                         ifelse(theData$year==2014,theData$PVI+5.7,
+                                                ifelse(theData$year==2016,theData$PVI+1.1,theData$AdjPVI)))))
+theData$ActGOP_GenericBallot = ifelse(theData$year==2008,42.5,
+                                      ifelse(theData$year==2010,51.6,
+                                             ifelse(theData$year==2012,48.0,
+                                                    ifelse(theData$year==2014,51.4,
+                                                           ifelse(theData$year==2016,49.1,theData$GOP_GenericBallot)))))
+
+theData$ActDem_GenericBallot = ifelse(theData$year==2008,53.2,
+                                      ifelse(theData$year==2010,44.8,
+                                             ifelse(theData$year==2012,49.2,
+                                                    ifelse(theData$year==2014,45.7,
+                                                           ifelse(theData$year==2016,48.0,theData$Dem_GenericBallot)))))
+
+
+theData$ActGap_GenericBallot = ifelse(theData$year==2008,-10.7,
+                                      ifelse(theData$year==2010,6.8,
+                                             ifelse(theData$year==2012,1.2,
+                                                    ifelse(theData$year==2014,5.7,
+                                                           ifelse(theData$year==2016,1.1,theData$Gap_GenericBallot)))))
+
+
+results = read.delim("C:/Users/onest/Desktop/2018 House Model/election data files/1976-2016-house.tab")
+results = results %>% filter(year>= 2006)
+
+#Two Party Results
+twoparty = theData %>% filter(!is.na(GOP_Candidate) & !is.na(Dem_Candidate),year<2018) %>%
+  select(name,State,District,CD_Name,year,GOP_Result,Dem_Result)
+
+twoparty$GOP_Base = ifelse(twoparty$year==2008,twoparty$GOP_Result-(-10.7/2),
+                           ifelse(twoparty$year==2010,twoparty$GOP_Result-(6.8/2),
+                                  ifelse(twoparty$year==2012,twoparty$GOP_Result-(-1.2/2),
+                                         ifelse(twoparty$year==2014,twoparty$GOP_Result-(5.7/2),
+                                                ifelse(twoparty$year==2016,twoparty$GOP_Result-(1.1/2),"")))))
+
+twoparty$Dem_Base = ifelse(twoparty$year==2008,twoparty$Dem_Result+(-10.7/2),
+                           ifelse(twoparty$year==2010,twoparty$Dem_Result+(6.8/2),
+                                  ifelse(twoparty$year==2012,twoparty$Dem_Result+(-1.2/2),
+                                         ifelse(twoparty$year==2014,twoparty$Dem_Result-+(5.7/2),
+                                                ifelse(twoparty$year==2016,twoparty$Dem_Result+(1.1/2),"")))))
+twoparty$time = ifelse(twoparty$year<=2010,"old","new")
+
+twoparty$GOP_Base = as.numeric(twoparty$GOP_Base)
+twoparty$Dem_Base = as.numeric(twoparty$Dem_Base)
+
+baselines = twoparty %>% group_by(State,District,CD_Name,time) %>%
+  summarise(GOP_Base = mean(GOP_Base),
+            Dem_Base = mean(Dem_Base),
+            count = n()) %>%
+  mutate(Gap_Base = GOP_Base - Dem_Base)
+
+theCDs = theData %>% select(State,District,CD_Name) %>% group_by(State,District,CD_Name) %>%
+  summarise(n=n()) %>%
+  select(State,District,CD_Name) %>%
+  left_join(.,baselines,by=c("State","District","CD_Name"))
+
+theCDs = theCDs[,c(3,5:8)]
+
+#Districts Polled by Cluster
+test = theData
+test$count = 1
+test$polled = ifelse(is.na(test$AvgPollsterRating_Polling),0,1)
+
+theData = theData %>% left_join(.,test[,c(1,138)],by="name")
+
+polled = test %>% filter(polled==1) %>%
+  group_by(Cluster,year) %>%
+  summarise(count = sum(count))
+
+#Prior Year Election Results
+TotalNonBlankVotes = results %>% filter(!candidate %in% c(""," ","Blank Vote/Scattering","Blank Vote/Void Vote/Scattering","Void Vote","scatter","Blank Vote")) %>%
+  select(year,state_po,district,candidatevotes) %>%
+  group_by(year,state_po,district) %>%
+  summarise(TotalVotes = sum(candidatevotes))
+GOPVotes = results %>% filter(party %in% c("republican") & writein==FALSE) %>%
+  select(year,state_po,district,candidatevotes,candidate) %>%
+  group_by(year,state_po,district,candidate) %>%
+  summarise(candidatevotes = sum(candidatevotes)) %>%
+  group_by(year,state_po,district) %>%
+  filter(candidatevotes == max(candidatevotes)) %>%
+  select(year,state_po,district,GOP_Votes = candidatevotes)
+DemVotes = results %>% filter(party %in% c("democrat","democratic-farmer-labor","working families") & writein==FALSE) %>%
+  select(year,state_po,district,candidatevotes,candidate) %>%
+  group_by(year,state_po,district,candidate) %>%
+  summarise(candidatevotes = sum(candidatevotes)) %>%
+  group_by(year,state_po,district) %>%
+  filter(candidatevotes == max(candidatevotes)) %>%
+  select(year,state_po,district,Dem_Votes = candidatevotes)
+GOPVotes[GOPVotes == 0] = 1
+DemVotes[DemVotes == 0] = 1
+TotalNonBlankVotes[TotalNonBlankVotes == 0] = 1
+Prior = TotalNonBlankVotes %>% full_join(.,GOPVotes,by=c("year","state_po","district")) %>%
+  full_join(.,DemVotes,by=c("year","state_po","district")) %>%
+  mutate(GOP_Prct = GOP_Votes / TotalVotes * 100,
+         Dem_Prct = Dem_Votes / TotalVotes * 100)
+
+PVIs = Prior %>% select(year,State=state_po,District=district) %>%
+  full_join(.,theData,by=c("year","State","District")) %>%
+  select(year,State,District,PVI,AdjPVI,ActAdjPVI) %>% 
+  filter(year < 2018)
+PVIs2006 = PVIs %>% filter(year == 2006) %>% select(year,State,District)
+PVIs = PVIs %>% filter(year != 2006)
+
+PVIs2006 = PVIs2006 %>% mutate(year_join = 2008) %>%
+  left_join(.,PVIs,by=c("year_join"="year","State"="State","District"="District"))
+PVIs2006$AdjPVI = PVIs2006$PVI - 12.926
+PVIs2006$ActAdjPVI = PVIs2006$PVI - 7.9
+PVIs2006 = PVIs2006[,-c(4)]
+
+PVIs2010 = PVIs %>% filter(year == 2014)
+PVIs = PVIs %>% filter(year != 2010)
+PVIs2010$year = 2010
+PVIs = rbind(PVIs,PVIs2006)
+PVIs = rbind(PVIs,PVIs2010)
+colnames(PVIs)[4:6] = c("PVI_old","AdjPVI_old","ActAdjPVI_old")
+PVIs$year = PVIs$year + 2
+
+Votes = Prior %>% filter(!is.na(GOP_Votes) & !is.na(Dem_Votes)) %>%
+  filter(year != 2010) %>% 
+  filter(!state_po %in% c("NC","FL") | (state_po %in% c("NC","FL") & year != 2014)) %>%
+  filter(!state_po == "PA" | (state_po == "PA" & year != 2016))
+Votes$year = Votes$year + 2
+Votes2010 = Votes %>% filter(year == 2016)
+Votes2010$year = 2012
+Votes = rbind(Votes,Votes2010)
+colnames(Votes)[2] = "State"
+colnames(Votes)[3] = "District"
+
+
+AllCDs = theData[,c(1,2,3,5,27,30)] %>% 
+  left_join(.,Votes,by=c("State","District","year")) %>%
+  left_join(.,PVIs,by=c("State","District","year"))
+
+ChallengerCDs = AllCDs %>% filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
+ChalKnown = ChallengerCDs %>% filter(!is.na(GOP_Prct))
+ChalUnknown = ChallengerCDs %>% filter(is.na(GOP_Prct))
+
+Matches = read.csv("C:/Users/onest/Desktop/2018 House Model/CDsMatch.csv")
+
+ChalUnknown = ChalUnknown %>% left_join(.,Matches[,-c(2,3,12,13)],by="name")
+
+ChalUnknown$GOP1 = NA
+ChalUnknown$GOP2 = NA
+ChalUnknown$GOP3 = NA
+ChalUnknown$GOP4 = NA
+ChalUnknown$GOP5 = NA
+ChalUnknown$GOP6 = NA
+ChalUnknown$GOP7 = NA
+ChalUnknown$GOP8 = NA
+ChalUnknown$GOP9 = NA
+ChalUnknown$GOP10 = NA
+
+ChalUnknown$Dem1 = NA
+ChalUnknown$Dem2 = NA
+ChalUnknown$Dem3 = NA
+ChalUnknown$Dem4 = NA
+ChalUnknown$Dem5 = NA
+ChalUnknown$Dem6 = NA
+ChalUnknown$Dem7 = NA
+ChalUnknown$Dem8 = NA
+ChalUnknown$Dem9 = NA
+ChalUnknown$Dem10 = NA
+
+ChalUnknown$PVI1 = NA
+ChalUnknown$PVI2 = NA
+ChalUnknown$PVI3 = NA
+ChalUnknown$PVI4 = NA
+ChalUnknown$PVI5 = NA
+ChalUnknown$PVI6 = NA
+ChalUnknown$PVI7 = NA
+ChalUnknown$PVI8 = NA
+ChalUnknown$PVI9 = NA
+ChalUnknown$PVI10 = NA
+
+ChalKnown$name = as.character(ChalKnown$name)
+ChalUnknown$name = as.character(ChalUnknown$name)
+ChalUnknown$name1 = as.character(ChalUnknown$name1)
+ChalUnknown$name2 = as.character(ChalUnknown$name2)
+ChalUnknown$name3 = as.character(ChalUnknown$name3)
+ChalUnknown$name4 = as.character(ChalUnknown$name4)
+ChalUnknown$name5 = as.character(ChalUnknown$name5)
+ChalUnknown$name6 = as.character(ChalUnknown$name6)
+ChalUnknown$name7 = as.character(ChalUnknown$name7)
+ChalUnknown$name8 = as.character(ChalUnknown$name8)
+ChalUnknown$name9 = as.character(ChalUnknown$name9)
+ChalUnknown$name10 = as.character(ChalUnknown$name10)
+
+for(i in seq(from=1,to=dim(ChalUnknown)[1],by=1)){
+  for(j in seq(from=1,to=dim(ChalKnown)[1],by=1)){
+    if(ChalUnknown[i,43]==ChalKnown[j,1]){
+      ChalUnknown[i,53] = ChalKnown[j,10]
+      ChalUnknown[i,63] = ChalKnown[j,11]
+      ChalUnknown[i,73] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,44]==ChalKnown[j,1]){
+      ChalUnknown[i,54] = ChalKnown[j,10]
+      ChalUnknown[i,64] = ChalKnown[j,11]
+      ChalUnknown[i,74] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,45]==ChalKnown[j,1]){
+      ChalUnknown[i,55] = ChalKnown[j,10]
+      ChalUnknown[i,65] = ChalKnown[j,11]
+      ChalUnknown[i,75] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,46]==ChalKnown[j,1]){
+      ChalUnknown[i,56] = ChalKnown[j,10]
+      ChalUnknown[i,66] = ChalKnown[j,11]
+      ChalUnknown[i,76] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,47]==ChalKnown[j,1]){
+      ChalUnknown[i,57] = ChalKnown[j,10]
+      ChalUnknown[i,67] = ChalKnown[j,11]
+      ChalUnknown[i,77] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,48]==ChalKnown[j,1]){
+      ChalUnknown[i,58] = ChalKnown[j,10]
+      ChalUnknown[i,68] = ChalKnown[j,11]
+      ChalUnknown[i,78] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,49]==ChalKnown[j,1]){
+      ChalUnknown[i,59] = ChalKnown[j,10]
+      ChalUnknown[i,69] = ChalKnown[j,11]
+      ChalUnknown[i,79] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,50]==ChalKnown[j,1]){
+      ChalUnknown[i,60] = ChalKnown[j,10]
+      ChalUnknown[i,70] = ChalKnown[j,11]
+      ChalUnknown[i,80] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,51]==ChalKnown[j,1]){
+      ChalUnknown[i,61] = ChalKnown[j,10]
+      ChalUnknown[i,71] = ChalKnown[j,11]
+      ChalUnknown[i,81] = ChalKnown[j,12]
+    } else if(ChalUnknown[i,52]==ChalKnown[j,1]){
+      ChalUnknown[i,62] = ChalKnown[j,10]
+      ChalUnknown[i,72] = ChalKnown[j,11]
+      ChalUnknown[i,82] = ChalKnown[j,12]
+    }
+  }
+}
+
+ChalUnknown = ChalUnknown %>% left_join(.,theCDs,by="CD_Name")
+
+ChalUnknown$GOPBase1 = NA
+ChalUnknown$GOPBase2 = NA
+ChalUnknown$GOPBase3 = NA
+ChalUnknown$GOPBase4 = NA
+ChalUnknown$GOPBase5 = NA
+ChalUnknown$GOPBase6 = NA
+ChalUnknown$GOPBase7 = NA
+ChalUnknown$GOPBase8 = NA
+ChalUnknown$GOPBase9 = NA
+ChalUnknown$GOPBase10 = NA
+
+ChalUnknown$DemBase1 = NA
+ChalUnknown$DemBase2 = NA
+ChalUnknown$DemBase3 = NA
+ChalUnknown$DemBase4 = NA
+ChalUnknown$DemBase5 = NA
+ChalUnknown$DemBase6 = NA
+ChalUnknown$DemBase7 = NA
+ChalUnknown$DemBase8 = NA
+ChalUnknown$DemBase9 = NA
+ChalUnknown$DemBase10 = NA
+
+ChalUnknown$closest1 = as.character(ChalUnknown$closest1)
+ChalUnknown$closest2 = as.character(ChalUnknown$closest2)
+ChalUnknown$closest3 = as.character(ChalUnknown$closest3)
+ChalUnknown$closest4 = as.character(ChalUnknown$closest4)
+ChalUnknown$closest5 = as.character(ChalUnknown$closest5)
+ChalUnknown$closest6 = as.character(ChalUnknown$closest6)
+ChalUnknown$closest7 = as.character(ChalUnknown$closest7)
+ChalUnknown$closest8 = as.character(ChalUnknown$closest8)
+ChalUnknown$closest9 = as.character(ChalUnknown$closest9)
+ChalUnknown$closest10 = as.character(ChalUnknown$closest10)
+
+baselines$CD_Name = as.character(baselines$CD_Name)
+
+for(i in seq(from=1,to=dim(ChalUnknown)[1],by=1)){
+  for(j in seq(from=1,to=dim(baselines)[1],by=1)){
+    if(ChalUnknown[i,23]==baselines[j,3]){
+      ChalUnknown[i,87] = baselines[j,5]
+      ChalUnknown[i,97] = baselines[j,6]
+    } else if(ChalUnknown[i,24]==baselines[j,3]){
+      ChalUnknown[i,88] = baselines[j,5]
+      ChalUnknown[i,98] = baselines[j,6]
+    } else if(ChalUnknown[i,25]==baselines[j,3]){
+      ChalUnknown[i,89] = baselines[j,5]
+      ChalUnknown[i,99] = baselines[j,6]
+    } else if(ChalUnknown[i,26]==baselines[j,3]){
+      ChalUnknown[i,90] = baselines[j,5]
+      ChalUnknown[i,100] = baselines[j,6]
+    } else if(ChalUnknown[i,27]==baselines[j,3]){
+      ChalUnknown[i,91] = baselines[j,5]
+      ChalUnknown[i,101] = baselines[j,6]
+    } else if(ChalUnknown[i,28]==baselines[j,3]){
+      ChalUnknown[i,92] = baselines[j,5]
+      ChalUnknown[i,102] = baselines[j,6]
+    } else if(ChalUnknown[i,29]==baselines[j,3]){
+      ChalUnknown[i,93] = baselines[j,5]
+      ChalUnknown[i,103] = baselines[j,6]
+    } else if(ChalUnknown[i,30]==baselines[j,3]){
+      ChalUnknown[i,94] = baselines[j,5]
+      ChalUnknown[i,104] = baselines[j,6]
+    } else if(ChalUnknown[i,31]==baselines[j,3]){
+      ChalUnknown[i,95] = baselines[j,5]
+      ChalUnknown[i,105] = baselines[j,6]
+    } else if(ChalUnknown[i,32]==baselines[j,3]){
+      ChalUnknown[i,96] = baselines[j,5]
+      ChalUnknown[i,106] = baselines[j,6]
+    } 
+  }
+}
+
+ChalUnknownCond = ChalUnknown[,c(1:4,12:14,53:106)]
+ChalUnknownCond$GOP_prev = rowMeans(ChalUnknownCond[,c("GOP1","GOP2","GOP3","GOP4","GOP5","GOP6","GOP7","GOP8","GOP9","GOP10")],na.rm=T)
+ChalUnknownCond$Dem_prev = rowMeans(ChalUnknownCond[,c("Dem1","Dem2","Dem3","Dem4","Dem5","Dem6","Dem7","Dem8","Dem9","Dem10")],na.rm=T)
+ChalUnknownCond$GOP_AdjBase = ChalUnknownCond$GOP_Base+((ChalUnknownCond$ActAdjPVI_old-ChalUnknownCond$PVI_old)/2)
+ChalUnknownCond$Dem_AdjBase = ChalUnknownCond$Dem_Base-((ChalUnknownCond$ActAdjPVI_old-ChalUnknownCond$PVI_old)/2)
+ChalUnknownCond$GOP_Prct = ifelse(is.na(ChalUnknownCond$GOP_prev),ChalUnknownCond$GOP_AdjBase,
+                                  ifelse(is.na(ChalUnknownCond$GOP_AdjBase),ChalUnknownCond$GOP_prev,
+                                         (ChalUnknownCond$count)/4*ChalUnknownCond$GOP_AdjBase+(4-ChalUnknownCond$count)/
+                                           4*ChalUnknownCond$GOP_prev))
+ChalUnknownCond$Dem_Prct = ifelse(is.na(ChalUnknownCond$Dem_prev),ChalUnknownCond$Dem_AdjBase,
+                                  ifelse(is.na(ChalUnknownCond$Dem_AdjBase),ChalUnknownCond$Dem_prev,
+                                         (ChalUnknownCond$count)/4*ChalUnknownCond$Dem_AdjBase+(4-ChalUnknownCond$count)/
+                                           4*ChalUnknownCond$Dem_prev))
+ChalKnown$competitive = 1
+
+ChalUnknownCond$competitive = 0
+
+ChalKnown = ChalKnown %>% left_join(.,Matches[,-c(2,3,12,13)],by="name") %>% left_join(.,theCDs,by="CD_Name")
+
+DistrictsJoin = rbind(ChalKnown[,c(2,3,4,10:15,54,55)],ChalUnknownCond[,c(2:7,38,39,66,67,68)])
+DistrictsJoin$Gap_Prct = DistrictsJoin$GOP_Prct - DistrictsJoin$Dem_Prct
+DistrictsJoin$Gap_Base = DistrictsJoin$GOP_Base - DistrictsJoin$Dem_Base
+
+theCDsToModel = theData %>% 
+  left_join(.,DistrictsJoin,by=c("State","District","year")) %>%
+  filter(!is.na(GOP_Candidate)&!is.na(Dem_Candidate))
+
+#Create Polling/Polling Prediction Variable
+pollingCDs = theData %>% select(name,State,District,year,GOP_Polling,Dem_Polling,Gap_Polling,NumberOfPolls,AvgPollsterRating_Polling) %>%
+  filter(!is.na(GOP_Polling))
+theCDs2 = theData %>% select(State,District,CD_Name,year) %>%
+  left_join(.,Matches[,-c(2,3,5:12,14:33)],by=c("CD_Name","year"))
+theCDs2$GOP_Polling1 = NA
+theCDs2$GOP_Polling2 = NA
+theCDs2$GOP_Polling3 = NA
+theCDs2$GOP_Polling4 = NA
+theCDs2$GOP_Polling5 = NA
+theCDs2$GOP_Polling6 = NA
+theCDs2$GOP_Polling7 = NA
+theCDs2$GOP_Polling8 = NA
+theCDs2$GOP_Polling9 = NA
+theCDs2$GOP_Polling10 = NA
+theCDs2$Dem_Polling1 = NA
+theCDs2$Dem_Polling2 = NA
+theCDs2$Dem_Polling3 = NA
+theCDs2$Dem_Polling4 = NA
+theCDs2$Dem_Polling5 = NA
+theCDs2$Dem_Polling6 = NA
+theCDs2$Dem_Polling7 = NA
+theCDs2$Dem_Polling8 = NA
+theCDs2$Dem_Polling9 = NA
+theCDs2$Dem_Polling10 = NA
+theCDs2$NumOfPolls1 = NA
+theCDs2$NumOfPolls2 = NA
+theCDs2$NumOfPolls3 = NA
+theCDs2$NumOfPolls4 = NA
+theCDs2$NumOfPolls5 = NA
+theCDs2$NumOfPolls6 = NA
+theCDs2$NumOfPolls7 = NA
+theCDs2$NumOfPolls8 = NA
+theCDs2$NumOfPolls9 = NA
+theCDs2$NumOfPolls10 = NA
+theCDs2$AvgPollster1 = NA
+theCDs2$AvgPollster2 = NA
+theCDs2$AvgPollster3 = NA
+theCDs2$AvgPollster4 = NA
+theCDs2$AvgPollster5 = NA
+theCDs2$AvgPollster6 = NA
+theCDs2$AvgPollster7 = NA
+theCDs2$AvgPollster8 = NA
+theCDs2$AvgPollster9 = NA
+theCDs2$AvgPollster10 = NA
+pollingCDs$name = as.character(pollingCDs$name)
+theCDs2$name1 = as.character(theCDs2$name1)
+theCDs2$name2 = as.character(theCDs2$name2)
+theCDs2$name3 = as.character(theCDs2$name3)
+theCDs2$name4 = as.character(theCDs2$name4)
+theCDs2$name5 = as.character(theCDs2$name5)
+theCDs2$name6 = as.character(theCDs2$name6)
+theCDs2$name7 = as.character(theCDs2$name7)
+theCDs2$name8 = as.character(theCDs2$name8)
+theCDs2$name9 = as.character(theCDs2$name9)
+theCDs2$name10 = as.character(theCDs2$name10)
+for(i in seq(from=1,to=dim(theCDs2)[1],by=1)){
+  for(j in seq(from=1,to=dim(pollingCDs)[1],by=1)){
+    if(theCDs2[i,6] == pollingCDs[j,1]){
+      theCDs2[i,16] = pollingCDs[j,5]
+      theCDs2[i,26] = pollingCDs[j,6]
+      theCDs2[i,36] = pollingCDs[j,8]
+      theCDs2[i,46] = pollingCDs[j,9]
+    } else if(theCDs2[i,7] == pollingCDs[j,1]){
+      theCDs2[i,17] = pollingCDs[j,5]
+      theCDs2[i,27] = pollingCDs[j,6]
+      theCDs2[i,37] = pollingCDs[j,8]
+      theCDs2[i,47] = pollingCDs[j,9]
+    } else if(theCDs2[i,8] == pollingCDs[j,1]){
+      theCDs2[i,18] = pollingCDs[j,5]
+      theCDs2[i,28] = pollingCDs[j,6]
+      theCDs2[i,38] = pollingCDs[j,8]
+      theCDs2[i,48] = pollingCDs[j,9]
+    } else if(theCDs2[i,9] == pollingCDs[j,1]){
+      theCDs2[i,19] = pollingCDs[j,5]
+      theCDs2[i,29] = pollingCDs[j,6]
+      theCDs2[i,39] = pollingCDs[j,8]
+      theCDs2[i,49] = pollingCDs[j,9]
+    } else if(theCDs2[i,10] == pollingCDs[j,1]){
+      theCDs2[i,20] = pollingCDs[j,5]
+      theCDs2[i,30] = pollingCDs[j,6]
+      theCDs2[i,40] = pollingCDs[j,8]
+      theCDs2[i,50] = pollingCDs[j,9]
+    } else if(theCDs2[i,11] == pollingCDs[j,1]){
+      theCDs2[i,21] = pollingCDs[j,5]
+      theCDs2[i,31] = pollingCDs[j,6]
+      theCDs2[i,41] = pollingCDs[j,8]
+      theCDs2[i,51] = pollingCDs[j,9]
+    } else if(theCDs2[i,12] == pollingCDs[j,1]){
+      theCDs2[i,22] = pollingCDs[j,5]
+      theCDs2[i,32] = pollingCDs[j,6]
+      theCDs2[i,42] = pollingCDs[j,8]
+      theCDs2[i,52] = pollingCDs[j,9]
+    } else if(theCDs2[i,13] == pollingCDs[j,1]){
+      theCDs2[i,23] = pollingCDs[j,5]
+      theCDs2[i,33] = pollingCDs[j,6]
+      theCDs2[i,43] = pollingCDs[j,8]
+      theCDs2[i,53] = pollingCDs[j,9]
+    } else if(theCDs2[i,14] == pollingCDs[j,1]){
+      theCDs2[i,24] = pollingCDs[j,5]
+      theCDs2[i,34] = pollingCDs[j,6]
+      theCDs2[i,44] = pollingCDs[j,8]
+      theCDs2[i,54] = pollingCDs[j,9]
+    } else if(theCDs2[i,15] == pollingCDs[j,1]){
+      theCDs2[i,25] = pollingCDs[j,5]
+      theCDs2[i,35] = pollingCDs[j,6]
+      theCDs2[i,45] = pollingCDs[j,8]
+      theCDs2[i,55] = pollingCDs[j,9]
+    }
+  }
+}
+theCDs2$GOP_weight1 = ifelse(!is.na(theCDs2$GOP_Polling1),theCDs2$GOP_Polling1 * theCDs2$NumOfPolls1,NA)
+theCDs2$GOP_weight2 = ifelse(!is.na(theCDs2$GOP_Polling2),theCDs2$GOP_Polling2 * theCDs2$NumOfPolls2,NA)
+theCDs2$GOP_weight3 = ifelse(!is.na(theCDs2$GOP_Polling3),theCDs2$GOP_Polling3 * theCDs2$NumOfPolls3,NA)
+theCDs2$GOP_weight4 = ifelse(!is.na(theCDs2$GOP_Polling4),theCDs2$GOP_Polling4 * theCDs2$NumOfPolls4,NA)
+theCDs2$GOP_weight5 = ifelse(!is.na(theCDs2$GOP_Polling5),theCDs2$GOP_Polling5 * theCDs2$NumOfPolls5,NA)
+theCDs2$GOP_weight6 = ifelse(!is.na(theCDs2$GOP_Polling6),theCDs2$GOP_Polling6 * theCDs2$NumOfPolls6,NA)
+theCDs2$GOP_weight7 = ifelse(!is.na(theCDs2$GOP_Polling7),theCDs2$GOP_Polling7 * theCDs2$NumOfPolls7,NA)
+theCDs2$GOP_weight8 = ifelse(!is.na(theCDs2$GOP_Polling8),theCDs2$GOP_Polling8 * theCDs2$NumOfPolls8,NA)
+theCDs2$GOP_weight9 = ifelse(!is.na(theCDs2$GOP_Polling9),theCDs2$GOP_Polling9 * theCDs2$NumOfPolls9,NA)
+theCDs2$GOP_weight10 = ifelse(!is.na(theCDs2$GOP_Polling10),theCDs2$GOP_Polling10 * theCDs2$NumOfPolls10,NA)
+theCDs2$Dem_weight1 = ifelse(!is.na(theCDs2$Dem_Polling1),theCDs2$Dem_Polling1 * theCDs2$NumOfPolls1,NA)
+theCDs2$Dem_weight2 = ifelse(!is.na(theCDs2$Dem_Polling2),theCDs2$Dem_Polling2 * theCDs2$NumOfPolls2,NA)
+theCDs2$Dem_weight3 = ifelse(!is.na(theCDs2$Dem_Polling3),theCDs2$Dem_Polling3 * theCDs2$NumOfPolls3,NA)
+theCDs2$Dem_weight4 = ifelse(!is.na(theCDs2$Dem_Polling4),theCDs2$Dem_Polling4 * theCDs2$NumOfPolls4,NA)
+theCDs2$Dem_weight5 = ifelse(!is.na(theCDs2$Dem_Polling5),theCDs2$Dem_Polling5 * theCDs2$NumOfPolls5,NA)
+theCDs2$Dem_weight6 = ifelse(!is.na(theCDs2$Dem_Polling6),theCDs2$Dem_Polling6 * theCDs2$NumOfPolls6,NA)
+theCDs2$Dem_weight7 = ifelse(!is.na(theCDs2$Dem_Polling7),theCDs2$Dem_Polling7 * theCDs2$NumOfPolls7,NA)
+theCDs2$Dem_weight8 = ifelse(!is.na(theCDs2$Dem_Polling8),theCDs2$Dem_Polling8 * theCDs2$NumOfPolls8,NA)
+theCDs2$Dem_weight9 = ifelse(!is.na(theCDs2$Dem_Polling9),theCDs2$Dem_Polling9 * theCDs2$NumOfPolls9,NA)
+theCDs2$Dem_weight10 = ifelse(!is.na(theCDs2$Dem_Polling10),theCDs2$Dem_Polling10 * theCDs2$NumOfPolls10,NA)
+theCDs2$GOP_PollingW = rowSums(theCDs2[,c("GOP_weight1","GOP_weight2","GOP_weight3","GOP_weight4","GOP_weight5","GOP_weight6",
+                                          "GOP_weight7","GOP_weight8","GOP_weight9","GOP_weight10")],na.rm = T) /
+  rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
+                     "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
+theCDs2$Dem_PollingW = rowSums(theCDs2[,c("Dem_weight1","Dem_weight2","Dem_weight3","Dem_weight4","Dem_weight5","Dem_weight6",
+                                          "Dem_weight7","Dem_weight8","Dem_weight9","Dem_weight10")],na.rm = T) /
+  rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
+                     "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
+theCDs2$NumOfPolls = rowSums(theCDs2[,c("NumOfPolls1","NumOfPolls2","NumOfPolls3","NumOfPolls4","NumOfPolls5","NumOfPolls6","NumOfPolls7",
+                                        "NumOfPolls8","NumOfPolls9","NumOfPolls10")],na.rm = T)
+theCDs2[is.na(theCDs2)] = NA
+theCDs2Join = theCDs2 %>% select(State,District,CD_Name,year,GOP_PollingW,Dem_PollingW,NumOfPolls) %>%
+  mutate(Gap_PollingW = GOP_PollingW - Dem_PollingW)
+theCDsToModel = theCDsToModel %>% left_join(.,theCDs2Join,by=c("State","District","CD_Name","year"))
+theCDsToModel$AdjPVI_chg = theCDsToModel$AdjPVI - theCDsToModel$AdjPVI_old
+theCDsToModel$ActAdjPVI_chg = theCDsToModel$ActAdjPVI - theCDsToModel$ActAdjPVI_old
+theCDsToModel$GOP_PrctAdj = theCDsToModel$GOP_Base + .5*theCDsToModel$ActGap_GenericBallot
+theCDsToModel$Dem_PrctAdj = theCDsToModel$Dem_Base - .5*theCDsToModel$ActGap_GenericBallot
+theCDsToModel$PollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls) | theCDsToModel$NumberOfPolls == 0,0,
+                                     ifelse(theCDsToModel$NumberOfPolls>=4,100,
+                                            ifelse(theCDsToModel$NumberOfPolls==3,90,
+                                                   ifelse(theCDsToModel$NumberOfPolls==2,75,50))))
+theCDsToModel$AssPollingWeight = ifelse(is.na(theCDsToModel$NumberOfPolls)| theCDsToModel$NumberOfPolls == 0,0,
+                                        ifelse(theCDsToModel$NumOfPolls>=15,30,
+                                               theCDsToModel$NumOfPolls*2))
+theCDsToModel$PrctWeight = ifelse(theCDsToModel$PollingWeight + theCDsToModel$AssPollingWeight>100,0,
+                                  100 - theCDsToModel$PollingWeight - theCDsToModel$AssPollingWeight)
+theCDsToModel$GOPPollingW = theCDsToModel$GOP_Polling * theCDsToModel$PollingWeight
+theCDsToModel$GOPAssPollingW = theCDsToModel$GOP_PollingW * theCDsToModel$AssPollingWeight
+theCDsToModel$GOPPrctW = theCDsToModel$GOP_PrctAdj * theCDsToModel$PrctWeight
+theCDsToModel$DemPollingW = theCDsToModel$Dem_Polling * theCDsToModel$PollingWeight
+theCDsToModel$DemAssPollingW = theCDsToModel$Dem_PollingW * theCDsToModel$AssPollingWeight
+theCDsToModel$DemPrctW = theCDsToModel$Dem_PrctAdj * theCDsToModel$PrctWeight
+theCDsToModel$GOP_Pred = rowSums(theCDsToModel[,c("GOPPollingW","GOPAssPollingW","GOPPrctW")],na.rm = T) / 
+  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
+theCDsToModel$Dem_Pred = rowSums(theCDsToModel[,c("DemPollingW","DemAssPollingW","DemPrctW")],na.rm = T) / 
+  rowSums(theCDsToModel[,c("PollingWeight","AssPollingWeight","PrctWeight")],na.rm=T)
+theCDsToModel$Gap_Pred = theCDsToModel$GOP_Pred - theCDsToModel$Dem_Pred
+theCDsToModel = theCDsToModel[,-c(121:125,132,140:164)]
+theCDsToPredPred = theCDsToModel %>% filter(GOP_Pred==0)
+theCDsToModel = theCDsToModel %>% filter(GOP_Pred!=0)
+ModelVals = theCDsToModel %>% filter(year < 2018)
+GOP_lm = lm(GOP_Pred ~ ActAdjPVI + White + Hispanic + BachGrad + Religiosity + Catholic + as.factor(Cluster),data=ModelVals)
+summary(GOP_lm)
+theCDsToPredPred$GOP_Pred = predict(GOP_lm,theCDsToPredPred)
+Dem_lm = lm(Dem_Pred ~ ActAdjPVI + White + Hispanic + BachGrad + Religiosity + Catholic + as.factor(Cluster),data=ModelVals)
+summary(Dem_lm)
+theCDsToPredPred$Dem_Pred = predict(Dem_lm,theCDsToPredPred)
+#manual adjustments for PA 2 and PA 3 -> outside range of well-predicted values in a linear regression
+theCDsToPredPred$GOP_Pred = ifelse(theCDsToPredPred$name=="PA02_2018",20,
+                                   ifelse(theCDsToPredPred$name=="PA03_2018",10,
+                                          theCDsToPredPred$GOP_Pred))
+theCDsToPredPred$Dem_Pred = ifelse(theCDsToPredPred$name=="PA02_2018",80,
+                                   ifelse(theCDsToPredPred$name=="PA03_2018",90,
+                                          theCDsToPredPred$Dem_Pred))
+theCDsToModel = rbind(theCDsToModel,theCDsToPredPred)
+modeldata = theCDsToModel %>% filter(year < 2018)
+currTest = theCDsToModel %>% filter(year == 2018)
+
+#Reduce Features and Build Model
+modeldata$Gap = modeldata$GOP_Result - modeldata$Dem_Result
+currTest$Gap = NA
+
+train = modeldata[,c(8,10,14,22,23,24,28,31,33:35,40,43,56,58,65,68,81,83:88,92,93,96,97,99,100,102,113,127:130,132:137)]
+test = currTest[,c(8,10,14,22,23,24,28,31,33:35,40,43,56,58,65,68,81,83:88,92,93,96,97,99,100,102,113,127:130,132:137)]
+
+y = "Gap"
+x = setdiff(names(train),c(y,"GOP_Result","Dem_Result","name","State","District","CD_Name","year"))
+
+rf_Gap = randomForest(Gap~.,
+                      ntree=1000,
+                      data=train,
+                      set.seed(111))
+
+Gaps = predict(rf_Gap,test,predict.all=TRUE)
+theGaps = as.data.frame(Gaps$individual)
+
+#Run Simulations and Write Results
+set.seed(412)
+sim = matrix(nrow=435,ncol=10000)
+
+onlyOne_Dem = theData %>% filter(year==2018) %>% 
+  filter(is.na(GOP_Candidate)) %>%
+  select(name,State,District,CD_Name) %>%
+  mutate(value = 0)
+
+onlyOne_GOP = theData %>% filter(year==2018) %>% 
+  filter(is.na(Dem_Candidate)) %>%
+  select(name,State,District,CD_Name) %>%
+  mutate(value = 1)
+
+#add Dem CDs with no challengers
+for(i in seq(from=1,to=dim(onlyOne_Dem)[1],by=1)){
+  for(j in seq(from=1,to=dim(sim)[2],by=1)){
+    sim[i,j] = 0
+  }
+}
+
+incr = dim(onlyOne_Dem)[1]
+
+#add GOP CDs with no challengers
+for(i in seq(from=1,to=dim(onlyOne_GOP)[1],by=1)){
+  for(j in seq(from=1,to=dim(sim)[2],by=1)){
+    sim[i+incr,j] = 1
+  }
+}
+
+incr = incr + dim(onlyOne_GOP)[1]
+
+for(i in seq(from=1,to=dim(theGaps)[1],by=1)){
+  for(j in seq(from=1,to=dim(sim)[2],by=1)){
+    sim[i+incr,j] = ifelse(theGaps[i,sample(1:1000,1)+5]>0,1,0)
+  }
+}
+
+theCDrows= rbind(rbind(onlyOne_Dem[,c(1,2,3,4)],onlyOne_GOP[,c(1,2,3,4)]),theGaps[,c(1,2,3,4)])
+
+finalMatrix = cbind(theCDrows,sim)
+
+GOPDistrictPrct = rowMeans(finalMatrix[,c(5:10004)])
+GOPDistrictPrct = cbind(theCDrows,GOPDistrictPrct)
+GOPDistrictPrct$Dem = 1 - GOPDistrictPrct$GOPDistrictPrct
+colnames(GOPDistrictPrct)[5] = "GOP"
+GOPDistrictPrct = GOPDistrictPrct %>% arrange(State,District)
+
+simulations = as.data.frame(colSums(finalMatrix[,c(5:10004)]))
+colnames(simulations)[1] = "SimulationResult"
+simulations$winner = ifelse(simulations$SimulationResult>217,"GOP","Dem")
+
+nrow(simulations[simulations$SimulationResult>217,])
+nrow(simulations[simulations$SimulationResult<=217,])
+
+mean(simulations$SimulationResult)
+median(simulations$SimulationResult)
+
+write.csv(file="Predictions.csv",GOPDistrictPrct,row.names = F)
+
+#Create Generic Ballot and Presidential Approval Charts
+pres = read.csv("C:/Users/onest/workspacep/DatasetBuildHouse2018/TrumpApproval.csv")
+gb = read.csv("C:/Users/onest/workspacep/DatasetBuildHouse2018/GenericBallot2018.csv")
+
+pres = pres[,c(1:3)]
+pres$Date = as.Date(pres$Date,format="%m/%d/%y%y")
+
+Approval = plot_ly(pres,x= ~Date,y= ~Approve, name='Approval', type="scatter", mode="lines",line=list(color='rgb(0, 100, 0)',width = 4)) %>%
+  add_trace(y=~Disapprove, name="Disapproval",mode="lines",mode="lines",line=list(color='rgb(255, 0, 0)',width = 4)) %>%
+  layout(yaxis = list(title = ""))
+
+approval_link = api_create(Approval, filename="Approval")
+approval_link
+
+theGB = plot_ly(gb,x=~Date,y=~GOP,name="Republican",type="scatter",mode="lines",line=list(color='rgb(255,0,0)',width=4))%>%
+  add_trace(y=~Dem,name="Democrat",mode="lines",line=list(color='rgb(0,0,115)',width = 4)) %>%
+  layout(yaxis=list(title=""),xaxis=list(autotick=F,dtick=14))
+
+theGB_link = api_create(theGB,filename="GenericBallot")
+theGB_link
