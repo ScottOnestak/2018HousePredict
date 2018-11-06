@@ -57,8 +57,8 @@ public class Poll {
 		}
 		
 		double dayrate;
-		if(days<65) {
-			dayrate = (65-days)/65;
+		if(days<90) {
+			dayrate = (90-days)/90;
 		} else {
 			dayrate = 0;
 			pollster_rate = 0;

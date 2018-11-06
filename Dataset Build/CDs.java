@@ -349,6 +349,7 @@ public class CDs {
 		dem_poll = sumofweighteddem/sumofweights;
 		avgpollster = avgpollsterrating / pollscount;
 		gap = gop_poll - dem_poll;
+		
 	}
 	
 	//insert generic ballot
@@ -575,11 +576,12 @@ public class CDs {
 		}
 		
 		//change polling to strings so NA values can be output
-		if(districtpolling==true) {
+		if(districtpolling==true && !Double.isNaN(gop_poll)) {
 			goppoll = Double.toString(gop_poll);
 			dempoll = Double.toString(dem_poll);
 			thegap = Double.toString(gap);
 			avgpoll = Double.toString(avgpollster);
+			System.out.println(CD_Name + " " + year + " " + gop_poll + " " + dem_poll); 
 		} else {
 			goppoll = "NA";
 			dempoll = "NA";

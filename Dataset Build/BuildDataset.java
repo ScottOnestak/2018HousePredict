@@ -62,7 +62,7 @@ public class BuildDataset {
 		Date Election2012 = (Date) formatter.parse("11/6/2012");
 		Date Election2014 = (Date) formatter.parse("11/4/2014");
 		Date Election2016 = (Date) formatter.parse("11/8/2016");
-		Date current = (Date) formatter.parse("10/31/2018");
+		Date current = (Date) formatter.parse("11/6/2018");
 		
 		String holder[];
 		int firstyear;
@@ -1102,7 +1102,7 @@ public class BuildDataset {
 					year = "2018";
 				}
 				
-				if(CDs.containsKey(district) && days>0) {
+				if(CDs.containsKey(district) && days>=0) {
 					CDs.get(district).insertPoll(pollster,pollster_grade,gop,dem,thedate,days);
 					avgpoll += pollster_grade;
 					pollcount++;
