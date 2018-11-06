@@ -25,8 +25,9 @@ library(tidyr)
 if(!require('plotly')) install.packages('plotly',dependencies = T)
 library(plotly)
 
-Sys.setenv("plotly_username"="sonestak")
-Sys.setenv("plotly_api_key"="Qp9opKSaakBjxxvMK1DK")
+#Enter Plotly Username and API Key here
+Sys.setenv("plotly_username"="")
+Sys.setenv("plotly_api_key"="")
 ```
 
 ```{r read in data file}
