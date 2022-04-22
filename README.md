@@ -1,8 +1,8 @@
 # 2018HousePredict
 
-View Results Here: https://scottonestak.com/projects/2018-House-Model/2018HouseModel.html
+View Results Here: https://public.tableau.com/app/profile/scott.onestak/viz/2018HouseForecast/2018HouseForecast
 
-Tableau: https://public.tableau.com/profile/scott.onestak#!/
+All Supporting Charts in Public Tableau: https://public.tableau.com/profile/scott.onestak#!/
 
 FEC Data: 
 
